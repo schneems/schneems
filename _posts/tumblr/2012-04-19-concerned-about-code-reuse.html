@@ -1,0 +1,182 @@
+---
+layout: post
+title: Concerned about Code Reuse?
+date: '2012-04-19T09:59:00-05:00'
+tags:
+- rails
+- ruby
+- module
+- concern
+- concerns
+- include
+- extend
+- metaprogramming
+tumblr_url: http://schneems.com/post/21380060358/concerned-about-code-reuse
+---
+<p>Right out of the gate, Ruby gives us some powerful ways to re-use instance and class methods without relying on inheritance. Modules in Ruby can be used to mixin methods to classes fairly easily. For example, we can add new instance methods using <code>include</code>.</p>
+
+<pre><code>module DogFort
+  def call_dog
+    puts "this is dog!"
+  end
+end
+
+class Dog
+  include DogFort
+end
+</code></pre>
+
+<p>Now we&#8217;re able to call any methods defined in our <code>DogFort</code> Module as if they were simply slipped into (included) into our <code>Dog</code> class.</p>
+
+<pre><code>dog_instance = Dog.new
+dog_instance.call_dog
+# =&gt; "this is dog!"
+</code></pre>
+
+<p>Using Modules a fairly easy way to re-use methods, if you want you can <code>extend</code> a Module to add methods to a class directly.</p>
+
+<pre><code>module DogFort
+  def board_the_doors
+    puts "no catz allowed"
+  end
+end
+
+class Dog
+  extend DogFort
+end
+</code></pre>
+
+<p>Now if we were to call <code>Dog.new.board_the_doors</code> we would get an error, since we&#8217;ve added it as a class method instead.</p>
+
+<pre><code>Dog.board_the_doors
+# =&gt; "no catz allowed"
+
+Dog.class
+# =&gt; Class
+</code></pre>
+
+<p>Sweet! Though what if you wanted to add an instance method and a class method to a class. We could have two Modules, one to be included and one to be extended, wouldn&#8217;t be to hard but it would be nice if we only had to use one include statement, especially if the two Modules are related. So is it possible to add instance and class methods with only one include statement? Of course&#8230;</p>
+
+<h2>Enter Concerns</h2>
+
+<p>A concern is a Module that adds instance methods (like  <code>Dog.new.call_dog</code>) and class methods (like <code>Dog.board_the_doars</code>) to a class. If you&#8217;ve poked around the Rails source code you&#8217;ll see this everywhere. It&#8217;s so common that Active Support added a helper Module to create concerns. To use it require ActiveSupport and then <code>extend ActiveSupport::Concern</code></p>
+
+<pre><code>require 'active_support/concern'
+
+module DogFort
+  extend ActiveSupport::Concern
+  # ...
+end
+</code></pre>
+
+<p>Now any methods you put into this Module will be instance methods (methods on a new instance of a class <code>Dog.new</code>) and any methods that you put into a Module named <code>ClassMethods</code> will be added on to the class directly (such as <code>Dog</code>).</p>
+
+<pre><code>require 'active_support/concern'
+
+module YoDawgFort
+  extend ActiveSupport::Concern
+
+  def call_dawg
+    puts "yo dawg, this is dawg!"
+  end
+
+
+  # Anything in ClassMethods becomes a class method
+  module ClassMethods
+    def board_the_doors
+      puts "yo dawg, no catz allowed"
+    end
+  end
+end
+</code></pre>
+
+<p>So now when we add this new Module to a class, we&#8217;ll get instance and class methods</p>
+
+<pre><code>class YoDawg
+  include YoDawgFort
+end
+
+YoDawg.board_the_doars
+# =&gt; "yo dawg, no catz allowed"
+
+yodawg_instance = YoDawg.new
+yodawg_instance.call_dawg
+# =&gt; "yo dawg, this is dawg!"
+</code></pre>
+
+<p>Pretty cool huh?</p>
+
+<h2>Included</h2>
+
+<p>That&#8217;s not all, Active Support also gives us a special method called included that we can use to call methods during include time. If you add <code>included</code> to your <code>ActiveSupport::Concern</code> any code in there will be called when it is included</p>
+
+<pre><code>module DogCatcher
+  extend ActiveSupport::Concern
+
+  included do
+    if self.is_a? Dog
+      puts "gotcha!!"
+    else
+      puts "you may go"
+    end
+  end
+end
+</code></pre>
+
+<p>So when we include <code>DogCatcher</code> in a class it&#8217;s included block will be called immediately.</p>
+
+<pre><code>class Dog
+  include DogCatcher
+end
+# =&gt; "gotcha!!"
+
+class Cat
+  include DogCatcher
+end
+# =&gt; "you may go"
+</code></pre>
+
+<p>While this is a contrived example, you can imagine wanting to maybe make a concern for Rails controllers and wanting to add <code>before_filter</code>'s to our code. We can do this easily adding the included block.</p>
+
+<h2>Is this magic?</h2>
+
+<p>Nope, under the hood we&#8217;re just using good old fashioned Ruby. If you want to learn more about all the fun things you can do with Modules I recommend checking out one of my favorite Ruby books <a href="http://pragprog.com/book/ppmetr/metaprogramming-Ruby">Metaprogramming Ruby</a> and Dave Thomas also has a fantastic <a href="http://pragprog.com/screencasts/v-dtRubyom/the-Ruby-object-model-and-metaprogramming">screencast series</a>.</p>
+
+<h2>Gotcha</h2>
+
+<p>When you&#8217;re writing Modules I guarantee that you&#8217;ll slip up and accidentally try to create a class method using <code>self</code> or <code>class &lt;&lt; self</code> but it won&#8217;t work because it&#8217;s now a method on the Module.</p>
+
+<pre><code>module DogFort
+  def self.call_dog
+    puts "this is dog!"
+  end
+ene
+</code></pre>
+
+<p>In the example above the context of <code>self</code> is actually the Module object <code>DogFort</code> so when we include it into another class we won&#8217;t see the method.</p>
+
+<pre><code>class Wolf
+  include DogFort
+end
+
+Wolf.call_dog
+# NameError: undefined local variable or method `call_dog'
+
+wolf_instance = Wolf.new
+wolf_instance.call_dog
+# NameError: undefined local variable or method `call_dog'
+</code></pre>
+
+<p>If you want to use that method in this context you will need to call the Module directly</p>
+
+<pre><code>DogFort.call_dog
+# =&gt; "this is dog!"
+puts DogFort.class
+# =&gt; Module
+</code></pre>
+
+<h2>Fin</h2>
+
+<p>That&#8217;s all for today, in my next post I&#8217;m going to show you how to <a href="http://schneems.com/2012/05/01/legacy-concerns-in-rails.html">clean up your legacy code base with concerns</a>. Let me know if you have any questions <a href="http://twitter.com/schneems">@schneems</a>!</p>
+
+<p>You may also be interested in <a href="http://www.fakingfantastic.com/2010/09/20/concerning-yourself-with-active-support-concern/">Concerning Yourself with ActiveSupport::Concern</a>, <a href="http://weblog.jamisbuck.org/2007/1/17/concerns-in-activerecord">Concerns in ActiveRecord</a> and <a href="http://yehudakatz.com/2009/11/12/better-Ruby-idioms/">Better Ruby Idioms</a>.</p>

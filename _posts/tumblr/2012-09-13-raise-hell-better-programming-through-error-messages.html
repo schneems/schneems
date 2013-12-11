@@ -1,0 +1,53 @@
+---
+layout: post
+title: 'raise "hell": Better Programming Through Error Messages'
+date: '2012-09-13T09:53:00-05:00'
+tags:
+- ruby
+- ruby on rails
+- exceptions
+tumblr_url: http://schneems.com/post/31460949407/raise-hell-better-programming-through-error-messages
+---
+<p>Exceptions suck. When you are getting started on a project there is nothing worse than clicking that button, hitting enter, and then watching your software fall flat on its face. It might sound odd - then -  if I were to say, more errors in your life could be a good thing.</p>
+
+<p>For the past few months I&#8217;ve been working with new programmers <a href="http://ut-rails.com">at the University of Texas</a> and through <a href="http://railsgirls.com/">Rails Girls</a>. It&#8217;s humbling to say the least, to watch a new user fumble around with Ruby and Rails. They run into problems you&#8217;ve either long forgotten about, or are so used to, you&#8217;re numb to them. After having to tell the 15th-thousand student to migrate their database to get rid of a <code>method_missing</code> error I thought to myself &#8220;there has to be a better way&#8221;. Essentially our system knows exactly what the problem is, it knows that you&#8217;ve got pending migrations so how can we let a programming language talk to its users? It would be so simple if Rails could just jump out, call us on the phone and tell us to &#8220;migrate our database to fix this error&#8221;, but sadly VOIP and speech generation aren&#8217;t standard libraries (yet). Since that option is out the door, how can we talk to programmers new and old alike and tell them this important message. It&#8217;s pretty simple, we just raise a little hell.</p>
+
+<p>Previously if you added an admin column to your user table via a migration and forgot to run it then refreshed a page you would still get an error, but the error message was misleading at best:</p>
+
+<pre><code>"NoMethodError: undefined method `admin?' for #&lt;User:0x007ff1d4bfa018&gt;""
+</code></pre>
+
+<p>It tells us that there is an issue with User, but doesn&#8217;t give us any clues why exactly that method is undefined. With <a href="https://github.com/rails/rails/pull/6665">my patch</a> a middleware checks for pending migrations in development mode and we can raise a much more useful error:</p>
+
+<pre><code>"Migrations are pending run 'bundle exec rake db:migrate RAILS_ENV=development' to resolve the issue"
+</code></pre>
+
+<p>Now when I get this error I don&#8217;t cringe or rage post on stack overflow, I take delight knowing that the framework I&#8217;m using is gently coaxing me back in between the lines.</p>
+
+<p>I&#8217;ll give you <a href="https://github.com/rails/rails/pull/7314">another example</a>, what do you think about this error:</p>
+
+<pre><code>"undefined method `model_name' for NilClass:Class"
+</code></pre>
+
+<p>Not very helpful. Turns out that&#8217;s the error you get when you accidentally pass a nil object to a form_for:</p>
+
+<pre><code>&lt;%= form_for @user do |f| %&gt;
+  # ...
+</code></pre>
+
+<p>I&#8217;ve seen that error so many times, I can spot it from across the room. The thing that gets me is that Rails knows you&#8217;re getting into an exceptional situation as soon as you pass in a nill or empty object into <code>form_for</code> but it wasn&#8217;t checking, instead it just passed whatever bad arguments you passed in around until something errored out somewhere in the call stack. So now we&#8217;ve got a bad error message and a stack trace that leads us down a rabbit hole, can we fix it? Sure, a simple <code>object.blank?</code> check and we can raise a meaningful error message:</p>
+
+<pre><code>raise "First argument in form cannot contain nil or be empty" if object.blank?
+</code></pre>
+
+<p>So now you know that the error came from <code>form_for</code> as a result of passing in nil or an empty array. All that is left is for you to fix it.</p>
+
+<p>I was first introduced to this style of raising early errors after attending a Avdi&#8217;s talk about <a href="http://devblog.avdi.org/2012/06/05/confident-ruby-beta/">Confident Ruby</a> at RailsConf 2011. If you weren&#8217;t fortunate enough to attend one of his talks you can still read his <a href="http://devblog.avdi.org/2012/06/05/confident-ruby-beta/">ebook</a>.</p>
+
+<p>Raising early errors with good messages can help immensely, but we can do more. If every time you get a routing error, you have to run <code>$ rake routes</code> why not <a href="https://github.com/rails/rails/pull/6696">put rake routes in your error page</a>. If leaving out arguments causes an error, tell the programmer <a href="https://github.com/rails/rails/pull/7230">exactly what they are missing</a>. Even for common sense debugging tips, it can still never hurt to remind someone to <a href="https://github.com/rails/rails/pull/6692">check the logs</a>.</p>
+
+<p>These days a heavy emphasis is placed on good documentation as it should be, but docs are only good when you&#8217;re looking at them. By writing better errors we are creating living documentation that comes to you exactly when you need it the most. Good error messages are like lessons learned scaled out to thousands of developers.</p>
+
+<p>Next time you find yourself confused when you&#8217;re programming, write down any error messages you get. Keep it in <a href="http://evernote.com/">evernote</a> or a text file, and when you figured out what went wrong and how to fix it, ask yourself if there was a better way to experience that error. Did Rails have enough information to know what you did wrong? If not, why? If so, why didn&#8217;t you get a better error message? Don&#8217;t just sit back, relax and let errors pass you bye, go out there - get mad - write code - raise &#8220;hell&#8221;.</p>
+
+<hr><p>Richard works for <a href="http://heroku.com">Heroku</a> on the Ruby Team and teaches <a href="http://schneems.com/ut-rails">rails classes at the University of Texas</a>. If you like errors as much as he does, chat him up on the twitters <a href="http://twitter.com/schneems">@schneems</a>. These error messages and more are available starting with Rails 4.</p>

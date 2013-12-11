@@ -1,0 +1,55 @@
+---
+layout: post
+title: 'Likeable: Love your Objects with Redis'
+date: '2011-11-03T11:00:00-05:00'
+tags:
+- ruby
+- redis
+- likeable
+- performance
+tumblr_url: http://schneems.com/post/12284687281/likeable-love-your-objects-with-redis
+---
+<blockquote>
+<p><span>This is a re-post of an article I wrote for <a href="http://engineering.gowalla.com/">Gowalla’s Engineering Blog</a>. You can <a href="http://engineering.gowalla.com/2011/11/03/likeable/">view the original article here</a>.</span></p>
+</blockquote>
+<p><a href="http://github.com/gowalla/likeable">Likeable</a> is a new open-source Ruby library that we built here at Gowalla to power all of the &#8220;loves&#8221; on stories, comments, highlights and photos that you see. It&#8217;s built on top of <a href="http://redis.io/">Redis</a> to be extremely simple, isolated and fast. Likeable plays well with <a href="http://rubygems.org/gems/activerecord">ActiveRecord</a> objects, but can be used with <em>any</em> Ruby object that implements an <code>#id</code> method.</p>
+<p><iframe frameborder="0" src="http://www.youtube.com/embed/iJoMXUQ33Jw?rel=0&amp;hd=1" height="323" width="575"></iframe></p>
+<p>To see it in action, head over to <a href="http://gowalla.com/schneems">my Gowalla profile</a> and love the first thing you see. Immediately you&#8217;ll see the heart change colors and the love count increase by one. If you click on that number you&#8217;ll see everyone who has loved that object.</p>
+<p>This might seem trivial at first glance. But consider that <em>dozens of elements</em> on the page must pull this information: how many people have loved it, whether the viewer has loved it, and (on some pages) which of your friends have loved it. Using Redis allows us to stay simple, flexible and fast.</p>
+<h2>The Code</h2>
+<p>Let&#8217;s say we&#8217;ve got a comment made on a recent Gowalla story.</p>
+<pre><code>@comment = Comment.last
+@comment.like_count  #=&gt; 0
+</code></pre>
+<p>If our user wants to like this comment, he can do so with ease:</p>
+<pre><code>@user = User.find_by_username('schneems')
+@user.like! @comment
+</code></pre>
+<p>And that&#8217;s it. The comment now reports the details of the like.</p>
+<pre><code>@comment.like_count      #=&gt; 1
+@comment.likes           #=&gt; [#&lt;Likeable::Like ... &gt;]
+@comment.likes.last.user #=&gt; #&lt;User username: "schneems" ...&gt;
+</code></pre>
+<h2>The Install</h2>
+<p>For Rails apps, Likeable is extremely simple to set up.</p>
+<p>First, add Likeable to your <code>Gemfile</code>:</p>
+<pre><code>gem 'likeable'
+</code></pre>
+<p>Set up your Redis connection in (e.g.) <code>config/initializers/likeable.rb</code>:</p>
+<pre><code>Likeable.setup do |likeable|
+  likeable.redis = Redis.new
+end
+</code></pre>
+<p>Next, add the <code>Likeable::UserMethods</code> module to your <code>User</code> model:</p>
+<pre><code>class User &lt; ActiveRecord::Base
+  include Likeable::UserMethods
+end
+</code></pre>
+<p>Finally, add the <code>Likeable</code> module to any model you want to be likeable:</p>
+<pre><code>class Comment &lt; ActiveRecord::Base
+  include Likeable
+end
+</code></pre>
+<p>To learn more, check out the <a href="http://github.com/gowalla/likeable">Likeable source</a>, look at the <a href="https://github.com/schneems/likeable_example">example Rails app</a> or <a href="http://www.youtube.com/watch?v=iJoMXUQ33Jw">watch the Likeable screencast</a>.</p>
+<h2>Contributing</h2>
+<p>We&#8217;d love to get contributions to Likeable. If you want it to do something it doesn&#8217;t already, <a href="https://github.com/gowalla/likeable/issues">open an issue on GitHub</a>. Or, if you feel so inclined, create a patch and submit a pull request.</p>

@@ -1,0 +1,85 @@
+---
+layout: post
+title: Wizard-ify Your Rails Controllers with Wicked
+date: '2012-02-28T10:00:00-06:00'
+tags: 
+tumblr_url: http://schneems.com/post/18437886598/wizard-ify-your-rails-controllers-with-wicked
+---
+<p>If insanity is doing the same thing and expecting different results, I was going crazy writing step-by-step wizards.
+I was never happy with the end result, they did what I wanted, but were messy and had too many moving parts. I wanted a simple &amp; re-usable way to create restful-ish controllers. Thats when I decided to rip out all that scary controller logic and bake it into in a Gem I call <a href="http://github.com/schneems/wicked">Wicked</a>.</p>
+
+<p>Wizards can be used for a number of things, they appear frequently after signing up for a service. They typically ask for additional information, or they give the user a tour of a service. Before I started working for <a href="http://heroku.com">Heroku</a>, I helped out a bit on the peer learning site, <a href="http://hourschool.com">Hourschool</a>. Since students are most interested in the courses that are close to them, Hourschool asks users for their zip code. When a student signs up via Facebook, the zipcode isn&#8217;t directly exposed via the API. So to get that extra input, we decided to add an after register wizard to ask for this information and more. If you want to add similar functionality to your Rails site, you can watch the <a href="http://www.youtube.com/watch?v=K1IEy4UJLjE">screencast</a>, <a href="https://github.com/schneems/wicked_example">download an example</a>, <a href="https://github.com/schneems/wicked">browse the source</a>, or check out the getting started guide below.</p>
+
+<iframe width="480" height="360" src="http://www.youtube.com/embed/K1IEy4UJLjE?rel=0" frameborder="0" allowfullscreen></iframe>
+
+<h2>Get Started</h2>
+
+<p>First install the gem, then inherit from <code>Wicked::WizardController</code> and you can specify a set of steps. Here we have a controller called <code>AfterRegisterController</code> with existing routes.</p>
+
+<pre><code>class AfterRegisterController &lt; Wicked::WizardController
+
+  steps :add_zip, :add_twitter, :add_friends
+  # ...
+</code></pre>
+
+<p>Create a Show and Update action, calling <code>render_wizard</code> at the end of each which allows us to show the appropriate view for the step.</p>
+
+<pre><code>class AfterRegisterController &lt; Wicked::WizardController
+
+  steps :add_zip, :add_twitter, :add_friends
+
+  def show
+    @user = current_user
+    render_wizard
+  end
+
+  def update
+    @user = current_user
+    render_wizard
+  end
+end
+</code></pre>
+
+<p>By default the wizard will render a view with the same name as the step. So you need to create view files for each step, in this case <code>views/after_register/add_zip.html.erb</code> &amp; <code>views/after_register/add_twitter.html.erb</code>. In those views we can use wizard helpers to create links to the next step.</p>
+
+<pre><code>&lt;%= link_to 'skip', next_wizard_path %&gt;
+</code></pre>
+
+<p>Or you can manually specify which wizard action you want to link to by using the wizard_path helper.</p>
+
+<pre><code>&lt;%= link_to 'skip', wizard_path(:find_friends) %&gt;
+</code></pre>
+
+<p>Our <code>:add_zip</code> action can have a form that uses the wizard path and calls the update action. To get to this update action, you simply need to submit a form that PUT&#8217;s (or PATCH&#8217;s) to the same url:</p>
+
+<pre><code>&lt;p&gt;Please Fill in your zip code!&lt;/p&gt;
+&lt;%= form_for(@user, :url =&gt; wizard_path, :method =&gt; :put) do |f| %&gt;
+  &lt;%= f.text_field :zip, :placeholder =&gt; "zip code" %&gt;
+  &lt;%= f.submit 'Next', :class =&gt; 'btn btn-primary' %&gt;
+&lt;% end %&gt;
+
+&lt;%= link_to 'skip', next_wizard_path %&gt;
+</code></pre>
+
+<p>We then need to make sure our Signup wizard&#8217;s update action updates the current_user&#8217;s attributes. After modifying the user we can pass it into <code>render_wizard</code>, which will show the next step if the object saves or re-render the previous view if the user has validation errors.</p>
+
+<pre><code>def update
+  @user = current_user
+  @user.update_attributes(params[:user])
+  render_wizard @user
+end
+</code></pre>
+
+<p>If you want to skip showing a step under certain conditions you can do it by using the <code>step</code> method which returns a symbol of the current step you&#8217;re on, and <code>skip_step</code> if you don&#8217;t want to render the current step. So if we wanted to skip asking our users to authenticate with twitter if they skipped the add_zip step, we can do it like this:</p>
+
+<pre><code>def show
+  @user = current_user
+  case step
+  when :add_twitter    
+    skip_step if @user.zip.blank?
+  end
+  render_wizard
+end
+</code></pre>
+
+<p>Redirect the user here after they are created in your system, and you have a fully baked after registration wizard. Thats all there is to it, just create a new view file every time you add a new step and you&#8217;re good to go. Please give this a try and message me at <a href="http://twitter.com/schneems">@schneems</a> if you find any other really killer ‘wizard’ applications</p>

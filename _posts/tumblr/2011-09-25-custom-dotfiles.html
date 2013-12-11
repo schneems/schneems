@@ -1,0 +1,26 @@
+---
+layout: post
+title: Custom Dotfiles
+date: '2011-09-25T22:38:00-05:00'
+tags: 
+tumblr_url: http://schneems.com/post/10673381390/custom-dotfiles
+---
+<p>I use custom organization of my .bashrc and .bash_profile i.e. my &#8220;dotfiles&#8221;. Its great to keep all of my aliases clean and organized. I highly recommend Peepcode&#8217;s <a href="http://peepcode.com/products/advanced-command-line">Advanced Command Line</a> for more info on configuring your own set of custom dotfiles.</p>
+<p><br/>The one thing I always forget how to do whenever I move to a new computer or hard-drive is to set up the correct files and set up the proper sourcing, so here is my shorthand note to my future self.  </p>
+<pre># First copy files to ~/bin/dotfiles
+# Open bashrc
+mate ~/.bashrc
+# Paste this in
+```
+  source ~/bin/dotfiles/bashrc
+```
+# Open bash_profile
+mate ~/.bash_profile
+# Paste this in
+```
+if [ -f ~/.bashrc ]; then
+  source ~/.bashrc 
+fi
+
+```
+</pre>

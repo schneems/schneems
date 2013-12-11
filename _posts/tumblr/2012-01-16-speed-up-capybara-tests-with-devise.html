@@ -1,0 +1,87 @@
+---
+layout: post
+title: Speed up Capybara Tests with Devise
+date: '2012-01-16T10:44:00-06:00'
+tags:
+- ruby
+- ruby on rails
+- capybara
+- devise
+- acceptance testing
+tumblr_url: http://schneems.com/post/15948562424/speed-up-capybara-tests-with-devise
+---
+<p>All good developers should write tests, and anyone with a high stake in a web app should write acceptance tests. Acceptance tests use a web driver like <a href="https://github.com/jnicklas/capybara">Capybara</a> to test the full functionality of your web app by interacting directly with view elements the same way a user would (clicking links, filling out forms, etc.)</p>
+
+<p>My only problem with acceptance tests is that they can be a bit slow, so i&#8217;m always looking for ways to speed mine up. One of my pain points is since everything is done via manual interaction with a headless website, any test requiring a logged in user (most of them) also requires that before it is run, Capybara must log the user in by visiting the sign in path and entering valid credentials. While I still think manual sign in should be tested, it doesn&#8217;t need to be tested <em>every</em> <em>single</em> <em>time</em> we run another test.</p>
+
+<p>If you&#8217;re doing authentication with Devise to speed things up a bit we can stub out a logged in user with Warden&#8217;s built in test helpers.</p>
+
+<p>It works like this when you&#8217;re running a non-acceptance test we want to use Devise&#8217;s <code>sign_in</code> helper since we have direct access to the <code>request</code> object (not available during capybara/acceptance tests). All other times we want to use Warden&#8217;s <code>login_as</code> method.</p>
+
+<p>Here is an example of <code>as_user</code>and <code>as_visitor</code> helpers that do just that:</p>
+
+<p>include Devise::TestHelpers</p>
+
+<pre><code># gives us the login_as(@user) method when request object is not present
+include Warden::Test::Helpers
+Warden.test_mode!
+
+# Will run the given code as the user passed in
+def as_user(user=nil, &amp;block)
+  current_user = user || Factory.create(:user)
+  if request.present?
+    sign_in(current_user)
+  else
+    login_as(current_user, :scope =&gt; :user)
+  end
+  block.call if block.present?
+  return self
+end
+
+
+def as_visitor(user=nil, &amp;block)
+  current_user = user || Factory.stub(:user)
+  if request.present?
+    sign_out(current_user)
+  else
+    logout(:user)
+  end
+  block.call if block.present?
+  return self
+end
+</code></pre>
+
+<p>I then needed to call <code>Warden.test_reset!</code> after each test to ensure correct functionality</p>
+
+<pre><code>RSpec.configure do |config|
+  config.after(:each) { Warden.test_reset! }
+end
+</code></pre>
+
+<p>Then in my tests (shown here with capybara/rspec, I can simply log in a user like this:</p>
+
+<pre><code>let(:user) { Factory.create(:user) }
+
+# To use the methods you can call 
+# methods directly on them like this:
+
+scenario 'works while logged in' do
+  as_user(user).visit teach_path
+  # ...
+
+# Or you can pass the code you wish
+# to run in a block:
+
+scenario 'creating a class' do
+  as_user(user) do
+     visit teach_path
+     click_link('Create')
+     current_path.should == new_course_path
+     fill_in 'course_title',       :with =&gt; course_stub.title
+     fill_in 'course_teaser',      :with =&gt; course_stub.teaser
+     fill_in 'course_experience',  :with =&gt; course_stub.experience
+     click_button 'Submit'
+     # ...
+</code></pre>
+
+<p>It&#8217;s that simple. With a  few lines of code I was able to speed up my tests and keep all expected behavior. For more details on how this works, you can go to the wiki page I created: <a href="https://github.com/plataformatec/devise/wiki/How-To:-Test-with-Capybara">https://github.com/plataformatec/devise/wiki/How-To:-Test-with-Capybara</a> . Good luck and happy testing!</p>

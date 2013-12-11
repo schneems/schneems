@@ -1,0 +1,76 @@
+---
+layout: post
+title: Good, Simple Design
+date: '2013-01-15T10:00:51-06:00'
+tags:
+- ruby
+- rails
+- beginner
+- design
+tumblr_url: http://schneems.com/post/40602104940/good-simple-design
+---
+<p>I&#8217;ve heard this re-framed again and again by many different programmers from <a href="https://twitter.com/wycats">@wycats</a> at Ruby conf to <a href="https://twitter.com/dhh">@dhh</a> in his <a href="http://david.heinemeierhansson.com/2012/the-parley-letter.html">parlay letter</a>:</p>
+
+<blockquote>
+  <p>I consider this [the ease of getting started], like maintainability, to be a side effect of good, simple design.</p>
+</blockquote>
+
+<p>I think this is a great way of looking at the &#8220;beginner&#8221; problem, but it doesn&#8217;t give much guidance. What exactly is good design for advanced developers? Why is it also good for beginners? Who counts as a beginner? Is a .NET dev with 5 years of industry experience learning rails lumped into the same category as a someone who had never previously viewed-source on a webpage?</p>
+
+<h2>In the Beginning</h2>
+
+<p>Let&#8217;s take it back a bit, to the era before one click purchases, and github signup buttons. The realm was ruled by the textbox and it&#8217;s mighty accomplices radio buttons, text areas, and submit buttons. Signing up for a new web app was a lesson in finger cramps. Eventually some people were clever enough to figure out that fewer fields meant fewer interactions, and less fatigue. This of course lead to fewer people dropping off and higher sign-up numbers. Good for the business, who now has more users. Good for you, who now has to type. In the end all they needed was a password and an email, the rest was just details.</p>
+
+<p>What do web forms have to do with advanced programming? Everything. It doesn&#8217;t matter if you were browsing the BBS on a 28.8k or you just got your first taste of the Internet over AOL, you had to go through the same interaction. Experience was irrelevant. There was no &#8220;click here if you understand the internet&#8221; signup option. So when the pain of signing up for many many services by the elite trickled down to help the newbs signing up for their first service: every won.</p>
+
+<p>Anectdotes aside, this is how coding for interaction should be. Build for the pros, don&#8217;t forget the nos.  What can we as developers take away from the signup form? Treat each user interaction as a barrier to entry and productivity, slash cut and simplify until you can&#8217;t be simpler, and treat the interface as a tool to reduce activation energy.</p>
+
+<p><strong>PROTIP: Look for heavy process and cut it down to size</strong></p>
+
+<p>Sometimes the simplicity can come from an internal structure, let&#8217;s take a look at how re-thinking how routes are groked led us to a more productive programmer and eventually a smarter &#8220;beginner&#8221;.</p>
+
+<h2>Simplicity in Action: Sextant</h2>
+
+<p>A Sextant is an ancient tool for finding your route via the stars. My program <a href="https://github.com/schneems/sextant">Sextant</a> is a tool for finding your rails routes via your browser. I started the project to save me from the pain of <code>rake routes</code> to slash my waiting time (counted in agonies per command, of course) from 20 to 0.</p>
+
+<p>What started as a simple tool for saving time has since ballooned into a new way to visualize and think about a core part of our Rails coding experience, with over <a href="http://rubygems.org/gems/sextant">39 thousand</a> downloads. The key to it&#8217;s success was identifying that extra step that wasn&#8217;t needed, the boot time of the rails app. Now that sextant is shipping with Rails 4 we can start the process over again. What else isn&#8217;t needed, or what is missing?</p>
+
+<h2>The Evolution of an Interface</h2>
+
+<p>Once we got the routes into the browser we&#8217;ve now got a powerful set of interaction tools to work with, namely html and javascript. I was able to clean up the visuals of the routes a bit, but it always bothers me when the computer knows the answer to something and yet makes me do the work. Named routes which are a commonly used element in the views, are listed not as they are intended to be used, but instead only have their prefixes in the output. So instead of <code>new_users_path</code> I&#8217;ll often type <code>new_users</code> into a view by accident when I&#8217;m tired or distracted. When I hit refresh the page I see my problem, I forgot to do my mental math and add the <code>_path</code> suffix. When you&#8217;re already tired, already frustrated, just trying to ship a feature these seemingly small hoops to jump through grow ever larger with each mistake made. Why not remove them entirely?</p>
+
+<p>The solution is to add this info into the view by displaying the full named route helper:</p>
+
+<p><img src="http://cl.ly/image/3A1z290a3l0Z/content.png" alt=""/></p>
+
+<p>I think this is great. But why, what makes this a good idea?</p>
+
+<h2>'Don't make me think'</h2>
+
+<p>Rails is famously convention over configuration. This saves you, the developer, countless hours debating where to put your files or and what to name your folders. While this eliminating these extra steps is a great thing, something can get lost in the translation:</p>
+
+<blockquote>
+  <p>The first thing this current class of students asked me is &#8220;Where can I find the document that describes all of the Rails conventions.&#8221; - <a href="https://twitter.com/steveklabnik/status/282185726777495553">@steveklabnik</a></p>
+</blockquote>
+
+<p>As you&#8217;re removing steps, if you miss some, then you&#8217;re secretly adding a hidden step to Google for for awhile. This Google tax only comes to: the new, the uninformed, the tired, and the overworked programmer trying to ship at the last minute. It&#8217;s easy to forget once you know the missing step by heart. This is why being explicit with route helpers in Sextant makes an impact. We took the hidden step &#8220;add <code>_path</code> to the end of these&#8221; and made it explicit without losing any information (you can still see that <code>_url</code> is an option):</p>
+
+<p><strong>PROTIP: Mental math leads to errors, where can we be more specific?</strong></p>
+
+<p>While you&#8217;re refining and iterating and slashing steps, don&#8217;t forget to keep context front and center. If you&#8217;re looking for places where you might need better docs, or more accessible information. I recommend you keep a &#8230;</p>
+
+<h2>Cheat Sheet</h2>
+
+<p>I use <a href="http://evernote.com/">Evernote</a> to keep track of the text snippets and docs links I end up finding useful. Not only does it help to organize my thoughts while I&#8217;m having issues, I can search it later if I run into the same problem, and even better when I&#8217;m bored or looking for something to productively procrastinate with, these notes are great places to see if we could add more docs, take away steps, or remove some mental math.</p>
+
+<h2>Design for All</h2>
+
+<p>If I can make my interface so simple it only needs one step, maybe one day we can eliminate the need entirely. This is exactly how automation is born and thrives. While it&#8217;s obvious saving developer time is a good thing, why had no one done this before, and how can you build better software for all levels?</p>
+
+<ul><li>Keep a cheat sheet</li>
+<li>Look for duplicate or un-needed steps</li>
+<li>Look for long complicated processes</li>
+<li>Look for missing docs or implied information</li>
+</ul><p>Get up and make a difference, work with <a href="http://railsgirls.com/">more beginners</a>, contribute to open source and help close the gaps.</p>
+
+<hr><p>Richard &#8220;<a href="http://twitter.com/schneems">@schneems</a>" (pronounced like Schnapps) Schneeman writes Ruby code for <a href="http://twitter.com/heroku">@heroku</a> and teaches <a href="http://schneems.com/ut-rails">Rails at the University of Texas</a>.</p>

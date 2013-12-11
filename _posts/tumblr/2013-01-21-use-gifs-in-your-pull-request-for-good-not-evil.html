@@ -1,0 +1,64 @@
+---
+layout: post
+title: Use GIFs in your Pull Request for Good, not Evil
+date: '2013-01-21T10:00:00-06:00'
+tags:
+- gif
+- workflow
+- pull request
+tumblr_url: http://schneems.com/post/41104255619/use-gifs-in-your-pull-request-for-good-not-evil
+---
+<p>This weekend I made my <a href="http://github.com/rails/rails/issues/9001">OVER 9000</a> pull request to Rails, that features a demo of the functionality in GIF format. I&#8217;ve had a number of people ask the same question &#8220;what is your GIF workflow?&#8221;. For the detail oriented of you in the crowd, here it is.</p>
+
+<h2>The Content</h2>
+
+<p>I filmed my screen using <a href="http://www.telestream.net/screenflow/overview.htm">Screen Flow</a>, which I used to do all my work on <a href="http://schneems.com/ut-rails">UT on Rails</a>, it&#8217;s not free at $99, but does editing, exporting, and managed to completely displace Final Cut Pro from my workflow. I recommend it. <a href="http://www.reddit.com/r/ruby/comments/16zvjt/use_gifs_in_your_pull_request_for_good_not_evil/c81a4wd">Another user</a> suggests using quicktime which can do screen recording for free.</p>
+
+<p>I took the video and then cropped it down to 560x315 and exported using H.264, this produced a teensy 619kb <code>.mov</code> file.</p>
+
+<h2>The GIF</h2>
+
+<p>Once I had a video I opened it up in Photoshop and used Save for Web to save as a <code>.GIF</code>. You can do this, or I&#8217;ve since learned that there is a free way to do this using FFMPEG and Image Magick that actually produces a smaller file. First install FFMPEG:</p>
+
+<pre><code>$ brew install ffmpeg
+</code></pre>
+
+<p>Then navigate to the correct directory, and assuming your file is named <code>ScreenFlow.mov</code> you can run this to produce a GIF:</p>
+
+<pre><code>$ ffmpeg -i ScreenFlow.mov -pix_fmt rgb24 output.gif
+</code></pre>
+
+<p>You&#8217;ll notice the <code>output.gif</code> is huge-normous, tipping the scales at over 100mb. To cut this down to size you can use image magick:</p>
+
+<pre><code>$ brew install imagemagick
+</code></pre>
+
+<p>Then run:</p>
+
+<pre><code>$ convert -layers Optimize output.gif output_optimized.gif
+</code></pre>
+
+<p>Thanks to this poster on <a href="http://superuser.com/questions/436056/how-can-i-get-ffmpeg-to-convert-a-mov-to-a-gif#_=_">super user</a> for the shorthand. Here is a <a href="http://alias.sh/convert-video-gif">shell script</a> to do that same thing, and if you&#8217;re looking for more vibrant results <a href="http://www.reddit.com/r/ruby/comments/16zvjt/use_gifs_in_your_pull_request_for_good_not_evil/c81btvm">this user had some helpful tips</a>.</p>
+
+<p>Now you just need to post your amazing creation.</p>
+
+<h2>Posting</h2>
+
+<p>Now we&#8217;ve got a GIF sitting pretty around 182kb or so, but we need to put it into our PR somehow. You could drag and drop it into Github or you can upload it somewhere publicly accessible for re-use later. Use your favorite cloud storage service here, I like <a href="http://getcloudapp.com/">Cloud App</a>. The service allows you to drag files to your menubar and share them. Make sure you&#8217;ve got the direct link (it should end in a .gif).</p>
+
+<p>Once you&#8217;ve done that just add it as a markdown image <code>![title goes here](url goes here)</code> and put it in your pull request, so this:</p>
+
+<pre><code>![Path Helper Demo](<a href="http://f.cl.ly/items/3C121F3E0P0A2o092I0w/output_optimized.gif">http://f.cl.ly/items/3C121F3E0P0A2o092I0w/output_optimized.gif</a>)
+</code></pre>
+
+<p>Becomes this:</p>
+
+<p><img src="http://f.cl.ly/items/3C121F3E0P0A2o092I0w/output_optimized.gif" alt="Path Helper Demo"/></p>
+
+<h2>Enjoy</h2>
+
+<p>Submit your PR, kick back relax and enjoy the GIF you&#8217;ve bestowed upon humanity. Remember with great GIF power comes great GIF responsibility. Don&#8217;t post useless or unnecessary GIFs just because you can. Remember that maintaining a project is tough enough without having to look at looping cats all day long. So only add them when they truly benefit the conversation and when it is tasteful. If no-one abuses this functionality, then Github won&#8217;t have reason to disable gif support.</p>
+
+<p>Thanks for sticking around, hope you learned something. Now go out and contribute to open source so you can feel like this:</p>
+
+<p><img src="http://f.cl.ly/items/252h1x2H120w1i1Y1a1j/20121112174030!Happy_dance,gif.gif" alt=""/></p>

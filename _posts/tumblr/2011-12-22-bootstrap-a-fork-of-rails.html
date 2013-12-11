@@ -1,0 +1,56 @@
+---
+layout: post
+title: Bootstrap A Fork of Rails
+date: '2011-12-22T13:01:00-06:00'
+tags:
+- rails
+- contribution
+- open source
+tumblr_url: http://schneems.com/post/14623806388/bootstrap-a-fork-of-rails
+---
+<p>If you want to make a change to Rails, you probably want to test out your change in an existing project. Here is what I needed to do to get an example project running on my fork of Rails:</p>
+
+<h2>First: Fork Rails</h2>
+
+<p>Before you can run a custom copy of Rails you&#8217;ll want to make a fork and then clone your fork to your local machine.</p>
+
+<p>Go to <a href="https://github.com/rails/rails"><a href="https://github.com/rails/rails">https://github.com/rails/rails</a></a> and click the Fork button.</p>
+
+<p>Once you&#8217;ve got a fork clone it locally:</p>
+
+<pre><code>$ cd documents/projects
+
+$ git clone git@github.com:schneems/rails.git 
+
+$ cd rails
+</code></pre>
+
+<h2>Next Modify Your Gemfile</h2>
+
+<p>Now that you&#8217;ve got a development copy of Rails locally you&#8217;ll need to modify the Gemfile of your existing Rails project that you&#8217;re testing against:</p>
+
+<p>You need to point &#8216;rails&#8217; to your local copy, mine is at <code>/Users/schneems/documents/projects/rails</code>, you also need to tell it where to find <code>journey</code> and <code>arel</code>, for those I just pointed at the existing repos online.</p>
+
+<p>Here is my full Gemfile:</p>
+
+<script src="https://gist.github.com/1511159.js?file=Gemfile"></script><p>You may need to run <code>bundle exec rake gem</code> in your Rails copy directory to regenerate gemspec files.</p>
+
+<h2>Run your Local project</h2>
+
+<p>Go into your project directory with the modified Gemfile and run Bundler</p>
+
+<pre><code>bundle install
+</code></pre>
+
+<p>Then  start your server using</p>
+
+<pre><code>bundle exec rails s
+</code></pre>
+
+<p>Now you can try running your changes against your own Rails project.</p>
+
+<p>If you&#8217;ve never contributed to rails check out the <a href="http://guides.rubyonrails.org/contributing_to_ruby_on_rails.html">Rails contribution Guide</a> or ask someone who has. Don&#8217;t forget to make a new branch before you make any changes.</p>
+
+<p>For a great example on contributing to an open source project for the first time, check out <a href="http://railscasts.com/episodes/300-contributing-to-open-source">Contributing to Open Source</a>.</p>
+
+<p>If you have problems message me <a href="http://twitter.com/schneems">@schneems</a> or check out #rails-contrib on IRC freenode, they were very helpful getting me set up. Especially <a href="https://twitter.com/nashby_">@nashby_</a> for helping with the Gemfile. Good luck and happy contributing.</p>

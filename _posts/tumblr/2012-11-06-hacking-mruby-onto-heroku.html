@@ -1,0 +1,20 @@
+---
+layout: post
+title: Hacking mruby onto Heroku
+date: '2012-11-06T13:59:33-06:00'
+tags:
+- ruby
+- mruby
+- heroku
+- buildpacks
+tumblr_url: http://schneems.com/post/35139600268/hacking-mruby-onto-heroku
+---
+<p>If you&#8217;re in the Ruby world, you&#8217;ve likely heard about <a href="https://github.com/mruby/mruby">mruby</a>, <a href="http://en.wikipedia.org/wiki/Yukihiro_Matsumoto">Matz&#8217;s</a> latest experimental Ruby implementation. What I bet you didn&#8217;t know is that you can run mruby on Heroku right now. As a matter of fact you can run just anything on Heroku, as long as it can compile it into a binary on a Linux box.</p>
+
+<p>If you&#8217;re new to mruby, or to compiling binaries take a look at my last article <a href="http://rubysource.com/try-mruby-today/">Try mruby Today</a>. I cover getting mruby up and running on your local machine. If you are already up to speed then follow along as we use <a href="https://github.com/heroku/vulcan">vulcan</a> to package mruby as binary, wrap it up in a custom <a href="http://blog.heroku.com/archives/2012/7/17/buildpacks/">buildpack</a> and then launch an app to use mruby on the Heroku cloud.</p>
+
+<p><a href="http://rubysource.com/hacking-mruby-onto-heroku/">Continue Reading &#8230;</a></p>
+
+<h2>Yesterday</h2>
+
+<p>If you missed it yesterday we announced official support for <a href="http://blog.heroku.com/archives/2012/11/5/ruby-2-preview-on-heroku/">Ruby 2.0.0 Preview1</a>, and announced the dates for our developer conference, <a href="http://blog.heroku.com/archives/2012/11/6/waza-2013/">Waza 2013</a>, including the <a href="http://blog.heroku.com/archives/2012/11/6/waza-2013/">Waza call for Speakers</a>.</p>

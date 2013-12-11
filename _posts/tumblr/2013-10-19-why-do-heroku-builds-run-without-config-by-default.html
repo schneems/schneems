@@ -1,0 +1,28 @@
+---
+layout: post
+title: Why Do Heroku Builds Run Without Config by Default?
+date: '2013-10-19T11:20:08-05:00'
+tags: 
+tumblr_url: http://schneems.com/post/64480583333/why-do-heroku-builds-run-without-config-by-default
+---
+<p>I got this question awhile ago and answered in Gist form. I recently stumbled on my answer and thought it was worth sharing, so here you go:</p>
+
+<hr><p>On Heroku compiles are run without environment variables. Why?</p>
+
+<p>If you compile the same source code you will get the exact same compiled app output every time.</p>
+
+<p>This is determinism. The app build is deterministic.</p>
+
+<p>If you allow environment variables at build time, the output of the app is no-longer deterministic based solely on the code. You can deploy the same code and get different results.</p>
+
+<p>If you are using user-env-compile your app builds are now non-deterministic.</p>
+
+<p>Why is this bad?</p>
+
+<p>It is harder to troubleshoot and reproduce problems. It means if you change your config, you technically need to recompile your app every time.</p>
+
+<p>Add-on providers are allowed to change your environment variables (vendor prefixed for safety). But changing the variable does not trigger a new deploy. If you&#8217;re app doesn&#8217;t <strong>need</strong> user env compile this isn&#8217;t a problem. Otherwise who knows.</p>
+
+<p>Not only are you enabling your Heroku config to be available at compile/build/deploy time, you could be affecting internal environment variables as well like <code>$PATH</code> or <code>$GEM_HOME</code>, and if you mess those up, there isn&#8217;t much we can do to fix them.</p>
+
+<p>In short: Best practice is to not use <a href="https://devcenter.heroku.com/articles/labs-user-env-compile">user-env-compile</a>.</p>

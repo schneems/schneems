@@ -1,0 +1,50 @@
+---
+layout: post
+title: 'TIL: Symbol to Proc Trick not needed in Ruby Inject/Reduce 2.0.0'
+date: '2013-11-13T12:40:00-06:00'
+tags:
+- ruby
+tumblr_url: http://schneems.com/post/66884331618/til-symbol-to-proc-trick-not-needed-in-ruby
+---
+<p>If you&#8217;ve been using Ruby for some time no doubt you&#8217;ve done something like this to sum up an array of integers:</p>
+
+<pre><code>[1,2,3].inject(&amp;:+)
+# =&gt; 6
+</code></pre>
+
+<p>This works because Ruby will take the symbol <code>:+</code> and turn it into a <a href="http://www.ruby-doc.org/core-2.0.0/Proc.html">Proc</a>, or anonymous function since we&#8217;re putting the <code>&amp;</code> in front of it (similar to how you would tell ruby you expect a block argument by using a <code>&amp;</code>). The code above essentially boils down to:</p>
+
+<pre><code>[1,2,3].inject {|x,y| x + y}
+# =&gt; 6
+</code></pre>
+
+<p>Today I learned that you don&#8217;t need to convert your symbol into a proc to do this, you can just pass in a symbol.</p>
+
+<pre><code>[1,2,3].inject(:+)
+# =&gt; 6
+</code></pre>
+
+<p>I like this version much better, hope you do to. I found out about this from watching Avdi code on his <a href="http://www.rubytapas.com/">Ruby Tapas</a>. If you know when this was added, or the source that makes this possible let me know.</p>
+
+<p>Even old dogs can learn new tricks.</p>
+
+<h2>Update</h2>
+
+<p>This behavior is localized to only inject/reduce methods. For instance you cannot do this.</p>
+
+<pre><code>["a", "b"].map(:upcase)
+ArgumentError: wrong number of arguments (1 for 0)
+    from (irb):3:in `map'
+    from (irb):3
+    from /Users/schneems/.rbenv/versions/2.0.0-p247/bin/irb:12:in
+</code></pre>
+
+<p>You must:</p>
+
+<pre><code>["a", "b"].map(&amp;:upcase)
+["A", "B"]
+</code></pre>
+
+<h2>Update 2</h2>
+
+<p>This feature has been around for a long time <a href="https://eval.in/67239">https://eval.in/67239</a> thanks <a href="http://twitter.com/charliesome">@charliesome</a>.</p>

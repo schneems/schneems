@@ -1,0 +1,105 @@
+---
+layout: post
+title: You got NoSQL in my Postgres! Using Hstore in Rails
+date: '2012-03-14T14:40:00-05:00'
+tags:
+- heroku
+- postgres
+- hstore
+- rails
+- ruby on rails
+tumblr_url: http://schneems.com/post/19298469372/you-got-nosql-in-my-postgres-using-hstore-in-rails
+---
+<p>Heroku just announced their <a href="https://postgres.heroku.com/blog/past/2012/3/14/introducing_keyvalue_data_storage_in_heroku_postgres/">support of hstore</a> in their dedicated Postgres 9.1 instances. Hstore is a schema less key value store inside of PostgreSQL that allows us to store data like hashes directly inside of a column. It&#8217;s great for when you don&#8217;t know exactly what types of attributes you need to store on a model, or if you need to support many different attributes for the same model.</p>
+
+<blockquote>
+  <p>Update: You can now use Hstore with <a href="https://postgres.heroku.com/blog/past/2012/7/25/release_of_new_plans_on_august_1st/">development databases</a> on Heroku</p>
+</blockquote>
+
+<p>A good example is storing attributes for a Product model. We might start out only selling books, which have an author, number of pages, but then transition over to selling laptops which have cpu speed and display resolution. Using Hstore allows us to easily store all these values without having to make a bunch mostly blank columns.</p>
+
+<p>To get started with Rails and hstore you can watch the screencast below or visit the <a href="http://hstoredemo.herokuapp.com/">hstore example app</a> running on Heroku.</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/trycX7CL2A0?rel=0" frameborder="0" allowfullscreen></iframe>
+
+<h2>More on Hstore</h2>
+
+<p>Hstore in Rails functions much like serializing hashes, except that we can query our data much faster since hstore is a native data type. It is supported natively in Rails 4, but until then we&#8217;ll need to use the <a href="https://github.com/softa/activerecord-postgres-hstore">activerecord-postgres-hstore</a> gem.</p>
+
+<h2>Getting Started</h2>
+
+<p>You will need a version of PostgreSQL locally that supports the hstore extension. I recommend installing postgres using <a href="http://mxcl.github.com/homebrew/">homebrew</a> on OS X. Once you&#8217;ve done that you can enable hstore usage by running this in Postgres</p>
+
+<pre><code>CREATE EXTENSION hstore;
+</code></pre>
+
+<p>You can put this in a migration if you prefer</p>
+
+<pre><code>class SetupHstore &lt; ActiveRecord::Migration
+  def self.up
+    execute "CREATE EXTENSION hstore"
+  end
+
+  def self.down
+    execute "DROP EXTENSION hstore"
+  end
+end
+</code></pre>
+
+<p>Once that is done you will need to create a column with a type of hstore, here we are giving our Product model a column called <code>data</code> with hstore type.</p>
+
+<pre><code>class CreateProducts &lt; ActiveRecord::Migration
+  def change
+    create_table :products do |t|
+      t.string  :name
+      t.hstore  :data
+      t.timestamps
+    end
+  end
+end
+</code></pre>
+
+<p>Once we&#8217;ve done that we can now store any type of attributes in the data column.</p>
+
+<pre><code>Product.create(:name =&gt; "Geek Love: A Novel", :data =&gt; {'author' =&gt; 'Katherine Dunn', 'pages' =&gt; 368, 'category' =&gt; 'fiction'})
+Product.last.data['category']  # =&gt; 'fiction'
+</code></pre>
+
+<h2>Querying</h2>
+
+<p>Not only does hstore allow us to store arbitrary keys and values it allows us to quickly query them.</p>
+
+<pre><code>  # Find all products that have a key of 'author' in data
+  Product.where("data ? :key", :key =&gt; 'author')
+
+  # Find all products that have a 'pages' and '368' key value pair in data
+  Product.where("data @&gt; (:key =&gt; :value)", :key =&gt; 'pages', :value =&gt; '368')
+
+  # Find all products that don't have a key value pair 'pages' and '999' in data
+  Product.where("not data @&gt; (:key =&gt; :value)", :key =&gt; 'pages', :value =&gt; '999')
+
+  # Find all products having key 'author' and value like 'ba' in data
+  Product.where("data -&gt; :key LIKE :value",     :key =&gt; 'author, :value =&gt; "%Kat%")
+</code></pre>
+
+<p>More information available in the <a href="http://www.postgresql.org/docs/8.4/static/hstore.html">Postgres hstore docs</a>.
+Though like a normal column if you query it frequently, you can get even more speed by adding an index. You can do this using one of two indexes that also speed up full text searches. They&#8217;re GiST (Generalized Search Tree) or GIN (Generalized Inverted iNdex). Which sill speed up queries using the <code>@&gt;</code> and <code>?</code> postgres operators.</p>
+
+<pre><code>class Index &lt; ActiveRecord::Migration
+  def up
+    execute "CREATE INDEX products_gin_data ON products USING GIN(data)"
+  end
+
+  def down
+    execute "DROP INDEX products_gin_data"
+  end
+end
+</code></pre>
+
+<h2>Use It</h2>
+
+<p>Try out the <a href="http://hstoredemo.herokuapp.com/">hstore example app</a>, clone the <a href="https://github.com/heroku/hstore_example">Github repo</a>, and let me know what cool things you build on twitter <a href="http://twitter.com/schneems">@schneems</a>.</p>
+
+<h2>Thanks</h2>
+
+<p>Special thanks to <a href="http://twitter.com/tenderlove">Aaron Patterson</a> and <a href="https://github.com/joelhoffman">Joel Hoffman</a> for their work with hstore &amp; Rails4, to the team at <a href="https://github.com/softa/activerecord-postgres-hstore">Softa</a> for writing this gem, &amp; and the team at <a href="https://postgres.heroku.com/">Heroku</a> for their contributions to Postgres, and supporting this feature.</p>

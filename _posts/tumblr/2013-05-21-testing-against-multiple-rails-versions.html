@@ -1,0 +1,161 @@
+---
+layout: post
+title: Testing Against Multiple Rails Versions
+date: '2013-05-21T11:03:00-05:00'
+tags: 
+tumblr_url: http://schneems.com/post/50991826838/testing-against-multiple-rails-versions
+---
+<p>Upgrading major versions of Rails sucks. I was there from 0.9 to 1.0, all the way to the famed 2 to 3 release, and they were all painful. I have good news though: Rails 4 is right around the corner, and it&#8217;s <a href="http://railscasts.com/episodes/415-upgrading-to-rails-4">a much cleaner upgrade</a>. While you are getting your app ready for Rails 4 are you bringing the gems you&#8217;ve written up to speed? If the answer is &#8220;I don&#8217;t know&#8221;, keep reading - we will cover how to test the gems you&#8217;ve written against multiple versions of Rails including Rails 4 release candidate.</p>
+
+<h2>Multiple Versions Matter</h2>
+
+<p>Believe it or not, there are still a large number of people who are using Rails 2 in production today. While the path to upgrading to Rails 3 is well documented (there&#8217;s a <a href="http://www.railsupgradehandbook.com/">whole book on it</a>) often the biggest blocker isn&#8217;t the app, or even the Rails frameworks. The largest hurdle to upgrading is often an un-maintained third party library that can&#8217;t be replaced or re-written and doesn&#8217;t work in the latest versions. There are many reasons to quit maintaining a library, but &#8220;I didn&#8217;t know how to upgrade it to support the latest rails release&#8221; shouldn&#8217;t be one of them.</p>
+
+<h2>Testing your App</h2>
+
+<p>Step zero is writing tests for your gem if you don&#8217;t already have them, once you&#8217;re done with that: make sure you&#8217;ve got a CI server running, I prefer <a href="https://travis-ci.org/">Travis CI</a> which is free for open source repos. Once you&#8217;ve got your CI build green, you&#8217;ll need to re-work your Gemfile so you can install multiple versions of Rails and then set up Travis to run your tests multiple times, each with a different version of Rails.</p>
+
+<h2>Make Ready your Gemfile</h2>
+
+<p>If you you haven&#8217;t already, delete your <code>Gemfile.lock</code> and remove it from git:</p>
+
+<pre><code>$ git rm Gemfile.lock
+</code></pre>
+
+<p>Then ignore the file by adding it to your <code>.gitignore</code>. On a stable app - Gemfile.lock stores the exact version of libraries that are used such as Rails 3.2.13. This is good for normal use, but we need our gem to be able to be <code>bundle install</code>-ed against any version of Rails. Removing the <code>Gemfile.lock</code> allows us to do that.</p>
+
+<p>The next thing we will need to do is to enable your app to load multiple Rails versions from the environment open up your libraries&#8217; <code>Gemfile</code> remove where you&#8217;re specifying Rails or railties version:</p>
+
+<pre><code>gem 'rails' '&gt;= 3.1.0'
+</code></pre>
+
+<p>If it&#8217;s in the gemspec, you don&#8217;t need to do anything, now add this code</p>
+
+<pre><code>rails_version = ENV["RAILS_VERSION"] || "default"
+
+rails = case rails_version
+when "master"
+  {github: "rails/rails"}
+when "default"
+  "&gt;= 3.1.0"
+else
+  "~&gt; #{rails_version}"
+end
+
+gem "rails", rails
+</code></pre>
+
+<p>Make sure to replace the numeric value in the <code>"default"</code> case with whatever you had specified previously.</p>
+
+<p>Now you can bundle different versions of Rails like so</p>
+
+<pre><code>$ RAILS_VERSION=3.1.0 bundle update
+$ RAILS_VERSION=3.1.0 bundle exec rake test
+</code></pre>
+
+<p>or if you want a one liner:</p>
+
+<pre><code>$ export RAILS_VERSION=3.1.0; bundle update; bundle exec rake test
+</code></pre>
+
+<p>This will install Rails version <code>~&gt; 3.1.0</code> and run tests against it. To run tests against Rails master you can use <code>RAILS_VERSION=master</code> and to run against the betas or release candidates you can run <code>RAILS_VERSION=4.0.0.pre</code></p>
+
+<p>Now you can run tests on your app using different versions of Rails. You can see an example of this style of Gemfile in my projects <a href="https://github.com/opro/opro/blob/master/Gemfile">oPRO</a>  and <a href="https://github.com/schneems/wicked/blob/master/Gemfile">Wicked</a>. The next step is to configure Travis to automatically do this for you.</p>
+
+<h2>Running Multiple Rails Versions on Travis</h2>
+
+<p>In your project create a <code>.travis.yml</code> file if you haven&#8217;t already. You can add environment variables to your travis run matrix by adding them to this file:</p>
+
+<pre><code>env:
+  - "RAILS_VERSION=3.1.0"
+  - "RAILS_VERSION=3.2.0"
+  - "RAILS_VERSION=4.0.0.pre"
+  - "RAILS_VERSION=master"
+</code></pre>
+
+<p>This will make travis run your project 4x more times each with a different environment specified. While we&#8217;re testing against different versions of Rails, let&#8217;s make sure we&#8217;re testing against different versions of Rubies too. This will test MRI 1.9.3, 2.0.0, and master as well as JRuby in 1.9 mode:</p>
+
+<pre><code>rvm:
+  - 1.9.3
+  - 2.0.0
+  - ruby-head
+  - jruby-19mode
+</code></pre>
+
+<p>Any time you&#8217;re testing the head or master of a project such as <code>ruby-head</code> you may see failres because the branch is unstable and not due to your project. For these cases you may want to allow failures until official versions are released.</p>
+
+<pre><code>matrix:
+  allow_failures:
+    - env: "RAILS_VERSION=master"
+    - rvm: ruby-head
+</code></pre>
+
+<p>This will still run tests against the most recent version of Ruby and against Rails master, but if they fail Travis will not flag the build as failed. If you want to fine tune your allowed failures you can add them together like this:</p>
+
+<pre><code>matrix:
+  allow_failures:
+    - env: "RAILS_VERSION=3.0.0"
+      rvm: 2.0.0
+</code></pre>
+
+<p>This will allow failures against Rails version 3.0.0 only when using Ruby 2.0.0. You can see the <code>.travis.yml</code> files for <a href="https://github.com/opro/opro/blob/master/.travis.yml">oPRO</a> and <a href="https://github.com/schneems/wicked/blob/master/.travis.yml">wicked</a> for full examples.</p>
+
+<h2>Test with Pull Requests</h2>
+
+<p>Once you&#8217;ve got your <code>.travis.yml</code> and <code>Gemfile</code> set up. Commit your results to a branch and push to github:</p>
+
+<pre><code>$ git checkout -b test-rails-4
+$ git add .
+$ git commit -m "testing rails 4"
+$ git push origin test-rails-4
+</code></pre>
+
+<p>Now go to your repo on Github and open up a pull request like this <a href="https://github.com/schneems/wicked/pull/64">PR on wicked</a>. If you have PR testing turned on with Travis, this will <a href="https://travis-ci.org/schneems/wicked/builds/7241486">kick off a build</a>. If you&#8217;re lucky all of your required tests will pass and it will look like this:</p>
+
+<p><a href="https://travis-ci.org/schneems/wicked/builds/7241460"><img src="http://cl.ly/image/0k3p0h1p2l1D/content.png" alt=""/></a></p>
+
+<p>You can see the <a href="https://travis-ci.org/schneems/wicked/builds/7241460">Travis build for Wicked here</a>.</p>
+
+<p>If your tests don&#8217;t all pass, not to worry: look at the output, reproduce locally, fix, push, and repeat. Sometimes you might not be able to get one version of your library to support all the versions of Rails/Ruby that you need, when that happens you&#8217;ve got diverging stable versions.</p>
+
+<h2>Diverging Stable Versions</h2>
+
+<p>Rails no longer supports version 2.0, but maintains version 3.2+ and 4.0.0.RC1+. Most of your users won&#8217;t immediately upgrade to the latest version, and while you&#8217;re waiting for them to do so, you may find security or other bugs in a version of your library. For this reason I encourage you to consider supporting at least two versions of Rails. There are a few different strategies you can take in order to accomplish this goal:</p>
+
+<p><strong>Do nothing</strong>: If you&#8217;re lucky your gem will work unmodified in all versions of Rails, and you&#8217;re good to go. Make sure you&#8217;re tested, and don&#8217;t introduce backwards incompatable changes later down the road.</p>
+
+<p><strong>Branch</strong>: Rails uses versions and branches to manage it&#8217;s codebase and you can too. If your gem needs a major overhaul to be compliant with the latest release you may want to branch out your codebase. One branch for Rails 3 and you can likely leave Rails 4 on master.</p>
+
+<pre><code>$ git checkout -b rails3
+</code></pre>
+
+<p>You&#8217;ll want to have clearly defined versions for your which version of rails your gem supports. You may want to break <a href="http://semver.org/">semver</a> for a single gem push and shadow Rails versioning. So the Rails3 compatible code can be found in version 3.X and the Rails4 compatible code can be found in 4.X of your gem. Once you do this, release as normal using semver, just avoid rev-ing the major version if you don&#8217;t have to.</p>
+
+<p><strong>Separate Gems</strong>: If keeping different copies of code in different branches seems too hard, break out your gems into multiple libraries. If your library is named <code>foo</code> consider forking it and making a <code>foo_rails4</code> gem. While easier on you, it makes it harder for your users to upgrade since they&#8217;ll have to know you released a separate gem.</p>
+
+<h2>Testing Other Software Versions</h2>
+
+<p>You may find that your library depends on other libraries for development or production that have their own dependencies on Rails. One popular library is <a href="https://github.com/plataformatec/devise">Devise</a>. You can see how we conditionally change the version of Devise based on our Rails version in <a href="https://github.com/opro/opro/blob/master/Gemfile">oPRO&#8217;s Gemfile</a>, I got this little trick from Steve&#8217;s work on <a href="https://github.com/drapergem/draper/blob/master/Gemfile">Draper&#8217;s Gemfile</a>.</p>
+
+<h2>JRuby Note</h2>
+
+<p>While upgrading to Rails 4 I found that a JRuby Gem doesn&#8217;t play nice. If you&#8217;re testing JRuby and using the JRuby Sqlite3 adapter for ActiveRecord you may need to specify this in your gemfile:</p>
+
+<pre><code>  gem "activerecord-jdbcsqlite3-adapter", '&gt;= 1.3.0.beta', :platform =&gt; :jruby
+</code></pre>
+
+<p>If you&#8217;re not testing JRuby in your Travis matrix, why aren&#8217;t you? You can always set it as an allowed failure and then at least people who want to know if your lib works with JRuby can check the Travis builds.</p>
+
+<h2>The Importance of Release Candidates</h2>
+
+<p>Now that you know how to write tests for your libraries to run on multiple versions of Rails, you have no excuse for not having them fully tested and compatible when Rails4 is fully released. It&#8217;s important to test against the Release Candidates (RC&#8217;s) because these are what will eventually become the fully released version of Rails. If you wait till Rails4 is released and find a bug in the framework, it may be too late to fix. When I was testing Wicked, I <a href="https://github.com/rails/rails/pull/10654">found and fixed a regression from 3.2.13 to 4.0.0.RC1</a>. Even better, you&#8217;ll know if your library works with Rails4 or not, and so will your users.</p>
+
+<p>If are a connoisseur of Hacker News, you may remember a set of inflammatory comments towards the Rails release team over a number of regressions introduced in a minor version bump of the library. The thing is: there was a release candidate for that minor version and for all of the people who wailed and gnashed their teeth at the regressions, few if any bothered to test against the release candidate. Next time your app gets caught by a regression, ask why you didn&#8217;t catch it before that version was released. You could be part of the solution.</p>
+
+<h2>Test Today</h2>
+
+<p>With <a href="http://gembundler.com/">bundler</a> and <a href="https://travis-ci.org/">Travis CI</a> testing against multiple versions of Rails couldn&#8217;t be easier. Don&#8217;t be the maintainer of that <strong>one Gem</strong> that isn&#8217;t compatible with the Rails4 release. Test your gems against all the Rails versions today.</p>
+
+<p><strong>update</strong>: <a href="http://twitter.com/shime_rb">@shime_rb</a> pointed out there is a gem called <a href="https://github.com/thoughtbot/appraisal#readme">Appraisal</a> to help if you don&#8217;t want to manage your Gemfile manually. You can see an example <a href="https://github.com/thoughtbot/clearance/blob/master/.travis.yml">travis.yml with appraisal</a>. Travis also supports <a href="http://about.travis-ci.org/docs/user/build-configuration/#The-Build-Matrix">specifying multiple gemfiles</a> which is how <a href="https://github.com/plataformatec/devise/tree/master/gemfiles">devise tests against multiple versions of rails</a> .</p>
+
+<hr><p>Richard Schneeman works for Heroku and is married to <a href="http://twitter.com/rubyku">Ruby</a>, literally. He wrote the <a href="http://www.codetriage.com/">easiest way to get started helping in open source: Code Triage</a>. Follow him on twitter <a href="http://twitter.com/schneems">@schneems</a>.</p>

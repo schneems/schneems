@@ -1,0 +1,70 @@
+---
+layout: post
+title: Give Tumblr Some Code Love with Prettify.js
+date: '2012-03-01T10:00:00-06:00'
+tags:
+- tumblr
+- code
+- pretty
+- syntax highlighting
+tumblr_url: http://schneems.com/post/18551760180/give-tumblr-some-code-love-with-prettify-js
+---
+<p>Lets admit it, code and Tumblr don&#8217;t exactly get along right now. Sure you can write your posts in markdown, but there isn&#8217;t really an out of the box experience for syntax highlighting in code blocks.</p>
+
+<p>In the past I&#8217;ve resorted to using <a href="http://schneems.com/2012/01/16/speed-up-capybara-tests-with-devise.html">Gists</a> to store code in my blog, but this can be a hassle to manage, especially if you need to modify your code later. One day I noticed that one of my favorite blogs <a href="http://thechangelog.com/post/18070793740/recommendify-ruby-redis-based-recommendation-engine">The Changelog</a> has great code highlighting on their Tumblr blog. With a little view source-ing and a little googling I eventually found out that the best way to add code highlighting to your blog is through a javascript library called <code>prettify.js</code>. I followed these directions by <a href="http://blog.blairvanderhoof.com/post/17703850161/code-syntax-highlighting-on-tumblr">blairvanderhoof</a>, and came up with something not too bad. While his instructions are good, I made a few modifications. Lets take a look.</p>
+
+<ol><li><p>Link to the prettify.js CDN in your html, by customizing and putting this in right before the<code>&lt;body&gt;</code> tag:</p>
+
+<pre><code>&lt;script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"&gt;&lt;/script&gt;
+</code></pre></li>
+<li><p>Add the &#8216;prettyprint&#8217; class to all <code>&lt;pre&gt;</code> tags that contain a <code>&lt;code&gt;</code> tag. Then initialize the <code>prettyPrint()</code> javascript method by adding this in your HTML:</p>
+
+<pre><code>$(document).ready( function(){
+  $('code').parent('pre').addClass('prettyprint');
+  prettyPrint();
+});
+</code></pre></li>
+<li><p>Pick a <a href="http://google-code-prettify.googlecode.com/svn/trunk/styles/index.html">prettify theme</a>. I chose the Desert theme. Add that style to the <code>Add Custom CSS</code> under the advanced section, or directly to your HTML.</p>
+
+<pre><code> /* desert scheme ported from vim to google prettify */
+pre { display: block; background-color: #333; overflow:scroll; font-size:12px;  }
+pre .nocode { background-color: none; color: #000 }
+pre .str { color: #ffa0a0 } /* string  - pink */
+pre .kwd { color: #f0e68c; font-weight: bold }
+pre .com { color: #87ceeb } /* comment - skyblue */
+pre .typ { color: #98fb98 } /* type    - lightgreen */
+pre .lit { color: #cd5c5c } /* literal - darkred */
+pre .pun { color: #fff }    /* punctuation */
+pre .pln { color: #fff }    /* plaintext */
+pre .tag { color: #f0e68c; font-weight: bold } /* html/xml tag    - lightyellow */
+pre .atn { color: #bdb76b; font-weight: bold } /* attribute name  - khaki */
+pre .atv { color: #ffa0a0 } /* attribute value - pink */
+pre .dec { color: #98fb98 } /* decimal         - lightgreen */
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE } /* IE indents via margin-left */
+li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 { list-style-type: none }
+/* Alternate shading for lines */
+li.L1,li.L3,li.L5,li.L7,li.L9 { }
+
+@media print {
+  pre { background-color: none }
+  pre .str, code .str { color: #060 }
+  pre .kwd, code .kwd { color: #006; font-weight: bold }
+  pre .com, code .com { color: #600; font-style: italic }
+  pre .typ, code .typ { color: #404; font-weight: bold }
+  pre .lit, code .lit { color: #044 }
+  pre .pun, code .pun { color: #440 }
+  pre .pln, code .pln { color: #000 }
+  pre .tag, code .tag { color: #006; font-weight: bold }
+  pre .atn, code .atn { color: #404 }
+  pre .atv, code .atv { color: #060 }
+}
+.content pre code {background-color:inherit; color:inherit}
+.content pre      { padding:1em; margin: 0.5em 0px; }
+</code></pre></li>
+</ol><p>Note: I changed some of the Desert theme to play nice with my existing styles.</p>
+
+<p>If your blog includes code snippets, you owe it to your audience to have good looking and readable syntax highlighting.</p>
+
+<p>If you&#8217;re interested in getting started and aren&#8217;t already locked into a blogging platform, I recommend trying out <a href="https://github.com/markpundsack/jekyll-heroku">Jekyll</a> on <a href="http://heroku.com">Heroku</a> it&#8217;s easy to set up and a real hackers blog. You also get syntax highlighting out of the box. Hope this helped &amp; happy blogging.</p>
