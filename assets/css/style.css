@@ -1,3 +1,5 @@
+/* foo */
+
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:500&subset=latin,latin-ext);
 
 body{
@@ -36,9 +38,18 @@ a.nav-link:hover { color: #777 }
 
 #bio {
 	font-family: "Courier New", Courier, monospace;
-	font-size: 11px;
-	margin: 0 auto;
+	font-size: 14px;
+	margin: 0 auto 0;
 	margin-bottom: 10px;
+}
+
+#bio ul {
+  padding: 0;
+  list-style: none;
+}
+
+#bio a {
+  font-size: 18px;
 }
 
 #contact-list-secondary {
