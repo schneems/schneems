@@ -1,0 +1,47 @@
+# visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
+markdown: redcarpet
+
+paginate: 19 # pagination based on number of posts
+paginate_path: "page:num"
+exclude: ["README.md", "vendor"] # files to exclude
+pygments: true
+
+title: schneems
+description: Ruby and Stuff
+author:
+  name: schneems
+  email: richard.schneeman+blog@gmail.com
+  github: schneems
+  twitter: schneems
+  bio: |
+       Rubyist at Heroku <br />
+       Teaches at University of Texas<br />
+       Taco connoisseur in Austin, Tx<br />
+       <ul>
+         <li><a href="/ut-rails">Free University Rails Course</a></li>
+         <li><a href="https://www.youtube.com/user/schneems/videos">Screencasts</a></li>
+         <li><a href="http://shop.oreilly.com/product/0636920027409.do"></a>New book! Heroku: Up and Running</li>
+       </ul>
+  email_md5: db953d125f5cc49756edb6149f1b813e
+
+rss_path: feed.xml
+categories_path: categories.html
+tags_path: tags.html
+
+#BASE_PATH: http://schneems.com
+
+# All links will be namespaced by BASE_PATH if defined.
+# Links in your website should always be prefixed with {{ site.BASE_PATH }}
+# Do not put a "/" at the end of the url.
+#
+# CNAME (http://yourcustomdomain.com)
+#   DO NOT SET BASE_PATH JUST LEAVE IT BLANK
+#   (urls will be prefixed with "/" and work relatively)
+#
+# GitHub Pages (http://username.github.io)
+#   DO NOT SET BASE_PATH JUST LEAVE IT BLANK
+#   (urls will be prefixed with "/" and work relatively)
+#
+# GitHub Project Pages (http://username.github.io/project-name)
+#  A GitHub Project site exists in the `gh-pages` branch of one of your repositories.
+#  REQUIRED! Set BASE_PATH to "http://username.github.io/project-name"
