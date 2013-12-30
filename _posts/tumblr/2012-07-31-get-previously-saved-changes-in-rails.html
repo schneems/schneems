@@ -5,7 +5,7 @@ date: '2012-07-31T15:05:45-05:00'
 tags:
 - rails
 - tips
-tumblr_url: http://schneems.com/post/28425724540/get-previously-saved-changes-in-rails
+permalink: /post/28425724540/get-previously-saved-changes-in-rails
 ---
 <p>Some times you need to see what fields changed in an object in Rails. I&#8217;ve known for awhile that you could do this before an object saved:</p>
 
@@ -15,14 +15,14 @@ puts user.name_changed?
 # =&gt; true
 
 puts user.changes
-# =&gt; {"name"=&gt;["richard", "schneems"]} 
+# =&gt; {"name"=&gt;["richard", "schneems"]}
 </code></pre>
 
 <p>but as soon as you save the object to the database you lose all that goodness.</p>
 
 <pre><code>user.save
 puts user.name_changed?
-# =&gt; false 
+# =&gt; false
 
 puts user.changes
 # =&gt; {}
@@ -32,10 +32,10 @@ puts user.changes
 
 <pre><code>user.save
 puts user.name_changed?
-# =&gt; false 
+# =&gt; false
 
 puts user.previous_changes
-# =&gt; {"name"=&gt;["richard", "schneems"], "updated_at"=&gt;[Tue, 31 Jul 2012 18:53:12 UTC +00:00, Tue, 31 Jul 2012 18:56:49 UTC +00:00]} 
+# =&gt; {"name"=&gt;["richard", "schneems"], "updated_at"=&gt;[Tue, 31 Jul 2012 18:53:12 UTC +00:00, Tue, 31 Jul 2012 18:56:49 UTC +00:00]}
 </code></pre>
 
 <p>It&#8217;s that simple. Go forth and make changes with impunity! Your previous results will be available when you need them.</p>

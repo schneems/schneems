@@ -2,8 +2,8 @@
 layout: post
 title: Wizard-ify Your Rails Controllers with Wicked
 date: '2012-02-28T10:00:00-06:00'
-tags: 
-tumblr_url: http://schneems.com/post/18437886598/wizard-ify-your-rails-controllers-with-wicked
+tags:
+permalink: /post/18437886598/wizard-ify-your-rails-controllers-with-wicked
 ---
 <p>If insanity is doing the same thing and expecting different results, I was going crazy writing step-by-step wizards.
 I was never happy with the end result, they did what I wanted, but were messy and had too many moving parts. I wanted a simple &amp; re-usable way to create restful-ish controllers. Thats when I decided to rip out all that scary controller logic and bake it into in a Gem I call <a href="http://github.com/schneems/wicked">Wicked</a>.</p>
@@ -75,7 +75,7 @@ end
 <pre><code>def show
   @user = current_user
   case step
-  when :add_twitter    
+  when :add_twitter
     skip_step if @user.zip.blank?
   end
   render_wizard

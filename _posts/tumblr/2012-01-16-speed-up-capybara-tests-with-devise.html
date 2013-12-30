@@ -8,7 +8,7 @@ tags:
 - capybara
 - devise
 - acceptance testing
-tumblr_url: http://schneems.com/post/15948562424/speed-up-capybara-tests-with-devise
+permalink: /post/15948562424/speed-up-capybara-tests-with-devise
 ---
 <p>All good developers should write tests, and anyone with a high stake in a web app should write acceptance tests. Acceptance tests use a web driver like <a href="https://github.com/jnicklas/capybara">Capybara</a> to test the full functionality of your web app by interacting directly with view elements the same way a user would (clicking links, filling out forms, etc.)</p>
 
@@ -62,7 +62,7 @@ end
 
 <pre><code>let(:user) { Factory.create(:user) }
 
-# To use the methods you can call 
+# To use the methods you can call
 # methods directly on them like this:
 
 scenario 'works while logged in' do
