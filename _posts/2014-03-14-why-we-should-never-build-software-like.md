@@ -6,7 +6,7 @@ published: true
 tags: design, architecture, software, home building
 ---
 
-I'm [building a house](http://helloschneeman.tumblr.com/) and I [write software](github.com/schneems) for a living. So when someone showed me the article [Why We Should Build Software Like We Build Houses](http://www.wired.com/opinion/2013/01/code-bugs-programming-why-we-need-specs/) I had to disagree.
+I'm [building a house](http://helloschneeman.tumblr.com/) and I [write software](http://github.com/schneems) for a living. So when someone showed me the article [Why We Should Build Software Like We Build Houses](http://www.wired.com/opinion/2013/01/code-bugs-programming-why-we-need-specs/) I had to disagree.
 
 ## Building a House
 
