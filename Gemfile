@@ -5,5 +5,5 @@ gem "jekyll"
 gem "redcarpet"
 
 
-ruby '2.1.0'
+ruby '2.1.1'
 
