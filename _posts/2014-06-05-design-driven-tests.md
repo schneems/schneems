@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Design Driven Tests: This is how I roll"
-date: '2014-06-05 08:00:00'
+date: '2014-05-08 08:00:00'
 published: true
 tags: tdd, testing, ruby
 ---
