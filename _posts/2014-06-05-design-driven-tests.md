@@ -27,7 +27,7 @@ I test two things: experiences and interfaces.
 
 Call it what you will, Test the things that hurt when they break. Find out how your user's utilize your code and make sure your tests cover that.
 
-For my, somewhat popular, [Wicked gem](rubygems.org/gems/wicked) that implements step-by-step wizards in your controllers, this meant I made a bunch of step-by-step wizard controllers and drove them with Capybara. I wrote a library that uses Puma, so, to test it: [I ran Puma](https://github.com/schneems/puma_auto_tune/blob/master/test/test_helper.rb#L55). If I can test the [Heroku Ruby Buildpack](https://github.com/heroku/heroku-buildpack-ruby/tree/master/spec), then, surely, you can find a way to [Test the Untestable](https://www.youtube.com/watch?v=QHMKIHkY1nM).
+For my, somewhat popular, [Wicked gem](http://rubygems.org/gems/wicked) that implements step-by-step wizards in your controllers, this meant I made a bunch of step-by-step wizard controllers and drove them with Capybara. I wrote a library that uses Puma, so, to test it: [I ran Puma](https://github.com/schneems/puma_auto_tune/blob/master/test/test_helper.rb#L55). If I can test the [Heroku Ruby Buildpack](https://github.com/heroku/heroku-buildpack-ruby/tree/master/spec), then, surely, you can find a way to [Test the Untestable](https://www.youtube.com/watch?v=QHMKIHkY1nM).
 
 To me this just makes sense. When I worked for [Gowalla](http://en.wikipedia.org/wiki/Gowalla), we once had signups broken for 3 days. For a social network: This. Hurt. Afterwards, we added tests around the failure, I made sure to manually test signups and watch metrics after all my major deploys. We never felt that pain again.
 
