@@ -55,7 +55,7 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     redcarpet (3.2.0)
-    rouge (1.7.2)
+    rouge (1.6.2)
     safe_yaml (1.0.4)
     sass (3.4.7)
     timers (4.0.1)
@@ -71,4 +71,4 @@ DEPENDENCIES
   jekyll
   kramdown
   redcarpet
-  rouge
+  rouge (= 1.6.2)

@@ -4,7 +4,7 @@ markdown: redcarpet
 paginate: 19 # pagination based on number of posts
 paginate_path: "page:num"
 exclude: ["README.md", "vendor"] # files to exclude
-# highlighter: rouge
+highlighter: rouge
 markdown: redcarpet
 future: false
 encoding: "utf-8"
