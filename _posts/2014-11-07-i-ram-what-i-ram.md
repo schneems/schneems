@@ -8,7 +8,7 @@ tags: performance, benchmarking, ruby
 
 America is in the middle of an obesity epidemic, and your Ruby app might be suffering from bloat. While people suffer from overeating, and lack of exercise apps get bigger for other reasons. One of the largest memory sinks in a Ruby app can come not from your code, but from libraries you require. Most developers have no idea what kind of a penalty they incur by adding in a library, and for good reason. Until now, it's been hard to measure.
 
-Recently I introduced [Derailed Benchmarks to performance test your Rails apps](https://github.com/schneems/derailed_benchmarks) and was able to find that default Rails apps were using 36 percent  more RAM than they needed to be. How? I patched [Kernel's require method](https://github.com/schneems/derailed_benchmarks/blob/master/lib/derailed_benchmarks/tasks.rb#L134-L165) so that we take a memory measurement of the current Ruby process before and after we require a file. Next, I sort those nested requires and output the data. After setting up the benchmarks on a brand-new Rails app I was able to run:
+Recently I introduced [Derailed Benchmarks to performance test your Rails apps](https://github.com/schneems/derailed_benchmarks) and was able to find that default Rails apps were using 36 percent more RAM than it needed. I patched [Kernel's require method](https://github.com/schneems/derailed_benchmarks/blob/master/lib/derailed_benchmarks/tasks.rb#L134-L165) so that we take a memory measurement of the current Ruby process before and after we require a file. Next, I sort those nested requires and output the data. After setting up the benchmarks on a brand-new Rails app I was able to run:
 
 ```
 $ bundle exec rake -f perf.rake perf:require_bench
@@ -36,7 +36,7 @@ application: 60.8242 mb
     mail/field: 0.3125 mb
 ```
 
-In this example, our app is using 60 mb of RSS memory and a whopping 39 mb of that is due to requiring the mail (2.6.1) gem. You can see most of the memory use comes from `mail/parsers`. With this info I [opened an issue on the Mail gem](https://github.com/mikel/mail/issues/812) where we figured out the extra memory came from switching the parser (used when your app receives and needs to parse email). The switch increased the speed dramatically but also made the gem's footprint larger. After talking about options, we decided that it didn't make sense to load this code by default. Most applications don't need to parse incoming emails.
+In this example, our app is using 60 mb of RSS memory and a whopping 39 mb of that is due to requiring the mail (2.6.1) gem. You can see most of the memory use comes from `mail/parsers`. With this info I [opened an issue on the Mail gem](https://github.com/mikel/mail/issues/812) where we figured out the extra memory came from switching the parser (used if your app receives and needs to parse email). The switch increased the speed dramatically but also made the gem's footprint larger. After talking about options, we decided that it didn't make sense to load this code by default. Most applications don't need to parse incoming emails.
 
 Moving this code to be lazily loaded in [mikel/mail#817](https://github.com/mikel/mail/pull/817) (thanks, Benjamin Fleischer and Michael Grosser) we see an enormous savings:
 
@@ -49,7 +49,7 @@ application: 38.3477 mb
     mail/message: 0.3398 mb
 ```
 
-The parsers aren't loaded and memory use is down in the total app by 36 percent with the patch [Mikel pushed mail version 2.6.3](https://github.com/mikel/mail/pull/817#issuecomment-61474145) and now you can enjoy these memory savings right from the comfort of your own Rails app.
+The parsers aren't loaded and memory use is down in the total app by 36 percent with the patch. [Mikel pushed mail version 2.6.3](https://github.com/mikel/mail/pull/817#issuecomment-61474145) and now you can enjoy these memory savings right from the comfort of your own Rails app.
 
 ## Update Mail to 2.6.3 or Higher
 
@@ -67,11 +67,9 @@ Boom, now your app is 36 percent lighter on boot up. You may be wondering about 
 mime/types: 17.6016 mb
 ```
 
-The mail gem depends on the [mime-types gem](https://github.com/halostatue/mime-types/). When loaded, this gem accounts for `17.6/60 # => 29%` of overall application size. Without it, the mail gem would be sitting pretty at only around 2mb of require memory instead of 19mb. Can we get rid of this mime/types gem? Maybe defer loading such large files or somehow decrease the require cost?
+The mail gem depends on the [mime-types gem](https://github.com/halostatue/mime-types/). When loaded, this gem accounts for `17.6/60 # => 29%` of overall application size. Without it, the mail gem would be sitting pretty at only around 2 mb of require memory instead of 19mb. Can we get rid of this mime/types gem? Maybe defer loading such large files or somehow decrease the require cost?
 
 Unfortunately, we cannot. The mime/types gem loads a ton of constants into memory that are never garbage collected. This is on purpose as the gem is designed to be fast. When you need to look up a mime-type, you expect it to be already defined. However, this isn't exactly all bad though.
-
-
 
 ## Speed versus RAM
 
@@ -88,5 +86,5 @@ Many Ruby programmers follow the Red/Green/Refactor methodology. They write a fa
 Now here's your homework: upgrade to Mail 2.6.3 or above and start benchmarking your application. For extra credit, you can work with the libraries you use every day to make them faster for everyone! Don't forget to include your benchmark methodology and results.
 
 ---
-If you like high-speed applications, benchmarking Rails or photos of dachshunds follow [@schneems](https://twitter.com/schneems)
+If you like high-speed applications, benchmarking Rails or photos of dachshunds follow [@schneems](https://twitter.com/schneems).
 
