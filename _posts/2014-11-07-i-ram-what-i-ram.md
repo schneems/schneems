@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "I RAM what I RAM: Smaller App Footprints through Benchmarking"
+title: "36% smaller Rails memory footprint through Benchmarking"
 date: '2014-11-07 08:00:00'
 published: true
 tags: performance, benchmarking, ruby
