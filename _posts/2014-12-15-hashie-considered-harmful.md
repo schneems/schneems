@@ -268,15 +268,15 @@ codetriage-ko1-test-app/app x 40
 other x 40
 ```
 
-My replacement uses a custom object that inherits from `OpenStruct` from the standard lib and we can see it creates much less objects `1337` (super l33t) versus `4615`. The change also had a measurable impact on speed. I'm still tweaking, but initial benchmarks indicate a 5% increase in speed in the total request. This is a 5% increase on __TOTAL__ request time, i.e. the app got 5% faster...not just omniauth.
+My replacement uses a custom object that inherits from `OpenStruct` from the standard lib and we can see it creates fewer objects `1337` (super l33t) versus `4615`. The change also had a measurable impact on speed. I'm still tweaking, but initial benchmarks indicate a 5% increase in speed in the total request. This is a 5% increase on __TOTAL__ request time, i.e. the app got 5% faster...not just omniauth.
 
-Unfortunately, this was a proof of concept as this would be a breaking change (the API wasn't 100% compatible). Here's the [PR for removing hashie from omniauth](https://github.com/intridea/omniauth/pull/773) and discussion.
+Unfortunately, this was a proof of concept as this would be a breaking change (the API wasn't 100% compatible). Here's the [PR for removing hashie from omniauth](https://github.com/intridea/omniauth/pull/774) and discussion.
 
 ## Alternatives
 
 The easiest way to quit smoking is to never start. If you've inherited a hashie addicted project, what can you do? In Omniauth, I removed hashie, let all the tests fail, then worked on one test at a time till they were all green. In this case, Omniauth is really popular, so we can't just change the interface without proper deprecation warning. Ideally, in the future, we can isolate how the code is used, and replace it with some stricter (and therefore easier reason about) interfaces that are even faster.
 
-If you really __need__ to take arbitrary values, consider a plain ole' Ruby Hash. If you really need the method access using the dot syntax, use an open struct. Better yet write a custom PORO. If you're using hashie in an object that also wraps up logic, get rid of hashie, and keep the logic. Subclassing Hash is pretty much evil. It's a proven fact(TM) that [subclassing hashes causes pain and performance problems](http://tenderlovemaking.com/2014/06/02/yagni-methods-are-killing-me.html) so don't do it.
+If you really __need__ to take arbitrary values, consider a plain ole' Ruby Hash. If you really need the method access using the dot syntax, use a `Struct`, an `OpenStruct`, or even write a custom PORO. If you're using hashie in an object that also wraps up logic, get rid of hashie, and keep the logic. Subclassing `Hash` is pretty much evil. It's a proven fact(TM) that [subclassing hashes causes pain and performance problems](http://tenderlovemaking.com/2014/06/02/yagni-methods-are-killing-me.html) so don't do it.
 
 While I've ripped on Hashie a good amount: it's a good, fun library to play with, and you can learn quite a bit about metaprogramming through the code. I recommend you check it out, but whatever you do...don't ever put it in production.
 
