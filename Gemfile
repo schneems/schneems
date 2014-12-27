@@ -6,5 +6,4 @@ gem "kramdown"
 
 gem "redcarpet"
 
-ruby '2.1.4'
-
+ruby '2.2.0'
