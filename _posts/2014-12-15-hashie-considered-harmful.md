@@ -146,7 +146,7 @@ It seems that, at this point, it would make sense to create an OpenStructHash ob
 
 Hashie tries to be two things at the same time. It has all the manipulation methods of a `Hash` and all accessor methods of a `OpenStruct`. This means your object now has a massive method surface area and an identity crisis.
 
-```
+```ruby
 hashie = Hashie::Mash.new(name: "schneems")
 hashie[:name]   # => "schneems"
 hashie["name"]  # => "schneems"
@@ -171,7 +171,7 @@ puts result.inspect # => {:job=>"programmer", "name"=>"schneems"}
 
 This is really weird, if we `merge!` a hash twice, we expect to get the same result:
 
-```
+```ruby
 hash1  = {name: "schneems"}
 hash2  = {job: "programmer"}
 result = hash1.merge!(hash2)
@@ -181,7 +181,7 @@ puts result.inspect # => {:job=>"programmer", :name=>"schneems"}
 ```
 However, with hashie:
 
-```
+```ruby
 hashie = Hashie::Mash.new(name: "schneems")
 hash   = {job: "programmer"}
 result = hashie.merge!(hash)
@@ -282,7 +282,6 @@ The easiest way to quit smoking is to never start. If you've inherited a hashie 
 If you really __need__ to take arbitrary values, consider a plain ole' Ruby Hash. If you really need the method access using the dot syntax, use a `Struct`, an `OpenStruct`, or even write a custom PORO. If you're using hashie in an object that also wraps up logic, get rid of hashie, and keep the logic. Subclassing `Hash` is pretty much evil. It's a proven fact(TM) that [subclassing hashes causes pain and performance problems](http://tenderlovemaking.com/2014/06/02/yagni-methods-are-killing-me.html) so don't do it.
 
 While I've ripped on Hashie a good amount: it's a good, fun library to play with, and you can learn quite a bit about metaprogramming through the code. I recommend you check it out, but whatever you do...don't ever put it in production.
-
 
 --
 If you like performance, or not using Hashie follow [@schneems on twitter](https://www.twitter.com/schneems)
