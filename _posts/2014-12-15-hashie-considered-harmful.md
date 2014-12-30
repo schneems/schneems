@@ -6,6 +6,9 @@ published: true
 tags: performance, benchmarking, ruby, hash, memory
 ---
 
+**Update:** I made a [PR to mitigate most of the performance penalty in Omniauth](https://github.com/intridea/omniauth/pull/774). Deprecating and removing Hashie has resisted several attempts at refactoring. There's also a really good set of discussions [in the Reddit comments](http://www.reddit.com/r/ruby/comments/2pkzec/hashie_considered_harmful_an_ode_to_hash_and/).
+
+-----------
 
 New Ruby programmers mistakenly believe that hashes should be used everywhere for everything. They grow attached to hashes and use them in many places they shouldn't; creating and passing hashes when a proper [Plain Old Ruby Object](http://blog.steveklabnik.com/posts/2011-09-06-the-secret-to-rails-oo-design) would be much better. Eventually, they begin to wish hashes behaved more like objects and this is a horrible idea, as we will see in a short while.
 
