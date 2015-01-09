@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to Troll GitHub Comments"
+title: "How to (Not) Troll GitHub Comments"
 date: '2015-01-09 08:00:00'
 published: true
 tags: github, comments, community, open source, oss, discussion, troll
