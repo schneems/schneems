@@ -12,7 +12,7 @@ Trolling is horrible and counter-productive; however, we can learn what NOT to d
 
 > Why bother stating easy to understand facts? You can save a ton of time by not providing any numbers, references, or other factual information when writing a troll comment. Instead, use phrases like "I think", "I believe" and "I bet". This way you never have to actually back up your statements. Use vague terms like "lots" and "huge" without specific comparisons. ![:trollface:](https://www.dropbox.com/s/kx9d3in03mfux74/Screenshot%202014-12-31%2010.49.16.png?dl=1)
 
-**Instead:** give numbers and references when all possible 5 lines of code might not be a "huge" PR to Rails, but if your library is only 10 lines, it would be adding 50% more code. Quantify your feelings.
+**Instead:** Give numbers and references when all possible 5 lines of code might not be a "huge" PR to Rails, but if your library is only 10 lines, it would be adding 50% more code. Quantify your feelings.
 
 "You said that this is adding technical debt. I disagree, you can see that the number of methods is being cut in half (71.0 / 176 #=> 0.40 ), and we're removing a dependency."
 
