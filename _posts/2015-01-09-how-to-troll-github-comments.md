@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to (Not) Troll GitHub Comments"
+title: "How (Not) to Troll GitHub Comments"
 date: '2015-01-09 08:00:00'
 published: true
 tags: github, comments, community, open source, oss, discussion, troll
@@ -10,7 +10,7 @@ Trolling is horrible and counter-productive; however, we can learn what NOT to d
 
 ## Feelings, not Facts
 
-> Why bother stating easy to understand facts? You can save a ton of time by not providing any numbers, references, or other factual information when writing a troll comment. Instead, use phrases like "I think", "I believe" and "I bet". This way you never have to actually back up your statements. Use vague terms like "lots" and "huge" without specific comparisons. ![:trollface:](https://www.dropbox.com/s/kx9d3in03mfux74/Screenshot%202014-12-31%2010.49.16.png?dl=1)
+> **Troll:** Why bother stating easy to understand facts? You can save a ton of time by not providing any numbers, references, or other factual information when writing a troll comment. Instead, use phrases like "I think", "I believe" and "I bet". This way you never have to actually back up your statements. Use vague terms like "lots" and "huge" without specific comparisons. ![:trollface:](https://www.dropbox.com/s/kx9d3in03mfux74/Screenshot%202014-12-31%2010.49.16.png?dl=1)
 
 **Instead:** Give numbers and references when all possible 5 lines of code might not be a "huge" PR to Rails, but if your library is only 10 lines, it would be adding 50% more code. Quantify your feelings.
 
@@ -20,7 +20,7 @@ It's important to explain how you got the numbers. List out bench-marking method
 
 ## Assume everyone already knows everything.
 
-> If you see "bad" code, the only way you can make sure you'll rid the world of the vermin who wrote it is to make fun of them as brutally as possible. Your comments better be snarky and sarcastic. Explain nothing, just tell everyone that what they're doing is wrong. Bonus points if you can make your opponent softly cry into their crappy non-mechanical keyboard ![:trollface:](https://www.dropbox.com/s/kx9d3in03mfux74/Screenshot%202014-12-31%2010.49.16.png?dl=1)
+> **Troll:** If you see "bad" code, the only way you can make sure you'll rid the world of the vermin who wrote it is to make fun of them as brutally as possible. Your comments better be snarky and sarcastic. Explain nothing, just tell everyone that what they're doing is wrong. Bonus points if you can make your opponent softly cry into their crappy non-mechanical keyboard ![:trollface:](https://www.dropbox.com/s/kx9d3in03mfux74/Screenshot%202014-12-31%2010.49.16.png?dl=1)
 
 **Instead:** Treat everyone as though they're new, or at least new to the info you're bringing to the table. Not everyone knows how the law of demeter applies to a doubly-linked-red-black-big-O-notation-dynamically-interpreted-state-machines like you do. Use logic and information to show someone why something may be a bad idea, instead of simply stating so-called "facts".  Try to direct people to resources whenever possible.
 
@@ -28,7 +28,7 @@ The first time I ever got on IRC, I asked a question about <Software A> in a roo
 
 ## Make it an argument, not a conversation
 
-> Comments aren't meant to be productive, they're all about proving you're right and everyone else is wrong. The internet will laugh at everyone else and throw you up on their shoulders after you humiliate and demean your opponents...erm, I mean 'collaborators'. Everyone knows not to read the comments on blogs, so why read the prior comments on an issue? You'll just waste time. No one will mind re-arguing a dead point. Promise. ![:trollface:](https://www.dropbox.com/s/kx9d3in03mfux74/Screenshot%202014-12-31%2010.49.16.png?dl=1)
+> **Troll:** Comments aren't meant to be productive, they're all about proving you're right and everyone else is wrong. The internet will laugh at everyone else and throw you up on their shoulders after you humiliate and demean your opponents...erm, I mean 'collaborators'. Everyone knows not to read the comments on blogs, so why read the prior comments on an issue? You'll just waste time. No one will mind re-arguing a dead point. Promise. ![:trollface:](https://www.dropbox.com/s/kx9d3in03mfux74/Screenshot%202014-12-31%2010.49.16.png?dl=1)
 
 **Instead:** Make it a conversation. It's not about being right, but rather moving the community and code forwards. If someone points out why your statement was invalid, thank them. You just learned something, and the world got collectively smarter. If you didn't understand their critique of your statement(s), ask for more information. Not listening, or repeating the same argument over and over, or throwing a 'hissy fit' isn't going to solve anything. If you believe they misunderstood you or your point, tell them what you agree with and what you need to clarify. Again, stay away from emotional arguments or attacks. Use facts and supporting evidence when possible.
 
@@ -36,7 +36,7 @@ Did I mention that not all commenters are native English speakers? If the statem
 
 ## Attack the people, ignore the code
 
-> Can't think of a good reason why your code example is better, but you're TOTALLY sure. Attack the person writing that code, "What kind of idiotic numbskull writes code like that?" or "I see the person making the changes focused on one [trade off]". People may agree with the other person's code, however once you annihilate their personal character, everyone will have to agree with you. ![:trollface:](https://www.dropbox.com/s/kx9d3in03mfux74/Screenshot%202014-12-31%2010.49.16.png?dl=1)
+> **Troll:** Can't think of a good reason why your code example is better, but you're TOTALLY sure. Attack the person writing that code, "What kind of idiotic numbskull writes code like that?" or "I see the person making the changes focused on one [trade off]". People may agree with the other person's code, however once you annihilate their personal character, everyone will have to agree with you. ![:trollface:](https://www.dropbox.com/s/kx9d3in03mfux74/Screenshot%202014-12-31%2010.49.16.png?dl=1)
 
 
 **Instead:** Stick to the facts. Name calling is only appropriate in politics and second grade (both arguably at similar levels of intellect). Adults work on open source and even if the person you're talking to can't legally drink or is 10 years your junior, they deserve respect. I've been beating this drum pretty hard so far, and hopefully you'll hear that rhythm next time you're typing out a comment.
