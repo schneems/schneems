@@ -8,11 +8,51 @@
     </h3>
 </header>
 
-{% if site.author.bio %}
 <div id="bio" class="text-center">
-	{{ site.author.bio }}
+   Rubyist at Heroku <br />
+   Former professor @ University of Texas<br />
+   Taco connoisseur in Austin, Tx<br />
+   <ul>
+     <li>- <a href="https://www.youtube.com/user/schneems/videos">Screencasts</a></li>
+     <li>- <a href="http://shop.oreilly.com/product/0636920027409.do">New book! Heroku: Up and Running</a></li>
+   </ul>
 </div>
-{% endif %}
+
+<div>
+	  <!-- Begin MailChimp Signup Form -->
+  <link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    #mc_embed_signup{ background: #fff;
+                      clear:      left;
+                      font:       12px Helvetica, Arial, sans-serif;
+                      width:      80%;
+                      margin:     0 auto;
+                    }
+    /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+  </style>
+  <div id="mc_embed_signup">
+  <form action="//schneems.us3.list-manage.com/subscribe/post?u=a9095027126a1cf15c5062160&amp;id=17dc267687" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+    <h4>Get fresh articles in your inbox</h4>
+  <div class="mc-field-group">
+    <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+  </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <p>Powered by <a href="http://eepurl.com/bbnCYz" title="MailChimp - email marketing made easy and fun">MailChimp</a></p>
+    <div id="mce-responses" class="clear">
+      <div class="response" id="mce-error-response" style="display:none"></div>
+      <div class="response" id="mce-success-response" style="display:none"></div>
+    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;"><input type="text" name="b_a9095027126a1cf15c5062160_17dc267687" tabindex="-1" value=""></div>
+      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+      </div>
+  </form>
+  </div>
+  <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+  <!--End mc_embed_signup-->
+</div>
 
 <div id="contact-list" class="text-center">
 	<ul class="list-unstyled list-inline">
@@ -39,20 +79,6 @@
 		{% endif %}
 	</ul>
 	<ul id="contact-list-secondary" class="list-unstyled list-inline">
-		{% if site.author.pinterest %}
-		<li>
-			<a class="btn btn-default btn-sm" href="https://pinterest.com/{{ site.author.pinterest }}">
-				<i class="fa fa-pinterest fa-lg"></i>
-			</a>
-		</li>
-		{% endif %}
-		{% if site.author.linkedin %}
-		<li>
-			<a class="btn btn-default btn-sm" href="https://linkedin.com/in/{{ site.author.linkedin }}">
-				<i class="fa fa-linkedin fa-lg"></i>
-			</a>
-		</li>
-		{% endif %}
 		<li>
 			<a class="btn btn-default btn-sm" href="{{ site.BASE_PATH }}/{{ site.rss_path }}">
 				<i class="fa fa-rss fa-lg"></i>
@@ -60,7 +86,5 @@
 		</li>
 	</ul>
 </div>
-
-	
 
 <! -- sidebar.html end -->
