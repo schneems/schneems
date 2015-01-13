@@ -75,8 +75,8 @@ article.home div a, article.home pre a { color: #2c3e50; }
 article.home div a:hover, article.home pre a:hover { color: #2c3e50; text-decoration: none; }
 article img { max-width: 100%; }
 
-h1,h2,h3,h4,h5,h6{ font-family: 'Ubuntu', sans-serif; color: #f2756a; }
-h1 a,h2 a,h3 a,h4 a{ color: #f2756a; }
+h1,h2,h3,h4,h5,h6{ font-family: 'Ubuntu', sans-serif; color: #C52B21; }
+h1 a,h2 a,h3 a,h4 a{ color: #C52B21; }
 h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover{ color: #e74c3c; }
 
 footer {
@@ -107,7 +107,7 @@ footer {
     border-radius: 4px 0 0 4px;
 }
 
-.badge { background: #F2756A; }
+.badge { background: #C52B21; }
 
 #nav-menu{
     position: fixed;
