@@ -5,7 +5,6 @@ date: '2015-01-09 08:00:00'
 published: true
 tags: github, comments, community, open source, oss, discussion, troll
 ---
-
 Trolling is horrible and counter-productive; however, we can learn what NOT to do, by asking what a troll would write. Who am I to talk about trolling github comments? I wrote an app, which helps thousands of people get more visibility into open source discussions, so they can make better comments and help out. The service is called CodeTriage and [it sends community issues right to your inbox.](http://www.codetriage.com/rails/rails). Essentially, I read a lot of Github issues and comments. Time to pay the troll toll.
 
 ## Feelings, not Facts

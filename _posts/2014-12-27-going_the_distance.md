@@ -6,7 +6,6 @@ published: true
 tags: algorithms, levenshtein, spelling, ruby, videos
 ---
 
-
 I'm not what you would cosider an algorithm guy, but after needing to use a bit of spell checking in some code, I became facinated with the [Levenshtein distance](http://en.wikipedia.org/wiki/Levenshtein_distance). I found plenty of resources explaining what it did, I also found plenty of resources with example implementations. What I couldn't find were any really simple explanations for exactly HOW it worked.
 
 I'm a big believer in conference driven development, so I signed up to give some talks on the algorithm and then got to work dissecting it. To help I
