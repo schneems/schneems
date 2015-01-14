@@ -8,7 +8,6 @@ highlighter: rouge
 markdown: redcarpet
 future: false
 encoding: "utf-8"
-excerpt_separator: ""
 
 title: schneems
 description: Schneems on Software
@@ -22,6 +21,7 @@ author:
 rss_path: feed.xml
 categories_path: categories.html
 tags_path: tags.html
+# excerpt_separator: "<!-- more -->"
 
 BASE_PATH_FOR_RSS: http://www.schneems.com
 
