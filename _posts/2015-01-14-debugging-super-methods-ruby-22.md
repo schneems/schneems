@@ -22,10 +22,6 @@ class Dog
   def bark
     puts "woof"
   end
-
-  def derp
-    puts "derp"
-  end
 end
 ```
 
@@ -46,7 +42,7 @@ If you've [seen the "Dissecting Ruby" talk](https://www.youtube.com/watch?v=UYVU
 
 ```ruby
 class SchneemsDog < Dog
-  def derp
+  def bark
     super
   end
 end
@@ -56,42 +52,42 @@ I ended up using some metaprogramming to figure this out:
 
 ```ruby
 cinco = SchneemsDog.new
-cinco.class.superclass.instance_method(:derp)
+cinco.class.superclass.instance_method(:bark)
 # => ["/tmp/dog.rb", 6]
 ```
 
 This works, but it wouldn't if we did certain types of metaprogramming. For example, we would get the wrong answer if we did this:
 
 ```ruby
-module DoubleDerp
-  def derp
+module DoubleBark
+  def bark
     super
     super
   end
 end
 cinco = SchneemsDog.new
-cinco.extend(DoubleDerp)
+cinco.extend(Doublebark)
 ```
 
-In this case, `cinco.derp` will call the method defined in the `DoubleDerp` module:
+In this case, `cinco.bark` will call the method defined in the `Doublebark` module:
 
 ```ruby
-cinco.derp
-# => derp
-# => derp
+cinco.bark
+# => bark
+# => bark
 
-puts cinco.method(:derp)
-#<Method: SchneemsDog(DoubleDerp)#derp>
+puts cinco.method(:bark)
+#<Method: SchneemsDog(DoubleBark)#bark>
 ```
 
 The actual "super" being referred to is defined in the `SchneemsDog` class. However, the code tells us that the method is in the `Dog` class, which is incorrect.
 
 ```ruby
-puts cinco.class.superclass.instance_method(:derp)
-# => #<UnboundMethod: Dog#derp>
+puts cinco.class.superclass.instance_method(:bark)
+# => #<UnboundMethod: Dog#bark>
 ```
 
-This is because our `DoubleDerp` module isn't an ancestor of the `cinco.class`. How can we solve this issue?
+This is because our `Doublebark` module isn't an ancestor of the `cinco.class`. How can we solve this issue?
 
 ## Super solutions
 
@@ -101,26 +97,26 @@ If you are debugging in Ruby 2.2.0 you can now use [Method#super_method](http://
 
 ```ruby
 cinco = SchneemsDog.new
-cinco.method(:derp).super_method
-# => #<Method: Dog#derp>
+cinco.method(:bark).super_method
+# => #<Method: Dog#bark>
 ```
 
 You can see this returns the method on the `Dog` class rather than the `SchneemsDog` class. If we call `source_location` in the output, we will get the correct value:
 
 ```ruby
-module DoubleDerp
-  def derp
+module DoubleBark
+  def bark
     super
     super
   end
 end
 cinco = SchneemsDog.new
-cinco.extend(DoubleDerp)
+cinco.extend(Doublebark)
 
-puts cinco.method(:derp)
-# => #<Method: SchneemsDog(DoubleDerp)#derp>
-puts cinco.method(:derp).super_method
-# => #<Method: SchneemsDog#derp>
+puts cinco.method(:bark)
+# => #<Method: SchneemsDog(DoubleBark)#bark>
+puts cinco.method(:bark).super_method
+# => #<Method: SchneemsDog#bark>
 ```
 
 Not only is this simpler, it's now correct. The return of `super_method` will be the same method that Ruby will call when `super` is invoked, regardless of whatever craziness is done with metaprogramming. Even though this is a simple example, I hope you'll find this useful in the wild.
