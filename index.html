@@ -1,6 +1,6 @@
 ---
 layout: page
-title: They call me Schneems
+title: Schneems on Open Source, Ruby, and Life
 tagline:
 ---
 
@@ -21,7 +21,7 @@ tagline:
             </span>
 
             <h2>
-                <a href="{{ site.BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
+                <a href="{{ post.url }}">{{ post.title }}</a>
             </h2>
 
             <div>
@@ -65,7 +65,7 @@ tagline:
 
   {% if paginator.next_page %}
     <li class="next">
-            <a href="{{ site.BASE_PATH }}/page{{ paginator.next_page }}">Older &rarr;</a>
+      <a href="/page{{ paginator.next_page }}">Older &rarr;</a>
     </li>
   {% else %}
     <li class="next disabled">
