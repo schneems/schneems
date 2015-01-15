@@ -8,6 +8,8 @@ highlighter: rouge
 markdown: redcarpet
 future: false
 encoding: "utf-8"
+readtime: true
+wpm:      200
 
 title: schneems
 description: Schneems on Software
