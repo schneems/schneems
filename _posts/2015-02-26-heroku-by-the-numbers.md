@@ -36,7 +36,7 @@ If someone asked me what life would have looked like when Gowalla got aqui-destr
 
 ## In the Future
 
-I want to make more time for my family by speaking more domestically and taking less international flights (hint: I would love an <a href="mailto:richard.schneeman+speaking@gmail.com">invite me to your domestic conf in 2016</a>). I want to be more involved with technical podcasts and other ways to reach the community that let me spend more time at home (hint: I make a great podcast guest. <a href="mailto:richard.schneeman+podcasts@gmail.com">Message me to talk topic ideas</a>.
+I want to make more time for my family by speaking more domestically and taking less international flights (hint: I would love an <a href="mailto:richard.schneeman+speaking@gmail.com">invite me to your domestic conf in 2016</a>). I want to be more involved with technical podcasts and other ways to reach the community that let me spend more time at home (hint: I make a great podcast guest. <a href="mailto:richard.schneeman+podcasts@gmail.com">Message me to talk topic ideas</a>).
 
 I want to keep investing in code and the open source community.  Even after 7 years of writing Ruby, I still love it and find wonderful little nooks to explore. I want to make the open source software I touch more [usable](http://www.schneems.com/post/31460949407/raise-hell-better-programming-through-error-messages/) and [performant](http://www.schneems.com/2014/11/07/i-ram-what-i-ram.html). I want to keep engaging and communicating. I want to build tools that empower and let others contribute. I want to keep pushing code to production that impacts millions of companies' apps.
 
