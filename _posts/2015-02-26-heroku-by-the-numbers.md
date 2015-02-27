@@ -18,9 +18,10 @@ I'm extremely proud of what my company, and my open source communities, have bee
 - **5,000** [Twitter followers](https://twitter.com/schneems) (Started at 500).
 - **4,307** More developers making open source a better place with the help of [codetriage](http://www.codetriage.com). (p.s. also try [docsdoctor.org](http://docsdoctor.org)).
 - **1,024** Heroku support [ticket responses](https://help.heroku.com/).
-- **235** Edits to [Heroku Devcenter articles](https://devcenter.heroku.com/).
+- **235** Edits to [Heroku Dev Center articles](https://devcenter.heroku.com/).
 - **165** Commits to [Rails](http://contributors.rubyonrails.org/contributors/richard-schneeman/commits).
 - **150** Commits to the [Ruby buildpack](https://github.com/heroku/heroku-buildpack-ruby/graphs/contributors).
+- **100** Pages Co-written for O'Reilly's [Heroku Up and Running](http://shop.oreilly.com/product/0636920027409.do)
 - **94** Blog posts on [schneems.com](http://www.schneems.com).
 - **65** Total Heroku Ruby buildpack tests added to the project.
 - **23** Countries I've visited while speaking at conferences
