@@ -43,5 +43,8 @@ No one even tried to talk me down on salary or ask "what is 100% open source tim
 
 An unexpected benefit of responding to recruiters, is they quit bugging you. Once they know how much it would cost to make you want their job offering, they leave you alone. Sure you could spend less effort ignoring emails or responding with "no thanks", but if you never ask for what you want, how do you know what you could get?
 
+
+> Update: [Conversations on Reddit](http://www.reddit.com/r/programming/comments/31vsf4/recruiter_sniping/). If you're hung up on the salary portion of this post, then you missed the main point and it wasn't written for you...sorry #notallrecruiters.
+
 ---
 Follow [@schneems](https://twitter.com/schneems) for more on open source, remote life, and messing with recruiters' heads.
