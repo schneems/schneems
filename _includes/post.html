@@ -3,7 +3,7 @@
 	  <h1>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
 	  {% if site.readtime %}
 	    {% assign readtime = page.content | strip_html | number_of_words | divided_by:site.wpm | ceil %}
-	    <p>Read Time: {{ readtime }} min</p>
+	    <!-- <p>Read Time: {{ readtime }} min</p> -->
 	  {% endif %}
 	</div>
 
