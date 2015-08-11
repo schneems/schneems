@@ -1,44 +1,33 @@
-# visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
-markdown: redcarpet
+# Dependencies
+markdown:         redcarpet
+highlighter:      rouge
 
-paginate: 19 # pagination based on number of posts
-paginate_path: "page:num"
-exclude: ["README.md", "vendor"] # files to exclude
-highlighter: rouge
-markdown: redcarpet
-future: false
-encoding: "utf-8"
-readtime: true
-wpm:      200
+# Permalinks
+permalink:        pretty
+relative_permalinks: true
 
-title: schneems
-description: Schneems on Software
+# Setup
+title:            Schneems
+tagline:          'Schneems on Software'
+description:      "Pronounced like 'schnapps': Helps run <a href='http://keeprubyweird.com'>@keeprubyweird</a>. Works for Heroku. Contributes to Rails. Calls Austin, Tx home."
+url:              http://hyde.getpoole.com
+baseurl:          /
+
 author:
-  name: schneems
-  email: richard.schneeman+blog@gmail.com
-  github: schneems
-  twitter: schneems
-  email_md5: db953d125f5cc49756edb6149f1b813e
+  name:           'Richard Schneeman'
+  url:            https://twitter.com/schneems
 
-rss_path: feed.xml
-categories_path: categories.html
-tags_path: tags.html
-# excerpt_separator: "<!-- more -->"
+paginate:         5
+
+# Custom vars
+version:          2.1.0
+
+github:
+  repo:           https://github.com/poole/hyde
 
 BASE_PATH_FOR_RSS: http://www.schneems.com
 
-# All links will be namespaced by BASE_PATH if defined.
-# Links in your website should always be prefixed with {{ site.BASE_PATH }}
-# Do not put a "/" at the end of the url.
-#
-# CNAME (http://yourcustomdomain.com)
-#   DO NOT SET BASE_PATH JUST LEAVE IT BLANK
-#   (urls will be prefixed with "/" and work relatively)
-#
-# GitHub Pages (http://username.github.io)
-#   DO NOT SET BASE_PATH JUST LEAVE IT BLANK
-#   (urls will be prefixed with "/" and work relatively)
-#
-# GitHub Project Pages (http://username.github.io/project-name)
-#  A GitHub Project site exists in the `gh-pages` branch of one of your repositories.
-#  REQUIRED! Set BASE_PATH to "http://username.github.io/project-name"
+
+
+# Random shit from the internet
+exclude: [vendor]

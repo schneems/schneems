@@ -1,5 +1,5 @@
 ---
-layout: page
+<!-- layout: page -->
 title: Tags
 header: Posts By Tag
 group: navigation
@@ -18,9 +18,9 @@ group: navigation
         {% endfor %}
       {% else %}
         {% for tag in tags_list %}
-            <li>
+            <li> {{ tag[1].size }}
                 <a href="#{{ tag[0] }}-ref" data-toggle="tab">
-                    {{ tag[0] | capitalize }} <span class="badge pull-right">{{ tag[1].size }}</span>
+                    {{ tag[0] | capitalize }} <span class="badge pull-right"></span>
                 </a>
             </li>
         {% endfor %}

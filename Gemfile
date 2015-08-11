@@ -1,9 +1,7 @@
 source "https://rubygems.org"
 
-gem "jekyll"
-gem "rouge", '1.6.2'
-gem "kramdown"
+ruby "2.2.2"
 
+gem "jekyll", "~>2.4.0"
 gem "redcarpet"
-
-ruby '2.2.2'
+gem "rouge", "~> 1.6.2"

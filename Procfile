@@ -1,1 +1,1 @@
-web: jekyll server -P $PORT
+web: jekyll server -P $PORT --no-watch
