@@ -44,7 +44,7 @@ Why would you want to see what gems depend on a specific gem? I used this techni
 
 You could use this to proactively reach out to other libraries to test out a pre-release of a gem. You could ask other library authors for feedback on an issue or a PR. Having a context around the ways that people use a library can help library maintainers to make better decisions and cause less headaches.
 
-In the sprockets case, I was curious in how the major gems consume sprockets. I have some ideas on ways I can refactor sprockets internals to make it easier to work with, but I want to verify no one is using an edge case of one of the existing APIs. If you were wondering here's the list:
+In the sprockets case, I was curious in how the major gems consume sprockets. I have some ideas on ways I can refactor sprockets internals to make it easier to work with, but I want to verify no one is using an edge case of one of the existing APIs. If you were wondering here's the list of all the gems that have ever dependend on sprockets:
 
 ```
 0) actionpack: 50617186
