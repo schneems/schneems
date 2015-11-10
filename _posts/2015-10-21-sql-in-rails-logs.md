@@ -37,7 +37,7 @@ Now you'll get all your SQL statements in the output:
 [729e4a51-f83c-4862-bc68-a1842e806696] Completed 200 OK in 375ms (Views: 121.2ms | ActiveRecord: 178.6ms)
 ```
 
-So, what can you do with that? You get the timing information with each SQL call and each partial render, isolate one that is slow and dig in. You can use `EXPLAIN ANALYZE` on sql queries to see if you're missing indexes (though, note that the syntax at the end isn't valid SQL, you'll need to manually substitute values). You can use noisey SQL calls to find N+1 queries. There's a wealth of speed info right there in your logs. A
+So, what can you do with that? You get the timing information with each SQL call and each partial render, isolate one that is slow and dig in. You can use `EXPLAIN ANALYZE` on sql queries to see if you're missing indexes (though, note that the syntax at the end isn't valid SQL, you'll need to manually substitute values). You can use noisey SQL calls to find N+1 queries. There's a wealth of speed info right there in your logs.
 
 You'll even get cache hit information:
 
