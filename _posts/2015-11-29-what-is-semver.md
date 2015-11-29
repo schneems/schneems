@@ -99,7 +99,7 @@ State what versions are affected and what versions are safe. This way you won't 
 
 If the security vulnerability is bad, you should [look into issuing a CVE](http://seclists.org/oss-sec/2013/q4/43), and notify users if you can.
 
-## Maintaing Multiple Releases
+## Maintaining Multiple Releases
 
 If your library is popular enough for you to need to actively maintain multiple releases, then you can't really use SemVer due to the backwards incompatible security release problem. That being said, if your two maintained releases are under Major versions (i.e. 4 and 5) instead of minor versions (i.e. 4.1 and 4.2) you can use the minor version for backwards incompatible security updates, and deprecate in the teeny versions. While it's not technically SemVer, it's pretty close and it prevents you from releasing backwards incompatible changes into the teeny version number.
 
