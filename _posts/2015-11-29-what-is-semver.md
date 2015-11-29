@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Semver for Library Maintainers"
+title: "SemVer for Library Maintainers"
 date: 2015-11-29
 published: true
 author_name: Richard Schneeman
 author_url: https://twitter.com/schneems
 ---
 
-SemVer is simple. Well...until you start publishing libraries, and accidentally break a metric ton of apps on accident. While I've never caused any mass scale melt downs, I've made my fair share of screw-ups and I [maintain a few gems] (https://rubygems.org/profiles/schneems) with more than a hundred thousand downloads. I wish I had this guide available to me when I first got in the library authorship game. Let's take a look at what SemVer is and how to use it as a maintainer.
+SemVer is simple. Well...until you start publishing libraries, and accidentally break a metric ton of apps on accident. I've never caused any mass scale melt downs, however I've made my fair share of screw-ups. I [maintain gems](https://rubygems.org/profiles/schneems) with over 200 million downloads. I wish I had this guide available to me when I first got in the library authorship game. Let's take a look at what SemVer is and how to use it as a maintainer.
 
 ## SemVer is...
 
@@ -26,7 +26,7 @@ Note: I'm adding an extra version (teeny) not in the [semver.org 2.0 spec](http:
 
 ## Humans are squishy, machines are not
 
-The numbering of semver is meant to communicate to computers the backwards compatibility of code. The biggest problem is that this number is generated via a human. Maybe the author didn't realize you were using that interface, removed it, then only bumped the teeny version.
+The numbering of SemVer is meant to communicate to computers the backwards compatibility of code. The biggest problem is that this number is generated via a human. Maybe the author didn't realize you were using that interface, removed it, then only bumped the teeny version.
 
 Bug and Security fixes can also mess up SemVer. Sometimes people will rely on incorrect behavior. For example [Ruby recently removed SSLv3 support](https://www.ruby-lang.org/en/news/2014/10/27/changing-default-settings-of-ext-openssl/) from the NetHTTP library. While this development will protect users of the code, it will also break the code. Just because you fixed a bug doesn't mean you get to call it a teeny version bump.
 
@@ -53,13 +53,13 @@ Note: This is the same behavior as semver.org's patch with a non integer field (
 
 ### Rev Teeny
 
-The teeny version gets revved any time a bugfix or [security release comes out](http://weblog.rubyonrails.org/2013/12/3/Rails_3_2_16_and_4_0_2_have_been_released/). If you added a feature that didn't break anything, should you rev the teeny version? Nope. You should rev the minor version. The key to a correct teeny SemVer is **backwards-compatible**. If a user upgrades their teeny version and something breaks, welp you didn't use semver correctly.
+The teeny version gets revved any time a bugfix or [security release comes out](http://weblog.rubyonrails.org/2013/12/3/Rails_3_2_16_and_4_0_2_have_been_released/). If you added a feature that didn't break anything, should you rev the teeny version? Nope. You should rev the minor version. The key to a correct teeny SemVer is **backwards-compatible**. If a user upgrades their teeny version and something breaks, welp you didn't use SemVer correctly.
 
 ### Rev Minor
 
 When you add features, bump the minor version. If your change broke any existing tests or require that you modify existing documentation, it likely should be a major bump instead.
 
-It took me a while to realize why, if our change is still backwards compatible, we shouldn't be able to simply rev a teeny version. There are two reasons for this. First is the ability to downgrade. If there are two versions, semver says that `0.0.9` and `0.0.8` are equivalent but the higher version may have bug fixes. If you start developing with `0.0.9` and it has an extra method (a different API), now you can no longer downgrade your app to use the `0.8` version because it will break. This might not happen that often, but when it does, it will be painful.
+It took me a while to realize why, if our change is still backwards compatible, we shouldn't be able to simply rev a teeny version. There are two reasons for this. First is the ability to downgrade. If there are two versions, SemVer says that `0.0.9` and `0.0.8` are equivalent but the higher version may have bug fixes. If you start developing with `0.0.9` and it has an extra method (a different API), now you can no longer downgrade your app to use the `0.8` version because it will break. This might not happen that often, but when it does, it will be painful.
 
 The second reason is a bit more pragmatic. Even though you think your new API is backwards compatible it may require a future change or bug fix that makes it incompatible. Instead of waiting until that happens to rev a minor version, it is safer to rev it when you introduce the new API.
 
@@ -101,13 +101,13 @@ If the security vulnerability is bad, you should [look into issuing a CVE](http:
 
 ## Maintaing Multiple Releases
 
-If your library is popular enough for you to need to actively maintain multiple releases, then you can't really use semver due to the backwards incompatible security release problem. That being said, if your two maintained releases are under Major versions (i.e. 4 and 5) instead of minor versions (i.e. 4.1 and 4.2) you can use the minor version for backwards incompatible security updates, and deprecate in the teeny versions. While it's not technically semver, it's pretty close and it prevents you from releasing backwards incompatible changes into the teeny version number.
+If your library is popular enough for you to need to actively maintain multiple releases, then you can't really use SemVer due to the backwards incompatible security release problem. That being said, if your two maintained releases are under Major versions (i.e. 4 and 5) instead of minor versions (i.e. 4.1 and 4.2) you can use the minor version for backwards incompatible security updates, and deprecate in the teeny versions. While it's not technically SemVer, it's pretty close and it prevents you from releasing backwards incompatible changes into the teeny version number.
 
 ## Versioning is Hard
 
 This all may look simple or even border-line on "common sense", but based on the number of breaking changes in teeny versions I've seen: it's much harder in practice. When in doubt of any versioning, ask around. Ask your friends and co-workers. Get people to help [triage your github issues with CodeTriage](http://www.codetriage.com/) and open up an issue stating your intentions. The golden rule is to not break anything in a teeny release. The silver rule is to deprecate and communicate before you break anything.
 
-If you see a library breaking semver, be nice, provide them with resources (like a link to this post), and volunteer to help with versioning in the future. In the end versioning is supposed to make your life easier instead of harder. Don't let versioning scare you. Try your best and you'll get it over time. Happy versioning friends.
+If you see a library breaking SemVer, be nice, provide them with resources (like a link to this post), and volunteer to help with versioning in the future. In the end versioning is supposed to make your life easier instead of harder. Don't let versioning scare you. Try your best and you'll get it over time. Happy versioning friends.
 
 --
 If you like writing code, or versioning arbitrary things [follow @schneems on twitter](https://twitter.com/schneems).
