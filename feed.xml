@@ -4,14 +4,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>{{ site.title }}</title>
-    <description>{{ site.description }}</description>
+    <description>{{ site.rss_description }}</description>
     <link>{{ site.BASE_PATH_FOR_RSS }}/</link>
     <atom:link href="{{ site.BASE_PATH_FOR_RSS }}/{{ site.rss_path }}" rel="self" type="application/rss+xml" />
     {% for post in site.posts limit:10 %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
         <description>{{ post.excerpt | xml_escape }}</description>
-        <pubDate>{{ post.date }}</pubDate>
+        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
         <link>{{ site.BASE_PATH_FOR_RSS }}{{ post.url }}</link>
         <guid isPermaLink="true">{{ site.BASE_PATH_FOR_RSS }}{{ post.url }}</guid>
       </item>

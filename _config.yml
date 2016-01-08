@@ -6,8 +6,13 @@ highlighter:      rouge
 title:            Schneems
 tagline:          'Schneems on Software'
 description:      "Pronounced like 'schnapps': Helps run <a href='http://keeprubyweird.com'>@keeprubyweird</a>. Works for Heroku. Contributes to Rails. Calls Austin, Tx home."
+
+# cannot have tags inside of description
+rss_description:  "Pronounced like 'schnapps': Helps run @keeprubyweird. Works for Heroku. Contributes to Rails. Calls Austin, Tx home."
+
 url:              http://hyde.getpoole.com
 baseurl:          /
+rss_path:         feed.xml
 
 author:
   name:           'Richard Schneeman'
