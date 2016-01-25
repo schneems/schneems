@@ -21,7 +21,7 @@ puts object.method(:blank?).source_location
 
 This method was defined on line 14 of the file `active_support/core_ext/object/blank.rb`.
 
-### Opening a depenency from a project
+## Opening a depenency from a project
 
 ```sh
 $ bundle open active_support
@@ -37,7 +37,7 @@ export EDITOR="subl -w"
 
 Google for the appropriate invocation for your editor
 
-### Un-debgug a gem
+## Un-debgug a gem
 
 If you've opened a gem and added debug statements but forget to remove them before closing the file, you'll get those debug statements every time your run your program, to reset everything to original state you can use `gem pristine`. To reset Active Support:
 
@@ -64,7 +64,7 @@ $ gem pristine --all
 
 Note this may take a LONG time, especially if you've got gems with c-extensions.
 
-### Figuring out how a method was called
+## Figuring out how a method was called
 
 To generate a backtrace without raising an exception use the `caller` method like:
 
@@ -195,7 +195,7 @@ use ActionView::Digestor::PerRequestDigestCacheExpiry
 run MyRailsApp::Application.routes
 ```
 
-### Find where Super is Calling
+## Find where Super is Calling
 
 Let's say you have code that calls `super` you can find where that method is defined like this:
 
@@ -208,14 +208,14 @@ end
 
 I love this one since I proposed it's addition 😉. You can read more about `super_method` here: http://www.schneems.com/2015/01/14/debugging-super-methods-ruby-22.html
 
-### List all methods on an object
+## List all methods on an object
 
 ```ruby
 object.methods
 # => [:instance_of?, :public_send, :instance_variable_get, :instance_variable_set, :instance_variable_defined?, :remove_instance_variable, :private_methods, :kind_of?, :instance_variables, :tap, :is_a?, :extend, :define_singleton_method, :to_enum, :enum_for, :<=>, :===, :=~, :!~, :eql?, :respond_to?, :freeze, :inspect, :display, :send, :object_id, :to_s, :method, :public_method, :singleton_method, :nil?, :hash, :class, :singleton_class, :clone, :dup, :itself, :taint, :tainted?, :untaint, :untrust, :trust, :untrusted?, :methods, :protected_methods, :frozen?, :public_methods, :singleton_methods, :!, :==, :!=, :__send__, :equal?, :instance_eval, :instance_exec, :__id__]
 ```
 
-### Get instance method location without an instance
+## Get instance method location without an instance
 
 ```ruby
 User.instance_method(:github_url).source_location
