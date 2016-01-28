@@ -37,7 +37,7 @@ export EDITOR="subl -w"
 
 Google for the appropriate invocation for your editor
 
-## Un-debgug a gem
+## Un-debug a gem
 
 If you've opened a gem and added debug statements but forget to remove them before closing the file, you'll get those debug statements every time your run your program, to reset everything to original state you can use `gem pristine`. To reset Active Support:
 
