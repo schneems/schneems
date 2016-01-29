@@ -7,9 +7,9 @@ author_name: Richard Schneeman
 author_url: https://twitter.com/schneems
 ---
 
-This document is all about deciphering behavior of complicated Ruby code. I recommend you get familiar with a debugger like [pry-debugger](https://github.com/nixme/pry-debugger), this doc doesn't go into debuggers and only focuses on Ruby's ability to introspect it's own code.
+This document is all about deciphering behavior of complicated Ruby code. I recommend you get familiar with a debugger like [pry-debugger](https://github.com/nixme/pry-debugger), this doc doesn't go into debuggers and only focuses on Ruby's ability to introspect its own code.
 
-Many of these techniques are pulled from my first popular Ruby Conf talk [Dissecting Ruby with Ruby](https://www.youtube.com/watch?v=UYVUSoNrM-c). This doc is open source and a living doc, send suggestions in PR form to [my blog](https://github.com/schneems/schneems/blob/master/_posts/2016-01-25-ruby-debugging-magic-cheat-sheet.md). Unless otherwise stated, all techniques work for the last major release of Ruby. Some may work with older versions of Ruby, I don't want to maintain that list you can if you want.
+Many of these techniques are pulled from my first popular Ruby Conf. talk [Dissecting Ruby with Ruby](https://www.youtube.com/watch?v=UYVUSoNrM-c). This doc is open source and a living doc, send suggestions in PR form to [my blog](https://github.com/schneems/schneems/blob/master/_posts/2016-01-25-ruby-debugging-magic-cheat-sheet.md). Unless otherwise stated, all techniques work for the last major release of Ruby. Some may work with older versions of Ruby, I don't want to maintain that list, you can if you want.
 
 ## Figure out where a method was defined
 
@@ -21,7 +21,7 @@ puts object.method(:blank?).source_location
 
 This method was defined on line 14 of the file `active_support/core_ext/object/blank.rb`.
 
-## Opening a depenency from a project
+## Opening a dependency from a project
 
 ```sh
 $ bundle open active_support
@@ -39,7 +39,7 @@ Google for the appropriate invocation for your editor
 
 ## Un-debug a gem
 
-If you've opened a gem and added debug statements but forget to remove them before closing the file, you'll get those debug statements every time your run your program, to reset everything to original state you can use `gem pristine`. To reset Active Support:
+If you've opened a gem and added debug statements but forget to remove them before closing the file, you'll get those debug statements every time you run your program, to reset everything to original state you can use, `gem pristine`. To reset Active Support:
 
 ```sh
 $ gem pristine activesupport
@@ -152,19 +152,19 @@ Now when you generate a request you'll get a backtrace like:
 /Users/richardschneeman/.gem/ruby/2.3.0/gems/puma-2.15.3/lib/puma/thread_pool.rb:106:in `block in spawn_thread'
 ```
 
-Ugh, long ugly backtrace. What does it mean? The top line is the last method that was run before our `puts caller` was called. In this case
+Ugh, long ugly backtrace. What does it mean? The top line is the last method that was run before our, `puts caller` was called. In this case
 
 ```sh
 /Users/richardschneeman/documents/projects/my_rails_app/app/controllers/projects_controller.rb:18:in `new'
 ```
 
-This was called from the `projects_controller` line 18 in the `new` method in my app. We can trace this back all the way to the beginning of the request by looking at the first line
+This was called from the `projects_controller` line 18, in the `new` method in my app. We can trace this back all the way to the beginning of the request by looking at the first line
 
 ```sh
 /Users/richardschneeman/.gem/ruby/2.3.0/gems/puma-2.15.3/lib/puma/thread_pool.rb:106:in `block in spawn_thread'
 ```
 
-This is where puma instantiated the request. If you work from the bottom and go up you can see exactly how Puma turns a request into code, and how rack and rails work together to get to your line of code. Run `$ bundle open` to your heart's content. It's kinda interesting to see that the backtrace matches our middleware (in reverse order), where the request starts from the bottom and goes down:
+This is where puma instantiated the request. If you work from the bottom and go up, you can see exactly how Puma turns a request into code, and how rack and rails work together to get to your line of code. Run `$ bundle open` to your heart's content. Its kinda interesting to see that the backtrace matches our middleware (in reverse order), where the request starts from the bottom and goes down:
 
 ```sh
 $ rake middleware
@@ -206,7 +206,7 @@ def foo
 end
 ```
 
-I love this one since I proposed it's addition 😉. You can read more about `super_method` here: http://www.schneems.com/2015/01/14/debugging-super-methods-ruby-22.html
+I love this one since I proposed its addition 😉. You can read more about `super_method` here: http://www.schneems.com/2015/01/14/debugging-super-methods-ruby-22.html
 
 ## List all methods on an object
 
@@ -242,7 +242,7 @@ FOO << 1
 
 Would be amazing to call `Introspect.constant(FOO).modified_at` and see where the constant was last changed, even if we had to boot our ruby process with something like `ruby --trace-constants` or something.
 
-One other thing I would love to do is to be able to trace variable changes. Often times i'll instantiate a variable
+One other thing I would love to do is to be able to trace variable changes. Often times, i'll instantiate a variable
 
 ```ruby
 config.thing = "foo"
@@ -270,4 +270,4 @@ So as my code is running, I would get periodic debug statements.
 "config.thing changed on railties/controller_runtime.rb:18 to nil"
 ```
 
-I realize I could do something like define a `thing=` method on `config` to get this information but A) it's kinda gnarly, and B) it fails for when your config is a hash that is getting mutated through something like `merge!`. Right now the only way to do this is to puts the value of that variable, use caller to find where the variable came from, add a puts to see the value, and repeat until you find where in what context it changed. It's possible but time consuming and error prone.
+I realize I could do something like define a `thing=` method on `config` to get this information but A) it's kinda gnarly, and B) it fails for when your config is a hash that is getting mutated through something like `merge!`. Right now the only way to do this is to put the value of that variable, use caller to find where the variable came from, add a puts to see the value, and repeat until you find where in what context it changed. It's possible, but time consuming and error prone.
