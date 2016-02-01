@@ -221,6 +221,21 @@ object.methods
 User.instance_method(:github_url).source_location
 ```
 
+## Introspect method arguments
+
+```ruby
+def parse(input, skip_code_comments: false, ignore_whitespace: true)
+  # do stuff
+end
+```
+
+```ruby
+method(:parse).parameters
+#=> [[:req, :input], [:key, :skip_code_comments], [:key, :ignore_whitespace]]
+```
+
+Now you can see all available keyword arguments.
+
 ## Missing Pieces Wish List
 
 > Warning
