@@ -7,7 +7,7 @@ author_name: Richard Schneeman
 author_url: https://twitter.com/schneems
 ---
 
-This document is all about deciphering behavior of complicated Ruby code. I recommend you get familiar with a debugger like [pry-debugger](https://github.com/nixme/pry-debugger), this doc doesn't go into debuggers and only focuses on Ruby's ability to introspect its own code.
+This document is all about deciphering behavior of complicated Ruby code. I recommend you get familiar with a debugger like [pry-debugger](https://github.com/nixme/pry-debugger), this doc doesn't go into debuggers [because they're not always available](https://www.reddit.com/r/ruby/comments/42lxrq/ruby_debugging_magic_cheat_sheet/czbef0m), and only focuses on Ruby's ability to introspect its own code.
 
 Many of these techniques are pulled from my first popular Ruby Conf. talk [Dissecting Ruby with Ruby](https://www.youtube.com/watch?v=UYVUSoNrM-c). This doc is open source and a living doc, send suggestions in PR form to [my blog](https://github.com/schneems/schneems/blob/master/_posts/2016-01-25-ruby-debugging-magic-cheat-sheet.md). Unless otherwise stated, all techniques work for the last major release of Ruby. Some may work with older versions of Ruby, I don't want to maintain that list, you can if you want.
 
