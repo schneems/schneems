@@ -236,53 +236,63 @@ method(:parse).parameters
 
 Now you can see all available keyword arguments.
 
-## Missing Pieces Wish List
+## See where an argument is mutated
 
-> Warning
-> These things don't exist, but I wish they did. Don't try to use them, they won't work.
+Originally on my "missing pieces" list, TLo documented it here https://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html#an-object-is-being-mutated-but-i-dont-know-where.
 
-Here's broad things I want to do from time to time but haven't found a way to yet. I want to see where a constant was defined. Some of these might not be possible due to limitations in the VM. Let's say we have a file `foo.rb`.
-
-```ruby
-class Foo
-end
-```
-
-I would love to be able to do something like call `Introspect.constant(Foo).source_location`. Even cooler is if we could see where constants were modified
+Often times, i'll instantiate a variable
 
 ```ruby
-FOO = []
-FOO << 1
-```
-
-Would be amazing to call `Introspect.constant(FOO).modified_at` and see where the constant was last changed, even if we had to boot our ruby process with something like `ruby --trace-constants` or something.
-
-One other thing I would love to do is to be able to trace variable changes. Often times, i'll instantiate a variable
-
-```ruby
-config.thing = "foo"
+config.thing = { "foo" => "bar" }
 ```
 
 But later in my code sometimes it is changed
 
 ```ruby
 puts config.thing
-# => nil
+# => {"foo" => "THIS VALUE IS DIFFERENT"}
 ```
 
-Something accidentally modifed the underlying value of `@thing` in our config object. It would be great to be able to see when it happened. Maybe something like
+You can see where the value was modified by first `freeze`-ing the value
+
+```
+config.thing.delete("foo")
+
+# active_support/concurrency/share_lock.rb:151:in `delete': can't modify frozen Hash (RuntimeError)
+#  from active_support/concurrency/share_lock.rb:151:in `yield_shares'
+#  from active_support/concurrency/share_lock.rb:79:in `block in stop_exclusive'
+```
+
+This won't work for cases where a variable is assigned instead of mutated, but it's a worth while technique. You can use the same technique to see where a constant is modified (assuming you can find where it is first instantiated)
+
+## See where a constant is created
+
+Again, originally a "missing piece" i got this debugging technique thanks to https://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html#i-need-to-find-where-this-object-came-from
+
+You can use object space to see where a constant or object was created.
+
 
 ```ruby
-config.thing = "foo"
-Introspect.trace(config.thing).on_value_change |location, value|
-  puts "config.thing changed on #{ location.inspect } to #{ value.inpsect }"
-end
+require 'objspace'
+ObjectSpace.trace_object_allocations_start
+
+WORLD = "hello"
+
+puts "#{ ObjectSpace.allocation_sourcefile(WORLD) }:#{ ObjectSpace.allocation_sourceline(WORLD) }"
 ```
 
-So as my code is running, I would get periodic debug statements.
+## Missing Pieces Wish List
+
+> Warning
+> These things don't exist, but I wish they did. Don't try to use them, they won't work.
+
+Here's broad things I want to do from time to time but haven't found a way to yet. I want to see where a constant was defined. Some of these might not be possible due to limitations in the VM. When a "missing piece" is found it is removed from this section and given it's own heading above.
+
+- Find where a variable is over-written with a different value. While we can use the `freeze` trick to see where a value is modified, we won't see when it is replaced.
 
 ```ruby
-"config.thing changed on railties/controller_runtime.rb:18 to nil"
-```
+config.thing = { "foo" => "bar" }.freeze
 
-I realize I could do something like define a `thing=` method on `config` to get this information but A) it's kinda gnarly, and B) it fails for when your config is a hash that is getting mutated through something like `merge!`. Right now the only way to do this is to put the value of that variable, use caller to find where the variable came from, add a puts to see the value, and repeat until you find where in what context it changed. It's possible, but time consuming and error prone.
+config.thing = nil
+# No error is raised as the hash isn't being mutated, the variable is being assigned a different value
+```
