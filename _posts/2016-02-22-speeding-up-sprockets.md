@@ -11,7 +11,7 @@ permalink: blogs/2016-02-18-speeding-up-sprockets
 
 The asset pipeline is the slowest part of deploying a Rails app. How slow? On average, it's over 20x slower than installing dependencies via `$ bundle install`. Why so slow? In this article, we're going to take a look at some of the reasons the asset pipeline is slow and how we were able to get a 12x performance improvement on some apps with [Sprockets version 3.3+](https://rubygems.org/gems/sprockets/versions/3.5.2).
 
-> Originally Posted on https://engineering.heroku.com/blogs/2016-02-18-speeding-up-sprockets/
+> Originally Posted on [Speeding up Sprockets on Heroku's Engineering Blog](https://engineering.heroku.com/blogs/2016-02-18-speeding-up-sprockets/)
 
 The Rails asset pipeline uses the [sprockets](github.com/rails/sprockets) library to take your raw assets such as javascript or Sass files and pre-build minified, compressed assets that are ready to be served by a production web service. The process is inherently slow. For example, compiling Sass file to CSS requires reading the file in, which involves expensive hard disk reads. Then sprockets processes it, generating a unique "fingerprint" (or digest) for the file before it compresses the file by removing whitespace, or in the case of javascript, running a minifier. All of which is fairly CPU-intensive. Assets can import other assets, so to compile one asset, for example, an `app/assets/javascripts/application.js` multiple files may have to be read and stored in memory. In short, sprockets consumes all three of your most valuable resources: memory, disk IO, and CPU.
 
