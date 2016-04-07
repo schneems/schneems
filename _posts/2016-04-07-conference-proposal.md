@@ -32,7 +32,7 @@ Another way to think of a pitch section is if two people submitted otherwise ide
 
 ## A Cliche is Like...
 
-Don't use cliches, everyone use's cliches and it makes your proposal blend in. If you feel the pull of using a phrase everyone has heard "a million times", ask yourself if it adds to what you're trying to convey. For getting out of this habit I recommend [Word Hero](http://www.amazon.com/gp/product/B004J4X2TE/ref=dp-kindle-redirect?ie=UTF8&btkr=1. Along the line of cliche's avoid absolutes in your writing unless you know they're true
+Don't use cliches, everyone use's cliches and it makes your proposal blend in. If you feel the pull of using a phrase everyone has heard "a million times", ask yourself if it adds to what you're trying to convey. For getting out of this habit I recommend [Word Hero](http://www.amazon.com/gp/product/B004J4X2TE/ref=dp-kindle-redirect?ie=UTF8&btkr=1). Along the line of cliche's avoid absolutes in your writing unless you know they're true
 
 - "Everyone's heard of": I haven't heard about this before, am I nobody?
 - "Obviously": If it's so obvious, why did you have to write it? Drop the word.
