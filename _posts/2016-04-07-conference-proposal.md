@@ -87,8 +87,6 @@ Once you've grabbed attention, you'll want to make sure to give your reader enou
 
 Tell me what I can expect to learn, what I can expect to take away. It's not a requirement, but it helps to cut some of that marketing hyperbole with some straight talk.
 
-***Stopped here***
-
 A well written abstract is almost like a piece of technological poetry. It is more than the sum of it's words. Speaking of words one thing I found helps in my abstract creative process, is to make word clouds. Given a topic like "security" or "performance" I write down as many other words come to mind. I then stack rank them based on which are the most interesting. I write about 10-20 different intro sentences. About 3-4 different copies of the "takeaway" sentences, and about 5-10 outro sentences. I then mix them up until they feel right.
 
 When working on an abstract get feedback, from anyone. How does it make them feel? What do they think the talk is about? What types of things would they consider about the abstract before deciding to come or not? If they respond "good", that's not helpful press them for details. It helps if that someone has submitted to conferences, but it isn't required. If you find yourself working with experienced submitters, don't let them re-write or edit out your voice. Don't force a sentence in that won't fit just because it sounds great on its own. Write lots, throw away lots.
@@ -97,7 +95,7 @@ When working on an abstract get feedback, from anyone. How does it make them fee
 
 The best wisdom for writing titles is to save it for last. I hate this advice because I always forget about it until I've spent 4 hours up front trying to write a good title. Instead my advice is set a timer for 3 minutes, write as many titles as you can. Pick your favorite, then write the rest of your submission. When you're done go back and throw away the title and re-write it. Chances are your original title won't match your final talk concept. Try to spend a bit more time writing down title ideas, maybe 10-15 minutes. Try testing your favorite 2-4 on a few people and then go with your gut as to the best one.
 
-Try to use descriptive words or action statements in the title. Really avoid cliches here, I'm really not interested in "how [you] stopped worrying and learned to love the <blank>".
+Try to use descriptive words or action statements in the title. Really avoid cliches here, I'm really not interested in "how [you] stopped worrying and learned to love the \<blank\>".
 
 Don't alienate your audience through jargon. Your title should say something about your talk. If it's an "in" joke or an acronym don't use it. I get it that you know what HATEOS is, but some of your attendees or conf selection committee might not. (No one used this acronym in this year's CFP to my knowledge I'm not picking on anyone's proposal).
 

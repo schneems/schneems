@@ -276,10 +276,17 @@ You can use object space to see where a constant or object was created.
 require 'objspace'
 ObjectSpace.trace_object_allocations_start
 
-WORLD = "hello"
+Kernel.send(:define_method, :sup) do |obj|
+  puts "#{ ObjectSpace.allocation_sourcefile(obj) }:#{ ObjectSpace.allocation_sourceline(obj) }"
+end
 
-puts "#{ ObjectSpace.allocation_sourcefile(WORLD) }:#{ ObjectSpace.allocation_sourceline(WORLD) }"
+world = "hello"
+
+sup world
+# => /tmp/scratch.rb:10
 ```
+
+Since the invocation to get the file and line number is so long, I add an helper method globally called `sup`. Make sure tracing is started early as possible, I put this code in the top of my Gemfile. Remove it when you're not debugging, tracing allocations has a performance impact.
 
 ## Missing Pieces Wish List
 
