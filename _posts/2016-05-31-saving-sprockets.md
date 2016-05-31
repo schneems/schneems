@@ -7,10 +7,9 @@ author_name: Richard Schneeman
 author_url: https://twitter.com/schneems
 ---
 
-What do you do when a maintainer leaves a project with over 44 million downloads? That is what we had to consider this year when Sprockets lost the developer responsible for more than 70% of the commits. We'll explore this and more through my RailsConf 2016 talk and the transcript below.
+What do you do when a maintainer leaves a project with over 51 million downloads? That is what we had to consider this year when Sprockets lost the developer responsible for more than 70% of the commits. We'll explore this and more through my RailsConf 2016 talk and the transcript below.
 
-I've given talks in 12 countries on 5 continents and this is my favorite to date. This talk was difficult. The ideas were in my head, but I couldn't get the words right. This was an emotional talk for me . Writing this talk turned into a soul searching journey through open source. What does it mean to be a maintainer? Hopefully you'll join me on this journey.
-
+I've spoken in 12 countries on 5 continents and this is my favorite talk to date. This talk was difficult. The ideas were in my head, but I couldn't get the words right for the longest time. This was an emotional talk for me . Writing this talk turned into a soul searching journey through open source. What does it mean to be a maintainer? What does it mean to leave a project? What does it mean to respect and help a maintainer? The road was long and perilious but i'm very happy with the talk. Hopefully you'll join me on this archeological expedition.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qxaE8yblHPk" frameborder="0" allowfullscreen></iframe>
 
