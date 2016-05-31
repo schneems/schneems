@@ -5,10 +5,10 @@ highlighter:      rouge
 # Setup
 title:            Schneems
 tagline:          'Schneems on Software'
-description:      "Pronounced like 'schnapps'. Ruby Hero. Helps run <a href='http://keeprubyweird.com'>@keeprubyweird</a>. Works for Heroku. Contributes to Rails. Calls Austin, Tx home."
+description:      "Pronounced like 'schnapps'. Ruby Hero. Runs <a href='http://keeprubyweird.com'>@keeprubyweird</a>. Works for Heroku. Posts on performance and best practices."
 
 # cannot have tags inside of description
-rss_description:  "Pronounced like 'schnapps'. Ruby Hero. Helps run @keeprubyweird. Works for Heroku. Contributes to Rails. Calls Austin, Tx home."
+rss_description:  "Pronounced like 'schnapps'. Ruby Hero. Runs @keeprubyweird. Works for Heroku. Posts on performance and best practices."
 
 url:              http://hyde.getpoole.com
 baseurl:          /
