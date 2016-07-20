@@ -31,4 +31,5 @@ BASE_PATH_FOR_RSS: http://www.schneems.com
 
 
 # Random shit from the internet
-exclude: [vendor]
+include: ['dist/.well-known/', '.well-known']
+exclude: ['vendor']
