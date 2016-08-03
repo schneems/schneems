@@ -21,7 +21,9 @@ gem_name = "sprockets"
 
 def rubygems_get(gem_name: "", endpoint: "")
   path = File.join("/api/v1/gems/", gem_name, endpoint).chomp("/") + ".json"
-  JSON.parse(Net::HTTP.get("rubygems.org", path))
+  uri      = URI(File.join('https://rubygems.org', path))
+  response = Net::HTTP.get_response(uri)
+  JSON.parse(response.body)
 end
 
 results = rubygems_get(gem_name: gem_name, endpoint: "reverse_dependencies")
