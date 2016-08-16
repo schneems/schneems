@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Sharp Tools"
-date: 2016-07-26
-published: false
+date: 2016-08-16
+published: true
 author_name: Richard Schneeman
 author_url: https://twitter.com/schneems
 ---
