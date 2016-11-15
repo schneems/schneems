@@ -18,15 +18,6 @@
       <a class="sidebar-nav-item" href="https://twitter.com/schneems">Twitter</a>
       <a class="sidebar-nav-item" href="https://github.com/schneems">GitHub</a>
       <a class="sidebar-nav-item" href="/feed.xml">RSS</a>
-
-      {% assign pages_list = site.pages %}
-      {% for node in pages_list %}
-        {% if node.title != null %}
-          {% if node.layout == "page" %}
-            <a class="sidebar-nav-item" href="{{ node.url }}">{{ node.title }}</a>
-          {% endif %}
-        {% endif %}
-      {% endfor %}
     </nav>
 
     <p>&copy; {{ site.time | date: '%Y' }}</p>
