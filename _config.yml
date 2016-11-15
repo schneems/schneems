@@ -1,5 +1,5 @@
 # Dependencies
-markdown:         redcarpet
+markdown:         kramdown
 highlighter:      rouge
 
 # Setup
@@ -45,7 +45,7 @@ assets:
   css_compressor: sass
   compress:
     css: true
-    js: false
+    js: true
   autowrite: true
   # cdn: https://cdn.example.com
   skip_baseurl_with_cdn: false

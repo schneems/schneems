@@ -61,7 +61,7 @@ Now when you deploy, your Puma thread count will match your Active Record thread
 
 On Heroku, we recommend you specify how to run your app via the [Procfile](https://devcenter.heroku.com/articles/procfile) — if you don't specify a Procfile we will set a default process type for you. Since Heroku apps run inside containers, they need to know which port to connect to, so we set the `$PORT` environment variable. The buildpack will specify a web process command if you don't provide one. For example, if you're deploying a Rails 2 app without a `Procfile`, by default your app would run:
 
-```ruby
+```
 $ bundle exec ruby script/server -p $PORT
 ```
 
