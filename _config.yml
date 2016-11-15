@@ -1,16 +1,21 @@
 # Dependencies
 markdown:         redcarpet
 highlighter:      rouge
-gems:
-  - jekyll-redirect-from
 
 # Setup
 title:            Schneems
 tagline:          'Schneems on Software'
-description:      "Pronounced like 'schnapps'. Ruby Hero. Runs <a href='http://keeprubyweird.com'>@keeprubyweird</a>. Works for Heroku. Posts on performance and best practices."
+description:      >
+  Ruby Hero. Runs <a href='http://keeprubyweird.com'>@keeprubyweird</a>.
+  Works for Heroku.
+  Posts on performance and best practices.
 
 # cannot have tags inside of description
-rss_description:  "Pronounced like 'schnapps'. Ruby Hero. Runs @keeprubyweird. Works for Heroku. Posts on performance and best practices."
+rss_description:  >
+  Ruby Hero.
+  Runs @keeprubyweird.
+  Works for Heroku.
+  Posts on performance and best practices."
 
 url:              https://www.schneems.com
 baseurl:          /
@@ -28,9 +33,45 @@ version:          2.1.0
 github:
   repo:           https://github.com/poole/hyde
 
-BASE_PATH_FOR_RSS: http://www.schneems.com
+BASE_PATH_FOR_RSS: https://www.schneems.com
 
+gems:
+  - jekyll-assets
+  - jekyll-paginate
+  - jekyll-redirect-from
 
+# Assets
+assets:
+  css_compressor: sass
+  compress:
+    css: true
+    js: false
+  autowrite: true
+  # cdn: https://cdn.example.com
+  skip_baseurl_with_cdn: false
+  skip_prefix_with_cdn: false
+  prefix: "/assets"
+
+  assets:
+    - "*.png"
+    - "*.jpg"
+    - "*.svg"
+    - "*.webm"
+    - "*.mp4"
+    - "posts.css"
+    - "home.css"
+    - "*.js"
+  digest: true
+  sources:
+    - "assets"
+    - "assets/stylesheets"
+    - "assets/images"
+    - "assets/javascripts"
+    - "assets/posts/img"
+    - "_sass"
+
+  features:
+    liquid: true
 
 # Random shit from the internet
 include: ['dist/.well-known/', '.well-known']
