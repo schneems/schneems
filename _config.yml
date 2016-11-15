@@ -1,6 +1,8 @@
 # Dependencies
 markdown:         redcarpet
 highlighter:      rouge
+gems:
+  - jekyll-redirect-from
 
 # Setup
 title:            Schneems
@@ -10,7 +12,7 @@ description:      "Pronounced like 'schnapps'. Ruby Hero. Runs <a href='http://k
 # cannot have tags inside of description
 rss_description:  "Pronounced like 'schnapps'. Ruby Hero. Runs @keeprubyweird. Works for Heroku. Posts on performance and best practices."
 
-url:              http://hyde.getpoole.com
+url:              https://www.schneems.com
 baseurl:          /
 rss_path:         feed.xml
 

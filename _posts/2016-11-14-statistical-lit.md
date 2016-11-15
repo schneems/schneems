@@ -1,7 +1,10 @@
 ---
 layout: post
 title: "Statistical Literacy and You: An Intro for Programmers"
-date: 2016-10-14
+date: 2016-11-14
+redirect_from:
+  - /2016/10/14/statistical-lit.html
+
 published: true
 author_name: Richard Schneeman
 author_url: https://twitter.com/schneems
