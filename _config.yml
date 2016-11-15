@@ -75,4 +75,4 @@ assets:
 
 # Random shit from the internet
 include: ['dist/.well-known/', '.well-known']
-exclude: ['vendor']
+exclude: ['vendor', 'bin']
