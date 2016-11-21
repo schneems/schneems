@@ -5,10 +5,6 @@ highlighter:      rouge
 # Setup
 title:            Schneems
 tagline:          'Schneems on Software'
-description:      >
-  Ruby Hero. Runs <a href='http://keeprubyweird.com'>@keeprubyweird</a>.
-  Works for Heroku.
-  Posts on performance and best practices.
 
 # cannot have tags inside of description
 rss_description:  >
