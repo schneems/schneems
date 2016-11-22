@@ -1,32 +1,15 @@
 <div class="sidebar">
   <div class="sidebar-sticky">
-    <a href="/" class="logo">
+    <a href="/" class="">
       {% include schneems_white.svg %}
     </a>
 
     <nav class="sidebar-nav">
-      <p class="lead">
-        Hi, I'm Richard Schneeman. I write code for Heroku and this blog.
-        Ruby Hero,<br />
-        Created <a href='https://codetriage.com'>CodeTriage.com</a>,<br />
-        I run <a href='http://keeprubyweird.com'>@keeprubyweird</a> &amp;<br />
-        maintain <a href='github.com/rails/sprockets'>Sprockets</a>.<br />
-        I'm married to Ruby, literally.
-      </p>
+      {% include about.html %}
+    </nav>
 
-      {% comment %}
-        The code below dynamically generates a sidebar nav of pages with
-        `layout: page` in the front-matter. See readme for usage.
-      {% endcomment %}
-      <a class="sidebar-nav-item" href="/talks.html">📢 Conference Talks</a>
-      <a class="sidebar-nav-item" href="http://eepurl.com/bbuvuz">✉️ Mailing List</a>
-      <a class="sidebar-nav-item" href="https://twitter.com/schneems">🐣 Twitter</a>
-      <a class="sidebar-nav-item" href="https://github.com/schneems">🐙 GitHub</a>
-      <a class="sidebar-nav-item" href="/feed.xml">✨ RSS</a>
-
-      <p>&copy; {{ site.time | date: '%Y' }}</p>
+    <nav class="sidebar-nav-mobile lead">
+      <a href="about.html">More</a>
     </nav>
   </div>
 </div>
-
-

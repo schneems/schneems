@@ -298,6 +298,11 @@ tbody tr:nth-child(odd) th {
   letter-spacing: 0;
 }
 
+.logo {
+  display: block;
+  margin: 0 auto;
+}
+
 
 /*
  * Posts and pages
@@ -426,6 +431,11 @@ pre {
   white-space: pre;
 }
 
+.center {
+  display: block;
+  margin: 0 auto;
+}
+
 /*
  * Sidebar
  *
@@ -439,6 +449,15 @@ pre {
   color: #25020F;
   background-color: #FF1168;
 }
+
+.sidebar-nav {
+  display: none;
+}
+
+.sidebar-nav-mobile {
+  display: block;
+}
+
 @media (min-width: 48em) {
   .sidebar {
     position: fixed;
@@ -448,7 +467,16 @@ pre {
     width: 18rem;
     text-align: left;
   }
+
+  .sidebar-nav {
+    display: block;
+  }
+
+  .sidebar-nav-mobile {
+    display: none;
+  }
 }
+
 
 /* Sidebar links */
 .sidebar a {
@@ -480,22 +508,6 @@ a.sidebar-nav-item:focus {
 .sidebar-nav-item.active {
   font-weight: bold;
 }
-
-/* Sticky sidebar
- *
- * Add the `sidebar-sticky` class to the sidebar's container to affix it the
- * contents to the bottom of the sidebar in tablets and up.
- */
-
-@media (min-width: 48em) {
-  .sidebar-sticky {
-    position: absolute;
-    right:  0rem;
-    top:    1rem;
-    left:   0rem;
-  }
-}
-
 
 /* Container
  *
