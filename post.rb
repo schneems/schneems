@@ -57,7 +57,6 @@ the_post_file.puts("date: #{hyphen_date}")
 the_post_file.puts("permalink: #{the_post_permalink}")
 the_post_file.puts('categories:')
 the_post_file.puts("    - #{category}")
-the_post_file.puts('link: ') if post_has_link
 the_post_file.puts('---')
 the_post_file.puts('')
 the_post_file.close
