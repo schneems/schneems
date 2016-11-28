@@ -12,7 +12,7 @@ I love speaking! I've given talks at [26 events in 12 countries](http://lanyrd.c
 No one wants to be stuck in the slow lane, especially Rubyists. In this talk we'll look at the slow process of writing fast code. We'll look at several real world performance optimizations that may surprise you. We'll then rewind to see how these slow spots were found and fixed. Come to this talk and we will "C" how fast your Ruby can "Go".
 
 - [Slides](https://speakerdeck.com/schneems/slomo)
-- Video - coming soon
+- [Video](https://www.youtube.com/watch?v=xii1oyad_kc)
 
 ### Saving Sprockets (2016)
 
