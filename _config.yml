@@ -3,8 +3,7 @@ markdown:         kramdown
 highlighter:      rouge
 
 # Setup
-title:            Schneems
-tagline:          'Schneems on Software'
+title:            Schneems - Programming + Open source
 
 # cannot have tags inside of description
 rss_description:  >

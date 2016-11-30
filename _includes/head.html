@@ -41,9 +41,9 @@
 
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:site" content="@schneems"/>
-  <meta name="twitter:image" content="{% asset_path 'opengraph.png' %}">
+  <meta name="twitter:title" content="{% if page.title == "Home" %}{{ site.title | escape }}{% else %}{{ page.title | escape }}{% endif %}" />
+  <meta property="twitter:image" content="{% if page and page.image %}{{ site.url | append: '/assets/posts/img/' | append: page.image }}{% else %}{{ site.url }}{%  asset_path 'opengraph.png' %}{% endif %}" />
 
-  <meta property="og:image" content="{% asset_path 'opengraph.png' %}" />
-
+  <meta property="og:image" content="{% if page and page.image %}{{ site.url | append: '/assets/posts/img/' | append: page.image }}{% else %}{{ site.url }}{%  asset_path 'opengraph.png' %}{% endif %}" />
 
 </head>
