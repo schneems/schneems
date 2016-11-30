@@ -4,13 +4,17 @@ highlighter:      rouge
 
 # Setup
 title:            Schneems - Programming + Open source
+description:      > #
+  Hi, I'm Richard Schneeman. I write about Programming and Open Source.
+  I run CodeTriage, the best way to get involved with OSS.
+  I'm @schneems everywhere online.
 
 # cannot have tags inside of description
 rss_description:  >
   Ruby Hero.
-  Runs @keeprubyweird.
+  Runs CodeTriage.com.
   Works for Heroku.
-  Posts on performance and best practices."
+  Posts on programming and open source."
 
 url:              https://www.schneems.com
 baseurl:          /
