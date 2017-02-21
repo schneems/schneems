@@ -8,6 +8,8 @@ categories:
     - ruby
 ---
 
+> Update: There's a great resource for dealing with timeouts in Ruby called [The ultimate guide to Ruby Timeouts](https://github.com/ankane/the-ultimate-guide-to-ruby-timeouts), via [@codefolio](https://twitter.com/codefolio). Also there's some good dicussion on Reddit around the possibility of maybe using `Thread.handle_interupt` in gems, [read the comments](https://www.reddit.com/r/ruby/comments/5vbybi/the_oldest_bug_in_ruby_why_racktimeout_might_hose/).
+
 The "bug" comes up in a few contexts. The problem comes when an error is raised from within an `ensure` block from another source. If you don't know how that's possible keep reading, otherwise skip the next section.
 
 ## WTF huh? How is that possible
