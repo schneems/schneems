@@ -52,4 +52,5 @@ the_post_file.puts('---')
 the_post_file.puts('')
 the_post_file.close
 
-system('atom', "_posts/#{the_post_file_name}")
+
+`$EDITOR _posts/#{the_post_file_name}`
