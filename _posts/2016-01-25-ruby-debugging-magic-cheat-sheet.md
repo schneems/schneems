@@ -164,7 +164,7 @@ This was called from the `projects_controller` line 18, in the `new` method in m
 /Users/richardschneeman/.gem/ruby/2.3.0/gems/puma-2.15.3/lib/puma/thread_pool.rb:106:in `block in spawn_thread'
 ```
 
-This is where puma instantiated the request. If you work from the bottom and go up, you can see exactly how Puma turns a request into code, and how rack and rails work together to get to your line of code. Run `$ bundle open` to your heart's content. Its kinda interesting to see that the backtrace matches our middleware (in reverse order), where the request starts from the bottom and goes down:
+This is where puma instantiated the request. If you work from the bottom and go up, you can see exactly how Puma turns a request into code, and how rack and rails work together to get to your line of code. Run `$ bundle open` to your heart's content. It's kinda interesting to see that the backtrace matches our middleware (in reverse order), where the request starts from the bottom and goes down:
 
 ```sh
 $ rake middleware
@@ -267,7 +267,7 @@ This won't work for cases where a variable is assigned instead of mutated, but i
 
 ## See where a constant is created
 
-Again, originally a "missing piece" i got this debugging technique thanks to https://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html#i-need-to-find-where-this-object-came-from
+Again, originally a "missing piece" I got this debugging technique thanks to https://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html#i-need-to-find-where-this-object-came-from
 
 You can use object space to see where a constant or object was created.
 
