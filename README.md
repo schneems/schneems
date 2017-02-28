@@ -9,6 +9,12 @@ Theme mostly from Hyde.
 http://www.colourlovers.com/palette/128467/Pink_Walrus
 
 
+## Run
+
+```
+$ bundle exec jekyll serve
+```
+
 ## License
 
 MIT
