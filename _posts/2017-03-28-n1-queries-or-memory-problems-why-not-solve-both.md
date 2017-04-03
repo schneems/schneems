@@ -46,19 +46,14 @@ If you've been around the Rails track long enough you've probably run into the a
 and after
 
 ```ruby
-
 @posts = current_user.posts.per_page(20).page(params[:page])
-
 @posts = @posts.includes(:comments)
-
 ```
 
 This is still textbook, but let's look at what's going on. Active Record uses lazy querying so this won't actually get executed until we call `@posts.first` or `@posts.all` or `@posts.each`. When we do that two queries get executed, the first one for posts makes sense:
 
 ```ruby
-
 select * from posts where user_id=? limit ? offset ?
-
 ```
 
 Active Record will pass in user_id and limit and offset into the bind params and you'll get your array of posts.
@@ -68,9 +63,7 @@ Active Record will pass in user_id and limit and offset into the bind params and
 The next query you'll see may look something like this:
 
 ```ruby
-
 select * from comments where post_id in?
-
 ```
 
 Notice anything wrong? Bonus points if you found it, and yes, it has something to do with memory.
@@ -94,23 +87,16 @@ That's not good enough for us, though -- we want no massive memory allocation sp
 What's the point of having Cache if you can't count it? Instead of having to call `post.comments.count` each time, which costs us a SQL query, we can store that data directly inside of the `Post` model. This way when we load a `Post` object we automatically have this info. From [the docs for the counter cache](http://edgeguides.rubyonrails.org/association_basics.html#options-for-belongs-to-counter-cache) you'll see we need to change our model to something like this:
 
 ```ruby
-
 class Comment < ApplicationRecord
-
   belongs_to :post , counter_cache: count_of_comments
-
-#…
-
+  #…
 end
-
 ```
 
 Now in our view, we can call:
 
 ```erb
-
 <%= "#{post.count_of_comments} comments"
-
 ```
 
 Boom! Now we have no N+1 query and no memory problems. But...
@@ -120,11 +106,8 @@ Boom! Now we have no N+1 query and no memory problems. But...
 You cannot use a counter cache with a condition. Let's change our example for a minute. Let's say each comment could either be "approved", meaning you moderated it and allow it to show on your page, or "pending". Perhaps this is a vital piece of information and you MUST show it on your page.  Previously we would have done this:
 
 ```erb
-
 <%= "#{ post.comments.approved.count } approved comments"
-
 <%= "#{ post.comments.pending.count } pending comments"
-
 ```
 
 In this case the `Comment` model has a `status` field and calling `comments.pending` is equivalent to adding `where(status: "pending")`. It would be great if we could have a `post.count_of_pending_comments` cache and a `post.count_of_approved_comments` cache, but we can't. There are some ways to hack it, but there are edge cases, and not all apps can safely accommodate for all edge cases. Let's say ours is one of those.
@@ -138,35 +121,25 @@ If view caching is out of the question due to \<reasons\>, what are we left with
 In our controller where we previously had this:
 
 ```ruby
-
 @posts = current_user.posts.per_page(20).page(params[:page])
-
 @posts = @posts.includes(:comments)
-
 ```
 
 We can remove that `includes` and instead build two hashes. Active Record returns hashes when we use `group()`. In this case we know we want to associate comment count with each post, so we group by `:post_id`.
 
 ```ruby
-
 @posts = current_user.posts.per_page(20).page(params[:page])
-
 post_ids = @posts.map(&:id)
-
 @pending_count_hash  = Comment.pending.where(post_id: post_ids).group(:post_id).count
 
 @approved_count_hash = Comment.approved.where(post_id: post_ids).group(:post_id).count
-
 ```
 
 Now we can stash and use this value in our view instead:
 
 ```erb
-
 <%= "#{ @approved_count_hash[post.id] || 0  } approved comments"
-
 <%= "#{ @pending_count_hash[post.id] || 0 } pending comments"
-
 ```
 
 Now we have 3 queries, one to find our posts and one for each comment type we care about. This generates 2 extra hashes that hold the minimum of information that we need.
@@ -179,36 +152,25 @@ But what if you're using that data inside of methods.
 
 Rails encourage you to stick logic inside of models. If you're doing that, then perhaps this code wasn't a raw SQL query inside of the view but was instead nested in a method.
 
-```
-
+```ruby
 def approved_comment_count
-
-self.comments.approved.count
-
+  self.comments.approved.count
 end
-
 ```
 
 Or maybe you need to do the math, maybe there is a critical threshold where pending comments overtake approved:
 
 ```ruby
-
 def comments_critical_threshold?
-
-self.comments.pending.count < self.comments.approved.count
-
+  self.comments.pending.count < self.comments.approved.count
 end
-
 ```
 
 This is trivial, but you could imagine a more complex case where logic is happening based on business rules. In this case, you don't want to have to duplicate the logic in your view (where we are using a hash) and in your model (where we are querying the database). Instead, you can use dependency injection. Which is the hyper-nerd way of saying we'll pass in values. We can change the method signature to something like this:
 
 ```ruby
-
 def comments_critical_threshold?(pending_count: comments.pending.count, approved_count: comments.approved.count)
-
-pending_count < approved_count
-
+  pending_count < approved_count
 end
 
 ```
@@ -216,9 +178,7 @@ end
 Now I can call it and pass in values:
 
 ```ruby
-
 post.comments_critical_threshold?(pending_count: @pending_count_hash[post.id] || 0 , approved_count: @approved_count_hash[post.id] || 0 )
-
 ```
 
 Or, if you're using it somewhere else, you can use it without passing in values since we specified our default values for the keyword arguments.
@@ -226,25 +186,17 @@ Or, if you're using it somewhere else, you can use it without passing in values 
 > BTW, aren't keyword arguments great?
 
 ```ruby
-
 post.comments_critical_threshold? # default values are used here
-
 ```
 
 There are other ways to write the same code:
 
 ```ruby
-
 def comments_critical_threshold?(pending_count , approved_count )
-
-pending_count ||= comments.pending.count
-
-approved_count ||= comments.approved.count
-
-pending_count < approved_count
-
+  pending_count ||= comments.pending.count
+  approved_count ||= comments.approved.count
+  pending_count < approved_count
 end
-
 ```
 
 You get the gist though -- pass values into your methods if you need to.
@@ -254,23 +206,16 @@ You get the gist though -- pass values into your methods if you need to.
 What if you're doing more than just counting? Well, you can pull that data and group it in the same way by using `select` and specifying multiple fields. To keep going with our same example, maybe we want to show a truncated list of all commenter names and their avatar URLs:
 
 ```
-
 @comment_names_hash = Comment.where(post_id: post_ids).select("names, avatar_url").group_by(&:post_ids)
-
 ```
 
 The results look like this:
 
 ```ruby
-
 1337: [
-
-{ name: "schneems", avatar_url: "https://http.cat/404.jpg" },
-
-{ name: "illegitimate45", avatar_url: "https://http.cat/451.jpg" }
-
+  { name: "schneems", avatar_url: "https://http.cat/404.jpg" },
+  { name: "illegitimate45", avatar_url: "https://http.cat/451.jpg" }
 ]
-
 ```
 
 The `1337` is the post id, and then we get an entry with a name and an avatar_url for each comment. Be careful here, though, as we're returning more data-- you still might not need all of it and making 2,000 hashes isn't much better than making 2,000 unused Active Record objects. You may want to better constrain your query with limits or by querying for more specific information.
