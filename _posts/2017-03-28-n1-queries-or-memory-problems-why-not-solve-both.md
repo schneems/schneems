@@ -54,7 +54,7 @@ Active Record will pass in user_id and limit and offset into the bind params and
 The next query you'll see may look something like this:
 
 ```ruby
-select * from comments where post_id in?
+select * from comments where post_id in ?
 ```
 
 Notice anything wrong? Bonus points if you found it, and yes, it has something to do with memory.
