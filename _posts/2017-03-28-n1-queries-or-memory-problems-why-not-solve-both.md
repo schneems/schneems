@@ -87,7 +87,7 @@ end
 Now in our view, we can call:
 
 ```erb
-<%= "#{post.count_of_comments} comments"
+<%= "#{post.count_of_comments} comments" %>
 ```
 
 Boom! Now we have no N+1 query and no memory problems. But...
