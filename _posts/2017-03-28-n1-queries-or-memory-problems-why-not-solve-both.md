@@ -27,7 +27,7 @@ This post is going to help save you money if you're running a Rails server. It s
 
 ```
 
-[This post originally published on the Heroku blog](https://blog.heroku.com/solving-n-plus-one-queries)
+> [This post originally published on the Heroku blog](https://blog.heroku.com/solving-n-plus-one-queries)
 
 See any problems with this?  We have to make a single query to return all the posts - that's where the `@posts` comes from.  Say that there are N posts returned.  In the code above, as the view iterates over each post, it has to calculate `post.comments.count` - but *that* in turn needs another database query.  This is the N+1 query problem - our initial single query (the 1 in N+1) returns something (of size N) that we iterate over and perform yet another database query on (N of them).
 
