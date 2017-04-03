@@ -97,8 +97,8 @@ Boom! Now we have no N+1 query and no memory problems. But...
 You cannot use a counter cache with a condition. Let's change our example for a minute. Let's say each comment could either be "approved", meaning you moderated it and allow it to show on your page, or "pending". Perhaps this is a vital piece of information and you MUST show it on your page.  Previously we would have done this:
 
 ```erb
-<%= "#{ post.comments.approved.count } approved comments"
-<%= "#{ post.comments.pending.count } pending comments"
+<%= "#{ post.comments.approved.count } approved comments" %>
+<%= "#{ post.comments.pending.count } pending comments" %>
 ```
 
 In this case the `Comment` model has a `status` field and calling `comments.pending` is equivalent to adding `where(status: "pending")`. It would be great if we could have a `post.count_of_pending_comments` cache and a `post.count_of_approved_comments` cache, but we can't. There are some ways to hack it, but there are edge cases, and not all apps can safely accommodate for all edge cases. Let's say ours is one of those.
