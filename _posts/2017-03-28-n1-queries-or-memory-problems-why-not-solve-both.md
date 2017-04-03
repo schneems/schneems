@@ -9,7 +9,7 @@ categories:
 ---
 
 
-This post is going to help save you money if you're running a Rails server. It starts like this: you write an app. Let's say you're building the next hyper-targeted blogging platform for medium length posts. When you login, you see a paginated list of all of the articles you've written. You have a `Post` model and maybe for to do tags, you have a `Tag` model`, and for comments, you have a `Comment` model. You write your view so that it renders the posts:
+This post is going to help save you money if you're running a Rails server. It starts like this: you write an app. Let's say you're building the next hyper-targeted blogging platform for medium length posts. When you login, you see a paginated list of all of the articles you've written. You have a `Post` model and maybe for to do tags, you have a `Tag` model, and for comments, you have a `Comment` model. You write your view so that it renders the posts:
 
 ```erb
 
