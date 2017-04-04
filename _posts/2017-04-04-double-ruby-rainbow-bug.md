@@ -8,7 +8,7 @@ categories:
     - ruby
 ---
 
-What happens when "don't do that" turns into "it worked before"? This is exactly the scenario I was faced with recently. We had a string of tickets, maybe 4 or so in under two days with the same weird error message. This frequency normally indicates that something changed, but the error was in a weird place, didn't seem to be related to any new code. Here's the error people were reporting on Heroku:
+What happens when "don't do that" turns into "it worked before"? This is exactly the scenario I was faced with recently. We had a string of tickets in under two days with the same weird error message. This frequency normally indicates that something changed, but the error was in a weird place, didn't seem to be related to any new code. Here's the error people were reporting on Heroku:
 
 ```sh
 remote: -----> Ruby app detected
