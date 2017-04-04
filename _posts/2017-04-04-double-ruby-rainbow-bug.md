@@ -10,7 +10,7 @@ categories:
 
 What happens when "don't do that" turns into "it worked before"? This is exactly the scenario I was faced with recently. We had a string of tickets, maybe 4 or so in under two days with the same weird error message. This frequency normally indicates that something changed, but the error was in a weird place, didn't seem to be related to any new code. Here's the error people were reporting on Heroku:
 
-```
+```sh
 remote: -----> Ruby app detected
 remote: /tmp/tmp.y7163/bin/ruby: symbol lookup error: /tmp/build_c85cc440028913e25caa54b9ff2142/vendor/bundle/ruby/2.3.0/gems/json-1.8.6/lib/json/ext/generator.so: undefined symbol: rb_data_typed_object_zalloc
 remote:  !     Push rejected, failed to compile Ruby app.
@@ -18,7 +18,7 @@ remote:  !     Push rejected, failed to compile Ruby app.
 
 Pretty cryptic, right? After looking at a few, I figured out a common thread. They all were accidentally invoking the Ruby buildpack twice. Terence Lee dubbed this the "double rainbow" bug. But how is it possible to run the same buildpack twice? When you first deploy, we detect your language by executing `bin/detect` of each buildpack. The first one that returns a good exit code is chosen to compile the app. This buildpack is also "pinned". So if you deploy an app with a `Gemfile` after you deploy, you'll get this asset as your buildpack:
 
-```
+```sh
 $ heroku buildpacks
 === floating-falls-58476 Buildpack URL
 heroku/ruby
@@ -26,13 +26,13 @@ heroku/ruby
 
 So the buildpack for the app is `heroku/ruby`. Now if you wanted to add another buildpack. Let's say you're using [heroku-buildpack-pgbouncer/](https://github.com/heroku/heroku-buildpack-pgbouncer). If you were following along with the directions It will tell you to first add the pgbouncer buildpack
 
-```
+```sh
 $ heroku buildpacks:add https://github.com/heroku/heroku-buildpack-pgbouncer
 ```
 
 But then it also had an example of using the master branch of the `heroku/ruby` buildpack:
 
-```
+```sh
 # Don't do this
 $ heroku buildpacks:add https://github.com/heroku/heroku-buildpack-ruby
 ```
@@ -41,7 +41,7 @@ $ heroku buildpacks:add https://github.com/heroku/heroku-buildpack-ruby
 
 After running these commands you would get something like this in your app:
 
-```
+```sh
 $ heroku buildpacks
 === floating-falls-58476 Buildpack URLs
 1. heroku/ruby
@@ -76,15 +76,15 @@ So now we know the exact failure conditions - it only happens with the `json` ge
 I started adding debug statements, and even found a minor bug that wasn't related, but it wasn't until I focused on the original error message that I made progress. Remember this is what was seen in the failure:
 
 
-```
+```sh
 remote: -----> Ruby app detected
-remote: /tmp/tmp.Se0nOtPeri/bin/ruby: symbol lookup error: /tmp/build_c85cc44940028913e25caa54b9ff2142/vendor/bundle/ruby/2.3.0/gems/json-1.8.6/lib/json/ext/generator.so: undefined symbol: rb_data_typed_object_zalloc
+remote: /tmp/tmp.y7163/bin/ruby: symbol lookup error: /tmp/build_c85cc440028913e25caa54b9ff2142/vendor/bundle/ruby/2.3.0/gems/json-1.8.6/lib/json/ext/generator.so: undefined symbol: rb_data_typed_object_zalloc
 remote:  !     Push rejected, failed to compile Ruby app.
 ```
 
 This error is happening extremely early. Before much code is getting run, we should see this very early on:
 
-```
+```sh
 remote: -----> Ruby app detected
 remote: -----> Compiling Ruby
 ```
@@ -101,12 +101,11 @@ It was so innocuous that it didn't even register as a potential source of proble
 
 What was happening is that the first buildpack would execute. We've set up the buildpacks so not only do they install libraries, they make them available for the next buildpack. This means that the Ruby buildpack will set up the `PATH` and `GEM_PATH` for the next run. This is intended so you can use the `heroku/nodejs` buildpack to put `node` on the path if another buildpack needs it. Unfortunately what was happening is that when `require 'json'` gets called it's checking to see if the `json` gem is installed, and loading that if it is. So it found the gem, loaded it and failed because it was compiled for a different version of Ruby.
 
-How did we fix the issue? First we removed the `require`. We still had to parse JSON input, so I vendored in the [okjson library](https://github.com/kr/okjson). Before we merged that we realized we could [fix the issue by using `unset` on `GEM_PATH` before invoking the rest of the buildpack](https://github.com/heroku/heroku-buildpack-ruby/pull/553). The fix is merged into master branch of the buildpack but not yet deployed.
-
+How did we fix the issue? First we removed the `require`. We still had to parse JSON input, so I vendored in the [okjson library](https://github.com/kr/okjson). Before we merged that we realized we could [fix the issue by using `unset` on `GEM_PATH` before invoking the rest of the buildpack](https://github.com/heroku/heroku-buildpack-ruby/pull/553). This forces Ruby to use the "default" `GEM_PATH` which is the correct path for us. The fix is merged into master branch of the buildpack but not yet deployed.
 
 ## Double Debugging
 
-Even when faced with "why on earth would you do that" type bug reports, it always pays to ask "was this working before". In our case even though running two Ruby buildpacks was accidental, it turns out the same failure mode also showed up in [Heroku CI](https://devcenter.heroku.com/articles/heroku-ci). Which is a very real and very valid use case.
+Even when faced with "why on earth would you do that" type bug reports, it always pays to ask "was this working before?". In our case even though running two Ruby buildpacks was accidental, it turns out the same failure mode also showed up in [Heroku CI](https://devcenter.heroku.com/articles/heroku-ci). Which is a very real and very valid use case.
 
 There are many cases where the fix for a bug isn't that interesting. It's how the bug came to be, why it was allowed to live on to production without being caught, and how it was eventually found out and tamed that's fascinating. In this case, we had not considered the scenario of running the buildpack twice and how a customer's system libraries might interfere with our own code. The reassuring part is that no matter how bad of a bug you find yourself stuck with, once you isolate the behavior and can reliably reproduce it, it's usually a simple matter of time, sweat, and tears.
 
