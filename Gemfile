@@ -6,6 +6,7 @@ gem "jekyll", "3.2.1"
 gem "kramdown"
 gem "rouge"
 
+gem "jekyll-paginate"
 gem "jekyll-redirect-from"
 gem "jekyll-assets"
 gem "sass"
