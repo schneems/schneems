@@ -14,10 +14,15 @@ title: Home
 
     <span class="post-date">{{ post.date | date_to_string }}</span>
 
-    {{ post.content }}
+    {{ post.excerpt }}
+    <p><a href="{{ post.url }}">Keep Reading</a></p>
+
+    <hr />
   </div>
   {% endfor %}
 </div>
+
+{% include mailchimp.html %}
 
 <div class="pagination">
   {% if paginator.next_page %}
