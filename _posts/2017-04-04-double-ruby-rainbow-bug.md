@@ -12,7 +12,7 @@ What happens when "don't do that" turns into "it worked before"? This is exactly
 
 ```
 remote: -----> Ruby app detected
-remote: /tmp/tmp.Se0nOtPeri/bin/ruby: symbol lookup error: /tmp/build_c85cc44940028913e25caa54b9ff2142/vendor/bundle/ruby/2.3.0/gems/json-1.8.6/lib/json/ext/generator.so: undefined symbol: rb_data_typed_object_zalloc
+remote: /tmp/tmp.y7163/bin/ruby: symbol lookup error: /tmp/build_c85cc440028913e25caa54b9ff2142/vendor/bundle/ruby/2.3.0/gems/json-1.8.6/lib/json/ext/generator.so: undefined symbol: rb_data_typed_object_zalloc
 remote:  !     Push rejected, failed to compile Ruby app.
 ```
 
