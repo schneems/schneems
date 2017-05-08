@@ -94,7 +94,7 @@ What if you're on your staging console and you're trying to reproduce a producti
 
 While any instance of your running application should be able to __behave__ like any other instance (dev/prod/test), they shouldn't even have the credentials to connect to all the different services.
 
-If you can ssh into your staging server and take down your production database, that's a problem. While you might say "I'll never do that" or "I'm a good programmer", we're all bad programmers when we're tired, or hungry, or upset. Since we're all bad programmers on some days, we have to always plan for that case. I don't know about you, but not breaking my production app from within my staging environment sounds like a pretty bad time.
+If you can ssh into your staging server and take down your production database, that's a problem. While you might say "I'll never do that" or "I'm a good programmer", we're all bad programmers when we're tired, or hungry, or upset. Since we're all bad programmers on some days, we have to always plan for that case. I don't know about you, but breaking my production app from within my staging environment sounds like a pretty bad time.
 
 ## Two measures of defence
 
