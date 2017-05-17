@@ -22,7 +22,7 @@ You can get your slowest endpoints from your logs, especially if you're getting 
 
 For memory, I like starting with [Scout](https://elements.heroku.com/addons/scout) as it will show you your most expensive endpoints and the memory they're allocating. I start with the biggest offender.
 
-Now we've got an endpoint that we want to work on, what's the next step? Scout will point you to some common problems, for example, if you're allocating thousands of Active Record objects by accident, it will point out the line where the majority of your applications are happening. Usually memory problems come from Active Record. Or to be more precise, your use of Active Record. The biggest issues are that the same code may allocate different amounts of objects depending on what's in your database. If you're loading a user and all their "comments" it's not a big deal if they've got 1 or 2 comments. It's a lot bigger deal if they've got 10,000 or 20,000.
+Now we've got an endpoint that we want to work on, what's the next step? Scout will point you to some common problems, for example, if you're allocating thousands of Active Record objects by accident, it will point out the line where the majority of your allocations are happening. Usually memory problems come from Active Record. Or to be more precise, your use of Active Record. The biggest issues are that the same code may allocate different amounts of objects depending on what's in your database. If you're loading a user and all their "comments" it's not a big deal if they've got 1 or 2 comments. It's a lot bigger deal if they've got 10,000 or 20,000.
 
 There are some common patterns. Make sure all queries to the database are using a `limit` (except perhaps for count queries). This will prevent unexpected object creation. Use `find_each` when you need to loop around a large number of objects. Make sure that if you're [eliminating N+1 queries, that you're not accidentally blowing up your memory](http://schneems.com/2017/03/28/n1-queries-or-memory-problems-why-not-solve-both/).
 
@@ -54,15 +54,17 @@ if defined?(Bullet)
 end
 ```
 
-It will show a footer if it detects an easy-ish problem in Active Record to fix. However, I would always verify with `rack-mini-profiler` that your page time is actually going down after making changes. Sometimes the "right" thing to do actually decreases performance.
+It will show a footer if it detects an easy-ish problem in Active Record to fix. However, I would always verify with `rack-mini-profiler` that your page time is actually going down after making changes. Sometimes the "right" thing to do actually make performance worse.
 
 Always
+
 Be
+
 Benchmarking
 
 Never make a change without first having a baseline. This may be milliseconds to load the page from `rack-mini-profiler`, or number of objects or something else. Don't cheat here. If you're doing page load time, don't just refresh until you get an outlier that is especially slow and then after you make your change just take the best time you see. Ideally, you would record multiple numbers and report the average and variance before and after. That's a bit much for most patches, so I try to take a number that "seems" like it is representative. Write the baseline number down somewhere, like Evernote. When you make improvements, write your new number down.
 
-I haven't found a great way to test performance of API endpoints. Use something like `time curl` and set up the headers needed to auth as your problem user. It would be really cool if someone wrote a gem that added an API test front end to `rack-mini-profiler` where you could specify headers, params, HTTP method, etc. Then click "go" and it would show you the reponse as well as the same details from `rack-mini-profiler` (like where N+1 queries are happening and how much memory is allocated). If you've had some good methods of testing your API via performance tools let me know.
+I haven't found a great way to test performance of API endpoints. You could use something like `time curl` and set up the headers needed to auth as your problem user. It would be really cool if someone wrote a gem that added an API test front end to `rack-mini-profiler` where you could specify headers, params, HTTP method, etc. Then click "go" and it would show you the reponse as well as the same details from `rack-mini-profiler` (like where N+1 queries are happening and how much memory is allocated). If you've had some good methods of testing your API via performance tools let me know.
 
 I would like to eventually add a small memory metric to the default `rack-mini-profiler`. For example, you could grap the `GC.stat(:total_allocated_objects)` before and after the request and display the number by default (instead of having to use a special page via a query param). If someone beats me to this patch, great ;)
 
