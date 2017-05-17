@@ -12,7 +12,9 @@ You want a faster app - where should you start?  At RailsConf 2017 I was in a pa
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/SMxlblLe_Io" frameborder="0" allowfullscreen></iframe>
 
-BTW, watching conf talks at 1.5x speed is the only way to watch conf videos. Enough talk about the panel though, let's get started making things faster!
+> BTW, watching conf talks at 1.5x speed is the only way to watch conf videos.
+
+Enough talk about the panel though, let's get started making things faster!
 
 Start by looking at outliers - either start with your slowest endpoints or your endpoints that generate the most memory.
 
