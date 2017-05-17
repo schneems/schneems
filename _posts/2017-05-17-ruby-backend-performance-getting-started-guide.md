@@ -2,8 +2,8 @@
 title: "Ruby Backend Performance Getting Started Guide"
 layout: post
 published: true
-date: 2017-05-16
-permalink: /2017/05/16/ruby-backend-performance-getting-started-guide/
+date: 2017-05-17
+permalink: /2017/05/17/ruby-backend-performance-getting-started-guide/
 categories:
     - ruby
 ---
