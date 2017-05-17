@@ -8,7 +8,7 @@ categories:
     - ruby
 ---
 
-You want a faster app - where should you start?  At RailsConf 2017 I was in a panel "Performance: performance" moderated by Sam Saffron and joined by Eileen Uchitelle, Rafael Franca, Nate Berkopec, and myself. While we talked about many things, I realized I've never written explicitly about how to go from "zero" to "working on application performance". Here's the video from the panel if you're interested:
+You want a faster app - where should you start?  At RailsConf 2017 I was in a panel "Performance: performance" moderated by Sam Saffron and joined by Eileen Uchitelle, Rafael Franca, and Nate Berkopec. While we talked about many things, I realized I've never written explicitly about how to go from "zero" to "working on application performance". Here's the video from the panel if you're interested:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/SMxlblLe_Io" frameborder="0" allowfullscreen></iframe>
 
