@@ -3,7 +3,7 @@ markdown:         kramdown
 highlighter:      rouge
 
 # Setup
-title:            Schneems - Programming + Open source
+title:            Schneems - Programming Practices, Performance, and Pedantry
 description:      > #
   Hi, I'm Richard Schneeman. I write about Programming and Open Source.
   I run CodeTriage, the best way to get involved with OSS.

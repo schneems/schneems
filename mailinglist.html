@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+{% include mailchimp.html %}
+
+<hr />
+<h3> Previous articles</h3>
+
+<ul class="post">
+{% for post in site.posts limit:20 %}
+  <li>
+    {{ post.date | date_to_string }} -
+    <a href="{{ post.url }}">{{ post.title }}</a>
+  </li>
+{% endfor %}
+</ul>
