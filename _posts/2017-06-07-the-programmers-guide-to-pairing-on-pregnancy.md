@@ -43,7 +43,7 @@ I didn't do this with my first kid, and I wish I had. It kinda sucks that not on
 - Difficulty: Medium
 - Required: In some form, yes
 
-Not assuming all partners are men, but don't get a "dude" book. Not just for pregnancy but in life, if something has "dude" in the title in a non-ironic wa. At best it's light on information and heavy on assumptions. At worst it might be misogynisticly awful. At the end of the day reading anything is better than nothing, but quality varies wildly.
+Not assuming all partners are men, but don't get a "dude" book. Not just for pregnancy but in life, if something has "dude" in the title in a non-ironic way. At best it's light on information and heavy on assumptions. At worst it might be misogynisticly awful. At the end of the day reading anything is better than nothing, but quality varies wildly.
 
 The first time around I chose a book that was awful. It had a bullet point list of things that will happen at each phase of pregnancy and while it was written for men, it had little advice on how to help my wife. It was mostly "don't watch too much football".
 
@@ -124,4 +124,7 @@ You'll need a minimum amount of baby gear coming home from the hospital. A car s
 - Required: Are you freaking kidding me, of course
 
 The most important part of being a good partner is being there for your baby-momma. You might not get everything right, and there's almost always room for improvement, but the least you can do is make a conscious effort to make the process easy on her and the two of you. While I wrote a lot here, and things can get overwhelming remember that 9 months is a long time. It means that you can take things step by step without having to rush it all. It also means that you have no excuse for skipping out on classes, working towards building better habits, or learning a thing or two about pregnancy. Above all else pay attention to your partner. From my favorite baby delivery joke: it took two of you to get that baby in there, it will take at least two to get out.
+
+------
+If you liked this post join my [free mailing list](https://www.schneems.com/mailinglist) for more.
 
