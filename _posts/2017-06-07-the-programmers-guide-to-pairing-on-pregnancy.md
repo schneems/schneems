@@ -14,8 +14,8 @@ You don't have to be physically carrying a child to be involved in a pregnancy. 
 
 ## Go to Appointments
 
-Difficulty: Easy
-Required: Extremely
+- Difficulty: Easy
+- Required: Extremely
 
 It may seem like a small thing, but go with your partner to pregnancy checkups. Even if you've got that big meeting the next day, it's something both of you should be there for. Besides being supportive and holding their hand while bloodwork is  drawn, there are a few excellent reasons to go together. While everyone plans for the best, one out of five pregnancies ends in a miscarriage. If you find out something is wrong during a visit, your partner shouldn't have to be there alone. Even when things are going well, there are so many details the doctor may talk through, that it can be helpful to have a second set of ears. Heads up: there will be handouts, and you may consider taking notes (if that's your thing). There were more than a few times my wife and I had slightly different takeaways, and after comparing notes, we were forced to clarify to make sure we had the right information.
 
@@ -24,8 +24,8 @@ Another way to think of this: if your partner cannot skip something, neither sho
 
 ## Birth Plan
 
-Difficulty: Easy
-Required: Major brownie points if you bring this up
+- Difficulty: Easy
+- Required: Major brownie points if you bring this up
 
 Want to delight your partner when they're not pregnant: surprise them with flowers for no reason. During pregnancy, you can be the best partner TM by proactively considering things you'll need to do and driving them forwards instead of waiting for your baby-momma to take charge of everything.
 
@@ -37,8 +37,8 @@ I didn't do this with my first kid, and I wish I had. It kinda sucks that not on
 
 ## Read a Pregnancy Book
 
-Difficulty: Medium
-Required: In some form, yes
+- Difficulty: Medium
+- Required: In some form, yes
 
 Not assuming all partners are men, but don't get a "dude" book. Not just for pregnancy but in life, if something has "dude" in the title in a non-ironic way, it's probably misogynistic and awful at worst. At best it's light on information and heavy on assumptions. At the end of the day reading anything is better than nothing, but quality varies wildly.
 
@@ -50,8 +50,8 @@ If you don't like a book, get another one. If you're not retaining information, 
 
 ## Birth Classes
 
-Difficulty: Easy
-Required: Absolutely
+- Difficulty: Easy
+- Required: Absolutely
 
 There is as much variety in birthing classes as there are in ways to give birth. While your center may offer a one day "birthing" class, I recommend finding a way to supplement the information. The amount of information and topics is overwhelming. The more spread out, the better you'll retain it. Do some research, find a few around town and ask your partner which ones they would like to check out.
 
@@ -63,8 +63,8 @@ Whether you hire a doula or not, I do recommend getting some form of birth coach
 
 ## Practice Being your Best Self: Brush and Floss
 
-Difficulty: Hard
-Required: Recommended, not required
+- Difficulty: Hard
+- Required: Recommended, not required
 
 Close your eyes and imagine what the "ideal" version of you would be. What activity do you know you __should__ be doing that you aren't? While pregnancy may be stressful to you and your partner, having to wake up 8 times a night will push you past mental and emotional limits you didn't know you had. Not to scare you, humans have coped with infants for many generations, and most of our ancestors turned around and signed up to do it multiple times. I'm going back for seconds, but don't kid yourself that it will be easier later. You'll be more successful if you build a plan and start sticking to it now, than waiting until it's too late.
 
@@ -74,8 +74,8 @@ One item for me was brushing my teeth. I always hated it. Because of this I inte
 
 ## Wean Coffee and Alcohol
 
-Difficulty: Intermediate
-Required: Suggested, not required
+- Difficulty: Intermediate
+- Required: Suggested, not required
 
 One thing I wish I had done in the first pregnancy: limit coffee and alcohol. I love coffee, I love the taste, I love the feeling when the caffeine hits your blood stream early in the morning. I also love a good craft beer, or a scotch, recently even Texas bourbon. I still love these things. The problem is that when we have a bad day, or when things go south we are primed to say "geez I need a drink." After the baby comes, you'll not be able to leave the house as much, and it's tempting to turn fatherhood into a drinking game in the evening. Baby is crying: have a drink. Baby spit up on itself: have a drink. The problem is that your body is already being pushed to its limits by a lack or interrupted sleep. Want to know what's worse than having to get up in the middle of the night to quiet a screaming infant? Trying to do that with a hangover. Even if you didn't drink that much, you might find your predisposition for brain splitting headaches after a drink has substantially increased. You'll also get even worse sleep than without the booze. But the worse part is that it's a cycle of dependence, the next day you feel even WORSE, so what do you do when you had "a bad day" at the end of the day? Reach for a pint of course.
 
@@ -87,8 +87,8 @@ I weaned off coffee because I have a hard time napping. Through the first pregna
 
 ## Morning Sickness & Cravings
 
-Difficulty: Easy
-Required: Absolutely
+- Difficulty: Easy
+- Required: Absolutely
 
 The biggest misnomer in pregnancy is "morning sickness," because, surprise, it happens all day long. It's usually portrayed as a minor inconvenience; a woman throws up casually as a way to indicate to the audience she is pregnant (squeeeee!!). In reality, they may never throw-up, they may have overwhelming nausea for days at a time, or anywhere in between. While it's different for each woman, my wife once described it as worse than labor when taken as a whole. It's no joke, so you need to be ready to help any way you can.
 
@@ -100,15 +100,15 @@ The real joke, of course, is expecting Hollywood to be remotely similar to real 
 
 ## Gear
 
-Difficulty: Easy
-Required: Yes
+- Difficulty: Easy
+- Required: Yes
 
 You'll need a minimum amount of baby gear coming home from the hospital. A car seat, a baby hat, and some clothes. Once you get home you'll also want some swaddles, plenty of fresh diapers (maybe consider cloth if you're the environmental type) and a fair share of onesies. You will also need somewhere for the baby to sleep. There's other things like mittens (so they don't scratch themselves, babies are weird) and bigger items like strollers or swings. You can do research on these things without waiting for your partner. Of course you should talk with them before either of you buy big items, but having some knowledge of the available options will make these conversations much smoother.
 
 ## Try
 
-Difficulty: Easy
-Required: Are you freaking kidding me, of course
+- Difficulty: Easy
+- Required: Are you freaking kidding me, of course
 
 The most important part of being a good partner is being there for your baby-momma. You might not get everything right, and there's almost always room for improvement, but the least you can do is make a conscious effort to make the process easy on her and the two of you. While I wrote a lot here, and things can get overwhelming remember that 9 months is a long time. It means that you can take things step by step without having to rush it all. It also means that you have no excuse for skipping out on classes, working towards building better habits, or learning a thing or two about pregnancy. Above all else pay attention to your partner. From my favorite baby delivery joke: it took two of you to get that baby in there, it will take at least two to get out.
 
