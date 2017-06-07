@@ -47,7 +47,7 @@ Not assuming all partners are men, but don't get a "dude" book. Not just for pre
 
 The first time around I chose a book that was awful. It had a bullet point list of things that will happen at each phase of pregnancy and while it was written for men, it had little advice on how to help my wife. It was mostly "don't watch too much football".
 
-There are two categories of baby books: "what to expect," and "after the birth event." Many books try to cram in both subjects. I think as someone who has never experienced pregnancy first hand, you want a good book focused on pregnancy. I recommend "From the Hips." Often books tend to lean one heavily towards one philosophy; this book presented many along with science to back them up and different quotes from real pregnant women to give you a very well rounded view.
+There are two categories of baby books: "what to expect," and "after the birth event." Many books try to cram in both subjects. I think as someone who has never experienced pregnancy first hand, you want a good book focused on pregnancy. I recommend ["From the Hips"](https://www.amazon.com/gp/product/0307237087?ie=UTF8&tag=schneems-20&camp=1789&linkCode=xm2&creativeASIN=0307237087). Often books tend to lean one heavily towards one philosophy; this book presented many along with science to back them up and different quotes from real pregnant women to give you a very well rounded view.
 
 If you don't like a book, get another one. If you're not retaining information, it's no good.
 
@@ -62,7 +62,7 @@ We used a doula (which is another thing you should maybe check out) and as part 
 
 Whether you hire a doula or not, I do recommend getting some form of birth coach training. Labor lasts a long time, especially for the first pregnancy. If you can support your partner, even a little bit it can help the overall process tremendously. You'll learn things like different labor positions, phrases you can say to coach your partner to breath. Things like holding a partner's hands or rubbing their shoulders can have a big positive effect. Be prepared with food and drinks that are easy to eat in small bites. It's also your job to time contractions and record them (there are apps for this).
 
-> Protip: Depending on the place where you're giving birth, some won't let women eat once they are admitted (ask at your location). Even if they can, they might not be in the mood when they are far along, but it's important to consume calories, so they keep up energy. You can buy "mini" ice cube trays from Amazon and fill them with a sugary liquid your partner likes. Keep them in a Ziploc bag in the freezer until it's ready to go to be admitted to your birth place. We made raspberry leaf tea with honey, let it cool and made ice cubes out of those. In the last few hours my wife described them as "a lifesaver". On this note, don't forget to eat and drink yourself. The longer labor goes, the more your partner needs you.
+> Protip: Depending on the place where you're giving birth, some won't let women eat once they are admitted (ask at your location). Even if they can, they might not be in the mood when they are far along, but it's important to consume calories, so they keep up energy. You can buy ["mini" ice cube trays from Amazon](https://www.amazon.com/gp/product/B01KXCJ7BW?ie=UTF8&tag=schneems-20&camp=1789&linkCode=xm2&creativeASIN=B01KXCJ7BW) and fill them with a sugary liquid your partner likes. Keep them in a Ziploc bag in the freezer until it's ready to go to be admitted to your birth place. We made raspberry leaf tea with honey, let it cool and made ice cubes out of those. In the last few hours my wife described them as "a lifesaver". On this note, don't forget to eat and drink yourself. The longer labor goes, the more your partner needs you.
 
 ## Practice Being your Best Self: Brush and Floss
 
@@ -96,7 +96,7 @@ If you don't have this napping problem, don't worry about it.
 
 > If you want a decaf that is 90% as good as regular, I recommend Third Coast Coffee Roasters. I know it still has some caffeine and also that the process of removing it isn't the best in the world. You do what's right for you and your life. I've lost my regular coffee habbit, you can pry my decaf from my hot, freshly brewed hands.
 
-Side note: drink lots of water. I recommend a [Camelbak Podium](https://www.amazon.com/Camelbak-Products-Bottle-Crimson-25-Ounce/dp/B00EPGLNXS/ref=pd_lpo_vtph_468_tr_t_3?_encoding=UTF8&psc=1&refRID=KYC6N5CZDPJ4TW32JBDP) because you can drink it in bed without having to get up or without spilling. After the birth, you'll be waking up a lot more, and every little thing to make your life a little easier is worth it. Also, get your partner one as they'll be waking up to go to the bathroom well before the big event comes.
+Side note: drink lots of water. I recommend a [Camelbak Podium](https://www.amazon.com/gp/product/B015DJF7KK/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B015DJF7KK&linkCode=as2&tag=schneems-20&linkId=0253c8f4157002cf1fd0dfb1094f88de) because you can drink it in bed without having to get up or without spilling. After the birth, you'll be waking up a lot more, and every little thing to make your life a little easier is worth it. Also, get your partner one as they'll be waking up to go to the bathroom well before the big event comes.
 
 ## Morning Sickness & Cravings
 
@@ -124,7 +124,3 @@ You'll need a minimum amount of baby gear coming home from the hospital. A car s
 - Required: Are you freaking kidding me, of course
 
 The most important part of being a good partner is being there for your baby-momma. You might not get everything right, and there's almost always room for improvement, but the least you can do is make a conscious effort to make the process easy on her and the two of you. While I wrote a lot here, and things can get overwhelming remember that 9 months is a long time. It means that you can take things step by step without having to rush it all. It also means that you have no excuse for skipping out on classes, working towards building better habits, or learning a thing or two about pregnancy. Above all else pay attention to your partner. From my favorite baby delivery joke: it took two of you to get that baby in there, it will take at least two to get out.
-
-------
-If you liked this post join my [free mailing list](https://www.schneems.com/mailinglist) for more.
-
