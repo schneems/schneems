@@ -11,11 +11,11 @@ permalink: /post/18551760180/give-tumblr-some-code-love-with-prettify-js
 ---
 <p>Lets admit it, code and Tumblr don&#8217;t exactly get along right now. Sure you can write your posts in markdown, but there isn&#8217;t really an out of the box experience for syntax highlighting in code blocks.</p>
 
-<p>In the past I&#8217;ve resorted to using <a href="http://schneems.com/2012/01/16/speed-up-capybara-tests-with-devise.html">Gists</a> to store code in my blog, but this can be a hassle to manage, especially if you need to modify your code later. One day I noticed that one of my favorite blogs <a href="http://thechangelog.com/post/18070793740/recommendify-ruby-redis-based-recommendation-engine">The Changelog</a> has great code highlighting on their Tumblr blog. With a little view source-ing and a little googling I eventually found out that the best way to add code highlighting to your blog is through a javascript library called <code>prettify.js</code>. I followed these directions by <a href="http://blog.blairvanderhoof.com/post/17703850161/code-syntax-highlighting-on-tumblr">blairvanderhoof</a>, and came up with something not too bad. While his instructions are good, I made a few modifications. Lets take a look.</p>
+<p>In the past I&#8217;ve resorted to using <a href="https://schneems.com/2012/01/16/speed-up-capybara-tests-with-devise.html">Gists</a> to store code in my blog, but this can be a hassle to manage, especially if you need to modify your code later. One day I noticed that one of my favorite blogs <a href="https://thechangelog.com/post/18070793740/recommendify-ruby-redis-based-recommendation-engine">The Changelog</a> has great code highlighting on their Tumblr blog. With a little view source-ing and a little googling I eventually found out that the best way to add code highlighting to your blog is through a javascript library called <code>prettify.js</code>. I followed these directions by <a href="https://blog.blairvanderhoof.com/post/17703850161/code-syntax-highlighting-on-tumblr">blairvanderhoof</a>, and came up with something not too bad. While his instructions are good, I made a few modifications. Lets take a look.</p>
 
 <ol><li><p>Link to the prettify.js CDN in your html, by customizing and putting this in right before the<code>&lt;body&gt;</code> tag:</p>
 
-<pre><code>&lt;script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"&gt;&lt;/script&gt;
+<pre><code>&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"&gt;&lt;/script&gt;
 </code></pre></li>
 <li><p>Add the &#8216;prettyprint&#8217; class to all <code>&lt;pre&gt;</code> tags that contain a <code>&lt;code&gt;</code> tag. Then initialize the <code>prettyPrint()</code> javascript method by adding this in your HTML:</p>
 
@@ -24,7 +24,7 @@ permalink: /post/18551760180/give-tumblr-some-code-love-with-prettify-js
   prettyPrint();
 });
 </code></pre></li>
-<li><p>Pick a <a href="http://google-code-prettify.googlecode.com/svn/trunk/styles/index.html">prettify theme</a>. I chose the Desert theme. Add that style to the <code>Add Custom CSS</code> under the advanced section, or directly to your HTML.</p>
+<li><p>Pick a <a href="https://google-code-prettify.googlecode.com/svn/trunk/styles/index.html">prettify theme</a>. I chose the Desert theme. Add that style to the <code>Add Custom CSS</code> under the advanced section, or directly to your HTML.</p>
 
 <pre><code> /* desert scheme ported from vim to google prettify */
 pre { display: block; background-color: #333; overflow:scroll; font-size:12px;  }
@@ -67,4 +67,4 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
 
 <p>If your blog includes code snippets, you owe it to your audience to have good looking and readable syntax highlighting.</p>
 
-<p>If you&#8217;re interested in getting started and aren&#8217;t already locked into a blogging platform, I recommend trying out <a href="https://github.com/markpundsack/jekyll-heroku">Jekyll</a> on <a href="http://heroku.com">Heroku</a> it&#8217;s easy to set up and a real hackers blog. You also get syntax highlighting out of the box. Hope this helped &amp; happy blogging.</p>
+<p>If you&#8217;re interested in getting started and aren&#8217;t already locked into a blogging platform, I recommend trying out <a href="https://github.com/markpundsack/jekyll-heroku">Jekyll</a> on <a href="https://heroku.com">Heroku</a> it&#8217;s easy to set up and a real hackers blog. You also get syntax highlighting out of the box. Hope this helped &amp; happy blogging.</p>

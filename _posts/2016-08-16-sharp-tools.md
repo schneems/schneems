@@ -48,7 +48,7 @@ ALTER TABLE the_table ALTER COLUMN id SET DATA TYPE bigint
 
 Why did this happen? I used a DSL provided by my ORM for creating the schema and it wasn't obvious that it was using `int` by default. I know what you're thinking and no, it wasn't Active Record. While the ORM was originally super fast in helping me define and migrate my schema, when I slipped with it, it wasn't pleasant.
 
-![](http://i.imgur.com/FPrM4o6.gif){:class="b-lazy"}
+![](https://i.imgur.com/FPrM4o6.gif){:class="b-lazy"}
 
 This was an extremely painful experience. As humans we learn from pain, we try to avoid it. The longer you've been programming the more adverse to specific pain points you become.
 
@@ -85,4 +85,4 @@ While using woodworking is fun for me, there is a mantra in the shop. Be present
 Stay safe. Stay productive. Stay sharp.
 
 ---
-If you like this post you might also enjoy [Do you Believe in Programming Magic?](https://blog.codeship.com/programming-magic/). You can get these and other articles like them [direct to your inbox](http://schneems.us3.list-manage.com/subscribe?u=a9095027126a1cf15c5062160&id=17dc267687).
+If you like this post you might also enjoy [Do you Believe in Programming Magic?](https://blog.codeship.com/programming-magic/). You can get these and other articles like them [direct to your inbox](https://schneems.us3.list-manage.com/subscribe?u=a9095027126a1cf15c5062160&id=17dc267687).

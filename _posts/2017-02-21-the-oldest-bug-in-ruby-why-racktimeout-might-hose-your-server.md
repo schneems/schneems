@@ -41,7 +41,7 @@ end
 
 In this case, we could be writing to files that need to be deleted after every call to this method. It is guaranteed to be called when the method exits and any time an exception happens in the block.
 
-If you don't follow check out [exceptional ruby](http://exceptionalruby.com/) by Avdi.
+If you don't follow check out [exceptional ruby](https://exceptionalruby.com/) by Avdi.
 
 Unfortunately things can raise exception other than your own code. For example when you're running a program and want to close it, Ruby will receive a signal by the operating system, to let it know to clean up. In the case of a `SIGKILL` it will raise a `SignalException` exception where-ever the code is in execution. This means it could happen here
 

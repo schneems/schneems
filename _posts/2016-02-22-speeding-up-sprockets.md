@@ -5,7 +5,7 @@ subtitle:
 date: 2016-02-22
 published: true
 author_name: Richard Schneeman
-author_url: http://www.schneems.com
+author_url: https://www.schneems.com
 permalink: blogs/2016-02-18-speeding-up-sprockets
 ---
 
@@ -132,4 +132,4 @@ This performance patch was much more involved than I could have imagined when I 
 Thanks for reading, now go and upgrade your sprockets.
 
 ---
-Schneems writes code for Heroku and likes working on open source performance patches. You can find him on his [personal site](http://www.schneems.com).
+Schneems writes code for Heroku and likes working on open source performance patches. You can find him on his [personal site](https://www.schneems.com).

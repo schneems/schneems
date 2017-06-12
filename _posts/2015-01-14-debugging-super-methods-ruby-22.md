@@ -6,12 +6,12 @@ published: true
 tags: debugging, ruby, super, method,
 ---
 
-Debugging a large codebase is hard. Ruby makes debugging easier by exposing [method metadata](http://www.ruby-doc.org/core-2.2.0/Method.html) and [caller stack](http://www.ruby-doc.org/core-2.2.0/Kernel.html#method-i-caller) inside Ruby's own process. Recently in Ruby 2.2.0 this meta inspection got another useful feature by exposing [super method metadata](https://bugs.ruby-lang.org/issues/9781). In this post we will look at how this information can be used to debug and why it needed to be added.
+Debugging a large codebase is hard. Ruby makes debugging easier by exposing [method metadata](https://www.ruby-doc.org/core-2.2.0/Method.html) and [caller stack](https://www.ruby-doc.org/core-2.2.0/Kernel.html#method-i-caller) inside Ruby's own process. Recently in Ruby 2.2.0 this meta inspection got another useful feature by exposing [super method metadata](https://bugs.ruby-lang.org/issues/9781). In this post we will look at how this information can be used to debug and why it needed to be added.
 
 
-<h3><a href="http://engineering.heroku.com/blogs/2014-01-14-debugging-super-methods-ruby22">Keep reading on the Heroku engineering blog</a></h3>.
+<h3><a href="https://engineering.heroku.com/blogs/2014-01-14-debugging-super-methods-ruby22">Keep reading on the Heroku engineering blog</a></h3>.
 
-One of the first talks I ever wrote was "Dissecting Ruby With Ruby" all about inspecting and debugging Ruby processes using nothing but Ruby code. If you've never heard of the [Method  method](http://ruby-doc.org/core-2.2.0/Method.html) it's worth a watch.
+One of the first talks I ever wrote was "Dissecting Ruby With Ruby" all about inspecting and debugging Ruby processes using nothing but Ruby code. If you've never heard of the [Method  method](https://ruby-doc.org/core-2.2.0/Method.html) it's worth a watch.
 
 <iframe width="560" height="315" src="//www.youtube.com/embed/UYVUSoNrM-c" frameborder="0" allowfullscreen></iframe>
 
@@ -93,7 +93,7 @@ This is because our `Doublebark` module isn't an ancestor of the `cinco.class`. 
 
 In feature request [#9781](https://bugs.ruby-lang.org/issues/9781), I proposed adding a method to allow Ruby to give you this information directly. Shortly after, one of my co-workers, [Nobuyoshi Nakada](https://bugs.ruby-lang.org/users/4), A.K.A. "The Patch Monster", attached a working patch, and it was accepted into the Ruby trunk (soon to become 2.2.0) around July.
 
-If you are debugging in Ruby 2.2.0 you can now use [Method#super_method](http://ruby-doc.org/core-2.2.0/Method.html#method-i-super_method). Using the same code we mentioned previously:
+If you are debugging in Ruby 2.2.0 you can now use [Method#super_method](https://ruby-doc.org/core-2.2.0/Method.html#method-i-super_method). Using the same code we mentioned previously:
 
 ```ruby
 cinco = SchneemsDog.new

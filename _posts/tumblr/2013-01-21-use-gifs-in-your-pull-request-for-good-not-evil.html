@@ -8,11 +8,11 @@ tags:
 - pull request
 permalink: /post/41104255619/use-gifs-in-your-pull-request-for-good-not-evil
 ---
-<p>This weekend I made my <a href="http://github.com/rails/rails/issues/9001">OVER 9000</a> pull request to Rails, that features a demo of the functionality in GIF format. I&#8217;ve had a number of people ask the same question &#8220;what is your GIF workflow?&#8221;. For the detail oriented of you in the crowd, here it is.</p>
+<p>This weekend I made my <a href="https://github.com/rails/rails/issues/9001">OVER 9000</a> pull request to Rails, that features a demo of the functionality in GIF format. I&#8217;ve had a number of people ask the same question &#8220;what is your GIF workflow?&#8221;. For the detail oriented of you in the crowd, here it is.</p>
 
 <h2>The Content</h2>
 
-<p>I filmed my screen using <a href="http://www.telestream.net/screenflow/overview.htm">Screen Flow</a>, which I used to do all my work on <a href="http://schneems.com/ut-rails">UT on Rails</a>, it&#8217;s not free at $99, but does editing, exporting, and managed to completely displace Final Cut Pro from my workflow. I recommend it. <a href="http://www.reddit.com/r/ruby/comments/16zvjt/use_gifs_in_your_pull_request_for_good_not_evil/c81a4wd">Another user</a> suggests using quicktime which can do screen recording for free.</p>
+<p>I filmed my screen using <a href="https://www.telestream.net/screenflow/overview.htm">Screen Flow</a>, which I used to do all my work on <a href="https://schneems.com/ut-rails">UT on Rails</a>, it&#8217;s not free at $99, but does editing, exporting, and managed to completely displace Final Cut Pro from my workflow. I recommend it. <a href="https://www.reddit.com/r/ruby/comments/16zvjt/use_gifs_in_your_pull_request_for_good_not_evil/c81a4wd">Another user</a> suggests using quicktime which can do screen recording for free.</p>
 
 <p>I took the video and then cropped it down to 560x315 and exported using H.264, this produced a teensy 619kb <code>.mov</code> file.</p>
 
@@ -38,22 +38,22 @@ permalink: /post/41104255619/use-gifs-in-your-pull-request-for-good-not-evil
 <pre><code>$ convert -layers Optimize output.gif output_optimized.gif
 </code></pre>
 
-<p>Thanks to this poster on <a href="http://superuser.com/questions/436056/how-can-i-get-ffmpeg-to-convert-a-mov-to-a-gif#_=_">super user</a> for the shorthand. Here is a <a href="http://alias.sh/convert-video-gif">shell script</a> to do that same thing, and if you&#8217;re looking for more vibrant results <a href="http://www.reddit.com/r/ruby/comments/16zvjt/use_gifs_in_your_pull_request_for_good_not_evil/c81btvm">this user had some helpful tips</a>.</p>
+<p>Thanks to this poster on <a href="https://superuser.com/questions/436056/how-can-i-get-ffmpeg-to-convert-a-mov-to-a-gif#_=_">super user</a> for the shorthand. Here is a <a href="https://alias.sh/convert-video-gif">shell script</a> to do that same thing, and if you&#8217;re looking for more vibrant results <a href="https://www.reddit.com/r/ruby/comments/16zvjt/use_gifs_in_your_pull_request_for_good_not_evil/c81btvm">this user had some helpful tips</a>.</p>
 
 <p>Now you just need to post your amazing creation.</p>
 
 <h2>Posting</h2>
 
-<p>Now we&#8217;ve got a GIF sitting pretty around 182kb or so, but we need to put it into our PR somehow. You could drag and drop it into Github or you can upload it somewhere publicly accessible for re-use later. Use your favorite cloud storage service here, I like <a href="http://getcloudapp.com/">Cloud App</a>. The service allows you to drag files to your menubar and share them. Make sure you&#8217;ve got the direct link (it should end in a .gif).</p>
+<p>Now we&#8217;ve got a GIF sitting pretty around 182kb or so, but we need to put it into our PR somehow. You could drag and drop it into Github or you can upload it somewhere publicly accessible for re-use later. Use your favorite cloud storage service here, I like <a href="https://getcloudapp.com/">Cloud App</a>. The service allows you to drag files to your menubar and share them. Make sure you&#8217;ve got the direct link (it should end in a .gif).</p>
 
 <p>Once you&#8217;ve done that just add it as a markdown image <code>![title goes here](url goes here)</code> and put it in your pull request, so this:</p>
 
-<pre><code>![Path Helper Demo](<a href="http://f.cl.ly/items/3C121F3E0P0A2o092I0w/output_optimized.gif">http://f.cl.ly/items/3C121F3E0P0A2o092I0w/output_optimized.gif</a>)
+<pre><code>![Path Helper Demo](<a href="https://f.cl.ly/items/3C121F3E0P0A2o092I0w/output_optimized.gif">https://f.cl.ly/items/3C121F3E0P0A2o092I0w/output_optimized.gif</a>)
 </code></pre>
 
 <p>Becomes this:</p>
 
-<p><img src="http://f.cl.ly/items/3C121F3E0P0A2o092I0w/output_optimized.gif" alt="Path Helper Demo"/></p>
+<p><img src="https://f.cl.ly/items/3C121F3E0P0A2o092I0w/output_optimized.gif" alt="Path Helper Demo"/></p>
 
 <h2>Enjoy</h2>
 
@@ -61,4 +61,4 @@ permalink: /post/41104255619/use-gifs-in-your-pull-request-for-good-not-evil
 
 <p>Thanks for sticking around, hope you learned something. Now go out and contribute to open source so you can feel like this:</p>
 
-<p><img src="http://f.cl.ly/items/252h1x2H120w1i1Y1a1j/20121112174030!Happy_dance,gif.gif" alt=""/></p>
+<p><img src="https://f.cl.ly/items/252h1x2H120w1i1Y1a1j/20121112174030!Happy_dance,gif.gif" alt=""/></p>

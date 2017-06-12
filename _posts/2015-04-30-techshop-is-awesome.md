@@ -11,20 +11,20 @@ set me down my recent woodworking path. The only problem was that I didn't have 
 
 ---
 
-This is a re-post of an entry I wrote for [the house blog](http://helloschneeman.tumblr.com/post/117605399410/techshop-is-awesome).
+This is a re-post of an entry I wrote for [the house blog](https://helloschneeman.tumblr.com/post/117605399410/techshop-is-awesome).
 
 ---
 
 
 Through my life my dad always had a workshop, I've been building pinewood derby cars and cutting 2x4s on a table saw since I was a boy. I've got a modest collection of hand me down tools in a shed out back, but when my ambitions when from construction grade woodworking to finer things, I didn't have the space, or the tools, or the cash to get started. Techshop solves these problems.
 
-![](http://www.roundrocktexas.gov/main/wp-content/uploads/2015/03/techshop-logo.png)
+![](https://www.roundrocktexas.gov/main/wp-content/uploads/2015/03/techshop-logo.png)
 
 Located about 30 minutes North of where I live, they've got a ton of woodworking machines. A $2k+ saw stop tablesaw with an amazing outfeed table, drill press, bandsaw, chop saw, and what I really needed: a jointer and planer. In addition to woodworking tools they've got metal working, quilting, laser cutting, 3d printing, and pretty much anything else you can think of as being both DIY and expensive. So far we've built a kitchen table bench, and we're working on a matching table.
 
 ![](https://www.dropbox.com/s/8xg43pj05x4s96y/2015-03-11%2020.02.10.jpg?dl=1)
 
-The membership works like a gym. You pay a monthly fee and get access to everything. The only difference is that few things in a gym can maim you quite as quickly as the equipment found all around techshop. So to use a piece of equipment, you must first go through a training course. I took one for "basic woodshop" and one for "jointer/planer". You can see [classes listed here](http://www.techshop.ws/take_classes.html?storeId=11).
+The membership works like a gym. You pay a monthly fee and get access to everything. The only difference is that few things in a gym can maim you quite as quickly as the equipment found all around techshop. So to use a piece of equipment, you must first go through a training course. I took one for "basic woodshop" and one for "jointer/planer". You can see [classes listed here](https://www.techshop.ws/take_classes.html?storeId=11).
 
 
 A good jointer would easily cost me $700, the tech shop ran a promotion for 3 months of membership with 2 free classes for $300. Not only could I use the jointer there and save $400, I got a class out of it and a fully stocked workspace with speed squares, clamps, and more. They also have these large tables you can use in the common area, they're first come first serve, but i've never had a problem getting one.

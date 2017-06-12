@@ -13,7 +13,7 @@ The only way to be heard in programming these days is to start fires, and kill s
 
 Programming is inherently a creative process. Like writing, painting, and sufficiently advanced mathematics. There's not one right approach to designing anything creative. You must start somewhere. For me, that's usually a ping pong of code and README. I start writing code as soon as possible, and throw it away often. When I'm stuck I go back to writing in my README.
 
-While designing code: Some people write tests, others write BDD style "specs", others daydream for days-and hours until they put digits-to-keyboard. The important thing here is that, there is __A__ design, not how that design was created. When [I remodeled my house](http://helloschneeman.tumblr.com/) I made a design in Sketchup instead of AutoCAD. The result was good, the end users (my wife and I) were happy. Though, I still stand by my statement: [We Should (Absolutely Never) Build Software Like We Build Houses](http://www.schneems.com/2014/03/14/why-we-should-never-build-software-like.html)
+While designing code: Some people write tests, others write BDD style "specs", others daydream for days-and hours until they put digits-to-keyboard. The important thing here is that, there is __A__ design, not how that design was created. When [I remodeled my house](https://helloschneeman.tumblr.com/) I made a design in Sketchup instead of AutoCAD. The result was good, the end users (my wife and I) were happy. Though, I still stand by my statement: [We Should (Absolutely Never) Build Software Like We Build Houses](https://www.schneems.com/2014/03/14/why-we-should-never-build-software-like.html)
 
 The important thing for me: is that I understand my user's wants and needs.
 
@@ -27,9 +27,9 @@ I test two things: experiences and interfaces.
 
 Call it what you will, Test the things that hurt when they break. Find out how your user's utilize your code and make sure your tests cover that.
 
-For my, somewhat popular, [Wicked gem](http://rubygems.org/gems/wicked) that implements step-by-step wizards in your controllers, this meant I made a bunch of step-by-step wizard controllers and drove them with Capybara. I wrote a library that uses Puma, so, to test it: [I ran Puma](https://github.com/schneems/puma_auto_tune/blob/master/test/test_helper.rb#L55). If I can test the [Heroku Ruby Buildpack](https://github.com/heroku/heroku-buildpack-ruby/tree/master/spec), then, surely, you can find a way to [Test the Untestable](https://www.youtube.com/watch?v=QHMKIHkY1nM).
+For my, somewhat popular, [Wicked gem](https://rubygems.org/gems/wicked) that implements step-by-step wizards in your controllers, this meant I made a bunch of step-by-step wizard controllers and drove them with Capybara. I wrote a library that uses Puma, so, to test it: [I ran Puma](https://github.com/schneems/puma_auto_tune/blob/master/test/test_helper.rb#L55). If I can test the [Heroku Ruby Buildpack](https://github.com/heroku/heroku-buildpack-ruby/tree/master/spec), then, surely, you can find a way to [Test the Untestable](https://www.youtube.com/watch?v=QHMKIHkY1nM).
 
-To me this just makes sense. When I worked for [Gowalla](http://en.wikipedia.org/wiki/Gowalla), we once had signups broken for 3 days. For a social network: This. Hurt. Afterwards, we added tests around the failure, I made sure to manually test signups and watch metrics after all my major deploys. We never felt that pain again.
+To me this just makes sense. When I worked for [Gowalla](https://en.wikipedia.org/wiki/Gowalla), we once had signups broken for 3 days. For a social network: This. Hurt. Afterwards, we added tests around the failure, I made sure to manually test signups and watch metrics after all my major deploys. We never felt that pain again.
 
 Again: test what hurts when it breaks, before it breaks.
 
@@ -40,7 +40,7 @@ If you're writing a library, you need to test the interface. Or, how other code 
 
 I do write "unit" tests, but, mostly for refactoring. My unit tests tell me how all of my code fits together and helps to convey a public interface. People will use your code in unexpected ways, by testing at the unit level, you can reach more cases in less time.
 
-Don't be afraid to throw away these tests, though, when your interfaces change, it may be a good time to rev a [version if you're using sem-ver](http://semver.org/).
+Don't be afraid to throw away these tests, though, when your interfaces change, it may be a good time to rev a [version if you're using sem-ver](https://semver.org/).
 
 ## My dirty secret
 
@@ -52,6 +52,6 @@ Whether I start with the test or end with it, anything worth not breaking will b
 
 Don't take my words as gospel, or anyone else's, for that matter. God objects are bad, in code and in real life. I really enjoyed DHH's keynote, and I find that many of his ideas have been weighed down by the zeal which they've been delivered.
 
-I must frequently make bold claims to get people's attention. They [get eyeballs](http://www.reddit.com/r/programming/comments/20enqe/why_we_should_absolutely_never_build_software/) but, often at the expense of my message. For me, that's okay. One of the biggest points lost from the whole keynote is that, there is no "one way" to write software.
+I must frequently make bold claims to get people's attention. They [get eyeballs](https://www.reddit.com/r/programming/comments/20enqe/why_we_should_absolutely_never_build_software/) but, often at the expense of my message. For me, that's okay. One of the biggest points lost from the whole keynote is that, there is no "one way" to write software.
 
 Let's not be ashamed to tell one another how we work. Let's keep striving to get better, and let's be accepting of other's differences. Engage in discourse, but don't fight to win, fight to be better. I'm [@schneems](twitter.com/schneems), and this is how I roll.

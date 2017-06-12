@@ -6,7 +6,7 @@ Theme mostly from Hyde.
 
 ## Colors
 
-http://www.colourlovers.com/palette/128467/Pink_Walrus
+https://www.colourlovers.com/palette/128467/Pink_Walrus
 
 
 ## Run

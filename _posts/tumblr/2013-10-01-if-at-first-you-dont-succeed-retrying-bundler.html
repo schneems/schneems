@@ -18,11 +18,11 @@ permalink: /post/62808786400/if-at-first-you-dont-succeed-retrying-bundler
 
 <p>What about your code?</p>
 
-<p>As programmers we deal with flaky network connections, crashing data stores, and user input day in and day out. It&#8217;s important to remember that all of these things <strong>will</strong> fail, and our code should be prepared to get back on the horse, turn itself off and on again, and <a href="http://www.youtube.com/watch?v=6qOnInTJsos">try again</a>.</p>
+<p>As programmers we deal with flaky network connections, crashing data stores, and user input day in and day out. It&#8217;s important to remember that all of these things <strong>will</strong> fail, and our code should be prepared to get back on the horse, turn itself off and on again, and <a href="https://www.youtube.com/watch?v=6qOnInTJsos">try again</a>.</p>
 
 <h1>Retrying Bundler</h1>
 
-<p>In the <a href="https://github.com/heroku/heroku-buildpack-ruby">Ruby buildpack for Heroku</a> we deal with a staggaring array of uncertainties, so anything we can do to ensure a smooth experience is a good thing. About 2 months <a href="https://twitter.com/wuputah">JD</a> opened an <a href="https://github.com/heroku/heroku-buildpack-ruby/issues/129">issue requesting us to retry failed bundle installs</a>, it&#8217;s something travis does, and just because a network hiccupped for a split second is no reason to totally cancel an app compile. Besides all a user would do is simply try again. After talking the issue over with <a href="https://twitter.com/hone02">Terence Lee</a> we decided to take on the problem. Though instead of solving  it locally for the buildpack, we made the concious decision to work on pushing the change upstream into bundler itself. This means that the Ruby buildpack gets retry logic for free as well as every bundler user. Which is what I like to call a <a href="http://www.hark.com/clips/jslpnxpwjd-win-win-win">win win win</a> scenario. After about a month from initial PR <a href="https://github.com/bundler/bundler/pull/2601">bundler/bundler#2601</a> was merged.</p>
+<p>In the <a href="https://github.com/heroku/heroku-buildpack-ruby">Ruby buildpack for Heroku</a> we deal with a staggaring array of uncertainties, so anything we can do to ensure a smooth experience is a good thing. About 2 months <a href="https://twitter.com/wuputah">JD</a> opened an <a href="https://github.com/heroku/heroku-buildpack-ruby/issues/129">issue requesting us to retry failed bundle installs</a>, it&#8217;s something travis does, and just because a network hiccupped for a split second is no reason to totally cancel an app compile. Besides all a user would do is simply try again. After talking the issue over with <a href="https://twitter.com/hone02">Terence Lee</a> we decided to take on the problem. Though instead of solving  it locally for the buildpack, we made the concious decision to work on pushing the change upstream into bundler itself. This means that the Ruby buildpack gets retry logic for free as well as every bundler user. Which is what I like to call a <a href="https://www.hark.com/clips/jslpnxpwjd-win-win-win">win win win</a> scenario. After about a month from initial PR <a href="https://github.com/bundler/bundler/pull/2601">bundler/bundler#2601</a> was merged.</p>
 
 <p>This patch allows several network operations to be retried, and even better, it defaults those operations to be retried twice (so the operation will run up to 3 times by default). To skip these retry attempts you would need to explicitly tell it to retry 0 times:</p>
 
@@ -43,20 +43,20 @@ permalink: /post/62808786400/if-at-first-you-dont-succeed-retrying-bundler
 
 <p>It&#8217;s a small library that I&#8217;ve used in several projects and find incredibly helpful. Since writing it I&#8217;ve found that many of the tools I use every day actually have retry behavior baked in. &#8220;Like what?&#8221; You might ask. Well have you ever used curl? It has a <code>--retry</code> option (defaulted to zero).</p>
 
-<pre><code>$ curl <a href="http://schneems.com">http://schneems.com</a> --retry 3
+<pre><code>$ curl <a href="https://schneems.com">https://schneems.com</a> --retry 3
 </code></pre>
 
 <p>Then there&#8217;s <a href="https://github.com/drbrain/net-http-persistent/pull/4">Net HTTP Persistant</a>, and my personal favorite ruby http lib <a href="https://github.com/geemus/excon">Excon</a>:</p>
 
-<pre><code>Excon.get("http://schneems.com", idempotent: true, retry_limit: 6)
+<pre><code>Excon.get("https://schneems.com", idempotent: true, retry_limit: 6)
 </code></pre>
 
-<p>Even strangely enough <a href="http://linux.101hacks.com/unix/tail/">Tail</a></p>
+<p>Even strangely enough <a href="https://linux.101hacks.com/unix/tail/">Tail</a></p>
 
 <pre><code>$ tail ./log/development.log --retry
 </code></pre>
 
-<p>Then there&#8217;s retry logic burried deep in things we use every day like <a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/AbstractAdapter.html#method-i-reconnect-21">database connections</a>.</p>
+<p>Then there&#8217;s retry logic burried deep in things we use every day like <a href="https://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/AbstractAdapter.html#method-i-reconnect-21">database connections</a>.</p>
 
 <h2>Not just for Production</h2>
 
@@ -69,9 +69,9 @@ permalink: /post/62808786400/if-at-first-you-dont-succeed-retrying-bundler
 
 <p>While this doesn&#8217;t guarantee we won&#8217;t see false failures due to network, it drastically minimizes the chances and helps bump the signal to noise ratio of our tests.</p>
 
-<h2><a href="http://en.wikipedia.org/wiki/Idempotence">Idempotent</a></h2>
+<h2><a href="https://en.wikipedia.org/wiki/Idempotence">Idempotent</a></h2>
 
-<p><a href="http://www.youtube.com/watch?v=N3mPKN1eQVU">Pronounced ˈī-dəm-ˌpō-tənt&#8217;</a> is the idea that when run again, the result of your code should not change. If part of your code succeeds, and part of it fails and the whole thing re-runs, will everything work out? Network connections for most GET requests are easy to retry. While doing more complicated work or manipulating data inside of data stores you should use <a href="http://markdaggett.com/blog/2011/12/01/transactions-in-rails/">transactions</a> to avoid getting partially applied code. While the entirety of your code being retried does not need to be idempotent, the individual pieces need to be.</p>
+<p><a href="https://www.youtube.com/watch?v=N3mPKN1eQVU">Pronounced ˈī-dəm-ˌpō-tənt&#8217;</a> is the idea that when run again, the result of your code should not change. If part of your code succeeds, and part of it fails and the whole thing re-runs, will everything work out? Network connections for most GET requests are easy to retry. While doing more complicated work or manipulating data inside of data stores you should use <a href="https://markdaggett.com/blog/2011/12/01/transactions-in-rails/">transactions</a> to avoid getting partially applied code. While the entirety of your code being retried does not need to be idempotent, the individual pieces need to be.</p>
 
 <p>When in doubt only retry the smallest amount of code possible.</p>
 
@@ -79,6 +79,6 @@ permalink: /post/62808786400/if-at-first-you-dont-succeed-retrying-bundler
 
 <p>If you&#8217;re interested in adding some more retry logic to your own code, Jordan Sissel has some patterns: <a href="https://github.com/jordansissel/software-patterns/tree/master/retry-on-failure/ruby">Retry on Failure Ruby software pattern</a>. You can also check out my <a href="https://github.com/schneems/rrrretry">rrrretry</a> gem, or one of its many many compatriots. You can even try writing your own (it&#8217;s a fun kata).</p>
 
-<p>While for some <a href="http://www.youtube.com/watch?v=OZuUwcl_wT8">failure is not an option</a> to make your code embrace, extend, and retry can give your programs a second chance, literally.</p>
+<p>While for some <a href="https://www.youtube.com/watch?v=OZuUwcl_wT8">failure is not an option</a> to make your code embrace, extend, and retry can give your programs a second chance, literally.</p>
 
-<hr><p>Richard <a href="http://twitter.com/schneems">@schneems</a> works for Heroku and sometimes <a href="http://shop.oreilly.com/product/0636920027409.do">writes books</a>, <a href="http://schneems.com/ut-rails">teaches at the University of Texas</a> and runs <a href="http://www.codetriage.com/">Code Triage</a>. If you didn&#8217;t enjoy this article maybe you should come back later and give his writing a (re)try.</p>
+<hr><p>Richard <a href="https://twitter.com/schneems">@schneems</a> works for Heroku and sometimes <a href="https://shop.oreilly.com/product/0636920027409.do">writes books</a>, <a href="https://schneems.com/ut-rails">teaches at the University of Texas</a> and runs <a href="https://www.codetriage.com/">Code Triage</a>. If you didn&#8217;t enjoy this article maybe you should come back later and give his writing a (re)try.</p>

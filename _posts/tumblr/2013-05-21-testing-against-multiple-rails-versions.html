@@ -5,11 +5,11 @@ date: '2013-05-21T11:03:00-05:00'
 tags:
 permalink: /post/50991826838/testing-against-multiple-rails-versions
 ---
-<p>Upgrading major versions of Rails sucks. I was there from 0.9 to 1.0, all the way to the famed 2 to 3 release, and they were all painful. I have good news though: Rails 4 is right around the corner, and it&#8217;s <a href="http://railscasts.com/episodes/415-upgrading-to-rails-4">a much cleaner upgrade</a>. While you are getting your app ready for Rails 4 are you bringing the gems you&#8217;ve written up to speed? If the answer is &#8220;I don&#8217;t know&#8221;, keep reading - we will cover how to test the gems you&#8217;ve written against multiple versions of Rails including Rails 4 release candidate.</p>
+<p>Upgrading major versions of Rails sucks. I was there from 0.9 to 1.0, all the way to the famed 2 to 3 release, and they were all painful. I have good news though: Rails 4 is right around the corner, and it&#8217;s <a href="https://railscasts.com/episodes/415-upgrading-to-rails-4">a much cleaner upgrade</a>. While you are getting your app ready for Rails 4 are you bringing the gems you&#8217;ve written up to speed? If the answer is &#8220;I don&#8217;t know&#8221;, keep reading - we will cover how to test the gems you&#8217;ve written against multiple versions of Rails including Rails 4 release candidate.</p>
 
 <h2>Multiple Versions Matter</h2>
 
-<p>Believe it or not, there are still a large number of people who are using Rails 2 in production today. While the path to upgrading to Rails 3 is well documented (there&#8217;s a <a href="http://www.railsupgradehandbook.com/">whole book on it</a>) often the biggest blocker isn&#8217;t the app, or even the Rails frameworks. The largest hurdle to upgrading is often an un-maintained third party library that can&#8217;t be replaced or re-written and doesn&#8217;t work in the latest versions. There are many reasons to quit maintaining a library, but &#8220;I didn&#8217;t know how to upgrade it to support the latest rails release&#8221; shouldn&#8217;t be one of them.</p>
+<p>Believe it or not, there are still a large number of people who are using Rails 2 in production today. While the path to upgrading to Rails 3 is well documented (there&#8217;s a <a href="https://www.railsupgradehandbook.com/">whole book on it</a>) often the biggest blocker isn&#8217;t the app, or even the Rails frameworks. The largest hurdle to upgrading is often an un-maintained third party library that can&#8217;t be replaced or re-written and doesn&#8217;t work in the latest versions. There are many reasons to quit maintaining a library, but &#8220;I didn&#8217;t know how to upgrade it to support the latest rails release&#8221; shouldn&#8217;t be one of them.</p>
 
 <h2>Testing your App</h2>
 
@@ -112,7 +112,7 @@ $ git push origin test-rails-4
 
 <p>Now go to your repo on Github and open up a pull request like this <a href="https://github.com/schneems/wicked/pull/64">PR on wicked</a>. If you have PR testing turned on with Travis, this will <a href="https://travis-ci.org/schneems/wicked/builds/7241486">kick off a build</a>. If you&#8217;re lucky all of your required tests will pass and it will look like this:</p>
 
-<p><a href="https://travis-ci.org/schneems/wicked/builds/7241460"><img src="http://cl.ly/image/0k3p0h1p2l1D/content.png" alt=""/></a></p>
+<p><a href="https://travis-ci.org/schneems/wicked/builds/7241460"><img src="https://cl.ly/image/0k3p0h1p2l1D/content.png" alt=""/></a></p>
 
 <p>You can see the <a href="https://travis-ci.org/schneems/wicked/builds/7241460">Travis build for Wicked here</a>.</p>
 
@@ -129,7 +129,7 @@ $ git push origin test-rails-4
 <pre><code>$ git checkout -b rails3
 </code></pre>
 
-<p>You&#8217;ll want to have clearly defined versions for your which version of rails your gem supports. You may want to break <a href="http://semver.org/">semver</a> for a single gem push and shadow Rails versioning. So the Rails3 compatible code can be found in version 3.X and the Rails4 compatible code can be found in 4.X of your gem. Once you do this, release as normal using semver, just avoid rev-ing the major version if you don&#8217;t have to.</p>
+<p>You&#8217;ll want to have clearly defined versions for your which version of rails your gem supports. You may want to break <a href="https://semver.org/">semver</a> for a single gem push and shadow Rails versioning. So the Rails3 compatible code can be found in version 3.X and the Rails4 compatible code can be found in 4.X of your gem. Once you do this, release as normal using semver, just avoid rev-ing the major version if you don&#8217;t have to.</p>
 
 <p><strong>Separate Gems</strong>: If keeping different copies of code in different branches seems too hard, break out your gems into multiple libraries. If your library is named <code>foo</code> consider forking it and making a <code>foo_rails4</code> gem. While easier on you, it makes it harder for your users to upgrade since they&#8217;ll have to know you released a separate gem.</p>
 
@@ -154,8 +154,8 @@ $ git push origin test-rails-4
 
 <h2>Test Today</h2>
 
-<p>With <a href="http://gembundler.com/">bundler</a> and <a href="https://travis-ci.org/">Travis CI</a> testing against multiple versions of Rails couldn&#8217;t be easier. Don&#8217;t be the maintainer of that <strong>one Gem</strong> that isn&#8217;t compatible with the Rails4 release. Test your gems against all the Rails versions today.</p>
+<p>With <a href="https://gembundler.com/">bundler</a> and <a href="https://travis-ci.org/">Travis CI</a> testing against multiple versions of Rails couldn&#8217;t be easier. Don&#8217;t be the maintainer of that <strong>one Gem</strong> that isn&#8217;t compatible with the Rails4 release. Test your gems against all the Rails versions today.</p>
 
-<p><strong>update</strong>: <a href="http://twitter.com/shime_rb">@shime_rb</a> pointed out there is a gem called <a href="https://github.com/thoughtbot/appraisal#readme">Appraisal</a> to help if you don&#8217;t want to manage your Gemfile manually. You can see an example <a href="https://github.com/thoughtbot/clearance/blob/master/.travis.yml">travis.yml with appraisal</a>. Travis also supports <a href="http://about.travis-ci.org/docs/user/build-configuration/#The-Build-Matrix">specifying multiple gemfiles</a> which is how <a href="https://github.com/plataformatec/devise/tree/master/gemfiles">devise tests against multiple versions of rails</a> .</p>
+<p><strong>update</strong>: <a href="https://twitter.com/shime_rb">@shime_rb</a> pointed out there is a gem called <a href="https://github.com/thoughtbot/appraisal#readme">Appraisal</a> to help if you don&#8217;t want to manage your Gemfile manually. You can see an example <a href="https://github.com/thoughtbot/clearance/blob/master/.travis.yml">travis.yml with appraisal</a>. Travis also supports <a href="https://about.travis-ci.org/docs/user/build-configuration/#The-Build-Matrix">specifying multiple gemfiles</a> which is how <a href="https://github.com/plataformatec/devise/tree/master/gemfiles">devise tests against multiple versions of rails</a> .</p>
 
-<hr><p>Richard Schneeman works for Heroku and is married to <a href="http://twitter.com/rubyku">Ruby</a>, literally. He wrote the <a href="http://www.codetriage.com/">easiest way to get started helping in open source: Code Triage</a>. Follow him on twitter <a href="http://twitter.com/schneems">@schneems</a>.</p>
+<hr><p>Richard Schneeman works for Heroku and is married to <a href="https://twitter.com/rubyku">Ruby</a>, literally. He wrote the <a href="https://www.codetriage.com/">easiest way to get started helping in open source: Code Triage</a>. Follow him on twitter <a href="https://twitter.com/schneems">@schneems</a>.</p>

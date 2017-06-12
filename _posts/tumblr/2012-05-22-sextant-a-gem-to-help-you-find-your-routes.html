@@ -9,11 +9,11 @@ tags:
 - sextant
 permalink: /post/23543653526/sextant-a-gem-to-help-you-find-your-routes
 ---
-<p>News flash, writing a Rails app without knowing your routes is pretty much impossible, and this just in <code>$ rake routes</code> takes <strong>forever</strong> [1] to run. So how can we build a Rails site with a minimum of time and a maximum of awesome? You can use the recently released <a href="http://github.com/schneems/sextant">Sextant</a>  Gem [2]  to generate routes in your Rails app.</p>
+<p>News flash, writing a Rails app without knowing your routes is pretty much impossible, and this just in <code>$ rake routes</code> takes <strong>forever</strong> [1] to run. So how can we build a Rails site with a minimum of time and a maximum of awesome? You can use the recently released <a href="https://github.com/schneems/sextant">Sextant</a>  Gem [2]  to generate routes in your Rails app.</p>
 
 <p>As it turns out if you benchmark the code in  <code>$ rake routes</code> it is reasonably fast, the slow part comes from having to initialize the app environment every time it&#8217;s run. So lets take some of that code and put it in your already initialized web app. What you get is a whole lot of awesome in a tiny package. Next time you want to see your routes, just visit <code>/rails/routes</code> in your browser if you&#8217;ve got sextant installed, and you&#8217;ll see your routes in no time.</p>
 
-<p><img src="http://media.tumblr.com/tumblr_m42lwz86aB1qevexf.png" alt="Sextant Output"/></p>
+<p><img src="https://media.tumblr.com/tumblr_m42lwz86aB1qevexf.png" alt="Sextant Output"/></p>
 
 <p>To install add this to your Gemfile:</p>
 
@@ -22,8 +22,8 @@ permalink: /post/23543653526/sextant-a-gem-to-help-you-find-your-routes
 
 <p>Then run <code>bundle install</code> and you&#8217;re good to go. Start your server and visit <code>/rails/routes</code></p>
 
-<p>This in-browser information is local only. If you like <a href="http://github.com/schneems/sextant">Sextant</a> tell your friends, and tell me <a href="http://twitter.com/schneems">@schneems</a></p>
+<p>This in-browser information is local only. If you like <a href="https://github.com/schneems/sextant">Sextant</a> tell your friends, and tell me <a href="https://twitter.com/schneems">@schneems</a></p>
 
 <ul><li>[1] Forever is measured in seconds</li>
-<li>[2] <a href="http://en.wikipedia.org/wiki/Sextant">Sextant</a> is an old device for navigating. It can help you find your route on a long journey.</li>
+<li>[2] <a href="https://en.wikipedia.org/wiki/Sextant">Sextant</a> is an old device for navigating. It can help you find your route on a long journey.</li>
 </ul>

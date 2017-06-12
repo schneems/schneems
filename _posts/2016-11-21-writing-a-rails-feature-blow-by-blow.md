@@ -116,7 +116,7 @@ So now the question is what exactly does `asset_path` do?
 - It checks for `nil`, which is nice.
 - It calls `to_s` on any source passed in.
 - It returns an empty string `""` if the source was blank
-- It returns the string if the source matches `URI_REGEXP`, which means that you're giving a full URI i.e. if you pass in `http://foo.com/whatever`. This is needed so that we can mix in controlled and remote assets in things like `javascript_path` which doesn't require managed assets.
+- It returns the string if the source matches `URI_REGEXP`, which means that you're giving a full URI i.e. if you pass in `https://foo.com/whatever`. This is needed so that we can mix in controlled and remote assets in things like `javascript_path` which doesn't require managed assets.
 - It then pulls out any query params such as `?utm_tracking=foo` and preserves them as a "tail"
 
 > If you find yourself taking notes on what a method does consider going back and making a documentation PR to make all that behavior more obvious to future developers.
@@ -431,7 +431,7 @@ Up to this point, I've not put anything in GIT. This is really bad. I usually at
 
 We typically ask contributors to put things in only one commit for PRs as it makes blaming and reverting easier. I've got commit access so socially the rules are a little more lax. It makes sense to break out a large PR like this into several commits in case a direction I was intending to go didn't work out and it makes it easier for me to roll back. We can always rebase later if we need to.
 
-With the initial proof of concept done we need to flesh out the PRs. We need to add `*_url` methods like we did with paths. We also need to alias all the methods so they're not accidentally over-written by someone who adds a `pulic_audio` route to their routes.rb. After that, I want to look into changing method signatures, writing tests and adding docs. With feature work, I typically don't know what the outcome will look like until I'm done so I wait to write a regression test. With bug work, I sometimes try to write a test first. Sometimes finding the right place to write a test and writing a good test takes longer than the actual code. I always write a test, however very little of what I do is considered "TDD". [I wrote a piece on this a while back](http://www.schneems.com/2014/05/08/design-driven-tests.html).
+With the initial proof of concept done we need to flesh out the PRs. We need to add `*_url` methods like we did with paths. We also need to alias all the methods so they're not accidentally over-written by someone who adds a `pulic_audio` route to their routes.rb. After that, I want to look into changing method signatures, writing tests and adding docs. With feature work, I typically don't know what the outcome will look like until I'm done so I wait to write a regression test. With bug work, I sometimes try to write a test first. Sometimes finding the right place to write a test and writing a good test takes longer than the actual code. I always write a test, however very little of what I do is considered "TDD". [I wrote a piece on this a while back](https://www.schneems.com/2014/05/08/design-driven-tests.html).
 
 > Protip: If you can't find a good place to add a test, break something else in the same file you're working in (comment out a random line or add a `raise` somewhere) and run your test suite. The test files that show the most failures and exceptions are a good place to look.
 
@@ -727,4 +727,4 @@ If you've never submitted a feature PR to a major open source project, don't let
 If you wanted to make a change this large, if it all possible if you can make it as a gem first it's best so even if the core team doesn't immediately want your patch, others (including you) can still use it. On the flip side, if you're in the middle of a really gnarly patch and the back and forth with the maintainers seems to take forever, don't give up. It can be normal, even for someone who does this kind of work on a daily or weekly basis.
 
 ---
-If you liked this consider [following @schneems on twitter](https://twitter.com/schneems) or signing up to get [new articles in your inbox](http://eepurl.com/bbuvuz) (about 1 email a week when I'm on a roll).
+If you liked this consider [following @schneems on twitter](https://twitter.com/schneems) or signing up to get [new articles in your inbox](https://eepurl.com/bbuvuz) (about 1 email a week when I'm on a roll).

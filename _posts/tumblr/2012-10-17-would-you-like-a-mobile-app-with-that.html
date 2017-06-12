@@ -9,13 +9,13 @@ tags:
 - mobile
 permalink: /post/33781154129/would-you-like-a-mobile-app-with-that
 ---
-<p>From Android to iPhone, users everywhere have made it abundantly clear that mobile apps are the future, and when it comes to mobile nothing beats a native experience. Native apps mean we need API&#8217;s, and API&#8217;s need Authentication. That&#8217;s why I&#8217;m happy to introduce the solution to your mobile Rails backed authentication needs: <a href="http://github.com/opro/opro">oPRO</a>. oPRO (pronounced oh-pro) is a Rails engine for adding an OAuth Provider to any Rails app. OAuth 2.0 is how the web authenticates services, if you&#8217;ve ever &#8220;signed in with Twitter&#8221; or &#8220;connected with Facebook&#8221; you&#8217;ve used OAuth. If you&#8217;re new to the concept, check out my <a href="http://schneems.com/2012/05/16/oauth-a-tale-of-two-servers.html">introduction to OAuth</a>. Otherwise put your programming cap on, cause we&#8217;re going to build your first Rails API backed iPhone app.</p>
+<p>From Android to iPhone, users everywhere have made it abundantly clear that mobile apps are the future, and when it comes to mobile nothing beats a native experience. Native apps mean we need API&#8217;s, and API&#8217;s need Authentication. That&#8217;s why I&#8217;m happy to introduce the solution to your mobile Rails backed authentication needs: <a href="https://github.com/opro/opro">oPRO</a>. oPRO (pronounced oh-pro) is a Rails engine for adding an OAuth Provider to any Rails app. OAuth 2.0 is how the web authenticates services, if you&#8217;ve ever &#8220;signed in with Twitter&#8221; or &#8220;connected with Facebook&#8221; you&#8217;ve used OAuth. If you&#8217;re new to the concept, check out my <a href="https://schneems.com/2012/05/16/oauth-a-tale-of-two-servers.html">introduction to OAuth</a>. Otherwise put your programming cap on, cause we&#8217;re going to build your first Rails API backed iPhone app.</p>
 
 <h2>The Rails App</h2>
 
 <p>I&#8217;ll assume you&#8217;ve got a Rails app already burning a hole in your pocket, but if you don&#8217;t you can easily <a href="https://github.com/opro/opro_rails_demo">clone one of mine</a>. The Rails app is going to need a <code>User</code> model that we can authenticate against. You will also need authentication on your <code>User</code> model, oPRO has built-in <a href="https://github.com/plataformatec/devise">Devise</a> integration, but if you&#8217;re using something else you can easily <a href="https://github.com/opro/opro#custom-auth">write your own adapter</a>.</p>
 
-<p>Now that you&#8217;ve got a working app you&#8217;ll need to install <a href="http://github.com/opro/opro">oPRO</a>, you&#8217;ll start off by adding this code to your <code>Gemfile</code>:</p>
+<p>Now that you&#8217;ve got a working app you&#8217;ll need to install <a href="https://github.com/opro/opro">oPRO</a>, you&#8217;ll start off by adding this code to your <code>Gemfile</code>:</p>
 
 <pre><code>gem 'opro'
 </code></pre>
@@ -58,7 +58,7 @@ end
 <pre><code>$ rails server
 </code></pre>
 
-<p>Now with your server running on port 3000 you can view the <a href="http://opro-demo.herokuapp.com/oauth_docs">built in documentation</a> if you wish, but for now we need to visit <a href="http://localhost:3000/oauth_client_apps/new">http://localhost:3000/oauth_client_apps/new</a> to generate a client app. Fill out a name for your app such as: <code>my first API app</code> and hit enter. You should be redirected to a page with a secret and a token. Record these, for the purposes of this example we will use these credentials:</p>
+<p>Now with your server running on port 3000 you can view the <a href="https://opro-demo.herokuapp.com/oauth_docs">built in documentation</a> if you wish, but for now we need to visit <a href="https://localhost:3000/oauth_client_apps/new">https://localhost:3000/oauth_client_apps/new</a> to generate a client app. Fill out a name for your app such as: <code>my first API app</code> and hit enter. You should be redirected to a page with a secret and a token. Record these, for the purposes of this example we will use these credentials:</p>
 
 <pre><code>Name:       "my first API app"
 client id:  "3234myClientId5678"
@@ -82,20 +82,20 @@ $ pod install
 $ open "oPRO-Demo.xcworkspace"
 </code></pre>
 
-<p>Here we are using cocoapods much like bundler to install external dependencies for our iPhone app. This app relies on the excellent <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> and <a href="https://github.com/AFNetworking/AFOAuth2Client">AFOauth2Client</a> written by <a href="http://twitter.com/mattt">@mattt</a> from <a href="http://heroku.com">Heroku</a>. After you&#8217;ve run the above, xcode should be open. Make sure the target of the application is set for <code>oPRO-Demo</code> and hit run (cmd+r). You should see a screen like this:</p>
+<p>Here we are using cocoapods much like bundler to install external dependencies for our iPhone app. This app relies on the excellent <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> and <a href="https://github.com/AFNetworking/AFOAuth2Client">AFOauth2Client</a> written by <a href="https://twitter.com/mattt">@mattt</a> from <a href="https://heroku.com">Heroku</a>. After you&#8217;ve run the above, xcode should be open. Make sure the target of the application is set for <code>oPRO-Demo</code> and hit run (cmd+r). You should see a screen like this:</p>
 
-<p><img src="http://f.cl.ly/items/0M121e3j2y2x0i060o3i/Screen%20Shot%202012-08-10%20at%203.47.47%20PM.png" alt=""/></p>
+<p><img src="https://f.cl.ly/items/0M121e3j2y2x0i060o3i/Screen%20Shot%202012-08-10%20at%203.47.47%20PM.png" alt=""/></p>
 
-<p>If you don&#8217;t see that screen you may need to update Xcode, install the iOS developer libraries, or change your target. Try checking the debug logs for output or errors. If you&#8217;re new to iOS programming, I recommend <a href="http://www.bignerdranch.com/book/ios_programming_the_big_nerd_ranch_guide_rd_edition_">big nerd ranch: iOS Programming</a> as a starting point. The <a href="http://www.kickstarter.com/projects/eallam/try-ios-iphone-app-development-course">iOS course from code school</a> looks promising.</p>
+<p>If you don&#8217;t see that screen you may need to update Xcode, install the iOS developer libraries, or change your target. Try checking the debug logs for output or errors. If you&#8217;re new to iOS programming, I recommend <a href="https://www.bignerdranch.com/book/ios_programming_the_big_nerd_ranch_guide_rd_edition_">big nerd ranch: iOS Programming</a> as a starting point. The <a href="https://www.kickstarter.com/projects/eallam/try-ios-iphone-app-development-course">iOS course from code school</a> looks promising.</p>
 
-<p>This iPhone demo app uses a Rails backed oPRO app that I&#8217;m hosting on Heroku: <a href="http://opro-demo.herokuapp.com">http://opro-demo.herokuapp.com</a>. Previously I generated credentials for it that you can see if you open <code>OproAPIClient.h</code>:</p>
+<p>This iPhone demo app uses a Rails backed oPRO app that I&#8217;m hosting on Heroku: <a href="https://opro-demo.herokuapp.com">https://opro-demo.herokuapp.com</a>. Previously I generated credentials for it that you can see if you open <code>OproAPIClient.h</code>:</p>
 
 <pre><code>#define oClientBaseURLString @"https://opro-demo.herokuapp.com/"
 #define oClientID            @"5e163ed8c70cc28e993109c788325307"
 #define oClientSecret        @"898ca5b48548bb3988b3c8469081fcfb"
 </code></pre>
 
-<p>You can make sure the demo works with my default <a href="http://opro-demo.herokuapp.com">Rails app</a> on Heroku by pressing the &#8220;Create a Random User button&#8221;, this is will hit an endpoint on <a href="https://opro-demo.herokuapp.com/">https://opro-demo.herokuapp.com/</a> that saves a new user to the database, and returns the randomly generated  email and password so the mobile app can log in. This functionality isn&#8217;t something you would want to have in your app, but is useful for an OAuth demo.</p>
+<p>You can make sure the demo works with my default <a href="https://opro-demo.herokuapp.com">Rails app</a> on Heroku by pressing the &#8220;Create a Random User button&#8221;, this is will hit an endpoint on <a href="https://opro-demo.herokuapp.com/">https://opro-demo.herokuapp.com/</a> that saves a new user to the database, and returns the randomly generated  email and password so the mobile app can log in. This functionality isn&#8217;t something you would want to have in your app, but is useful for an OAuth demo.</p>
 
 <p>Once the server responds to your iPhone simulator, the email and password fields should now be filled-in and the &#8220;Log In&#8221; button should be active. Press it. This will send the email and password to the server along with your client id and client secret. If everything is successful the server will return an access token you can use on behalf of the user. You should be taken to a new screen that has email, twitter, and zip on it. Try modifying one of the fields and submitting the form. When you do this you are changing data on the Rails server as an authenticated user. From now on, any requests you make with the access token mean you are acting on the behalf of that user.</p>
 
@@ -108,16 +108,16 @@ $ open "oPRO-Demo.xcworkspace"
 <pre><code>$ rails server
 </code></pre>
 
-<p>Now grab the credentials you wrote down earlier after signing up for a client application on your own server. If you didn&#8217;t it&#8217;s okay, you can go to <a href="http://localhost:3000/oauth_client_apps">http://localhost:3000/oauth_client_apps</a>, select an app, and write down the secret and id, for our purposes we will use these:</p>
+<p>Now grab the credentials you wrote down earlier after signing up for a client application on your own server. If you didn&#8217;t it&#8217;s okay, you can go to <a href="https://localhost:3000/oauth_client_apps">https://localhost:3000/oauth_client_apps</a>, select an app, and write down the secret and id, for our purposes we will use these:</p>
 
 <pre><code>Name:       "my first API app"
 client id:  "3234myClientId5678"
 Secret:     "14321myClientSecret8765"
 </code></pre>
 
-<p>Remember that your credentials will be different. Now inside of <code>OproAPIClient.h</code> replace &#8220;https://opro-demo.herokuapp.com/&#8221; with &#8220;<a href="http://localhost:3000/">http://localhost:3000/</a>" and replace the oClientID and oClientSecret with your client and secret. If we were using our example values it would be:</p>
+<p>Remember that your credentials will be different. Now inside of <code>OproAPIClient.h</code> replace &#8220;https://opro-demo.herokuapp.com/&#8221; with &#8220;<a href="https://localhost:3000/">https://localhost:3000/</a>" and replace the oClientID and oClientSecret with your client and secret. If we were using our example values it would be:</p>
 
-<pre><code>#define oClientBaseURLString @"http://localhost:3000/"
+<pre><code>#define oClientBaseURLString @"https://localhost:3000/"
 #define oClientID            @"3234myClientId5678"
 #define oClientSecret        @"14321myClientSecret8765"
 </code></pre>
@@ -126,7 +126,7 @@ Secret:     "14321myClientSecret8765"
 
 <p>Now that you&#8217;ve got your credentials in your iPhone App, re-build it by pressing &#8220;run&#8221; or hitting (cmd+r). If the app didn&#8217;t build check the output from xcode. If everything worked you should see the same screen, but clicking &#8220;Create a Random User button <strong>should not</strong> work. Take a look at your local rails server logs to verify that it is receiving requests from the iPhone simulator. You will receive errors in the log if you are using the &#8220;random button&#8221;.</p>
 
-<p>Since we can&#8217;t create a random user, how will we log in? You&#8217;ll need to create a user in your database. If you&#8217;re using devise you can visit <a href="http://localhost:3000/users/sign_up">http://localhost:3000/users/sign_up</a> and enter an email and password. Remember the email and password. If you can&#8217;t remember where the sign up form is you can always make a new user in the console:</p>
+<p>Since we can&#8217;t create a random user, how will we log in? You&#8217;ll need to create a user in your database. If you&#8217;re using devise you can visit <a href="https://localhost:3000/users/sign_up">https://localhost:3000/users/sign_up</a> and enter an email and password. Remember the email and password. If you can&#8217;t remember where the sign up form is you can always make a new user in the console:</p>
 
 <pre><code>$ rails console
 &gt; password = "password"
@@ -206,12 +206,12 @@ Secret:     "14321myClientSecret8765"
 
 <h2>To the Cloud!</h2>
 
-<p>Now that we&#8217;ve got the client working, we&#8217;ll put our app on Heroku where anyone can hit the API without needing access to your localhost. If you don&#8217;t have an account you&#8217;ll need to sign up at <a href="http://heroku.com">Heroku.com</a>. Once you&#8217;ve done that you can install the <a href="http://toolbelt.heroku.com">Heroku Toolbelt</a> and then you can provision an app, in the same directory as your rails project run:</p>
+<p>Now that we&#8217;ve got the client working, we&#8217;ll put our app on Heroku where anyone can hit the API without needing access to your localhost. If you don&#8217;t have an account you&#8217;ll need to sign up at <a href="https://heroku.com">Heroku.com</a>. Once you&#8217;ve done that you can install the <a href="https://toolbelt.heroku.com">Heroku Toolbelt</a> and then you can provision an app, in the same directory as your rails project run:</p>
 
 <pre><code>$ heroku login
 $ heroku create
 Creating smooth-rain-2686.. done, stack is cedar
-<a href="http://smooth-rain-2686.heroku.com/">http://smooth-rain-2686.heroku.com/</a> | git@heroku.com:smooth-rain-2686
+<a href="https://smooth-rain-2686.heroku.com/">https://smooth-rain-2686.heroku.com/</a> | git@heroku.com:smooth-rain-2686
 </code></pre>
 
 <p><strong>Note:</strong> your url and app name will be different.</p>
@@ -228,17 +228,17 @@ $ git push heroku master
 <pre><code>$ heroku run rake db:migrate
 </code></pre>
 
-<p>Now you can hit your app and make sure it is working right, visit the url that was given to you earlier, such as <a href="http://smooth-rain-2686.heroku.com/.">http://smooth-rain-2686.heroku.com/.</a> If you have any problems you can check the logs by running:</p>
+<p>Now you can hit your app and make sure it is working right, visit the url that was given to you earlier, such as <a href="https://smooth-rain-2686.heroku.com/.">https://smooth-rain-2686.heroku.com/.</a> If you have any problems you can check the logs by running:</p>
 
 <pre><code>$ heroku logs --tail
 </code></pre>
 
-<p>Now that you&#8217;ve got your app running in the cloud, let&#8217;s add <a href="http://en.wikipedia.org/wiki/Secure_Sockets_Layer">SSL</a>. <a href="http://en.wikipedia.org/wiki/Secure_Sockets_Layer">SSL</a> will protect your app from people snooping on credentials, it will allow encrypted communication using <a href="http://en.wikipedia.org/wiki/HTTP_Secure">HTTPS</a> between our iPhone and Rails app. There is an SSL add-on you can add to your Heroku app. To provision this add-on you can go to the the <a href="https://addons.heroku.com/ssl">add-on page</a> or run this from the command line:</p>
+<p>Now that you&#8217;ve got your app running in the cloud, let&#8217;s add <a href="https://en.wikipedia.org/wiki/Secure_Sockets_Layer">SSL</a>. <a href="https://en.wikipedia.org/wiki/Secure_Sockets_Layer">SSL</a> will protect your app from people snooping on credentials, it will allow encrypted communication using <a href="https://en.wikipedia.org/wiki/HTTP_Secure">HTTPS</a> between our iPhone and Rails app. There is an SSL add-on you can add to your Heroku app. To provision this add-on you can go to the the <a href="https://addons.heroku.com/ssl">add-on page</a> or run this from the command line:</p>
 
 <pre><code>$ heroku addons:add ssl:endpoint
 </code></pre>
 
-<p>Once your app is safely running on Heroku you can point your iPhone app to your production server in <code>OproAPIClient.h</code> and don&#8217;t forget to use <code>https://</code> instead of simply <code>http://</code>. You can create a new OAuth client app as we did before by visiting your website <code>/oauth/new</code>, then you&#8217;ll want to add your id and secret to the <code>OproAPIClient.h</code> as well and save a user to the postgres database on Heroku. To make sure you&#8217;re hitting the right url you can always check the server logs on Heroku:</p>
+<p>Once your app is safely running on Heroku you can point your iPhone app to your production server in <code>OproAPIClient.h</code> and don&#8217;t forget to use <code>https://</code> instead of simply <code>https://</code>. You can create a new OAuth client app as we did before by visiting your website <code>/oauth/new</code>, then you&#8217;ll want to add your id and secret to the <code>OproAPIClient.h</code> as well and save a user to the postgres database on Heroku. To make sure you&#8217;re hitting the right url you can always check the server logs on Heroku:</p>
 
 <pre><code>$ heroku logs --tail
 </code></pre>
@@ -247,6 +247,6 @@ $ git push heroku master
 
 <h2>Finishing up</h2>
 
-<p>Today you turned your Rails app into an OAuth 2.0 powered API. You made your first native iPhone app and deployed it&#8217;s server to production. Not bad for an afternoon&#8217;s work. Now that you&#8217;ve got the basics you can learn more about how the authorization in the iPhone app works by visiting the <a href="https://github.com/opro/opro_iphone_demo">oPRO iPhone App Docs</a>. After that you should read about the configuration available visit the <a href="http://opro-demo.herokuapp.com/oauth_docs">oPRO developer&#8217;s docs</a>. If you run into any inaccuracies, or you just want to say hi or show of your oPRO powered app, you can always find me on twitter as <a href="http://twitter.com/schneems">@schneems</a>. May the OAuth be with you.</p>
+<p>Today you turned your Rails app into an OAuth 2.0 powered API. You made your first native iPhone app and deployed it&#8217;s server to production. Not bad for an afternoon&#8217;s work. Now that you&#8217;ve got the basics you can learn more about how the authorization in the iPhone app works by visiting the <a href="https://github.com/opro/opro_iphone_demo">oPRO iPhone App Docs</a>. After that you should read about the configuration available visit the <a href="https://opro-demo.herokuapp.com/oauth_docs">oPRO developer&#8217;s docs</a>. If you run into any inaccuracies, or you just want to say hi or show of your oPRO powered app, you can always find me on twitter as <a href="https://twitter.com/schneems">@schneems</a>. May the OAuth be with you.</p>
 
-<hr><p>Richard works for <a href="http://heroku.com">Heroku</a> on the Ruby Team and teaches <a href="http://schneems.com/ut-rails">rails classes at the University of Texas</a>. If you like APIs as much as he does, chat him up on the twitters <a href="http://twitter.com/schneems">@schneems</a>. If you enjoyed this article you might also enjoy <a href="http://schneems.com/2012/09/13/raise-hell-better-programming-through-error-messages.html">raise &#8220;hell&#8221;: Better Programming through Exceptions</a>.</p>
+<hr><p>Richard works for <a href="https://heroku.com">Heroku</a> on the Ruby Team and teaches <a href="https://schneems.com/ut-rails">rails classes at the University of Texas</a>. If you like APIs as much as he does, chat him up on the twitters <a href="https://twitter.com/schneems">@schneems</a>. If you enjoyed this article you might also enjoy <a href="https://schneems.com/2012/09/13/raise-hell-better-programming-through-error-messages.html">raise &#8220;hell&#8221;: Better Programming through Exceptions</a>.</p>

@@ -18,16 +18,16 @@ No one wants to be stuck in the slow lane, especially Rubyists. In this talk we'
 
 What do you do when a maintainer leaves a project with over 44 million downloads? That is what we had to consider this year when Sprockets lost the developer responsible for more than 70% of the commits. In this talk we will look at recent efforts to revive Sprockets, and make it more maintainable. We will look into how your projects can be structured to avoid burnout and survive a change of maintainers. Let's save Sprockets.
 
-[Post with transcription](http://schneems.com/2016/05/31/saving-sprockets.html)
+[Post with transcription](https://schneems.com/2016/05/31/saving-sprockets.html)
 
 - [Slides](https://speakerdeck.com/schneems/saving-sprockets)
-- [Video](http://schneems.com/2016/05/31/saving-sprockets.html)
+- [Video](https://schneems.com/2016/05/31/saving-sprockets.html)
 
 ### Speed Science [Debugging Ruby Memory] (2015)
 
 Run your app faster, with less RAM and a quicker boot time today. How? With science! In this talk we'll focus on the process of turning performance problems into reproducible bugs we can understand and squash. We'll look at real world use cases where small changes resulted in huge real world performance gains. You'll walk away with concrete and actionable advice to improve the speed of your app, and with the tools to equip your app for a lifetime of speed. Live life in the fast lane, with science!
 
-- [Post](http://www.schneems.com/2015/05/11/how-ruby-uses-memory.html)
+- [Post](https://www.schneems.com/2015/05/11/how-ruby-uses-memory.html)
 - [Slides](https://speakerdeck.com/schneems/speed-science)
 - [Video](https://www.youtube.com/watch?v=m2nj5sUE3hg)
 

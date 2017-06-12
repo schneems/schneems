@@ -22,7 +22,7 @@ Patch: nil
 
 This version is greater than `3.2.1` and less than `4.1.8`. If SemVer is done properly, computers can resolve your application's dependencies in ways that don't break when you upgrade versions. The short version is that teeny patches are always backwards compatible, minor patches are for new features (that are still backwards compatible) and major versions are for breaking changes.
 
-Note: I'm adding an extra version (teeny) not in the [semver.org 2.0 spec](http://semver.org/). Ruby uses this in Rubygems so that `2.0.0-rc1` would become `2.0.0.rc1` for example [Rails 4.2.0.rc1](http://rubygems.org/gems/rails/versions/4.2.0.rc1).
+Note: I'm adding an extra version (teeny) not in the [semver.org 2.0 spec](https://semver.org/). Ruby uses this in Rubygems so that `2.0.0-rc1` would become `2.0.0.rc1` for example [Rails 4.2.0.rc1](https://rubygems.org/gems/rails/versions/4.2.0.rc1).
 
 ## Humans are squishy, machines are not
 
@@ -47,13 +47,13 @@ This way the maintainers of Rack can try new things out without saying "this is 
 
 Really popular projects do this to get feedback. It really helps for you to add `ruby-head` to your Travis CI matrix and to manually try out Rails betas and other library pre versions. If no one tries it, no one gets feedback and a potentially broken version may be released.
 
-Rails has used the convention that a `beta` means unstable. This means that the interface of `beta2` is not guaranteed to be the same as `beta1`. A [release candidate](http://rubygems.org/gems/rails/versions/4.2.0.rc2) or an "rc" is slightly more stable but may have bugs. A release candidate is the maintainers saying "we think this is a totally fine version but we still want cautious people to test it out". Interfaces should be stable at this point and only bugfixes applied to later release candidates.
+Rails has used the convention that a `beta` means unstable. This means that the interface of `beta2` is not guaranteed to be the same as `beta1`. A [release candidate](https://rubygems.org/gems/rails/versions/4.2.0.rc2) or an "rc" is slightly more stable but may have bugs. A release candidate is the maintainers saying "we think this is a totally fine version but we still want cautious people to test it out". Interfaces should be stable at this point and only bugfixes applied to later release candidates.
 
 Note: This is the same behavior as semver.org's patch with a non integer field (i.e. 1.0.1-beta) if your language doesn't have a "teeny".
 
 ### Rev Teeny
 
-The teeny version gets revved any time a bugfix or [security release comes out](http://weblog.rubyonrails.org/2013/12/3/Rails_3_2_16_and_4_0_2_have_been_released/). If you added a feature that didn't break anything, should you rev the teeny version? Nope. You should rev the minor version. The key to a correct teeny SemVer is **backwards-compatible**. If a user upgrades their teeny version and something breaks, welp you didn't use SemVer correctly.
+The teeny version gets revved any time a bugfix or [security release comes out](https://weblog.rubyonrails.org/2013/12/3/Rails_3_2_16_and_4_0_2_have_been_released/). If you added a feature that didn't break anything, should you rev the teeny version? Nope. You should rev the minor version. The key to a correct teeny SemVer is **backwards-compatible**. If a user upgrades their teeny version and something breaks, welp you didn't use SemVer correctly.
 
 ### Rev Minor
 
@@ -77,15 +77,15 @@ def foo
 end
 ```
 
-Or they can be sophisticated using built in logging. From the [semver.org docs](http://semver.org/):
+Or they can be sophisticated using built in logging. From the [semver.org docs](https://semver.org/):
 
 > there should be at least one [...] release that contains the deprecation so that users can smoothly transition to the new API.
 
-In a deprecation, say what is going away, the replacement (if there is one), and point to the location in code where the deprecated code was called. Don't forget to update your documentation. While SemVer is for computers it helps to [keep a changelog](http://keepachangelog.com/) for humans.
+In a deprecation, say what is going away, the replacement (if there is one), and point to the location in code where the deprecated code was called. Don't forget to update your documentation. While SemVer is for computers it helps to [keep a changelog](https://keepachangelog.com/) for humans.
 
 ## There is no going back
 
-In Rubygems any versions are released for good, you can't update them later. If you mess up a release, you can [yank](http://help.rubygems.org/kb/gemcutter/removing-a-published-rubygem) a gem which removes the gem permanently. This should be avoided at all costs, only in cases where the gem would actively do irreversible harm (such as accidentally deleting critical files). Even when your version has a security bug, you shouldn't yank. Instead of yanking, you can release a newer gem with the fixes included. While this leaves little room for mistakes, computers need consistency. Version 1.1.0 of your gem should always behave the same way in 30 seconds or 30 years.
+In Rubygems any versions are released for good, you can't update them later. If you mess up a release, you can [yank](https://help.rubygems.org/kb/gemcutter/removing-a-published-rubygem) a gem which removes the gem permanently. This should be avoided at all costs, only in cases where the gem would actively do irreversible harm (such as accidentally deleting critical files). Even when your version has a security bug, you shouldn't yank. Instead of yanking, you can release a newer gem with the fixes included. While this leaves little room for mistakes, computers need consistency. Version 1.1.0 of your gem should always behave the same way in 30 seconds or 30 years.
 
 ## What about Security?
 
@@ -97,7 +97,7 @@ puts "Versions 3.5.7 and before of <library name> have a backwards incompatible 
 
 State what versions are affected and what versions are safe. This way you won't accidentally break a user's application and if they need to run the insecure code until they can upgrade then they'll be aware of the issue.
 
-If the security vulnerability is bad, you should [look into issuing a CVE](http://seclists.org/oss-sec/2013/q4/43), and notify users if you can.
+If the security vulnerability is bad, you should [look into issuing a CVE](https://seclists.org/oss-sec/2013/q4/43), and notify users if you can.
 
 ## Maintaining Multiple Releases
 
@@ -105,7 +105,7 @@ If your library is popular enough for you to need to actively maintain multiple 
 
 ## Versioning is Hard
 
-This all may look simple or even border-line on "common sense", but based on the number of breaking changes in teeny versions I've seen: it's much harder in practice. When in doubt of any versioning, ask around. Ask your friends and co-workers. Get people to help [triage your github issues with CodeTriage](http://www.codetriage.com/) and open up an issue stating your intentions. The golden rule is to not break anything in a teeny release. The silver rule is to deprecate and communicate before you break anything.
+This all may look simple or even border-line on "common sense", but based on the number of breaking changes in teeny versions I've seen: it's much harder in practice. When in doubt of any versioning, ask around. Ask your friends and co-workers. Get people to help [triage your github issues with CodeTriage](https://www.codetriage.com/) and open up an issue stating your intentions. The golden rule is to not break anything in a teeny release. The silver rule is to deprecate and communicate before you break anything.
 
 If you see a library breaking SemVer, be nice, provide them with resources (like a link to this post), and volunteer to help with versioning in the future. In the end versioning is supposed to make your life easier instead of harder. Don't let versioning scare you. Try your best and you'll get it over time. Happy versioning friends.
 

@@ -5,7 +5,7 @@ subtitle:
 date: 2016-04-18
 published: true
 author_name: Richard Schneeman
-author_url: http://www.schneems.com
+author_url: https://www.schneems.com
 permalink: blogs/optimists-guide-pessimistic-library-versioning
 ---
 

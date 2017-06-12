@@ -13,29 +13,29 @@ tags:
 - memcache
 permalink: /post/20472425017/super-charge-your-rails-app-with-rack-cache-and
 ---
-<p>Slow is sweeping the nation: slow food, slow living, and slow reading. Unfortunately your app called, it said it wants to be fast. Web apps that respond quickly are more enjoyable to work with and Google even gives them a small SEO bump. Recently <a href="http://37signals.com/svn/posts/3112-how-basecamp-next-got-to-be-so-damn-fast-without-using-much-client-side-ui">basecamp next</a> got quite a bit of customer love based on how quickly it responds. The fact of the matter is if it&#8217;s on the web, fast matters.</p>
+<p>Slow is sweeping the nation: slow food, slow living, and slow reading. Unfortunately your app called, it said it wants to be fast. Web apps that respond quickly are more enjoyable to work with and Google even gives them a small SEO bump. Recently <a href="https://37signals.com/svn/posts/3112-how-basecamp-next-got-to-be-so-damn-fast-without-using-much-client-side-ui">basecamp next</a> got quite a bit of customer love based on how quickly it responds. The fact of the matter is if it&#8217;s on the web, fast matters.</p>
 
 <blockquote>
   <p>This is based on an article I wrote for the Heroku Dev Center
   <a href="https://devcenter.heroku.com/articles/rack-cache-memcached-static-assets-rails31">Using Rack::Cache with Memcached for Static Asset Caching in Rails 3.1+</a>.
-  If  you have any questions ping me <a href="http://twitter.com/schneems">@schneems</a>.</p>
+  If  you have any questions ping me <a href="https://twitter.com/schneems">@schneems</a>.</p>
 </blockquote>
 
 <p>One of the quickest ways we can speed up your whole application is to add on HTTP caching. Not only does this mean we return static files quickly, we also reduce the overall load of your application. The easy answer to this hard problem is to configure your application to use <a href="https://devcenter.heroku.com/articles/rack-cache-memcached-static-assets-rails31">Rack::Cache with Memcache</a>.</p>
 
 <h2>Performance Testing</h2>
 
-<p>I did some load testing of the <a href="http://rack-cache-demo.herokuapp.com/">example app</a> with the trial version of the <a href="https://addons.heroku.com/blitz">BlitzIO addon</a>. BlitzIO will hit whatever url you specify with as many simulated users as you want and graph the result for you. This is a run from 1 to 250 concurrent users over the course of 60 seconds with four dynos. Compare the default production settings to using Memcache with Rack::Cache.</p>
+<p>I did some load testing of the <a href="https://rack-cache-demo.herokuapp.com/">example app</a> with the trial version of the <a href="https://addons.heroku.com/blitz">BlitzIO addon</a>. BlitzIO will hit whatever url you specify with as many simulated users as you want and graph the result for you. This is a run from 1 to 250 concurrent users over the course of 60 seconds with four dynos. Compare the default production settings to using Memcache with Rack::Cache.</p>
 
 <h3>Rails Default Settings</h3>
 
-<p><img src="http://media.tumblr.com/tumblr_m1xfilDL7F1qevexf.png" alt="Rails Default Settings"/></p>
+<p><img src="https://media.tumblr.com/tumblr_m1xfilDL7F1qevexf.png" alt="Rails Default Settings"/></p>
 
 <p>(Left is response time [peaks around 500ms] right is number of concurrent users represented by straight line, bottom is time of test )</p>
 
 <h3>Memcache &amp; Rack Cache</h3>
 
-<p><img src="http://media.tumblr.com/tumblr_m1xfk5rZIt1qevexf.png" alt="Memcache Rack::Cache"/></p>
+<p><img src="https://media.tumblr.com/tumblr_m1xfk5rZIt1qevexf.png" alt="Memcache Rack::Cache"/></p>
 
 <p>(Left is response time [peaks around 100ms] right is number of concurrent users represented by straight line, bottom is time of test )</p>
 

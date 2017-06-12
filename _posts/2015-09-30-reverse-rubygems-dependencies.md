@@ -9,7 +9,7 @@ permalink: blogs/2015-09-30-reverse-rubygems
 ---
 Have you ever wondered who out there is using a gem? Now there's an easy way.
 
-Rubygems.org has a reverse dependencies API endpoint that's [documented here](http://guides.rubygems.org/rubygems-org-api/#get---apiv1gemsgem-namereversedependenciesjson). I wrote a simple Ruby script that finds all the reverse dependencies of a gem, and then weighs them by total downloads.
+Rubygems.org has a reverse dependencies API endpoint that's [documented here](https://guides.rubygems.org/rubygems-org-api/#get---apiv1gemsgem-namereversedependenciesjson). I wrote a simple Ruby script that finds all the reverse dependencies of a gem, and then weighs them by total downloads.
 
 To get all the gems that depend on Sprockets you could run this:
 

@@ -206,7 +206,7 @@ def foo
 end
 ```
 
-I love this one since I proposed its addition 😉. You can read more about `super_method` here: http://www.schneems.com/2015/01/14/debugging-super-methods-ruby-22.html
+I love this one since I proposed its addition 😉. You can read more about `super_method` here: https://www.schneems.com/2015/01/14/debugging-super-methods-ruby-22.html
 
 ## List all methods on an object
 

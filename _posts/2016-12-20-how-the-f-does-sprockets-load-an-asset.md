@@ -620,8 +620,8 @@ Much of Sprockets resists refactoring. Many of the design decisions are very cou
 
 I've got some ideas on how we could tease some abstractions, but it's a hard thing to do. We have to be backwards compatible, and bake in room for future features & growth. We also need to be performance conscious.
 
-There are other features that I haven't covered in this example such as how files get written to disk, and how manifest files are generated, but how an asset gets loaded is complicated enough for now. How is your life better now that you know how the "F" Sprockets loads an asset? I have no idea, but I'm sure there's something good about it. If you enjoyed this technical deep dive check out [my post where I live-blog a writing a non-trivial Rails feature](http://schneems.com/2016/11/21/writing-a-rails-feature-blow-by-blow/). Thanks for reading!
+There are other features that I haven't covered in this example such as how files get written to disk, and how manifest files are generated, but how an asset gets loaded is complicated enough for now. How is your life better now that you know how the "F" Sprockets loads an asset? I have no idea, but I'm sure there's something good about it. If you enjoyed this technical deep dive check out [my post where I live-blog a writing a non-trivial Rails feature](https://schneems.com/2016/11/21/writing-a-rails-feature-blow-by-blow/). Thanks for reading!
 
 ----
-If you liked this post (or even if you didn't) you can subscribe to my [mailing list](http://eepurl.com/bbuvuz) to get updates when I post new content. I average a little less than a post a week, often fewer. The more subscribers I get, the more incentive I have to put out content consistently.
+If you liked this post (or even if you didn't) you can subscribe to my [mailing list](https://eepurl.com/bbuvuz) to get updates when I post new content. I average a little less than a post a week, often fewer. The more subscribers I get, the more incentive I have to put out content consistently.
 

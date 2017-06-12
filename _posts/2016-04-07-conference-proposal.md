@@ -5,12 +5,12 @@ subtitle:
 date: 2016-04-07
 published: true
 author_name: Richard Schneeman
-author_url: http://www.schneems.com
+author_url: https://www.schneems.com
 permalink: blogs/2016-04-07-conference-proposal
 ---
 
 
-Want to speak at a conference? First you'll have to get a proposal accepted. To date, I've helped pick talks for [Keep Ruby Weird](http://keeprubyweird.com/) since it started, and this year I reviewed for [RailsConf 2016](http://railsconf.com/). I've also written a number of proposals, some that have been accepted, some that haven't.
+Want to speak at a conference? First you'll have to get a proposal accepted. To date, I've helped pick talks for [Keep Ruby Weird](https://keeprubyweird.com/) since it started, and this year I reviewed for [RailsConf 2016](https://railsconf.com/). I've also written a number of proposals, some that have been accepted, some that haven't.
 
 There's no sure fire formula to guarantee your talks get accepted. In this post I'll share some of the things I liked and disliked while reading proposals as well as some of the things that I've found help when writing my own proposals.
 
@@ -32,7 +32,7 @@ Another way to think of a pitch section is if two people submitted otherwise ide
 
 ## A Cliche is Like...
 
-Don't use cliches, everyone use's cliches and it makes your proposal blend in. If you feel the pull of using a phrase everyone has heard "a million times", ask yourself if it adds to what you're trying to convey. For getting out of this habit I recommend [Word Hero](http://www.amazon.com/gp/product/B004J4X2TE/ref=dp-kindle-redirect?ie=UTF8&btkr=1). Along the line of cliche's avoid absolutes in your writing unless you know they're true
+Don't use cliches, everyone use's cliches and it makes your proposal blend in. If you feel the pull of using a phrase everyone has heard "a million times", ask yourself if it adds to what you're trying to convey. For getting out of this habit I recommend [Word Hero](https://www.amazon.com/gp/product/B004J4X2TE/ref=dp-kindle-redirect?ie=UTF8&btkr=1). Along the line of cliche's avoid absolutes in your writing unless you know they're true
 
 - "Everyone's heard of": I haven't heard about this before, am I nobody?
 - "Obviously": If it's so obvious, why did you have to write it? Drop the word.
@@ -46,7 +46,7 @@ The details section is where you can show how much you've thought about your top
 
 BTW, your talk should have a point. When someone walks away from your talk they might only take away 2-3 things with them. Those things should be in your proposal, the details section seems like a reasonable place to put them. As much as I like to see specific content in the details section, I don't want 60 bullet points of in depth takeaways. You only have <30-60> minutes depending on the conference and talk slot. 60 bullet points leaves you with 30 seconds per each, give your topic room to breathe. Don't give a comprehensive overview of EVERYTHING in a field, you won't have time. Go deep in one part.
 
-If you know what you want to talk about, but you're not sure how you want to structure it, check out [Jeff Casimir's great 'Prototypical Conference Talks'](http://jumpstartlab.com/news/archives/2014/02/15/prototypical-conference-talks) it has some do-s and some don'ts.
+If you know what you want to talk about, but you're not sure how you want to structure it, check out [Jeff Casimir's great 'Prototypical Conference Talks'](https://jumpstartlab.com/news/archives/2014/02/15/prototypical-conference-talks) it has some do-s and some don'ts.
 
 ## Medium over Message
 
@@ -133,7 +133,7 @@ I really want to give the "Everyday Heroes" sometime, it's more of a non-code ta
 
 ## Your First Conf Proposal
 
-So you've read all of this, you've decided to take the plunge. What should you do first? I think you should go speak at a user group. I help to run [Austin on Rails](http://www.austinonrails.org/) and we practically have to hunt down people to give talks. If you approach a local user group organizer with a talk idea they'll most likely give you a slot, probably sooner than you were expecting.
+So you've read all of this, you've decided to take the plunge. What should you do first? I think you should go speak at a user group. I help to run [Austin on Rails](https://www.austinonrails.org/) and we practically have to hunt down people to give talks. If you approach a local user group organizer with a talk idea they'll most likely give you a slot, probably sooner than you were expecting.
 
 If things go well, consider submitting the same talk to a conference. If they go poorly reflect on why, look for local mentors that speaks well, ask them to coffee to give you feedback on how to get better. There's lots of books, and videos on improving technical speaking. Watch good talks. Watch technical conference talks, and also watch talks in other fields like TED that are captivating. What makes them good? You don't have to present exactly like them, but did someone use a technique you really liked? Steal it, and incorporate it. Writers, write. Speakers speak. I've talked at user groups that have been standing room only 100+ people. I've spoken at major industry conferences with less than a dozen people in the room. Just because it is "local" doesn't mean it doesn't count as speaking.
 
@@ -141,13 +141,13 @@ In general you won't get much actionable feedback when presenting. I've had some
 
 Don't blindly give feedback, speaking is a performance. Even the best of intentioned feedback from closely trusted friends can damage egos. Try to focus on the positive, or if there was negative focus on remediation items instead of why things were bad. Speakers, the best time to get feedback is before a conference. Sit a co-worker or loved one down and present to them for an hour, get immediate feedback. Give them a pen and paper to write notes. If you're not practicing for the timing of your talk let them interrupt you with questions. You should consider baking answers of those questions into your talk. You can keep notes on a paper too. Speaking is a skill, if you practice it with appropriate feedback loops you will get better.
 
-As an organizer of Keep Ruby Weird, my number one priority is that my audience will walk away and say "Wow, those speakers were amazing, I'm very glad I came". When we are going through the 2nd or 3rd round we don't do blind review, I have few enough speakers that I can google for videos of them presenting. A few sound bites can go a long way. It's certainly not required, but I take it as an irrefutable sign that you've at least put work into speaking as a craft. If you don't have Confreaks at your local meetup, try [turning any presentation into a screencast](http://www.schneems.com/post/17264773010/turn-any-presentation-into-a-screencast/) and putting it online. Our conference doesn't penalize "non-unique" content i.e. you've given it before. We want it to be well delivered and executed, it's okay if other people have seen the talk before, it won't get moldy. It's okay if english is your second language, it's okay if the other speakers in the lineup don't look or act like you, it's okay if you don't have a famous twitter handle. A good story, well presented can be unstoppable.
+As an organizer of Keep Ruby Weird, my number one priority is that my audience will walk away and say "Wow, those speakers were amazing, I'm very glad I came". When we are going through the 2nd or 3rd round we don't do blind review, I have few enough speakers that I can google for videos of them presenting. A few sound bites can go a long way. It's certainly not required, but I take it as an irrefutable sign that you've at least put work into speaking as a craft. If you don't have Confreaks at your local meetup, try [turning any presentation into a screencast](https://www.schneems.com/post/17264773010/turn-any-presentation-into-a-screencast/) and putting it online. Our conference doesn't penalize "non-unique" content i.e. you've given it before. We want it to be well delivered and executed, it's okay if other people have seen the talk before, it won't get moldy. It's okay if english is your second language, it's okay if the other speakers in the lineup don't look or act like you, it's okay if you don't have a famous twitter handle. A good story, well presented can be unstoppable.
 
 Don't feel like speaking is some rite of passage every developer must go through to advance. I loved theatre in high school. I was awarded "biggest ham" in my first musical of which I had maybe 2 or 3 lines. I get a rush when I speak. I also love teaching, I was an adjunct professor at UT for a short while. I use the pressure of giving talks as a kind of peer review platform for things I'm trying to figure out. Being forced to present on a topic means I can't fake or pretend to know the subject matter. Speaking for me is as much of a personal journey as a public outreach.
 
 I once thought that speaking was how I got to the "next level". I don't think that's true anymore. I know lots of programmers I really respect that don't speak or speak infrequently. There are other ways to express yourself, podcasts, blog posts, technical papers, writing books, pull request, GitHub issues, etc. Speaking to check off some professional bucket-list item will probably not end well. If you get up on the stage because you have something to say and you have something to get out of it, you'll be great.
 
-Now comes the disclaimer, all these opinions and advice are mine only. I'm very biased towards my own successes and failures, try to get a diversity of opinions. Remember that they are opinions, not facts. YMMV. You can see the organizers and review team on the [RailsConf about page](http://railsconf.com/about). Maybe find them at RailsConf, thank them for reading proposals till their eyes fell out and ask them for their thoughts.
+Now comes the disclaimer, all these opinions and advice are mine only. I'm very biased towards my own successes and failures, try to get a diversity of opinions. Remember that they are opinions, not facts. YMMV. You can see the organizers and review team on the [RailsConf about page](https://railsconf.com/about). Maybe find them at RailsConf, thank them for reading proposals till their eyes fell out and ask them for their thoughts.
 
 I forgot to mention, make the last sentence in your abstract somewhat memorable, preferably short, even better if it's actionable. Now go forth and write better proposals!
 

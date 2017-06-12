@@ -7,7 +7,7 @@ author_name: Richard Schneeman
 author_url: https://twitter.com/schneems
 ---
 
-Rails 5 has been brewing for more than a year. To take advantage of new features, and stay on the supported path, you'll need to upgrade. In this post, we'll look at the upgrade process for a production Rails app, [codetriage.com](http://www.codetriage.com). The codebase is open source so you [can follow along](https://github.com/codetriage/codetriage/pull/435). Special thanks to [Prathamesh](https://twitter.com/_cha1tanya) for his help with this blog post.
+Rails 5 has been brewing for more than a year. To take advantage of new features, and stay on the supported path, you'll need to upgrade. In this post, we'll look at the upgrade process for a production Rails app, [codetriage.com](https://www.codetriage.com). The codebase is open source so you [can follow along](https://github.com/codetriage/codetriage/pull/435). Special thanks to [Prathamesh](https://twitter.com/_cha1tanya) for his help with this blog post.
 
 
 > This post originally published to the Heroku blog [Upgrading to Rails 5 beta](https://blog.heroku.com/archives/2016/1/22/rails-5-beta-upgrade).
@@ -179,7 +179,7 @@ NoMethodError: undefined method `normalize_params' for Rack::Utils:Module
     test/integration/user_update_test.rb:50:in `block in <class:UserUpdateTest>'
 ```
 
-A grep of my project indicated `normalize_params` wasn't being used. The error didn't have a long backtrace. On that line `test/integration/user_update_test.rb:50` we are using a [capybara](http://jnicklas.github.io/capybara/) helper:
+A grep of my project indicated `normalize_params` wasn't being used. The error didn't have a long backtrace. On that line `test/integration/user_update_test.rb:50` we are using a [capybara](https://jnicklas.github.io/capybara/) helper:
 
 ```ruby
 click_button 'Save'
@@ -214,7 +214,7 @@ A good deprecation will include the fix in the message. While you technically do
 
 ## Regressions
 
-As you rule out bugs coming from gems or your own code, you'll want to report any regressions to https://github.com/rails/rails/issues. Please check for existing issues first. Unfortunately the tracker is only for bugs and pull requests, we can't use it to help you with "my application won't work" type problems. Take those issues to [Stack Overflow](http://stackoverflow.com).
+As you rule out bugs coming from gems or your own code, you'll want to report any regressions to https://github.com/rails/rails/issues. Please check for existing issues first. Unfortunately the tracker is only for bugs and pull requests, we can't use it to help you with "my application won't work" type problems. Take those issues to [Stack Overflow](https://stackoverflow.com).
 
 ## Deploy and You're Done
 

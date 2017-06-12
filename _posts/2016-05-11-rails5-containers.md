@@ -5,7 +5,7 @@ subtitle:
 date: 2016-05-16
 published: true
 author_name: Richard Schneeman
-author_url: http://www.schneems.com
+author_url: https://www.schneems.com
 permalink: blogs/container_ready_rails_5
 ---
 
@@ -26,7 +26,7 @@ These five lines (and a view or two) are all you need to get a Rails 5 app worki
 
 ## Production Web Server as the Default
 
-Before Rails 5, the default web server that you get when you run `$ rails server` is [WEBrick](http://ruby-doc.org/stdlib-2.3.0/libdoc/webrick/rdoc/WEBrick.html), which is the only server that ships with the Ruby standard library. For years now Heroku has [recommended against using WEBrick as a production webserver](https://devcenter.heroku.com/articles/ruby-default-web-server#why-not-webrick) mostly due to performance concerns, since by default WEBrick cannot handle more than one request at a time. With the addition of ActionCable to Rails 5, the Rails team needed a web server that could handle concurrent requests, so they decided to make [Puma webserver](https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server) the new default. Now, when you deploy a Rails 5 app without a `Procfile` in your project and Heroku boots your application using `$ rails server`, you'll get a performant, production-ready web server _by default_.
+Before Rails 5, the default web server that you get when you run `$ rails server` is [WEBrick](https://ruby-doc.org/stdlib-2.3.0/libdoc/webrick/rdoc/WEBrick.html), which is the only server that ships with the Ruby standard library. For years now Heroku has [recommended against using WEBrick as a production webserver](https://devcenter.heroku.com/articles/ruby-default-web-server#why-not-webrick) mostly due to performance concerns, since by default WEBrick cannot handle more than one request at a time. With the addition of ActionCable to Rails 5, the Rails team needed a web server that could handle concurrent requests, so they decided to make [Puma webserver](https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server) the new default. Now, when you deploy a Rails 5 app without a `Procfile` in your project and Heroku boots your application using `$ rails server`, you'll get a performant, production-ready web server _by default_.
 
 > **Note**: if you're upgrading an existing Rails app, you'll want to [manually add Puma to your app](https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server).
 
@@ -82,7 +82,7 @@ Heroku will set this value when you deploy a Ruby app via the [Heroku Ruby Build
 
 ## STDOUT Logging
 
-The default logging location in Rails has always been to a file with the name of your environment so production logs go to `logs/production.log`. This works well for a traditional deployment but when deploying to a container-based architecture, it makes retrieving and aggregating logs very difficult. Instead, Heroku has advocated for [logging to STDOUT instead](http://12factor.net/logs) and treating your logs as streams. These streams can then be directly consumed, fed into a [logging add-on](https://elements.heroku.com/addons#logging) for archival, or even used for structured data aggregation.
+The default logging location in Rails has always been to a file with the name of your environment so production logs go to `logs/production.log`. This works well for a traditional deployment but when deploying to a container-based architecture, it makes retrieving and aggregating logs very difficult. Instead, Heroku has advocated for [logging to STDOUT instead](https://12factor.net/logs) and treating your logs as streams. These streams can then be directly consumed, fed into a [logging add-on](https://elements.heroku.com/addons#logging) for archival, or even used for structured data aggregation.
 
 The default hasn't changed, but starting in Rails 5, new apps can log to STDOUT via an environment variable
 

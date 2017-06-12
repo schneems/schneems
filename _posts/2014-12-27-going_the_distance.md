@@ -6,10 +6,10 @@ published: true
 tags: algorithms, levenshtein, spelling, ruby, videos
 ---
 
-I'm not what you would cosider an algorithm guy, but after needing to use a bit of spell checking in some code, I became fascinated with the [Levenshtein distance](http://en.wikipedia.org/wiki/Levenshtein_distance). I found plenty of resources explaining what it did, I also found plenty of resources with example implementations. What I couldn't find were any really simple explanations for exactly HOW it worked.
+I'm not what you would cosider an algorithm guy, but after needing to use a bit of spell checking in some code, I became fascinated with the [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance). I found plenty of resources explaining what it did, I also found plenty of resources with example implementations. What I couldn't find were any really simple explanations for exactly HOW it worked.
 
 I'm a big believer in conference driven development, so I signed up to give some talks on the algorithm and then got to work dissecting it. To help I
-[kept distance measurement notes](https://github.com/schneems/going_the_distance) and wrote [scripts that visualized different distance measurement methods](https://github.com/schneems/going_the_distance/tree/master/lib). The talk was a huge successs, I ended up giving it in [RubyKaigi](http://rubykaigi.org/2014/presentation/S-RichardSchneeman) in Japan, [Rails Pacific](http://railspacific.com/#sessions) in Taiwan and [RubyConf](http://rubyconf.org/program#prop_588) in San Diego.
+[kept distance measurement notes](https://github.com/schneems/going_the_distance) and wrote [scripts that visualized different distance measurement methods](https://github.com/schneems/going_the_distance/tree/master/lib). The talk was a huge successs, I ended up giving it in [RubyKaigi](https://rubykaigi.org/2014/presentation/S-RichardSchneeman) in Japan, [Rails Pacific](https://railspacific.com/#sessions) in Taiwan and [RubyConf](https://rubyconf.org/program#prop_588) in San Diego.
 
 I could tell you all about it, but I would rather you watched the video.
 

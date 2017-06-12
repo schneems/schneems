@@ -6,11 +6,11 @@ published: true
 tags: performance, benchmarking, ruby, hash, memory
 ---
 
-**Update:** I made a [PR to mitigate most of the performance penalty in Omniauth](https://github.com/intridea/omniauth/pull/774). Deprecating and removing Hashie has resisted several attempts at refactoring. There's also a really good set of discussions [in the Reddit comments](http://www.reddit.com/r/ruby/comments/2pkzec/hashie_considered_harmful_an_ode_to_hash_and/).
+**Update:** I made a [PR to mitigate most of the performance penalty in Omniauth](https://github.com/intridea/omniauth/pull/774). Deprecating and removing Hashie has resisted several attempts at refactoring. There's also a really good set of discussions [in the Reddit comments](https://www.reddit.com/r/ruby/comments/2pkzec/hashie_considered_harmful_an_ode_to_hash_and/).
 
 -----------
 
-New Ruby programmers mistakenly believe that hashes should be used everywhere for everything. They grow attached to hashes and use them in many places they shouldn't; creating and passing hashes when a proper [Plain Old Ruby Object](http://blog.steveklabnik.com/posts/2011-09-06-the-secret-to-rails-oo-design) would be much better. Eventually, they begin to wish hashes behaved more like objects and this is a horrible idea, as we will see in a short while.
+New Ruby programmers mistakenly believe that hashes should be used everywhere for everything. They grow attached to hashes and use them in many places they shouldn't; creating and passing hashes when a proper [Plain Old Ruby Object](https://blog.steveklabnik.com/posts/2011-09-06-the-secret-to-rails-oo-design) would be much better. Eventually, they begin to wish hashes behaved more like objects and this is a horrible idea, as we will see in a short while.
 
 I love hashes and I love objects. You can store values in hashes and store logic in your objects. To understand why we need to do some digging. Hashes in Ruby are dumb data structures. If you mistype a key, there are no warnings or errors. There’s no easy way to do custom setters or getters on a hash. Hashes are fast, and they're flexible. Hashes work fine for passing data, but work poorly for storing it in a controlled and structured manner. For the uninitiated, here’s what I’m talking about:
 
@@ -31,7 +31,7 @@ Foo.new.spellning = "richard"
 
 This error is extremely valuable, it gives us feedback about our mistake early. With the hash, we wouldn't get an error until we try to access the value of `hash[:spelling]` later, only to find it returning `nil`. Then, we have to hunt down the line to what caused the error, and when I'm tired and hungry, it's frustrating. Using a Ruby object, we get this feedback at the cause of the error rather than somewhere later down the line.
 
-At some point and time, you’ve likely said: “Hmm…hashes, look like objects, wouldn’t it be great if I could access and set values on one like an object?”. Hopefully when this happened you found [OpenStruct](http://www.ruby-doc.org/stdlib-2.1.3/libdoc/ostruct/rdoc/OpenStruct.html) which lets you do basically the same things as a hash, but with the accessors of a user-defined object:
+At some point and time, you’ve likely said: “Hmm…hashes, look like objects, wouldn’t it be great if I could access and set values on one like an object?”. Hopefully when this happened you found [OpenStruct](https://www.ruby-doc.org/stdlib-2.1.3/libdoc/ostruct/rdoc/OpenStruct.html) which lets you do basically the same things as a hash, but with the accessors of a user-defined object:
 
 ```ruby
 require 'ostruct'
@@ -110,7 +110,7 @@ objectish = OpenStruct.new(my_values)
 OtherLibraray.new(objectish)
 ```
 
-I find open structs useful when in the console and experimenting with new code, sometimes I use them to test interfaces in code I write. Honestly though, I generally don't use them much. Usually, when I think I want to use an open struct, what I really want is a [plain old ruby object](http://blog.steveklabnik.com/posts/2011-09-06-the-secret-to-rails-oo-design). It is much easier to manipulate the data in a hash than an Open Struct because they have all those meta methods, and they're more lightweight (Open Struct creates and stores a hash under the hood).
+I find open structs useful when in the console and experimenting with new code, sometimes I use them to test interfaces in code I write. Honestly though, I generally don't use them much. Usually, when I think I want to use an open struct, what I really want is a [plain old ruby object](https://blog.steveklabnik.com/posts/2011-09-06-the-secret-to-rails-oo-design). It is much easier to manipulate the data in a hash than an Open Struct because they have all those meta methods, and they're more lightweight (Open Struct creates and stores a hash under the hood).
 
 It's worth noting that `OpenStruct` is pretty slow compared to a regular hash:
 
@@ -233,7 +233,7 @@ Now, you also magically have a documented interface!
 
 Let's say, for some reason, you love this weird edge-casey nature and undecided pseudo-object behavior. You choose to use Hashie for a really popular project, let's hypothetically call it [omniauth](https://github.com/intridea/omniauth). The insanely open behavior that you crave so much come at a very high cost of large numbers of short-lived objects used internally by hashie.
 
-I profiled a Rails app [CodeTriage.com](http://www.codetriage.com/) using Omniauth. I used [memory_profiler with my derailed_benchmarks](https://github.com/schneems/derailed_benchmarks) to benchmark memory usage. On one single request to the Rails app, Hashie created more objects than `activesupport` and it came in at number 3 total in the list:
+I profiled a Rails app [CodeTriage.com](https://www.codetriage.com/) using Omniauth. I used [memory_profiler with my derailed_benchmarks](https://github.com/schneems/derailed_benchmarks) to benchmark memory usage. On one single request to the Rails app, Hashie created more objects than `activesupport` and it came in at number 3 total in the list:
 
 
 ```
@@ -279,7 +279,7 @@ Unfortunately, this was a proof of concept as this would be a breaking change (t
 
 The easiest way to quit smoking is to never start. If you've inherited a hashie addicted project, what can you do? In Omniauth, I removed hashie, let all the tests fail, then worked on one test at a time till they were all green. In this case, Omniauth is really popular, so we can't just change the interface without proper deprecation warning. Ideally, in the future, we can isolate how the code is used, and replace it with some stricter (and therefore easier reason about) interfaces that are even faster.
 
-If you really __need__ to take arbitrary values, consider a plain ole' Ruby Hash. If you really need the method access using the dot syntax, use a `Struct`, an `OpenStruct`, or even write a custom PORO. If you're using hashie in an object that also wraps up logic, get rid of hashie, and keep the logic. Subclassing `Hash` is pretty much evil. It's a proven fact(TM) that [subclassing hashes causes pain and performance problems](http://tenderlovemaking.com/2014/06/02/yagni-methods-are-killing-me.html) so don't do it.
+If you really __need__ to take arbitrary values, consider a plain ole' Ruby Hash. If you really need the method access using the dot syntax, use a `Struct`, an `OpenStruct`, or even write a custom PORO. If you're using hashie in an object that also wraps up logic, get rid of hashie, and keep the logic. Subclassing `Hash` is pretty much evil. It's a proven fact(TM) that [subclassing hashes causes pain and performance problems](https://tenderlovemaking.com/2014/06/02/yagni-methods-are-killing-me.html) so don't do it.
 
 While I've ripped on Hashie a good amount: it's a good, fun library to play with, and you can learn quite a bit about metaprogramming through the code. I recommend you check it out, but whatever you do...don't ever put it in production.
 

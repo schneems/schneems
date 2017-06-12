@@ -27,10 +27,10 @@ That's my talk philosophy. Turns out I'm not alone:
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-Some of the best talks I've seen like Ben Orenstein's [Refactoring from Good to Great](http://www.youtube.com/watch?v=L1G--mPscQM), and Sandi Metz's [Tells Your Future](http://www.youtube.com/watch?v=fhpT6Pc4AqM) have been polished over multiple conferences. They tell a great story that keeps getting better.
+Some of the best talks I've seen like Ben Orenstein's [Refactoring from Good to Great](https://www.youtube.com/watch?v=L1G--mPscQM), and Sandi Metz's [Tells Your Future](https://www.youtube.com/watch?v=fhpT6Pc4AqM) have been polished over multiple conferences. They tell a great story that keeps getting better.
 
 
 -----
 
-[@schneems](http://twitter.com/schneems) works for Heroku on the [Ruby Buildpack](https://github.com/heroku/heroku-buildpack-ruby) and enjoys giving talks.
+[@schneems](https://twitter.com/schneems) works for Heroku on the [Ruby Buildpack](https://github.com/heroku/heroku-buildpack-ruby) and enjoys giving talks.
 

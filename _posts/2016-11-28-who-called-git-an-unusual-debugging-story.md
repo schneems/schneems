@@ -150,5 +150,5 @@ Outdated gems included in the bundle:
 Thanks to [Nate](https://www.speedshop.co/) for reminding me about this command at Rubyconf. Also, coincidentally, he happens to be the person who made the fix in the Sentry client.
 
 ---
-If you liked this consider [following @schneems on twitter](https://twitter.com/schneems) or signing up to get [new articles in your inbox](http://eepurl.com/bbuvuz) (about 1 email a week when I'm on a roll).
+If you liked this consider [following @schneems on twitter](https://twitter.com/schneems) or signing up to get [new articles in your inbox](https://eepurl.com/bbuvuz) (about 1 email a week when I'm on a roll).
 

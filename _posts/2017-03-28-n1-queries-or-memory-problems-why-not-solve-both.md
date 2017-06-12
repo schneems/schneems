@@ -75,7 +75,7 @@ That's not good enough for us, though -- we want no massive memory allocation sp
 
 ## Counter Cache
 
-What's the point of having Cache if you can't count it? Instead of having to call `post.comments.count` each time, which costs us a SQL query, we can store that data directly inside of the `Post` model. This way when we load a `Post` object we automatically have this info. From [the docs for the counter cache](http://edgeguides.rubyonrails.org/association_basics.html#options-for-belongs-to-counter-cache) you'll see we need to change our model to something like this:
+What's the point of having Cache if you can't count it? Instead of having to call `post.comments.count` each time, which costs us a SQL query, we can store that data directly inside of the `Post` model. This way when we load a `Post` object we automatically have this info. From [the docs for the counter cache](https://edgeguides.rubyonrails.org/association_basics.html#options-for-belongs-to-counter-cache) you'll see we need to change our model to something like this:
 
 ```ruby
 class Comment < ApplicationRecord
@@ -227,4 +227,4 @@ Here's where I give rapid-fire suggestions.
 
 - Narrow down your search by focusing on slow endpoints. All performance trackers list out slow endpoints, this is a good place to start. [Scout](https://scoutapp.com) will show you memory breakdown per request and makes finding these types of bugs much easier to hunt down. They also have [an add-on](https://elements.heroku.com/addons/scout) for Heroku. You can get started for free `$ heroku addons:create scout:chair`
 
-If you want to dig deeper into what's going on with Ruby's use of memory check out the [Memory Quota Exceeded in Ruby (MRI) Dev Center article](https://devcenter.heroku.com/articles/ruby-memory-use), my [How Ruby Uses Memory](http://www.schneems.com/2015/05/11/how-ruby-uses-memory.html), and also Nate Berkopec's [Halve your memory use with these 12 Weird Tricks](https://www.youtube.com/watch?v=kZcqyuPeDao).
+If you want to dig deeper into what's going on with Ruby's use of memory check out the [Memory Quota Exceeded in Ruby (MRI) Dev Center article](https://devcenter.heroku.com/articles/ruby-memory-use), my [How Ruby Uses Memory](https://www.schneems.com/2015/05/11/how-ruby-uses-memory.html), and also Nate Berkopec's [Halve your memory use with these 12 Weird Tricks](https://www.youtube.com/watch?v=kZcqyuPeDao).

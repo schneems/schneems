@@ -8,10 +8,10 @@ tags:
 - versions
 permalink: /post/22718246618/multiple-ruby-version-support-on-heroku
 ---
-<p>Starting today <a href="http://heroku.com">Heroku</a> will allow you to <a href="https://devcenter.heroku.com/articles/ruby-support#ruby_versions">specify a version of Ruby</a> in your production app. As one of the most requested features we have been asked for time and time again, we&#8217;re happy to announce that it&#8217;s now live. To get started you&#8217;ll want to update your version of Bundler locally to version 1.2.0, or above.</p>
+<p>Starting today <a href="https://heroku.com">Heroku</a> will allow you to <a href="https://devcenter.heroku.com/articles/ruby-support#ruby_versions">specify a version of Ruby</a> in your production app. As one of the most requested features we have been asked for time and time again, we&#8217;re happy to announce that it&#8217;s now live. To get started you&#8217;ll want to update your version of Bundler locally to version 1.2.0, or above.</p>
 
 <blockquote>
-  <p>This is a re-post of an Article I wrote for the <a href="http://blog.heroku.com/archives/2012/5/9/multiple_ruby_version_support_on_heroku/">Heroku Blog</a></p>
+  <p>This is a re-post of an Article I wrote for the <a href="https://blog.heroku.com/archives/2012/5/9/multiple_ruby_version_support_on_heroku/">Heroku Blog</a></p>
 </blockquote>
 
 <pre><code>$ gem install bundler --pre
@@ -19,7 +19,7 @@ permalink: /post/22718246618/multiple-ruby-version-support-on-heroku
 
 <p>Then you&#8217;ll want to specify the version of Ruby you want to use in your application inside of your Gemfile. For example if we wanted to use Ruby 1.9.3 in our production application you would want to include <code>ruby '1.9.3'</code> inside of your Gemfile. In a rails Gemfile it might look something like this:</p>
 
-<pre><code>source 'http://rubygems.org'
+<pre><code>source 'https://rubygems.org'
 
 ruby '1.9.3'
 gem  'rails', '3.2.3'
@@ -49,7 +49,7 @@ ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]
 
 <h2>Production and Development Parity</h2>
 
-<p>At Heroku, we strongly believe that there should always be a strong <a href="http://www.12factor.net/dev-prod-parity">parity between development and production environments</a> in order to minimize any surprises. When the tooling of your development environment most closely matches your production environment, there is far less room for error. Another good example of keeping parity between dev and production environments would be running <a href="http://postgresapp.com/">PostgreSQL locally</a> in the development environment instead of SQLite since you&#8217;re production system is running <a href="https://postgres.heroku.com/">Postgres on Heroku</a>.</p>
+<p>At Heroku, we strongly believe that there should always be a strong <a href="https://www.12factor.net/dev-prod-parity">parity between development and production environments</a> in order to minimize any surprises. When the tooling of your development environment most closely matches your production environment, there is far less room for error. Another good example of keeping parity between dev and production environments would be running <a href="https://postgresapp.com/">PostgreSQL locally</a> in the development environment instead of SQLite since you&#8217;re production system is running <a href="https://postgres.heroku.com/">Postgres on Heroku</a>.</p>
 
 <p>While there are other reasons you may want to use different versions of Ruby in certain scenarios including performance issues or to access version-specific Ruby features, developers should overall strive to use the same tools and versions of software for development as are used for production.</p>
 
@@ -76,6 +76,6 @@ RACK_ENV =&gt; production
 
 <h2>Thanks</h2>
 
-<p>Thanks to <a href="http://twitter.com/hone02">Terence Lee</a> Heroku Ruby team member and bundler maintainer for the additional support of ruby versions to the <a href="https://github.com/heroku/heroku-buildpack-ruby">Heroku Ruby Buildpack</a> and orchestrated the release of Bundler 1.2.0. Also thanks to <a href="https://twitter.com/#!/wycats">Yehuda Katz</a> and the entire Bundler team for helping get this release out the door.</p>
+<p>Thanks to <a href="https://twitter.com/hone02">Terence Lee</a> Heroku Ruby team member and bundler maintainer for the additional support of ruby versions to the <a href="https://github.com/heroku/heroku-buildpack-ruby">Heroku Ruby Buildpack</a> and orchestrated the release of Bundler 1.2.0. Also thanks to <a href="https://twitter.com/#!/wycats">Yehuda Katz</a> and the entire Bundler team for helping get this release out the door.</p>
 
-<p>Give this feature a try and let me know what you think <a href="http://twitter.com/schneems">@schneems</a>!</p>
+<p>Give this feature a try and let me know what you think <a href="https://twitter.com/schneems">@schneems</a>!</p>
