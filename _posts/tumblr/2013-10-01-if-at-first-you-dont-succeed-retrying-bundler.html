@@ -43,12 +43,12 @@ permalink: /post/62808786400/if-at-first-you-dont-succeed-retrying-bundler
 
 <p>It&#8217;s a small library that I&#8217;ve used in several projects and find incredibly helpful. Since writing it I&#8217;ve found that many of the tools I use every day actually have retry behavior baked in. &#8220;Like what?&#8221; You might ask. Well have you ever used curl? It has a <code>--retry</code> option (defaulted to zero).</p>
 
-<pre><code>$ curl <a href="https://schneems.com">https://schneems.com</a> --retry 3
+<pre><code>$ curl <a href="https://www.schneems.com">https://www.schneems.com</a> --retry 3
 </code></pre>
 
 <p>Then there&#8217;s <a href="https://github.com/drbrain/net-http-persistent/pull/4">Net HTTP Persistant</a>, and my personal favorite ruby http lib <a href="https://github.com/geemus/excon">Excon</a>:</p>
 
-<pre><code>Excon.get("https://schneems.com", idempotent: true, retry_limit: 6)
+<pre><code>Excon.get("https://www.schneems.com", idempotent: true, retry_limit: 6)
 </code></pre>
 
 <p>Even strangely enough <a href="https://linux.101hacks.com/unix/tail/">Tail</a></p>
@@ -81,4 +81,4 @@ permalink: /post/62808786400/if-at-first-you-dont-succeed-retrying-bundler
 
 <p>While for some <a href="https://www.youtube.com/watch?v=OZuUwcl_wT8">failure is not an option</a> to make your code embrace, extend, and retry can give your programs a second chance, literally.</p>
 
-<hr><p>Richard <a href="https://twitter.com/schneems">@schneems</a> works for Heroku and sometimes <a href="https://shop.oreilly.com/product/0636920027409.do">writes books</a>, <a href="https://schneems.com/ut-rails">teaches at the University of Texas</a> and runs <a href="https://www.codetriage.com/">Code Triage</a>. If you didn&#8217;t enjoy this article maybe you should come back later and give his writing a (re)try.</p>
+<hr><p>Richard <a href="https://twitter.com/schneems">@schneems</a> works for Heroku and sometimes <a href="https://shop.oreilly.com/product/0636920027409.do">writes books</a>, <a href="https://www.schneems.com/ut-rails">teaches at the University of Texas</a> and runs <a href="https://www.codetriage.com/">Code Triage</a>. If you didn&#8217;t enjoy this article maybe you should come back later and give his writing a (re)try.</p>

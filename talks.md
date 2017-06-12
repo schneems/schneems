@@ -18,10 +18,10 @@ No one wants to be stuck in the slow lane, especially Rubyists. In this talk we'
 
 What do you do when a maintainer leaves a project with over 44 million downloads? That is what we had to consider this year when Sprockets lost the developer responsible for more than 70% of the commits. In this talk we will look at recent efforts to revive Sprockets, and make it more maintainable. We will look into how your projects can be structured to avoid burnout and survive a change of maintainers. Let's save Sprockets.
 
-[Post with transcription](https://schneems.com/2016/05/31/saving-sprockets.html)
+[Post with transcription](https://www.schneems.com/2016/05/31/saving-sprockets.html)
 
 - [Slides](https://speakerdeck.com/schneems/saving-sprockets)
-- [Video](https://schneems.com/2016/05/31/saving-sprockets.html)
+- [Video](https://www.schneems.com/2016/05/31/saving-sprockets.html)
 
 ### Speed Science [Debugging Ruby Memory] (2015)
 

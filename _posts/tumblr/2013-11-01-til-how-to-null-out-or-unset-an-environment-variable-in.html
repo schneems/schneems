@@ -6,7 +6,7 @@ tags:
 - bash
 permalink: /post/65696474675/til-how-to-null-out-or-unset-an-environment-variable-in
 ---
-<p><a href="https://schneems.com/2013/10/19/why-do-heroku-builds-run-without-config-by-default.html">Heroku compiles your app without environment variables</a>. This is all well and good, but how do you debug a problem that only shows up when an environment variable is missing? Not just set to an empty string <code>""</code>.</p>
+<p><a href="https://www.schneems.com/2013/10/19/why-do-heroku-builds-run-without-config-by-default.html">Heroku compiles your app without environment variables</a>. This is all well and good, but how do you debug a problem that only shows up when an environment variable is missing? Not just set to an empty string <code>""</code>.</p>
 
 <p>To do this bash has a great feature called <code>--unset</code> to remove an environment variable. For example if you wanted to run <code>rake assets:precompile</code> without the DATABASE_URL from your environment you could run:</p>
 

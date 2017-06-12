@@ -13,7 +13,7 @@ permalink: /post/22192005006/legacy-concerns-in-rails
 <p>The cats out of the bag, Ruby isn&#8217;t immune to legacy code problems. Just because your app is written in a hip, fun, and dynamic language doesn&#8217;t mean that your codebase can&#8217;t stagnate, bloat, and quickly turn into an unmaintainable ball of mud. Before <a href="https://gowalla.com">Gowalla</a> was purchased by Facebook, the Rails code base stood at close to seven thousand files, with the largest model clocking in at around 3,500 lines of code. While we were somewhat unique, being originally written in Merb and then ported to Rails, applications of this size aren&#8217;t all that uncommon. If you&#8217;ve got a large app there are a number of things you can do make your situation better, one of the simplest with the greatest impact is splitting up models into concerns.</p>
 
 <blockquote>
-  <p>If you&#8217;re not familiar with concerns, you can read up about them at <a href="https://schneems.com/2012/04/19/concerned-about-code-reuse.html">Concerned about Code Reuse?</a>. Go ahead, we&#8217;ll wait.</p>
+  <p>If you&#8217;re not familiar with concerns, you can read up about them at <a href="https://www.schneems.com/2012/04/19/concerned-about-code-reuse.html">Concerned about Code Reuse?</a>. Go ahead, we&#8217;ll wait.</p>
 </blockquote>
 
 <p>Rails has long advocated a thin controller, fat model approach to development, which works great early but can lead to a model obesity epidemic. If we split out our models into different concerns we can group related code, and even make re-using code between projects easier. Best of all, if you start early on it&#8217;s a pretty painless process.</p>
