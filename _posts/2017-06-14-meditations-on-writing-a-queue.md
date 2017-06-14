@@ -30,7 +30,7 @@ The C programming language does not come with a queue structure out of the box l
 
 ## Build a Queue Data Structure
 
-> I've got all the [code online](https://github.com/schneems/tiny_queue). If you want you can skip straight past the docs and [straight to this commit of the C code](). I recommend opening up that in another browser window to follow along as I explain what's going on. Note that while I might update the code on GitHub, it's a pain to keep a post in sync, so my explanations will always match an early version of this lib. For a more up-to-date version, you can check out the repo.
+> I've got all the [code online](https://github.com/schneems/tiny_queue). If you want you can skip straight past the docs and [straight to this commit of the C code](https://github.com/schneems/tiny_queue/blob/316b4e6fab99b380c94e956c49bb18a935093cd1/tiny_queue.c). I recommend opening up that in another browser window to follow along as I explain what's going on. Note that while I might update the code on GitHub, it's a pain to keep a post in sync, so my explanations will always match an early version of this lib. For a more up-to-date version, you can check out the repo.
 
 First up we'll need a way to store our queue. For this I introduce a struct called `tiny_queue_t`. In C there are no objects, instead we can build value objects using structs, here's the definition:
 
@@ -295,7 +295,7 @@ Ruby is written in C, and one goal of learning C for me is to possibly contribut
 
 First off I was surprised to find that as recently as Ruby 2.0, the Queue was written in Ruby (instead of C). Click on the [Queue docs for Ruby 2.0](http://ruby-doc.org/stdlib-2.0.0/libdoc/thread/rdoc/Queue.html) then "toggle source".
 
-In [2.4.1](https://ruby-doc.org/core-2.4.1/Queue.html) it is written in C and points to [thread_sync.c](https://github.com/ruby/ruby/blob/b5b1a2131ec5cbde6adaf0d37953ff05c393218b/thread_sync.c). I'm actually going to look at the most recent implementation on `trunk` (Ruby uses `trunk` instead of `master` branch). Here's a [link to the code i'll be reviewing]()
+In [2.4.1](https://ruby-doc.org/core-2.4.1/Queue.html) it is written in C and points to [thread_sync.c](https://github.com/ruby/ruby/blob/b5b1a2131ec5cbde6adaf0d37953ff05c393218b/thread_sync.c). I'm actually going to look at the most recent implementation on `trunk` (Ruby uses `trunk` instead of `master` branch). Here's a [link to the code i'll be reviewing](https://github.com/ruby/ruby/blob/bacadbe9bfae2a9183934c08baaaefdec6d8dafe/thread_sync.c#L1074-L1105)
 
 The C code looks a bit different than mine because the interface is intended to be consumed by Ruby and not another C code. a `VALUE` for example is not a C type but one that Ruby can understand.
 
