@@ -348,9 +348,9 @@ You can see that their queue is bounded:
 while (queue_length(self, &sq->q) >= sq->max) {
 ```
 
-There is a max value and while you're trying to push a value to the queue in a blocking fashion then an exception will be raised if you're past that limit.
+There is a max value and while you're trying to push a value to the queue in an async fashion then an exception will be raised if you're past that limit.
 
-Otherwise if you're pushing via non-block then it looks like the element will be added to the end of a waiting queue? I'm not totally sure what's going on here:
+Otherwise if you're pushing and allowing the call to block then it looks like the element will be added to the end of a waiting queue? I'm not totally sure what's going on here:
 
 
 ```c
