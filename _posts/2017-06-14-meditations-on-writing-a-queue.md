@@ -81,7 +81,7 @@ tiny_queue_t* tiny_queue_create() {
 
 The function definition tells us that `tiny_queue_create()` takes no arguments and returns a pointer to a `tiny_queue_t` type. Next up we have to allocate the queue:
 
-```
+```c
 struct tiny_queue_t* queue = (struct tiny_queue_t*)malloc(sizeof(struct tiny_queue_t));
 ```
 
@@ -93,7 +93,7 @@ The syntax, if you've not guessed it is that `queue->head` means that we want th
 
 Next up we have to allocate our mutex and our condition variable. Honestly these lines are kinda like voodoo to me:
 
-```
+```c
 queue->mutex  = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
 queue->wakeup = (pthread_cond_t)PTHREAD_COND_INITIALIZER;
 ```
@@ -178,7 +178,7 @@ queue->head == NULL && queue->tail == NULL
 
 When this happens we can set both `head` and `tail` to the same element, because the list only has one item, the thing we just passed in:
 
-```
+```c
 queue->head = queue->tail = new_node;
 ```
 
@@ -245,7 +245,7 @@ One thing to note is that we are using a `while` and not an `if` clause when che
 
 Let's say there was something in the queue, or our code was woken up via a `push`. The next thing we do is grab our `head` instance and pull our data pointer off of it:
 
-```
+```c
 struct tiny_linked_list_t* current_head = queue->head;
 void *data = current_head->data;
 ```
@@ -301,7 +301,7 @@ The C code looks a bit different than mine because the interface is intended to 
 
 Here is the code to push an element on to the queue:
 
-```
+```c
 static VALUE
 rb_szqueue_push(int argc, VALUE *argv, VALUE self)
 {
@@ -338,7 +338,7 @@ rb_szqueue_push(int argc, VALUE *argv, VALUE self)
 
 The pointer to the queue is not being passed in, instead it is being determined from `self` which is the execution context (since Ruby is object oriented):
 
-```
+```c
 struct rb_szqueue *sq = szqueue_ptr(self);
 ```
 
