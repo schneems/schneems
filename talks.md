@@ -7,6 +7,15 @@ layout: default
 
 I love speaking! I've given talks at [26 events in 12 countries](http://lanyrd.com/profile/schneems/). Invite me to your next conference maybe? richard [at] heroku.com.
 
+### Bayes is BAE (2017)
+
+Before programming, before formal probability there was Bayes. He introduced the notion that multiple uncertain estimates which are related could be combined to form a more certain estimate. It turns out that this extremely simple idea has a profound impact on how we write programs and how we can think about life. The applications range from machine learning and robotics to determining cancer treatments. In this talk we'll take an in depth look at Bayes rule and how it can be applied to solve problems in programming and beyond.
+
+
+- [Post](https://schneems.com/2017/06/12/bayes-is-bae/)
+- [Slides](https://speakerdeck.com/schneems/bayes-is-bae)
+- [Video](https://www.youtube.com/watch?v=bQSzZrDDV80)
+
 ### SLOMO (2016)
 
 No one wants to be stuck in the slow lane, especially Rubyists. In this talk we'll look at the slow process of writing fast code. We'll look at several real world performance optimizations that may surprise you. We'll then rewind to see how these slow spots were found and fixed. Come to this talk and we will "C" how fast your Ruby can "Go".

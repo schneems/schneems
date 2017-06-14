@@ -8,7 +8,7 @@ categories:
     - ruby
 ---
 
-Before programming, before formal probability there was Bayes. He introduced the notion that multiple uncertain estimates which are related could be combined to form a more certain estimate. It turns out that this extremely simple idea has a profound impact on how we write programs and how we can think about life. The applications range from machine learning and robotics to determining cancer treatments. In this talk we'll take an in depth look at Bayses rule and how it can be applied to solve problems in programming and beyond.
+Before programming, before formal probability there was Bayes. He introduced the notion that multiple uncertain estimates which are related could be combined to form a more certain estimate. It turns out that this extremely simple idea has a profound impact on how we write programs and how we can think about life. The applications range from machine learning and robotics to determining cancer treatments. In this talk we'll take an in depth look at Bayes rule and how it can be applied to solve problems in programming and beyond.
 
 This is the talk that I gave at RailsConf 2017. It's about math, probability and programming.
 
