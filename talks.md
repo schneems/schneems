@@ -7,6 +7,8 @@ layout: default
 
 I love speaking! I've given talks at [26 events in 12 countries](http://lanyrd.com/profile/schneems/). Invite me to your next conference maybe? richard [at] heroku.com.
 
+> BTW watch conf videos at 1.5x speed. You'll thank me later.
+
 ### Bayes is BAE (2017)
 
 Before programming, before formal probability there was Bayes. He introduced the notion that multiple uncertain estimates which are related could be combined to form a more certain estimate. It turns out that this extremely simple idea has a profound impact on how we write programs and how we can think about life. The applications range from machine learning and robotics to determining cancer treatments. In this talk we'll take an in depth look at Bayes rule and how it can be applied to solve problems in programming and beyond.
