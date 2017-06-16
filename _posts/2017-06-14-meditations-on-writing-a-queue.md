@@ -408,7 +408,7 @@ This makes effort's like Koichi's work on "guilds" or another concurrency model 
 
 ## Wrapup
 
-If you've made it this far, congrats. This was some pretty dense stuff. I do have one tip which I want to leave readers if you're working with queues. This is a common "trick" that is not very intuitive if you've never worked with threads. The idea is that if you need to tell your workers when to shut down, but you also need to wake them up since they're blocked at the `pop` call. You can do this with a "poision" object. In Ruby it looks like this:
+If you've made it this far, congrats. This was some pretty dense stuff. I do have one tip which I want to leave readers if you're working with queues. This is a common "trick" that is not very intuitive if you've never worked with threads. The idea is that if you need to tell your workers when to shut down, but you also need to wake them up since they're blocked at the `pop` call. You can do this with a "poison" object. In Ruby it looks like this:
 
 ```ruby
 require 'thread'
