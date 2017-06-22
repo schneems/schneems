@@ -11,7 +11,11 @@ categories:
 When I see a query in my logs without either a `limit` or a `count` clause, alarm bells go off because it is likely a hotspot. A pagination query has a`limit` so it usually flies under my radar:
 
 ```SQL
-SELECT  "repos".* FROM "repos" WHERE (issues_count > 0) ORDER BY issues_count DESC LIMIT $1 OFFSET $2
+SELECT  "repos".*
+FROM "repos"
+WHERE (issues_count > 0)
+ORDER BY issues_count DESC
+LIMIT $1 OFFSET $2
 ```
 
 > This query came from the main page of my app [CodeTriage.com](https://www.codetriage.com), the easiest way to get started contributing to Open Source.
