@@ -55,7 +55,10 @@ If you ever have a query that you don't know why it's slow, you can use EXPLAIN 
 
 ```SQL
 $ heroku pg:psql
-issuetriage::DATABASE=> EXPLAIN ANALYZE SELECT COUNT(*) FROM "repos" WHERE (issues_count > 0);
+issuetriage::DATABASE=> EXPLAIN ANALYZE
+SELECT COUNT(*)
+FROM "repos"
+WHERE (issues_count > 0);
                                                    QUERY PLAN
 -----------------------------------------------------------------------------------------------------------------
 Aggregate  (cost=39294.58..39294.58 rows=1 width=0) (actual time=115.217..115.217 rows=1 loops=1)
@@ -79,13 +82,24 @@ The database has to loop over ALL records just to find the ones that have an iss
 The next query in our problem output has bind parameters in it:
 
 ```
-SELECT  "repos".* FROM "repos" WHERE (issues_count > 0) ORDER BY issues_count DESC LIMIT $1 OFFSET $2;
+SELECT
+"repos".*
+FROM "repos"
+WHERE (issues_count > 0)
+ORDER BY issues_count DESC
+LIMIT $1
+OFFSET $2;
 ```
 
 We can replace these with some reasonable values, such as a limit of 20 and an offset of 0.
 
 ```SQL
-issuetriage::DATABASE=> EXPLAIN ANALYZE SELECT  "repos".* FROM "repos" WHERE (issues_count > 0) ORDER BY issues_count DESC LIMIT 20 OFFSET 0;
+issuetriage::DATABASE=> EXPLAIN ANALYZE
+SELECT  "repos".* FROM "repos"
+WHERE (issues_count > 0)
+ORDER BY issues_count DESC
+LIMIT 20
+OFFSET 0;
                                                         QUERY PLAN
 --------------------------------------------------------------------------------------------------------------------------
 Limit  (cost=39305.18..39305.19 rows=20 width=1541) (actual time=150.109..150.113 rows=20 loops=1)
@@ -109,7 +123,13 @@ So there are multiple fixes possible, but in my case adding an index was the eas
 What's the end result? We can re-run our `EXPLAIN ANALYZE` and get some really good feedback:
 
 ```SQL
-issuetriage::DATABASE=> EXPLAIN ANALYZE SELECT  "repos".* FROM "repos" WHERE (issues_count > 0) ORDER BY issues_count DESC LIMIT 20 OFFSET 0;
+issuetriage::DATABASE=> EXPLAIN ANALYZE
+SELECT  "repos".*
+FROM "repos"
+WHERE (issues_count > 0)
+ORDER BY issues_count DESC
+LIMIT 20
+OFFSET 0;
                                                                          QUERY PLAN
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
  Limit  (cost=0.06..45.61 rows=20 width=1541) (actual time=0.019..0.050 rows=20 loops=1)
@@ -122,7 +142,9 @@ issuetriage::DATABASE=> EXPLAIN ANALYZE SELECT  "repos".* FROM "repos" WHERE (is
 From over 100ms to under 1ms not bad, what about the other?
 
 ```SQL
-issuetriage::DATABASE=> EXPLAIN ANALYZE SELECT COUNT(*) FROM "repos" WHERE (issues_count > 0);
+issuetriage::DATABASE=> EXPLAIN ANALYZE
+SELECT COUNT(*) FROM "repos"
+WHERE (issues_count > 0);
                                                                      QUERY PLAN
 -----------------------------------------------------------------------------------------------------------------------------------------------------
  Aggregate  (cost=75.33..75.33 rows=1 width=0) (actual time=1.713..1.713 rows=1 loops=1)
