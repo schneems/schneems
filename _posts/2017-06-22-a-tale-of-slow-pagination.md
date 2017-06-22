@@ -124,6 +124,16 @@ Indexes aren't magic remedies, there is a downside as they use memory in your da
 
 So there are multiple fixes possible, but in my case adding an index was the easiest. Again thanks to [Nate Berkopec](https://www.speedshop.co/) for pointing this out. I didn't figure this all out on my own, he did. He also has a book explaining how to debug and profile common performance issues like this that's worth picking up.
 
+Here's the index:
+
+```
+class AddIndexToIssuesCount < ActiveRecord::Migration[5.1]
+  def change
+    add_index :repos, :issues_count
+  end
+end
+```
+
 What's the end result? We can re-run our `EXPLAIN ANALYZE` and get some really good feedback:
 
 ```SQL
