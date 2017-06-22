@@ -165,5 +165,5 @@ Not too shabby either. The overall page render time went from 336ms to 169ms:
 
 That partial where we are calling these queries still accounts for 55ms, but it's much better than the previously 281.6ms. They say that a 200ms wait time is perceptible to a human, so in theory this just saved me a few "ugh why is this so slow"-s per day. Better than that, it also means that my index page can handle slightly more throughput as it won't be hanging around waiting for slow queries to finish.
 
-Bottom line: Don't neglect your pagination queries when speeding up your app, and go by [Nate's book](https://www.railsspeed.com/).
+Bottom line: Don't neglect your pagination queries when speeding up your app, and go buy [Nate's book](https://www.railsspeed.com/).
 
