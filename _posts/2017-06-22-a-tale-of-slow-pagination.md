@@ -28,8 +28,8 @@ I'll take a moment to rewind and show you how I __should__ have found the proble
 
 If you're not using [Rack Mini Profiler](https://github.com/MiniProfiler/rack-mini-profiler) in development, you really should be. Even better, you should be using it in production:
 
-- https://github.com/codetriage/codetriage/commit/7cbe92bf7f9bd5cce3b726743b15a89a29e522ce
-- https://github.com/codetriage/codetriage/commit/fce8322f2128b8bba531c9b2b329f22f34b89678
+- [https://github.com/codetriage/codetriage/commit/7cbe92bf7f9bd5cce3b726743b15a89a29e522ce](https://github.com/codetriage/codetriage/commit/7cbe92bf7f9bd5cce3b726743b15a89a29e522ce)
+- [https://github.com/codetriage/codetriage/commit/fce8322f2128b8bba531c9b2b329f22f34b89678](https://github.com/codetriage/codetriage/commit/fce8322f2128b8bba531c9b2b329f22f34b89678)
 
 These two commits tell RMP that when someone is logged in and that person has an `admin` flag on their account to show them the rack-mini-profiler stats in the UI.
 
