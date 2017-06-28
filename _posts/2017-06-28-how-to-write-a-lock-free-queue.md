@@ -8,7 +8,7 @@ categories:
     - ruby
 ---
 
-It's said that locks keep honest people honest. In programming locks keep multi-threaded programs honest by ensuring only one thread can access a resource at a time. Why would we want to get rid of locks then? In this post I'll revisit the [queue that I wrote in C](https://www.schneems.com/2017/06/14/meditations-on-writing-a-queue/), and instead look at a "lockless" queue implementation. We'll talk about atomicity and the tradeoffs when choosing one strategy or the other, and end with some ways to write lock-free Ruby code. Prepare to *unlock* your imagination!
+It's said that locks keep honest people honest. In programming locks keep multi-threaded programs honest by ensuring only one thread can access a resource at a time. Why would we want to get rid of locks then? In this post I'll revisit the [queue that I wrote in C](https://www.schneems.com/2017/06/14/meditations-on-writing-a-queue/), and instead look at a "lockless" queue implementation. We'll talk about atomicity and the tradeoffs when choosing one strategy or the other, and end with some ways to write "lock-free" Ruby code. Prepare to *unlock* your imagination!
 
 First off, if you haven't read my [Mediations on Writing a Queue](https://www.schneems.com/2017/06/14/meditations-on-writing-a-queue/), go do that first. Now that you're up to speed, we'll look at someone else's code. Here is [a lock free queue written in C](https://github.com/darkautism/lfqueue).
 
@@ -24,7 +24,7 @@ Exact same problem, totally different solution.
 
 In programming the way that we make lock free data structures is by first removing locks, and then re-designing the data flow to use atomic APIs.
 
-In the case of `lfqueue`. The atomic API being used is `__sync_bool_compare_and_swap`. From the [docs]:
+In the case of `lfqueue`. The atomic API being used is `__sync_bool_compare_and_swap`. From the [docs](https://gcc.gnu.org/onlinedocs/gcc-4.4.5/gcc/Atomic-Builtins.html):
 
 ```
 bool __sync_bool_compare_and_swap (type *ptr, type oldval type newval, ...)
@@ -39,11 +39,12 @@ This method is atomic. That means anything this method does internally is comple
 
 If this method was not atomic then after the check to see if the pointer matches the element we expect it to, another thread could modify the value, and then we would end up in an indeterminate state (a car crash). The atomic nature of the structure guarantees consistency even without a lock.
 
-It's not enough though to use an atomic API to remove locks, we also have to change our algorithm to account for any memory setting failures. In the enqueue operation, we need to add a new node to the tail. This is done in lfqueue here:
+It's not enough to use an atomic API to remove locks, we also have to change our data flow to account for any memory setting failures. In the enqueue operation, we need to add a new node to the tail. This is done in lfqueue here:
 
 ```c
 do {
   p = ctx->tail;
+
   if ( __sync_bool_compare_and_swap(&ctx->tail, p, tmpnode)) {
     p->next=tmpnode;
     break;
@@ -51,7 +52,7 @@ do {
 } while(1);
 ```
 
-First a temporary variable, `p`, is assigned the same value of the tail of our queue. In this case `ctx` is short for "queue context". Next we want to add our new node `tmpnode` to the end of our queue (make it the tail). If two threads are trying to do this at the same time, then one of them will succeed and one of them will fail. If the compare operation fails then the enqueue action will immediately loop again, trying to do another compare and swap operation, with the updated tail value. It will do this until it is successful, or the heat death of the universe.
+First a temporary variable, `p`, is assigned the same value of the tail of our queue. In this case `ctx` is short for "queue context". Next we want to add our new node `tmpnode` to the end of our queue (make it the tail). If two threads are trying to do this at the same time, then one of them will succeed and one of them will fail. If the compare operation fails then the enqueue action will immediately loop again, trying to do another compare and swap operation, with the updated tail value. It will do this until it is successful, or until the heat death of the universe.
 
 When the compare and set operation is successful, it means that we were able to change the value of the `tail`. The next line updates the previous tail's `next` pointer to point to our new node. We don't need to do this via a compare and set atomic operation, because if anyone else is trying to modify the the tail, they failed (or otherwise our compare would have failed). The `break` at the end exits the loop.
 
@@ -59,7 +60,7 @@ After you'll notice the `__sync_add_and_fetch`, and I think this is hilarious. I
 
 > These builtins perform the operation suggested by the name, and return the new value.
 
-Seriously? I get that the names are pretty intuitive, but that just comes across as user hostile. This is why I added [documentation to CodeTriage for Ruby applications](https://www.codetriage.com/rails/rails). I believe that good documentation that respects its users and their time helps all developers from all skill levels. If you're looking to help out any language community, docs is a great place to have a large amount of impact with a minimal amount of effort.
+Seriously? I get that the names are pretty intuitive, but that just comes across as user hostile. This is why I added [a documentation feature to CodeTriage to help find undocumented methods in Ruby libraries](https://www.codetriage.com/rails/rails). I believe that good documentation that respects users and their time helps all developers from all skill levels. If you're looking to help out a language community, docs is a great place to have a large amount of impact with a minimal amount of effort.
 
 Back to the code. This call:
 
@@ -81,7 +82,7 @@ ctx->count = ctx->count + 1
 //                     |___HERE
 ```
 
-If that happened, then thread A tries to increment from 0 to 1, sees the value is zero, goes to add one. Then thread B already added 1 to the value, and thread C tries to go from 1 to 2. All those operations complete, the value should be 3, but because thread A thought the value was 0, the final value is now 1. The value was not synchronized before adding happened. To avoid this race condition from happening we have to use an atomic function.
+If that happened, then thread A tries to increment from 0 to 1, sees the value is zero, goes to add one. Then thread B context switches in, sees the value is 0, adds one so the value is now 1. Now thread C switches in and increments from 1 to 2 successfully. Thread A finaly gets to context switch in, but it sill thinks that the value is zero, so adding one to it will produce 1 instead of the correct result: 3. To avoid this race condition from happening we have to use an atomic function.
 
 The dequeue function in lfqueue is pretty similar to enqueue, except in reverse. Instead of spinning trying to change the `tail`, it spins while trying to change the `head`. Instead of adding one to the count it subtracts one from the count.
 
