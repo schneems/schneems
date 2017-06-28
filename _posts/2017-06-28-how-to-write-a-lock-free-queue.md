@@ -8,6 +8,8 @@ categories:
     - ruby
 ---
 
+> Update: I did mention that lock free data structures are really hard to write, it looks like there might be some [issues that haven't been addressed in the implementation](https://www.reddit.com/r/C_Programming/comments/6k1ix6/how_to_write_a_lock_free_queue_in_c/) of this LF Queue that we're referencing. The rest of the analysis is still valid and hopefully useful to you, just know there's actually more that needs to be done, don't try to use that code for a mission critical application out of the box.
+
 It's said that locks keep honest people honest. In programming locks keep multi-threaded programs honest by ensuring only one thread can access a resource at a time. Why would we want to get rid of locks then? In this post I'll revisit the [queue that I wrote in C](https://www.schneems.com/2017/06/14/meditations-on-writing-a-queue/), and instead look at a "lockless" queue implementation. We'll talk about atomicity and the tradeoffs when choosing one strategy or the other, and end with some ways to write "lock-free" Ruby code. Prepare to *unlock* your imagination!
 
 First off, if you haven't read my [Mediations on Writing a Queue](https://www.schneems.com/2017/06/14/meditations-on-writing-a-queue/), go do that first. Now that you're up to speed, we'll look at someone else's code. Here is [a lock free queue written in C](https://github.com/darkautism/lfqueue).
