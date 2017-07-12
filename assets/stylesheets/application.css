@@ -1,10 +1,15 @@
 /*
 *= require_self
 *= require syntax.css
+*= require pagination.css
+*= require email.css
 */
 
-
-/* Youtube Reflexive */
+.flexbox-container {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+}
 .video-container {
   position:relative;
   padding-bottom:56.25%;
@@ -35,13 +40,8 @@ body {
 
 html {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5;
-}
-@media (min-width: 38em) {
-  html {
-    font-size: 20px;
-  }
 }
 
 body {
@@ -51,15 +51,12 @@ body {
       -ms-text-size-adjust: 100%;
 }
 
-
 .center-justified {
     text-align: justify;
     -moz-text-align-last: center;
     text-align-last: center;
 }
 
-
-/* No `:visited` state is required by default (browsers will use `a`) */
 a {
   color: #268bd2;
   text-decoration: none;
@@ -67,13 +64,12 @@ a {
 a strong {
   color: inherit;
 }
-/* `:focus` is linked to `:hover` for basic accessibility */
+
 a:hover,
 a:focus {
   text-decoration: underline;
 }
 
-/* Headings */
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: .5rem;
   font-weight: bold;
@@ -97,7 +93,6 @@ h4, h5, h6 {
   font-size: 1rem;
 }
 
-/* Body text */
 p {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -107,8 +102,6 @@ strong {
   color: #303030;
 }
 
-
-/* Lists */
 ul, ol, dl {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -121,7 +114,6 @@ dd {
   margin-bottom: .5rem;
 }
 
-/* Misc */
 hr {
   position: relative;
   margin: 1.5rem 0;
@@ -141,7 +133,6 @@ abbr[title] {
   border-bottom: 1px dotted #e5e5e5;
 }
 
-/* Code */
 code,
 pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
@@ -173,7 +164,6 @@ pre code {
   background-color: transparent;
 }
 
-/* Pygments via Jekyll */
 .highlight {
   margin-bottom: 1rem;
   border-radius: 4px;
@@ -182,7 +172,6 @@ pre code {
   margin-bottom: 0;
 }
 
-/* Gist via GitHub Pages */
 .gist .gist-file {
   font-family: Menlo, Monaco, "Courier New", monospace !important;
 }
@@ -204,7 +193,6 @@ pre code {
   border-radius: 0;
 }
 
-/* Quotes */
 blockquote {
   padding: .5rem 1rem;
   margin: .8rem 0;
@@ -214,12 +202,6 @@ blockquote {
 blockquote p:last-child {
   margin-bottom: 0;
 }
-@media (min-width: 30em) {
-  blockquote {
-    padding-right: 5rem;
-    padding-left: 1.25rem;
-  }
-}
 
 img {
   display: block;
@@ -228,7 +210,6 @@ img {
   border-radius: 5px;
 }
 
-/* Tables */
 table {
   margin-bottom: 1rem;
   width: 100%;
@@ -245,26 +226,10 @@ tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
 }
 
-
-
-/*
- * Custom type
- *
- * Extend paragraphs with `.lead` for larger introductory text.
- */
-
 .lead {
   font-size: 1.25rem;
   font-weight: 300;
 }
-
-
-/*
- * Messages
- *
- * Show alert messages to users. You may add it to single elements like a `<p>`,
- * or to a parent if there are multiple elements to show.
- */
 
 .message {
   margin-bottom: 1rem;
@@ -273,27 +238,11 @@ tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
 }
 
-
-/*
- * Container
- *
- * Center the page content.
- */
-
 .container {
-  max-width: 38rem;
-  padding-left:  1rem;
-  padding-right: 1rem;
-  margin-left:  auto;
-  margin-right: auto;
+  padding: 2rem;
+  padding-left:  3rem;
 }
 
-
-/*
- * Masthead
- *
- * Super small header above the content for site name and short description.
- */
 
 .masthead {
   padding-top:    1rem;
@@ -308,6 +257,7 @@ tbody tr:nth-child(odd) th {
 .masthead-title a {
   color: #505050;
 }
+
 .masthead-title small {
   font-size: 75%;
   font-weight: 400;
@@ -320,17 +270,8 @@ tbody tr:nth-child(odd) th {
   margin: 0 auto;
 }
 
-
-/*
- * Posts and pages
- *
- * Each post is wrapped in `.post` and is used on default and post layouts. Each
- * page is wrapped in `.page` and is only used on the page layout.
- */
-
-.page,
-.post {
-  margin-bottom: 4em;
+.page, .post, .posts {
+  max-width: 40 rem;
 }
 
 /* Blog post or page title */
@@ -377,69 +318,8 @@ tbody tr:nth-child(odd) th {
   color: inherit;
 }
 
-
-/*
- * Pagination
- *
- * Super lightweight (HTML-wise) blog pagination. `span`s are provide for when
- * there are no more previous or next posts to show.
- */
-
-.pagination {
-  overflow: hidden; /* clearfix */
-  margin-left: -1rem;
-  margin-right: -1rem;
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
-  color: #ccc;
-  text-align: center;
-}
-
-/* Pagination items can be `span`s or `a`s */
-.pagination-item {
-  display: block;
-  padding: 1rem;
-  border: 1px solid #eee;
-}
-.pagination-item:first-child {
-  margin-bottom: -1px;
-}
-
-/* Only provide a hover state for linked pagination items */
-a.pagination-item:hover {
-  background-color: #f5f5f5;
-}
-
-@media (min-width: 30em) {
-  .pagination {
-    margin: 3rem 0;
-  }
-  .pagination-item {
-    float: left;
-    width: 50%;
-  }
-  .pagination-item:first-child {
-    margin-bottom: 0;
-    border-top-left-radius:    4px;
-    border-bottom-left-radius: 4px;
-  }
-  .pagination-item:last-child {
-    margin-left: -1px;
-    border-top-right-radius:    4px;
-    border-bottom-right-radius: 4px;
-  }
-}
-
 html {
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
-}
-@media (min-width: 48em) {
-  html {
-  }
-}
-@media (min-width: 58em) {
-  html {
-    font-size: 20px;
-  }
 }
 
 pre {
@@ -453,19 +333,14 @@ pre {
   margin: 0 auto;
 }
 
-/*
- * Sidebar
- *
- * Flexible banner for housing site name, intro, and "footer" content. Starts
- * out above content in mobile and later moves to the side with wider viewports.
- */
-
 .sidebar {
+  font-size: 18px;
   text-align: center;
   /*color: rgba(255,255,255,.5);*/
   color: #25020F;
   background-color: #FF1168;
 }
+
 
 .sidebar-nav {
   display: none;
@@ -475,13 +350,44 @@ pre {
   display: block;
 }
 
+.flexbox-container {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.sidebar {
+  flex: 1;
+}
+
+.content {
+  padding: 2rem;
+  flex: 2;
+}
+
 @media (min-width: 48em) {
+  .face {
+    float: left;
+  }
+
+  #mc_embed_signup {
+    width: 60%;
+    float: left;
+    clear: none;
+  }
+  .flexbox-container {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+  }
+
+  .content {
+    width: 75%;
+    padding: 3rem;
+  }
+
   .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 18rem;
+    z-index: 1; /* Stay on top */
+    max-width: 14rem;
+    min-width: 14rem;
     text-align: left;
   }
 
@@ -493,7 +399,6 @@ pre {
     display: none;
   }
 }
-
 
 /* Sidebar links */
 .sidebar a {
@@ -518,30 +423,16 @@ a.sidebar-nav-item:focus {
   font-weight: bold;
 }
 
-/* Container
- *
- * Align the contents of the site above the proper threshold with some margin-fu
- * with a 25%-wide `.sidebar`.
- */
-
-.content {
-  padding-top:    4rem;
-  padding-bottom: 4rem;
+.face {
+  width: 8rem;
+  padding-top: 1rem;
+  margin: 0 auto 0;
 }
 
-@media (min-width: 48em) {
-  .content {
-    max-width: 38rem;
-    margin-left: 20rem;
-    margin-right: 2rem;
-  }
+.face img {
+  border-radius: 50%;
 }
 
-@media (min-width: 64em) {
-  .content {
-    margin-left: 22rem;
-    margin-right: 4rem;
-  }
+.copyright {
+  padding-top: 1rem;
 }
-
-
