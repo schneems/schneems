@@ -365,15 +365,6 @@ pre {
 }
 
 @media (min-width: 48em) {
-  .face {
-    float: left;
-  }
-
-  #mc_embed_signup {
-    width: 60%;
-    float: left;
-    clear: none;
-  }
   .flexbox-container {
     -webkit-flex-direction: row;
     flex-direction: row;
@@ -402,7 +393,7 @@ pre {
 
 /* Sidebar links */
 .sidebar a {
-  color: #ECECEC;
+  color: #fff;
 }
 
 /* Sidebar nav */
@@ -423,16 +414,15 @@ a.sidebar-nav-item:focus {
   font-weight: bold;
 }
 
-.face {
-  width: 8rem;
+.copyright {
   padding-top: 1rem;
-  margin: 0 auto 0;
 }
 
-.face img {
-  border-radius: 50%;
+.emoji {
+  padding-right: 7px;
 }
 
 .copyright {
-  padding-top: 1rem;
+  margin: 0 auto;
+  text-align: center;
 }

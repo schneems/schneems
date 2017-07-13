@@ -57,18 +57,27 @@
   background-color: #FF1168
 }
 
-.floatfix {
-  clear: both;
-}
-
 #mc_embed_signup .mc-field-group input {
   max-width: 12rem;
 }
 
-.emoji {
-  padding-right: 7px;
+.face {
+  width: 8rem;
+  padding-top: 1rem;
+  margin: 0 auto 0;
 }
 
-.ampersand {
+.face img {
+  border-radius: 50%;
+}
+
+@media (min-width: 48em) {
+  .face {
+  }
+
+  #mc_embed_signup {
+    width: 80%;
+    clear: none;
+  }
 
 }
