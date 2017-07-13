@@ -22,7 +22,7 @@ Recently, I used this feature to identify and address some slow queries for a si
 
 On the right is the query, on the left are two graphs; one graph showing the number of times the query was called, and another beneath that showing the average time it took to execute the query. You can see from the bottom graph that the average execution time can be up to 8 seconds, yikes! Ideally, I want my response time averages to be around 50 ms and perc 95 to be sub-second time, so waiting 8 seconds for a single query to finish isn't good.
 
-To find this on your own apps you can follow directions on the [expensive queries documentation](https://devcenter.heroku.com/articles/expensive-queries). The documentation will direct you to [your database list page] (https://data.heroku.com/) where you can select the database you’d like to optimize. From there, scroll down and find the expensive queries near the bottom.
+To find this on your own apps you can follow directions on the [expensive queries documentation](https://devcenter.heroku.com/articles/expensive-queries). The documentation will direct you to [your database list page](https://data.heroku.com/) where you can select the database you’d like to optimize. From there, scroll down and find the expensive queries near the bottom.
 
 Once you've chosen a slow query, you’ll need to determine why it's slow. To accomplish this use `EXPLAIN ANALYZE`:
 
@@ -109,7 +109,7 @@ issuetriage::DATABASE-> ORDER BY  created_at DESC LIMIT 20 OFFSET 0;
                Filter: ((state)::text = 'open'::text)
                Rows Removed by Filter: 14
  Total runtime: 21.140 ms
- ```
+```
 
 Yikes. Previously we're only using 0.27 ms, now we're back up to 21 ms. This might not have been the "8 second" query we were seeing before, but it's definitely slower than the first query we profiled.
 
@@ -167,10 +167,8 @@ Here you can see that we're able to use our new index directly and find only the
 What did I learn from this experiment?
 
 - You can find [slow queries using Heroku's expensive queries](https://devcenter.heroku.com/articles/expensive-queries) feature.
-- The exact arguments matter a lot when profiling queries. Don't assume that you know the most expensive thing your database is doing use metrics.
+- The exact arguments matter a lot when profiling queries. Don't assume that you know the most expensive thing your database is doing, use metrics.
 - You can find the exact parameters that go with those expensive queries by [grepping your logs for the exact parameters of those queries](https://devcenter.heroku.com/articles/postgres-logs-errors#log-duration-3-565-s).
 - Indexes help a ton, but you have to understand the different ways your application will use them. It's not enough to profile with 1 query before and after, you need to profile a few different queries with different performance characteristics. In my case not only did I add an index, I went back to the expensive index page which let me know that my queries were still taking a long time (~2 seconds).
 - Performance tuning isn't about magic fixes, it's about finding a toolchain you understand, and iterating on a process until you get the results you want.
-
-*Richard Schneeman is an Engineer for Heroku who also [writes posts on his own blog](https://www.schneems.com). If you liked this post, you can [subscribe to his mailing list to get more like it for free](https://schneems.com/mailinglist).*
 
