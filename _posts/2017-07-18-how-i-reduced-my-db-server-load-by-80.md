@@ -46,8 +46,8 @@ total_exec_time  | prop_exec_time |   ncalls    |   sync_io_time   |            
 
 Here's the query if you are on a smaller screen:
 
-```sql
-SELECT  ?
+```term
+SELECT ?
 AS one
 FROM "repos"
 WHERE LOWER("repos"."name") = LOWER($1) AND
@@ -59,23 +59,26 @@ LIMIT $4
 Now this was strange to me, because I don't remember writing any queries like this. I grepped my codebase for any `LOWER` SQL calls and couldn't find any. I then turned to Papertrail to see where in production this was being called. The first one I found was in a create action:
 
 ```term
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9] Started POST "/repos" for 131.228.216.131 at 2017-06-29 09:34:59 +0000
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9] Processing by ReposController#create as HTML
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9]   Parameters: {"utf8"=>"✓", "authenticity_token"=>"SReN1J4Tt4Q4aUPmNm62nW9jj6AslmgXD2w4GeoUUf7vsubtiUksOqokksJqlwCaUV27dWoWXatkHlIR3ayNog==", "url"=>"https://github.com/styleguidist/react-styleguidist", "commit"=>"Add Repo"}
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9]   User Load (0.9ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9]   Repo Load (1.1ms)  SELECT  "repos".* FROM "repos" WHERE "repos"."name" = $1 AND "repos"."user_name" = $2 ORDER BY "repos"."id" ASC LIMIT $3
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9]    (0.9ms)  BEGIN
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9]   Repo Exists (1.9ms)  SELECT  1 AS one FROM "repos" WHERE LOWER("repos"."name") = LOWER($1) AND ("repos"."id" != $2) AND "repos"."user_name" = $3 LIMIT $4
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9]    (0.5ms)  COMMIT
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9]    (0.8ms)  BEGIN
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9]   RepoSubscription Exists (4.3ms)  SELECT  1 AS one FROM "repo_subscriptions" WHERE "repo_subscriptions"."repo_id" = $1 AND "repo_subscriptions"."user_id" = $2 LIMIT $3
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9]   SQL (5.6ms)  INSERT INTO "repo_subscriptions" ("created_at", "updated_at", "user_id", "repo_id") VALUES ($1, $2, $3, $4) RETURNING "id"
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9]    (6.1ms)  COMMIT
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9] [ActiveJob] Enqueued SendSingleTriageEmailJob (Job ID: cbe2b04a-d271-4d74-bfbc-63f8ae449b87) to Sidekiq(default) with arguments: 34948
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9] Redirected to https://www.codetriage.com/styleguidist/react-styleguidist
-Jun 29 02:35:00 issuetriage app/web.3:  [5e706722-7668-4980-ab5e-9a9853feffc9] Completed 302 Found in 39ms (ActiveRecord: 21.9ms)
+Started POST "/repos" for 131.228.216.131 at 2017-06-29 09:34:59
+Processing by ReposController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>lIR3ayNog==", "url"=>"https://github.com/styleguidist/react-
+  User Load (0.9ms)  SELECT  "users".* FROM "users" WHERE "users".
+  Repo Load (1.1ms)  SELECT  "repos".* FROM "repos" WHERE "repos".
+   (0.9ms)  BEGIN
+  Repo Exists (1.9ms)  SELECT  1 AS one FROM "repos" WHERE LOWER( $3 LIMIT $4
+   (0.5ms)  COMMIT
+   (0.8ms)  BEGIN
+  RepoSubscription Exists (4.3ms)  SELECT  1 AS one FROM "repo_ns"."user_id" = $2 LIMIT $3
+  SQL (5.6ms)  INSERT INTO "repo_subscriptions" ("created_at",
+   (6.1ms)  COMMIT
+[ActiveJob] Enqueued SendSingleTriageEmailJob (Job ID: cbe2b04a-d271
+Redirected to https://www.codetriage.com/styleguidist/react-
+Completed 302 Found in 39ms (ActiveRecord: 21.9ms)
 Jun 29 02:35:00 issuetriage heroku/router:  at=info method=POST path="/repos" host=www.codetriage.com request_id=5e706722-7668-4980-ab5e-9a9853feffc9 fwd="131.228.216.131" dyno=web.3 connect=1ms service=542ms status=302 bytes=1224 protocol=https
 ```
+
+> Log tags removed for clarity
+
 
 It's a bit much to read through, but you can see the query right next to `Repo Exists`. I checked that endpoint (`ReposController#create`) and did have some suspect methods but they all checked out fine (i.e. not making any SQL calls with `LOWER`). So what gives? Where was the query coming from?
 
@@ -87,15 +90,16 @@ To answer this question I went back to the logs and found another site where the
 
 ```term
 Jun 29 07:00:32 issuetriage app/scheduler.8183:  [ActiveJob] Enqueued PopulateIssuesJob (Job ID: 9e04e63f-a515-4dcd-947f-0f777e56dd1b) to Sidekiq(default) with arguments: #<GlobalID:0x00000004f98a68 @uri=#<URI::GID gid://code-triage/Repo/1008>>
-Jun 29 07:11:05 issuetriage app/worker.1:  [ActiveJob] [PopulateIssuesJob] [9e04e63f-a515-4dcd-947f-0f777e56dd1b] Performing PopulateIssuesJob (Job ID: 9e04e63f-a515-4dcd-947f-0f777e56dd1b) from Sidekiq(default) with arguments: #<GlobalID:0x007fd098f6bdf8 @uri=#<URI::GID gid://code-triage/Repo/1008>>
-Jun 29 07:11:05 issuetriage app/worker.1:  [ActiveJob] [PopulateIssuesJob] [9e04e63f-a515-4dcd-947f-0f777e56dd1b]   User Load (10.4ms)  SELECT  "users".* FROM "users" WHERE ("users"."github_access_token" IS NOT NULL) ORDER BY RANDOM() LIMIT $1
-Jun 29 07:11:05 issuetriage app/worker.1:  [ActiveJob] [PopulateIssuesJob] [9e04e63f-a515-4dcd-947f-0f777e56dd1b]    (35.4ms)  BEGIN
-Jun 29 07:11:05 issuetriage app/worker.1:  [ActiveJob] [PopulateIssuesJob] [9e04e63f-a515-4dcd-947f-0f777e56dd1b]   Repo Exists (352.9ms)  SELECT  1 AS one FROM "repos" WHERE LOWER("repos"."name") = LOWER($1) AND ("repos"."id" != $2) AND "repos"."user_name" = $3 LIMIT $4
-Jun 29 07:11:05 issuetriage app/worker.1:  [ActiveJob] [PopulateIssuesJob] [9e04e63f-a515-4dcd-947f-0f777e56dd1b]   SQL (3.7ms)  UPDATE "repos" SET "github_error_msg" = $1, "updated_at" = $2 WHERE "repos"."id" = $3
-Jun 29 07:11:05 issuetriage app/worker.1:  [ActiveJob] [PopulateIssuesJob] [9e04e63f-a515-4dcd-947f-0f777e56dd1b]    (4.5ms)  COMMIT
-Jun 29 07:11:05 issuetriage app/worker.1:  [ActiveJob] [PopulateIssuesJob] [9e04e63f-a515-4dcd-947f-0f777e56dd1b] Performed PopulateIssuesJob (Job ID: 9e04e63f-a515-4dcd-947f-0f777e56dd1b) from Sidekiq(default) in 629.22ms
+Performing PopulateIssuesJob (uri=#<URI::GID gid://code-
+  User Load (10.4ms)  SELECT
+   (35.4ms)  BEGIN
+  Repo Exists (352.9ms)  SELECT  $3 LIMIT $4
+  SQL (3.7ms)  UPDATE "repos"
+   (4.5ms)  COMMIT
+Performed PopulateIssuesJob (Job ID: 9e04e63f-a515-4dcd-947f-0f777e56dd1b) from Sidekiq(default) in 629.22ms
 ```
 
+> Log tags removed for clarity
 
 This time the query was coming not from a web action, but a background job. When I looked it up I realized that the validation wasn't being performed on only create, it was being performed on ANY updates to the record. Even if the username or name columns weren't touched it would still query the database, just to be sure.
 
