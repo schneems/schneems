@@ -25,7 +25,12 @@ There must have been something odd about the app or the database. In the output 
 Luckily enough I work for Heroku, so I popped into the Slack room for our database engineers and asked what might cause that kind of performance degradation. They asked what kind of average load my DB was under. I'm using a [standard-0 DB](https://devcenter.heroku.com/articles/heroku-postgres-production-tier-technical-characterization#burstable-performance) and Heroku lists it as being able to sustain a [load of 0.2](https://devcenter.heroku.com/articles/heroku-postgres-production-tier-technical-characterization#burstable-performance). I opened up [my logs in papertrail](https://elements.heroku.com/addons/papertrail) and searched for `load-avg` and I found this entry right around the time of my slow request:
 
 ```term
-Jun 29 01:01:01 issuetriage app/heroku-postgres: source=DATABASE sample#current_transaction=271694354 sample#db_size=4469950648bytes sample#tables=14 sample#active-connections=35 sample#waiting-connections=0 sample#index-cache-hit-rate=0.87073 sample#table-cache-hit-rate=0.47657 sample#load-avg-1m=2.15 sample#load-avg-5m=1.635 sample#load-avg-15m=0.915 sample#read-iops=16.325 sample#write-iops=0 sample#memory-total=15664468kB sample#memory-free=255628kB sample#memory-cached=14213308kB sample#memory-postgres=549408kB
+Jun 29 01:01:01 issuetriage app/heroku-postgres: source=DATABASE sample#current_transaction=271694354
+sample#db_size=4469950648bytes sample#tables=14 sample#active-connections=35
+sample#waiting-connections=0 sample#index-cache-hit-rate=0.87073  sample#table-cache-hit-rate=0.47657
+sample#load-avg-1m=2.15 sample#load-avg-5m=1.635 sample#load-avg-15m=0.915
+sample#read-iops=16.325 sample#write-iops=0 sample#memory-total=15664468kB
+sample#memory-free=255628kB sample#memory-cached=14213308kB sample#memory-postgres=549408kB
 ```
 
 While a normal load average of 0.2 or lower is fine, my app was spiking up to `2.15`, yowza!
