@@ -2,5 +2,13 @@
   "root": "_site",
   "https_only": true,
   "clean_urls": true,
-  "error_page": "404.html"
+  "error_page": "404.html",
+  "headers": {
+    "/": {
+      "Cache-Control": "no-store, no-cache"
+    },
+    "/assets/**": {
+      "Cache-Control": "public, max-age=512000"
+    }
+  }
 }
