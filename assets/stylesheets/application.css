@@ -361,7 +361,7 @@ pre {
 
 .content {
   padding: 2rem;
-  flex: 2;
+  flex: 2 1 auto;
 }
 
 @media (min-width: 48em) {
