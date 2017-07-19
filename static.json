@@ -8,7 +8,7 @@
       "Cache-Control": "no-store, no-cache"
     },
     "/assets/**": {
-      "Cache-Control": "public, max-age=512000"
+      "Cache-Control": "public, max-age=15552000"
     }
   }
 }
