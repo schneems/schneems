@@ -272,7 +272,7 @@ tbody tr:nth-child(odd) th {
 }
 
 .page, .post, .posts {
-  max-width: 40rem;
+  /*max-width: 40rem;*/
 }
 
 /* Blog post or page title */
