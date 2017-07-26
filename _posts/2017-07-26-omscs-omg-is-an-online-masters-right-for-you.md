@@ -96,5 +96,3 @@ It's also hard to say what the payoff will be: financially, emotionally, or with
 
 It's not for everyone, which is why I wrote this. You need to decide for yourself. If you're unsure take a Udacity course and see how you feel about it. The main difference with taking it via Udacity and via GT is in an official class you have a community where you can ask questions. Also, know that there are additional programming assignments given out in addition to what is already in the Udacity videos. Are you in a position where not having a master's degree is holding you back? What are the pros, what are the cons? Only you can decide.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/K9F5xcpjDMU" frameborder="0" allowfullscreen></iframe>
-
