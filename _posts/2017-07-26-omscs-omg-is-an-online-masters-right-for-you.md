@@ -22,7 +22,7 @@ Before I enrolled, I was at my parent's house for a vacation and got bored so I 
 
 ## Why did I choose GT?
 
- My company (Salesforce, which owns Heroku) will cover education costs up to a certain dollar amount per year. Georgia Tech's Online program is around $7,000 which is ludicrously cheap. That's not one semester, that's the whole program.
+My company (Salesforce, which owns Heroku) will cover education costs up to a certain dollar amount per year. Georgia Tech's Online program is around $7,000 which is ludicrously cheap. That's not one semester, that's the whole program.
 
 I also looked at Stanford and theirs was around $150,000. If I went to GT then I could go to school for "free" with the help of Salesforce. It's a well-known engineering school and isn't going to require me to mortgage a kidney to go to.
 
@@ -48,7 +48,7 @@ On the course material: I'm being exposed to many more concepts than I would see
 
 ## Does prior programming experience help?
 
-I've been doing Rails for 10+ years now. I would say that this buys me being comfortable in front of a computer with a problem I know nearly nothing about. I'm comfortable finding and debugging example code I find on the internet. I know how to write a good technical question for a forum post.
+I've been doing Rails & Ruby for 10+ years now. I would say that this buys me being comfortable in front of a computer with a problem I know nearly nothing about. I'm comfortable finding and debugging example code I find on the internet. I know how to write a good technical question for a forum post.
 
 Generalized debugging and problem-solving skills are very helpful, but I don't feel that gives me a huge leg up in the assignments. What that prior experience does bring though, is context. When my OS course was talking about the internal structure of processes and threads, I had an Aha! moment. I've been using these things for years, but knew __how__ they worked. I think I'll retain these lessons better than students who have no real world experience.
 
@@ -58,7 +58,7 @@ Oh yeah. It's not easy. Did you read the part about drown proofing? I don't know
 
 I feel part of the problem are schools in general. They equate "hard" with "good education". If you're struggling, then surely you're learning, right? I believe there's a difference between learning to grind on a hard problem and learning a concept. I would love it if the school was focused on content instead of exams, individual projects, and intentionally difficult assignments for the sake of being difficult.
 
- Schools rely on testing to determine competency and this means deliberately omitting key facts when presenting specifications for projects. Like honestly, the assignments are hard enough without being cryptic about it. Being a student means being forced to memorize random minutiae to pass multiple choice tests with deceptive looking answers. It also means that when asking for help in the forums, you have to be super secretive for risk of accidentally helping another student. How awful is that, that my biggest concern when speaking to them is that I might help them TOO much.
+Schools rely on testing to determine competency and this means deliberately omitting key facts when presenting specifications for projects. Like honestly, the assignments are hard enough without being cryptic about it. Being a student means being forced to memorize random minutiae to pass multiple choice tests with deceptive looking answers. It also means that when asking for help in the forums, you have to be super secretive for risk of accidentally helping another student. How awful is that? My biggest concern when speaking to them is that I might help them TOO much.
 
 The reason I like programming is that there is so much interaction and help available. Ruby is a mostly great community and I really enjoy interacting with others. Schools kinda strip all of that away from the learning process.
 
@@ -76,7 +76,7 @@ If you're from GT and reading this know that I have done a lot of technical teac
 
 - Exercises don't always match course material. I took AI for Robotics and the final "big" group project had almost nothing to do with the course. This comes back to the "grinding" I mentioned earlier, I don't want to program for the sake of programming, I want to program to learn a topic.
 
-- Better project specifications. Specifications are often vague. In the current OS course I'm taking, when we submit our program to be tested, there are explicit tests for things that were not even mentioned in the assignment. If you have to be vauge in a specification for an assignment for it to be challenging enough, then it's not a very good assignment.
+- Better project specifications. Specifications are often vague. In the current OS course I'm taking, when we submit our program to be tested, there are explicit tests for things that were not even mentioned in the assignment. If you have to be vague in a specification for an assignment for it to be challenging enough, then it's not a very good assignment.
 
 - The administration needs to put a human face to their students. Course Surveys aren't enough. At the end of each semester GT sends out "course surveys". I think they're trying to make sure the content is good, and that the teachers are meeting expectations. This is fine, but way too coarse grained. I have lots of critiques for my classes where I think they can do better, but I need more nuance than a survey. I also don't want to rank them low because they're doing a good job, but I think they could be doing a better job. Maybe if they randomly selected a few students and did Google Hangout interviews to get some nuance and add some stories to the raw data, it could help.
 
