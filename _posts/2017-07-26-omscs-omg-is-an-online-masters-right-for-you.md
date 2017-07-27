@@ -50,7 +50,7 @@ On the course material: I'm being exposed to many more concepts than I would see
 
 I've been doing Rails & Ruby for 10+ years now. I would say that this buys me being comfortable in front of a computer with a problem I know nearly nothing about. I'm comfortable finding and debugging example code I find on the internet. I know how to write a good technical question for a forum post.
 
-Generalized debugging and problem-solving skills are very helpful, but I don't feel that gives me a huge leg up in the assignments. What that prior experience does bring though, is context. When my OS course was talking about the internal structure of processes and threads, I had an Aha! moment. I've been using these things for years, but knew __how__ they worked. I think I'll retain these lessons better than students who have no real world experience.
+Generalized debugging and problem-solving skills are very helpful, but I don't feel that gives me a huge leg up in the assignments. What that prior experience does bring though, is context. When my OS course was talking about the internal structure of processes and threads, I had an Aha! moment. I've been using these things for years, but didn't know __how__ they worked. I think I'll retain these lessons better than students who have no real world experience.
 
 ## Does it take a lot of time?
 
