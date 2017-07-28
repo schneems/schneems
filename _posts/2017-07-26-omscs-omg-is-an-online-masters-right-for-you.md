@@ -4,6 +4,7 @@ layout: post
 published: true
 date: 2017-07-26
 permalink: /2017/07/26/omscs-omg-is-an-online-masters-right-for-you/
+hnurl: https://news.ycombinator.com/item?id=14859028
 categories:
     - ruby
 ---
