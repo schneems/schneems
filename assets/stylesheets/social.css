@@ -1,0 +1,54 @@
+
+.social {
+  text-align: left;
+}
+
+.social a {
+  text-decoration: none;
+  margin: 0.5rem ;
+  color: #FF1168;
+}
+
+.social a:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+      transform: scale(1.2);
+/*  box-shadow: 10px 15px 7px #C7C7C7;
+*/}
+
+.social .icon, .social .button {
+    display: inline-block;
+}
+
+.social a {
+  display: block;
+}
+
+@media (min-width: 48em) {
+  .social a {
+    display: inline-block;
+  }
+
+  .social {
+    text-align: right;
+  }
+}
+
+.discuss {
+  @extend h2;
+  display: inline;
+}
+
+
+.social-name {
+  vertical-align: top;
+}
+
+.icon {
+  height: 24px;
+  width: 24px;
+}
+
+.hn-padding {
+  padding: 2.5px;
+}

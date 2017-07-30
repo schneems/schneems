@@ -10,62 +10,7 @@ layout: default
   {{ content }}
 </div>
 
-
-<!-- icons from https://github.com/edent/SuperTinySocialIcons/tree/master/tiny -->
-<div class="social">
-  <a href="https://twitter.com/intent/tweet/?text={{ page.title | uri_escape }};hashtags=ruby;via=schneems;url={{ site.url | append: page.url | uri_escape }}" target="_blank" aria-label="Twitter">
-    <div class="button">
-      <div class="button__icon icon">
-        <div style="height: 24px; width:24px">
-          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-            <path d="m456 133c-14 7-31 11-47 13 17-10 30-27 37-46-15 10-34 16-52 20-61-62-157-7-141 75-68-3-129-35-169-85-22 37-11 86 26 109-13 0-26-4-37-9 0 39 28 72 65 80-12 3-25 4-37 2 10 33 41 57 77 57-42 30-77 38-122 34 170 111 378-32 359-208 16-11 30-25 41-42z" fill="#FF1168"/>
-          </svg>
-        </div>
-      </div>
-      <span class='social-name'>Twitter</span>
-    </div>
-  </a>
-
-  <a href="https://reddit.com/submit/?url={{ site.url | append: page.url | uri_escape }}" target="_blank">
-    <div class="button">
-      <div class="button__icon icon">
-        <div style="height: 24px; width:24px">
-          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="#ff4500">
-            <ellipse cx="256" cy="305" rx="177" ry="123" fill="#FF1168"/>
-            <path d="m199 347c35 29 79 29 114 0l12 11c-42 35-96 35-138 0z" fill="#fff"/>
-            <circle cx="315" cy="285" r="28" fill="#fff"/>
-            <circle cx="197" cy="285" r="28" fill="#fff"/>
-            <g fill="none" stroke="#FF1168">
-              <circle cx="390" cy="125" r="28" stroke-width="25"/>
-              <path d="m87 282c-45-22-5-92 40-50m298 50c45-22 5-92-40-50m-127-45 24-83 80 16" stroke-width="22"/>
-            </g>
-          </svg>
-        </div>
-      </div>
-      <span class='social-name'>Reddit</span>
-    </div>
-  </a>
-
-  <a
-  {% if page.hnurl %}
-    href="{{ page.hnurl }}"
-  {% else %}
-    href="https://news.ycombinator.com/submitlink?u={{ site.url | append: page.url | uri_escape }}&t={{ page.title | uri_escape }}"
-  {% endif %}
-  >
-    <div class="button">
-      <div class="button__icon icon">
-        <div style="height: 24px; width: 24px">
-          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-           <path d="m101 56h61l94 192 94-192h61l-129 255v145h-52v-145" fill="#FF1168"/>
-          </svg>
-        </div>
-      </div>
-      <span class='social-name'>Hacker News</span>
-    </div>
-  </a>
-
-</div>
+{% include social.html %}
 
 <div class="related">
   {% include mailchimp.html %}
@@ -86,4 +31,3 @@ layout: default
     {% endfor %}
   </ul>
 </div>
-

@@ -3,6 +3,7 @@
 *= require syntax.css
 *= require pagination.css
 *= require email.css
+*= require social.css
 */
 
 .flexbox-container {
@@ -426,35 +427,4 @@ a.sidebar-nav-item:focus {
 .copyright {
   margin: 0 auto;
   text-align: center;
-}
-
-.social {
-  text-align: right;
-}
-
-.social a {
-  text-decoration: none;
-  margin: 0.5rem ;
-  color: #FF1168;
-}
-
-.social a:hover {
-  -webkit-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-      transform: scale(1.2);
-/*  box-shadow: 10px 15px 7px #C7C7C7;
-*/}
-
-.social a, .social .icon, .social .button {
-  display: inline-block;
-}
-
-.discuss {
-  @extend h2;
-  display: inline;
-}
-
-
-.social-name {
-  vertical-align: top;
 }
