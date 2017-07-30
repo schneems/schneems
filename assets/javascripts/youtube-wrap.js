@@ -1,6 +1,6 @@
 // Mobile Friendly Youtube Embed via JavaScript: https://codepen.io/schneems/pen/woreoR
 //
-window.onload = function() {
+window.addEventListener("load", function(event) {
   var elementList = document.querySelectorAll("iframe");
   elementList.forEach(function(elem) {
 
@@ -16,4 +16,4 @@ window.onload = function() {
     }
 
   });
-}
+});

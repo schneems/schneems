@@ -16,6 +16,8 @@ If you're still hungry for more information on memory and performance you can al
 
 #### Speed science Video
 
+I start talking about memory at the 13 minute mark. Before that I gave a story of debugging an app with slow disk IO.
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/m2nj5sUE3hg" frameborder="0" allowfullscreen></iframe>
 
 #### Speed science Slides
