@@ -427,8 +427,11 @@ a.sidebar-nav-item:focus {
   padding-right: 7px;
 }
 
-a .emoji:hover {
+a.sidebar-nav-item:hover {
   text-decoration: none;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+      transform: scale(1.1);
 }
 
 .copyright {
