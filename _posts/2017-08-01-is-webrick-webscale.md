@@ -178,16 +178,16 @@ $ siege -b -t60s 127.0.0.1:3000
 # ...
 Lifting the server siege...      done.
 
-Transactions:          21970 hits
-Availability:         100.00 %
-Elapsed time:          59.37 secs
-Data transferred:       535.31 MB
-Response time:            0.04 secs
-Transaction rate:       370.05 trans/sec
-Throughput:           9.02 MB/sec
-Concurrency:           14.59
-Successful transactions:       21970
-Failed transactions:             0
+Transactions:             21970 hits
+Availability:               100.00 %
+Elapsed time:                59.37 secs
+Data transferred:           535.31 MB
+Response time:                0.04 secs
+Transaction rate:           370.05 trans/sec
+Throughput:                   9.02 MB/sec
+Concurrency:                 14.59
+Successful transactions:  21970
+Failed transactions:          0
 Longest transaction:          4.84
 Shortest transaction:         0.00
 ```
