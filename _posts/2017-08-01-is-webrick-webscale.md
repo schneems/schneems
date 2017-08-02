@@ -32,7 +32,7 @@ Even the Perc95 was great, it's under 35ms. As Nate mentioned on his blog, under
 
 - WEBrick "webscale" speed: ✅🎉
 
-In the case of my blog, my throughput averages around 25 requests per minute and when I published [my most popular post of 2017](https://schneems.com/2017/07/18/how-i-reduced-my-db-server-load-by-80/) it spiked up to 375 requests per second.
+In the case of my blog, my throughput averages around 25 requests per minute and when I published [my most popular post of 2017](https://schneems.com/2017/07/18/how-i-reduced-my-db-server-load-by-80/) it spiked up to 375 requests per minute.
 
 ![](https://www.dropbox.com/s/bqh3trvy0q7nb29/Screenshot%202017-07-25%2009.32.45.png?dl=1)
 
@@ -44,7 +44,7 @@ According to [Little's law](https://en.wikipedia.org/wiki/Little%27s_law) and [N
 webrick instances = avg requests (per second) * average response time (seconds)
 ```
 
-We can use this math to determine the maximum number of requests per second that could be served by 1 WEBrick instance:
+We can use this math to approximate the maximum number of requests per second that could be served by 1 WEBrick instance:
 
 ```
 avg requests (per seconds) = 1.0 instances / average response time (seconds)
