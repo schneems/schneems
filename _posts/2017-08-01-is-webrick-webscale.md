@@ -6,6 +6,7 @@ date: 2017-08-01
 permalink: /2017/08/01/is-webrick-webscale/
 hnurl: https://news.ycombinator.com/item?id=14904375
 twurl: https://twitter.com/schneems/status/892470634281930752
+loburl: https://lobste.rs/s/76pnia/is_webrick_webscale
 image: og/webrick.png
 categories:
     - ruby
@@ -31,7 +32,7 @@ Fast forward a few years and I still hadn't updated the way I was serving my sit
 
 Even the Perc95 was great, it's under 35ms. As Nate mentioned on his blog, under a certain threshold (100 milliseconds) things appear more or less instantaneous to end-users. For my little blog, humming along using a pure Ruby stack, I was in that "instantaneous" category out of the box.
 
-- WEBrick "webscale" speed: ✅🎉
+- WEBrick "webscale" speed: ✅ 🎉
 
 In the case of my blog, my throughput averages around 25 requests per minute and when I published [my most popular post of 2017](https://schneems.com/2017/07/18/how-i-reduced-my-db-server-load-by-80/) it spiked up to 375 requests per minute.
 
@@ -62,7 +63,7 @@ This means that 1 dyno with webrick could handle `142.85 (requests per second) *
 
 > If you want to be pedantic about it, the socket by default would only accept 1024 requests in the backlog and the rest would be rejected, also there is a 30 second timeout from the router. But you get the point.
 
-- WEBrick "webscale" cost: 😜😇
+- WEBrick "webscale" cost: 😜 😇
 
 I promised we would compare to NGINX (pronounced "engine-x")? The results may surprise you! I eventually switched my blog to generate static content via Ruby and then serve it via NGINX.
 
@@ -103,7 +104,7 @@ When I deployed what did I see? My response time went down, my average is now ar
 
 ![](https://www.dropbox.com/s/y4cp96i23pnrk27/Screenshot%202017-07-25%2010.04.33.png?dl=1)
 
-- NGINX "webscale" speed: ✅🎉🚀💯
+- NGINX "webscale" speed: ✅ 🎉 🚀 💯
 
 One other thing it did was drop my memory use like a (WEB)brick. Here's screenshot of just after the deploy
 
@@ -154,7 +155,7 @@ There you go. The number of processes in NGINX will be 8. Also since our average
 
 Is NGINX webscale? I think so.
 
-- NGINX "webscale" cost: ✅🎉🚀💯
+- NGINX "webscale" cost: ✅ 🎉 🚀 💯
 
 At the end of the day, NGINX beat our little WEBrick server, but that's expected. NGINX is far more complex with far more development hours in it. What was surprising to me was how long I was able to get by without it. When people say "use the right tool for the job" sometimes they mean don't over engineer things with the 100% fastest tools. One thing that WEBrick is good at doing is being simple and relatively bug-free. For example, if you need to serve some files from a directory, you can do it in a one liner shell script:
 

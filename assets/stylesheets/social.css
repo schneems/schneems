@@ -1,11 +1,11 @@
-
 .social {
   text-align: left;
 }
 
 .social a {
   text-decoration: none;
-  margin: 0.5rem ;
+  margin: 0.5rem;
+  margin-left: 0rem;
   color: #FF1168;
 }
 
@@ -13,25 +13,15 @@
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
       transform: scale(1.2);
-/*  box-shadow: 10px 15px 7px #C7C7C7;
-*/}
+}
 
 .social .icon, .social .button {
-    display: inline-block;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .social a {
-  display: block;
-}
-
-@media (min-width: 48em) {
-  .social a {
-    display: inline-block;
-  }
-
-  .social {
-    text-align: right;
-  }
+  display: inline-block;
 }
 
 .discuss {
@@ -41,6 +31,7 @@
 
 
 .social-name {
+  font-size: 16px;
   vertical-align: top;
 }
 
@@ -51,4 +42,26 @@
 
 .hn-padding {
   padding: 2.5px;
+}
+
+.tophr {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* teeny tiny screen */
+@media (max-width: 20em) {
+  .social-name {
+    font-size: 14px;
+  }
+}
+.socialsidebar {
+  flex: 0 0 0;
+  min-width: 10rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.social-prompt {
+  font-weight: bolder;
 }

@@ -7,14 +7,28 @@ layout: default
   <span class="post-date">
     {{ page.date | date_to_string }}
   </span>
-  {{ content }}
+  <div class="socialmobile only-mobile">
+    {% include social.html %}
+    <hr class='tophr' />
+  </div>
+
+  <div class="flexbox-container" >
+    <div class="postcontent">
+      {{ content }}
+    </div>
+
+    <div class="socialsidebar closed-when-mobile">
+      <span class="social-prompt">Share on</span>
+      {% include social.html %}
+    </div>
+  </div>
 </div>
 
 <div class="related">
   {% include mailchimp.html %}
   <hr />
 
-  <h2>Don't stop now 🚀</h2>
+  <h2>Keep Reading 🚀</h2>
   <ul class="related-posts">
     {% for post in site.related_posts limit:5 %}
       <li>

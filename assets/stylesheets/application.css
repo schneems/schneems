@@ -33,6 +33,11 @@
           box-sizing: border-box;
 }
 
+/* required for a flexy layout otherwise images will force min width*/
+div, p, img {
+  min-width: 0;
+}
+
 html,
 body {
   margin: 0;
@@ -72,7 +77,6 @@ a:focus {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 0rem;
   font-weight: bold;
   line-height: 1.25;
   color: #313131;
@@ -152,8 +156,6 @@ pre {
   padding: 1rem;
   font-size: .8rem;
   line-height: 1.4;
-  white-space: pre;
-  white-space: pre-wrap;
   word-break: break-all;
   word-wrap: break-word;
   background-color: #f9f9f9;
@@ -205,10 +207,7 @@ blockquote p:last-child {
 }
 
 img {
-  display: block;
   max-width: 100%;
-  margin: 0 0 1rem;
-  border-radius: 5px;
 }
 
 table {
@@ -289,10 +288,11 @@ tbody tr:nth-child(odd) th {
 
 /* Meta data line below post title */
 .post-date {
-  margin-top: -0.75rem;
+  margin-top: -1rem;
   margin-bottom: 1rem;
   color: #9a9a9a;
   font-size: 12px;
+  display: block;
 }
 
 .post-author {
@@ -372,27 +372,39 @@ pre {
 
 .content {
   padding: 2rem;
-  flex: 2 1 auto;
+  flex: 1 1 auto;
 }
 
 /* If device width is LESS than or equal to this value */
 @media (max-width: 30em) {
+  .logo {
+    width: 8rem;
+  }
+
   .content {
     padding: 1rem;
     padding-left: 1rem;
+  }
+
+  .post-date {
+    margin: 0;
   }
 }
 
 /* If device width is GREATER than or equal to this value */
 @media (min-width: 48em) {
+  .only-mobile {
+    display: none;
+  }
+
   .flexbox-container {
     -webkit-flex-direction: row;
     flex-direction: row;
   }
 
   .content {
-    width: 75%;
     padding: 3rem;
+    padding-right: 0;
   }
 
   .sidebar {
@@ -400,6 +412,7 @@ pre {
     max-width: 14rem;
     min-width: 14rem;
     text-align: left;
+    flex: 0 0;
   }
 
   .closed-when-mobile {
@@ -458,4 +471,20 @@ a.sidebar-nav-item:hover {
   width: 12rem;
   margin: 0 auto;
   padding-bottom: 1rem;
+}
+
+.hamburger {
+  width: 10em;
+  display: block;
+  margin: 0 auto;
+  padding: 0.2rem;
+}
+
+.postcontent {
+  flex: 1 1 auto;
+  max-width: 40rem;
+}
+
+.related {
+  max-width: 40rem;
 }
