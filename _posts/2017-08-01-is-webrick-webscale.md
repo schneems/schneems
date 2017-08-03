@@ -5,6 +5,7 @@ published: true
 date: 2017-08-01
 permalink: /2017/08/01/is-webrick-webscale/
 hnurl: https://news.ycombinator.com/item?id=14904375
+twurl: https://twitter.com/schneems/status/892470634281930752
 image: og/webrick.png
 categories:
     - ruby

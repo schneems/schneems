@@ -72,7 +72,7 @@ a:focus {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom: .5rem;
+  margin-bottom: 0rem;
   font-weight: bold;
   line-height: 1.25;
   color: #313131;
@@ -289,10 +289,15 @@ tbody tr:nth-child(odd) th {
 
 /* Meta data line below post title */
 .post-date {
-  display: block;
-  margin-top: -.5rem;
+  margin-top: -0.75rem;
   margin-bottom: 1rem;
   color: #9a9a9a;
+  font-size: 12px;
+}
+
+.post-author {
+  color: black;
+  font-size: 12px;
 }
 
 /* Related posts */
@@ -370,6 +375,15 @@ pre {
   flex: 2 1 auto;
 }
 
+/* If device width is LESS than or equal to this value */
+@media (max-width: 30em) {
+  .content {
+    padding: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+/* If device width is GREATER than or equal to this value */
 @media (min-width: 48em) {
   .flexbox-container {
     -webkit-flex-direction: row;
