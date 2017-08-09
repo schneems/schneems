@@ -120,6 +120,8 @@ class AddUniqueIndexToRepos < ActiveRecord::Migration[5.1]
 end
 ```
 
+> Note: the fix is not a drop in replacement it just so happens that [I was already handling the case of a non-unique entry being created](https://github.com/codetriage/codetriage/pull/573#issuecomment-312045401) and I didn't have to make any changes to my codebase. Otherwise I would have to go around rescuing postgres errors all over the place.
+
 Now we are guaranteed that no two records can have the same username/name combination at the database level and Rails does not have to make a query every time we update a record.
 
 > Not to mention that the Rails validation has a race condition and can't actually guarantee consistency, it's better to enforce these types of things at the database level anyway.
