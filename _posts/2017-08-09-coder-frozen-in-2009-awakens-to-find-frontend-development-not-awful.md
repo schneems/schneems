@@ -26,7 +26,9 @@ If you need JS on your site, you don't have to make your visitors wait for it to
 
 Now when the browser gets to this line, they start downloading it in the background.
 
-Pros: Page loads faster, seems more responsive
+Pros: Page loads faster, seems more responsive.
+
+
 Cons: Any JS that expects to interact with the DOM must be wrapped in an event handler (more on that later).
 
 ## jQuery Isn't necessary
