@@ -4,6 +4,7 @@ layout: post
 published: true
 date: 2017-08-09
 permalink: /2017/08/09/coder-frozen-in-2009-awakens-to-find-frontend-development-not-awful/
+twurl: https://twitter.com/schneems/status/895311171494064128
 categories:
     - ruby
 ---
