@@ -9,7 +9,7 @@ categories:
     - ruby
 ---
 
-I've not seriously touched frontend code, in years. Frankly, it scares me. To that end "front end devs are not real programmers is totally BS". I want to talk about some of the recent changes in tooling and APIs that are available so that front end development might not suck as much as it used to. You will not learn to be a CSS or JS guru with this post. If you've written much front end code, this will be mostly full of face-palm level obvious statements. Therefore, feel free to read for the laughs.
+I've not seriously touched frontend code, in years. Frankly, it scares me. To that end "front end devs are not real programmers" is totally BS. I want to talk about some of the recent changes in tooling and APIs that are available so that front end development might not suck as much as it used to. You will not learn to be a CSS or JS guru with this post. If you've written much front end code, this will be mostly full of face-palm level obvious statements. Therefore, feel free to read for the laughs.
 
 I've been working at Heroku for 5+ years and I've not shipped a production feature that touched frontend code in that time. Prior to that, I kinda dabbled a bit, but mostly just mocked up other people's interfaces. The last "real" website that I was responsible for frontend was probably circa 2009, and it was awful (both in experience and my designs).
 
