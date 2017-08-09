@@ -426,6 +426,11 @@ pre {
   .sidebar-nav-mobile {
     display: none;
   }
+
+  .post {
+    /* postcontent + socialsidebar */
+    max-width: 50rem;
+  }
 }
 
 /* Sidebar links */
