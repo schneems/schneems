@@ -34,7 +34,7 @@ github:
 
 BASE_PATH_FOR_RSS: https://www.schneems.com
 
-gems:
+plugins:
   - jekyll-assets
   - jekyll-paginate
   - jekyll-redirect-from
