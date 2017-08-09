@@ -92,6 +92,8 @@ I guess I never really talked about __why__ I wanted to get rid of jQuery. The b
 
 When were these features added to JS and were they actually inspired by jQuery? I have no idea.
 
+> Nate Berkopec pointed out this awesome site: [You might not need jQuery](http://youmightnotneedjquery.com/) for more examples.
+
 ## CSS Is less awful
 
 I'll admit that I fell in love with CSS when I first started using it. When I started making web apps it was so much fun to get this instant gratification of seeing my changes on screen. While backend logic changes are equally as "real", there's something that touches us at a human level when we can feel, see, or otherwise sense the changes we're making on the world. CSS feedback is much more visceral. Likewise it was eviscerating when it didn't work as expected.
