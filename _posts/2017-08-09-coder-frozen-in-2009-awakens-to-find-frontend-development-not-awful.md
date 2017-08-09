@@ -121,7 +121,7 @@ Here's a hello world media query example
 
 > For my website I prefer `em` and `rem` over pixels for measurements because I read once in a book that they were better or something.
 
-So my sidebar would default to white when it is small, but once the window was stretched to 48em or larger the background color would change to red. You can have more than one set of media queries for different sized windows, but I only have two mobile and "big".
+So my sidebar would default to white when it is small, but once the window was stretched to 48em or larger the background color would change to red. You can have more than one set of media queries for different sized windows, but I only have two: one for "mobile" and one for "desktop".
 
 Generally instead of colors, you'll want to modify sizes and orientation and even hide things.
 
@@ -134,10 +134,10 @@ I accomplish this by wrapping those two sections in a top level html element:
 ```html
 <div class="flexbox-container" >
   <div class="sidebar">
-    {% include sidebar.html %}
+    <!-- {% include sidebar.html %} -->
   </div>
   <div class="content container">
-    {{ content }}
+    <!-- {{ content }}  -->
   </div>
 </div>
 ```
