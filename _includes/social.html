@@ -20,7 +20,7 @@
   </a>
 
   <!-- reddit -->
-  <a href="https://reddit.com/submit/?url={{ site.url | append: page.url | uri_escape }}" target="_blank">
+  <a href="https://reddit.com/submit/?url={{ site.url | append: page.url | uri_escape }}&title={{ page.title | uri_escape }}" target="_blank">
     <div class="button">
       <div class="icon">
         <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="#ff4500">
@@ -62,7 +62,7 @@
   {% if page.loburl %}
     href="{{ page.loburl }}"
   {% else %}
-    href="https://lobste.rs/stories/new?url=foo{{ site.url | append: page.url | uri_escape }}&title={{ page.title | uri_escape }}"
+    href="https://lobste.rs/stories/new?url={{ site.url | append: page.url | uri_escape }}&title={{ page.title | uri_escape }}"
   {% endif %}
   target="_blank">
     <div class="button">
