@@ -180,7 +180,7 @@ Vector graphics are amazing, use them! SVG images can be styled via code, so you
 
 This isn't a CSS feature per-say, but rather an ecosystem concern. My site uses sprockets to generate assets, and even though it's __only__ a blog, it's not overkill. Why shy away from a framework like jQuery for JS but embrace a framework with CSS? Well jQuery as a dependency has to be downloaded EVERY time your site loads. Preprocessors help in development and then get out of the way in production.
 
-I use [sprockets](https://rubygems.org/gems/sprockets) via [Jekyll Assets](https://github.com/jekyll/jekyll-assets)on my blog because it's written in Ruby. If you didn't know, I also maintain the sprockets gem as well. Yes, I know there hasn't been a release on 4.0 and I'm sorry.
+I use [sprockets](https://rubygems.org/gems/sprockets) via [Jekyll Assets](https://github.com/jekyll/jekyll-assets) on my blog because it's written in Ruby. If you didn't know, I also maintain the sprockets gem as well. Yes, I know there hasn't been a release on 4.0 and I'm sorry.
 
 Here's some things an asset framework lets me do:
 
@@ -194,7 +194,7 @@ In English: when your server responds to a web request it can choose to include 
 "Cache-Control": "public, max-age=15552000"
 ```
 
-This tells the browser that the file it just downloaded doesn't have to be re-downloaded for 15552000 seconds (nearly 6 months). This is great for someone browsing your site, on the next page load they can skip downloading your CSS. However you have to invalidate this cache somehow if you want to change your CSS or JS. That's where the fingerprints come in. When you change a variable, the file name of your asset will change and then the browser will download the new file because it is a totally new name.
+This tells the browser that the file it just downloaded doesn't have to be re-downloaded for 15,552,000 seconds (nearly 6 months). This is great for someone browsing your site, on the next page load they can skip downloading your CSS. However you have to invalidate this cache somehow if you want to change your CSS or JS. That's where the fingerprints come in. When you change a variable, the file name of your asset will change and then the browser will download the new file because it is a totally new name.
 
 This is an advanced topic and also requires configuration of your webserver to add the header for assets.
 
