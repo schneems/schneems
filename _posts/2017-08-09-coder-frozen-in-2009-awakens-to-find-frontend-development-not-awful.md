@@ -54,7 +54,7 @@ $( document ).ready(function() {
 
 The next REALLY useful thing you probably used jQuery for was the document selector. You can replace `$(".hamburger")` with `document.querySelectorAll(".hamburger")` but this isn't exactly a drop-in replacement. You'll also need to iterate over each item. Which brings me to the next feature on my list: Item iteration.
 
-I've been programming for 10 years and I still make off by one error, so whenever I can iterate based on objects instead of writing some kind of an index based iteration code, I do it. I find it makes the code more readable and that means fewer bugs.
+I've been programming for 10 years and I still make off by one errors, so whenever I can iterate based on objects instead of writing some kind of an index based iteration code, I do it. I find it makes the code more readable and that means fewer bugs.
 
 Here's an example of iterating over all the "divs" in a page:
 
