@@ -134,10 +134,10 @@ I accomplish this by wrapping those two sections in a top level html element:
 ```html
 <div class="flexbox-container" >
   <div class="sidebar">
-    <!-- {% include sidebar.html %} -->
+    <!-- include sidebar.html here -->
   </div>
   <div class="content container">
-    <!-- {{ content }}  -->
+    <!-- content here  -->
   </div>
 </div>
 ```
