@@ -63,7 +63,7 @@ Here's an example of iterating over all the "divs" in a page:
 var divList = document.querySelectorAll("div");
 divList.forEach(function(elem) {
   console.log(elem);
-}
+});
 ```
 
 Now we could modify each of those elements individually if we wanted to.
@@ -84,7 +84,7 @@ Then in your JS:
 var elemList = document.querySelectorAll(".toggle-visability");
 elemList.forEach(function(elem) {
   elem.classList.toggle('hidden')
-}
+});
 ```
 
 If the element has the class "hidden" it will be removed, otherwise it will be added.
