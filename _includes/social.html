@@ -38,25 +38,8 @@
     </div>
   </a>
 
-  <!-- hn -->
-  <a
-  {% if page.hnurl %}
-    href="{{ page.hnurl }}"
-  {% else %}
-    href="https://news.ycombinator.com/submitlink?u={{ site.url | append: page.url | uri_escape }}&t={{ page.title | uri_escape }}"
-  {% endif %}
-  >
-    <div class="button">
-      <div class="icon hn-padding">
-        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-         <path d="m101 56h61l94 192 94-192h61l-129 255v145h-52v-145" fill="#FF1168"/>
-        </svg>
-      </div>
-      <span class='social-name'>Hacker News</span>
-    </div>
-  </a>
 
-  <!-- hn -->
+  <!-- lobsters -->
 
   <a
   {% if page.loburl %}
@@ -72,6 +55,25 @@
         </svg>
       </div>
       <span class='social-name'>Lobste.rs</span>
+    </div>
+  </a>
+
+
+  <!-- hn -->
+  <a
+  {% if page.hnurl %}
+    href="{{ page.hnurl }}"
+  {% else %}
+    href="https://news.ycombinator.com/submitlink?u={{ site.url | append: page.url | uri_escape }}&t={{ page.title | uri_escape }}"
+  {% endif %}
+  >
+    <div class="button">
+      <div class="icon hn-padding">
+        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+         <path d="m101 56h61l94 192 94-192h61l-129 255v145h-52v-145" fill="#FF1168"/>
+        </svg>
+      </div>
+      <span class='social-name'>Hacker News</span>
     </div>
   </a>
 </div>
