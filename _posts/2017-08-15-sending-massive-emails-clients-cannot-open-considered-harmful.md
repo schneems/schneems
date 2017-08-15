@@ -8,9 +8,9 @@ categories:
     - ruby
 ---
 
-It was a quiet day in July when I got a message from SendGrid about a service I run, [CodeTriage, which helps people contribute to open source projects,](https://www.codetriage.com), had gone over its limits. Calls to send out emails were all failing. The fix was easy, bump up the limits by going to the Heroku dashboard, click "edit", and adjust the plan. Previously I got notifications that my credits neared their limits, but since it was SOOO close to the end of the month, I thought I could eke by without having to upgrade. I was wrong. No biggie though, as soon as I upgraded my add-on emails started to flow again. It wasn't until later that I got the bug report, while I was successfully sending out emails, they were MASSIVE.  Before we can understand why, we need to understand what the site does.
+It was a quiet day in July when I got a message from SendGrid about a service I run, [CodeTriage, which helps people contribute to open source projects](https://www.codetriage.com), had gone over its limits. Calls to send out emails were all failing. The fix was easy: bump up the limits by going to the Heroku dashboard, click "edit", and adjust the plan. Previously I got notifications that I was almost out of credits for the service, but since it was SOOO close to the end of the month, I thought I could squeek by without having to upgrade. I was wrong. No biggie though, as soon as I upgraded my add-on emails started to flow again. It wasn't until later that I got the bug report, while I was successfully sending out emails, they were MASSIVE. The people who got them couldn't even open the emails, they were causing the clients to crash. Before we can understand why, we need to understand how the service sends out emails.
 
-My service works by sending people links to open OSS issues in their inbox, or for Ruby apps links to methods that can be documented. It is an "email first" interface, and if emails aren't working then the whole app is down. The idea behind sending users open issues is that they can help "triage" them. Ask the reporter for specific version numbers, or for an app that reproduces the behavior. As such, when a core contributor to the project gets to that issue, there is less that needs to be done, the issue no longer needs triage and is ready to be worked on.
+The service works by sending people links to open OSS issues in their inbox, or for Ruby apps links to methods that can be documented. It is an "email first" interface, and if emails aren't working then the whole app is effectively down. The idea behind sending users open issues is that they can help "triage" them. Ask the reporter for specific version numbers, or for an app that reproduces the behavior. As such, when a core contributor to the project gets to that issue, there is less that needs to be done, the issue no longer needs triage and is ready to be worked on.
 
 What usually happens is I have a task that runs via the [Heroku Scheduler](https://elements.heroku.com/addons/scheduler) every hour. Users specify what time of day they want emails and when it's their hour we send them an email. We also have some "backoff" logic so that people who aren't terribly active don't get overwhelmed. We start sending emails daily, then weekly, then every other week etc. You can also configure the "minimum" frequency of emails you want to get. Not everyone can power through a half dozen issues every week, I understand.
 
@@ -90,7 +90,7 @@ Strange: It looked fine. No abnormally high issue counts. When I went through th
 
 It's important not only to fix bugs, but to also fix experiences. In this case, I didn't want any users to quit because they're spammed with really large emails. So even though I didn't know how to fix the bug or even what the bug was, I knew that if I could limit the number of issues they got, then the experience would be "fixed". I could then buy myself time to dig into the issue.
 
-I apologized for the issue and suggested they set that value to a lowish value. I then decided that there should be a default for that value, pulled a magic number of 50 out of the air and [set that as a new default on the column](https://github.com/codetriage/codetriage/pull/601).
+I apologized for the issue and suggested they set that value to a low number. I then decided that there should be a default for that value. I pulled a magic number of 50 out of the air and [set that as a new default on the column](https://github.com/codetriage/codetriage/pull/601).
 
 > Note: I manually updated all existing user's values in a console session
 
@@ -107,7 +107,7 @@ issue_assigner.assign! if assign
 issue_assignments.where(delivered: false).limit(daily_issue_limit)
 ```
 
-So this code got called over and over again until finally: I fixed the SendGrid issue. The next email to go out had ALL the previously assigned issues, not just the most recent. Yikes.
+This code got called over and over again. Each time that list of issue assignments that were not delivered grew and grew, until finally: I fixed the SendGrid issue. The next email to go out had ALL the previously assigned issues, not just the most recent. Yikes.
 
 I merged in the `deliver_later` PR to help mitigate issues like this from happening in the future.
 
