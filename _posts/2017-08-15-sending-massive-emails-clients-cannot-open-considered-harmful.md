@@ -1,5 +1,5 @@
 ---
-title: "Sending Massive Emails Considered Harmful"
+title: "The Longest Email I Ever Sent (Programmatically)"
 layout: post
 published: true
 date: 2017-08-15
@@ -9,7 +9,7 @@ categories:
     - ruby
 ---
 
-It was a quiet day in July when I got a message from SendGrid about a service I run, [CodeTriage, which helps people contribute to open source projects](https://www.codetriage.com), had gone over its limits. Calls to send out emails were all failing. The fix was easy: bump up the limits by going to the Heroku dashboard, click "edit", and adjust the plan. Previously I got notifications that I was almost out of credits for the service, but since it was SOOO close to the end of the month, I thought I could squeek by without having to upgrade. I was wrong. No biggie though, as soon as I upgraded my add-on emails started to flow again. It wasn't until later that I got the bug report, while I was successfully sending out emails, they were MASSIVE. The people who got them couldn't even open the emails, they were causing the clients to crash. Before we can understand why, we need to understand how the service sends out emails.
+It was a quiet day in July when I got a message from SendGrid about a service I run, [CodeTriage, which helps people contribute to open source projects](https://www.codetriage.com), had gone over its limits. Calls to send out emails were all failing. The fix was easy: bump up the limits by going to the Heroku dashboard, click "edit", and adjust the plan. Previously I got notifications that I was almost out of credits for the service, but since it was SOOO close to the end of the month, I thought I could squeek by without having to upgrade. I was wrong. No biggie though, as soon as I upgraded my add-on emails started to flow again. It wasn't until later that I got the bug report, while I was successfully sending out emails, they were MASSIVE. Some of the people who got them couldn't even open the emails, they were causing the clients to crash. Before we can understand why, we need to understand how the service sends out emails.
 
 The service works by sending people links to open OSS issues in their inbox, or for Ruby apps links to methods that can be documented. It is an "email first" interface, and if emails aren't working then the whole app is effectively down. The idea behind sending users open issues is that they can help "triage" them. Ask the reporter for specific version numbers, or for an app that reproduces the behavior. As such, when a core contributor to the project gets to that issue, there is less that needs to be done, the issue no longer needs triage and is ready to be worked on.
 
