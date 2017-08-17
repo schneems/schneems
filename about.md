@@ -1,10 +1,10 @@
 ---
-layout: default
+layout: about
 ---
 
 # How to say my name
 
-"Schneems" is my webhandle. My full name is Richard Schneeman, do you know what my last name stands for?
+"Schneems" is my webhandle, it's pronounced like schnapps. My full name is Richard Schneeman. Listen below to hear both pronounced.
 
 <audio controls>
   <source src="{%  asset_path 'say-schneems.mp3' %}" type="audio/mpeg">

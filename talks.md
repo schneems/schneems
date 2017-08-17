@@ -1,11 +1,11 @@
 ---
-layout: default
+layout: about
 ---
 
 
 ## Conference Talks
 
-I love speaking! I've given talks at [26 events in 12 countries](http://lanyrd.com/profile/schneems/). Invite me to your next conference maybe? richard [at] heroku.com.
+I love speaking! I've given talks at [26+ events in 12+ countries](http://lanyrd.com/profile/schneems/). Invite me to your next conference maybe? richard [at] heroku.com.
 
 > BTW watch conf videos at 1.5x speed. You'll thank me later.
 

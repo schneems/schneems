@@ -427,7 +427,8 @@ pre {
     display: none;
   }
 
-  .post {
+  .post,
+  .page {
     /* postcontent + socialsidebar */
     max-width: 50rem;
   }
