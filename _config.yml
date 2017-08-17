@@ -56,6 +56,7 @@ assets:
     - "*.jpg"
     - "*.svg"
     - "*.webm"
+    - "*.mp3"
     - "*.mp4"
     - "posts.css"
     - "home.css"
@@ -67,6 +68,7 @@ assets:
     - "assets/images"
     - "assets/javascripts"
     - "assets/posts/img"
+    - "assets/audio"
     - "_sass"
 
   features:

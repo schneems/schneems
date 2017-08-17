@@ -2,6 +2,15 @@
 layout: default
 ---
 
+# How to say my name
+
+"Schneems" is my webhandle. My full name is Richard Schneeman, do you know what my last name stands for?
+
+<audio controls>
+  <source src="{%  asset_path 'say-schneems.mp3' %}" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
 # About Me
 
 I believe in good stories and useable technology.
