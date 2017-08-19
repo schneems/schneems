@@ -182,7 +182,7 @@ Vector graphics are amazing, use them! SVG images can be styled via code, so you
 
 ## Sass isn't overkill
 
-This isn't a CSS feature per-say, but rather an ecosystem concern. My site uses sprockets to generate assets, and even though it's __only__ a blog, it's not overkill. Why shy away from a framework like jQuery for JS but embrace a framework with CSS? Well jQuery as a dependency has to be downloaded EVERY time your site loads. Preprocessors help in development and then get out of the way in production.
+This isn't a CSS feature per-say, but rather an ecosystem concern. My site uses sprockets to generate assets, and even though it's __only__ a blog, it's not overkill. Why shy away from a framework like jQuery for JS but embrace a framework with CSS? Well jQuery as a dependency has to be downloaded EVERY time your site loads for a new visitor. Preprocessors help in development and then get out of the way in production.
 
 I use [sprockets](https://rubygems.org/gems/sprockets) via [Jekyll Assets](https://github.com/jekyll/jekyll-assets) on my blog because it's written in Ruby. If you didn't know, I also maintain the sprockets gem as well. Yes, I know there hasn't been a release on 4.0 and I'm sorry.
 
