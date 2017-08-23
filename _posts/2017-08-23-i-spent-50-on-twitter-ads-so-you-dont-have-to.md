@@ -4,6 +4,8 @@ layout: post
 published: true
 date: 2017-08-23
 permalink: /2017/08/23/i-spent-50-on-twitter-ads-so-you-dont-have-to/
+twurl: https://twitter.com/schneems/status/900371060675227648
+hnurl: https://news.ycombinator.com/item?id=15081934
 image: og/twitterads.png
 categories:
     - ruby
