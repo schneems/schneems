@@ -40,12 +40,14 @@
   </script>
 
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:site" content="@schneems"/>
+  <meta name="twitter:site" content="Schneems"/>
   <meta name="twitter:title" content="{% if page.title == "Home" %}{{ site.title | escape }}{% else %}{{ page.title | escape }}{% endif %}" />
   <meta name="twitter:image" content="{% if page and page.image %}{{ site.url }}{{ page.image | asset_path  }}{% else %}{{ site.url }}{%  asset_path 'opengraph.png' %}{% endif %}" />
   <meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}" />
 
-
+  <meta property="og:site_name" content="Schneems" />
   <meta property="og:image" content="{% if page and page.image %}{{ site.url }}{{ page.image | asset_path }}{% else %}{{ site.url }}{%  asset_path 'opengraph.png' %}{% endif %}" />
+  <meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}"/>
+  <meta property="{% if page.title == "Home" %}{{ site.title | escape }}{% else %}{{ page.title | escape }}{% endif %}"/>
 
 </head>
