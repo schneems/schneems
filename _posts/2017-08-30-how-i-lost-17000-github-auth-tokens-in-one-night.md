@@ -44,7 +44,9 @@ task check_user_auth: :environment do
 
 When the token is not valid, I remove the token, because why would I want a bad token in my database?
 
-Usually when someone's token is invalid it's because they made an update to their profile. Not that they revoked the token purposefully. So to fix the issue, we need a new token. To get a token a user can log back into the system which will auto fetch a new token from GitHub. To let people know that their tokens are invalid and they need to be updated (along with sending them instructions), I wrote another task that sent out emails:
+Usually when someone's token is invalid it's because they made an update to their profile. Not that they revoked the token purposefully. So to fix the issue, we need a new token.
+
+To get a new token, a user can log back into the system which will auto update their GitHub credentials. To let people know that their tokens are invalid and they need to be updated (along with sending them instructions), I wrote another task that sent out emails:
 
 ```ruby
 task warn_invalid_token: :environment do
@@ -55,9 +57,11 @@ task warn_invalid_token: :environment do
 end
 ```
 
-We don't want to swamp you with emails, so we only send this once a week. You win points if you guess what day the emails go out on.
+We don't want to swamp you with emails, so we only send this once a week until they log back in to update their token.
 
-I implemented this logic back in 2014 and for nearly 3 years it ran fine. Occasionally people would get bad tokens, but then they would re-auth them and be on their way.
+> You win points if you guess what day the emails go out on.
+
+I implemented this logic back in 2014 and for nearly 3 years it ran fine. Occasionally people would get bad tokens, but then they would re-auth and be on their way.
 
 When I got that fateful email, I knew something was wrong because I hadn't deployed any code recently and I didn't modify my GitHub account. So what was up?
 
@@ -67,7 +71,7 @@ Turns out that there was a bug in my logic but not necessarily my code. After al
 
 Looking at the update time of some of the records, I was able to place them roughly around the time of another event: A GitHub outage.
 
-So while my code was correctly looping through and checking all the tokens, it was also dutifully deleting them when they came back as "bad" tokens. The thing was ALL requests were coming back without a success status code. Most all of the tokens on CodeTriage were deleted before the servers came back up.
+So while my code was correctly looping through and checking all the tokens, it was also dutifully deleting them when they came back as "bad" tokens. The thing was ALL requests were coming back without a success status code. Most all of the tokens on CodeTriage were deleted before the GitHub servers came back up.
 
 For me it's not actually the end of the world. I don't need EVERY user to have a token, just that enough do. Once I realized how the failure happened I put some guards in place:
 
@@ -87,7 +91,7 @@ Most of the tokens are valid, so when one comes back as "invalid" we can spend m
 
 3) Don't delete the tokens
 
-This was a no-brainer. Instead of deleting the tokens I'm now moving them to a new field `old_token`. So if such a mass token event happens again, then I could recover much easier. I also contacted GitHub support after my mass token deletion. The fist thing they asked me for was an example token, which I didn't have because I deleted all of them. So keeping a log of your really important values can be a good idea.
+This was a no-brainer. Instead of deleting the tokens I'm now moving them to a new field `old_token`. So if such a mass token event happens again, then I could recover much easier. I contacted GitHub support after my mass token deletion. The fist thing they asked me for was an example token, which I didn't have because I deleted all of them. So keeping a log of your really important values can be a good idea.
 
 On this theme you might be tempted to use a gem like `acts_as_paranoid`. I would say, don't. I've heard a lot of things about this gem, mostly around sheer amount of data bloat.
 
@@ -97,14 +101,16 @@ If these tokens really were irreplaceable, how would I have recovered? I'm runni
 
 If this really had been a "stop the world" event, I could have rolled back in time, gotten all the tokens and been up and running fairly quickly.
 
+> If you're not running on Heroku you should set up a continuous archive [such asthe WAL-E library](https://github.com/wal-e/wal-e) or WAL_G.
+
+
 It's lucky for me that the impact wasn't so severe and the service was able to run just fine without this data. On the other-hand if the impact had been more severe then I would have had no other option but to rollback and I would have all the tokens again.
 
 It's also worth mentioning that you can schedule periodic backups against your database using `heroku pg:backups:schedule` command, however this puts load on the database when you're taking the backup. It also prevents maintenance tasks from being able to run on the database.
 
-I checked in with our database team and the consistent story seems to be don't use it unless you really need to. If I did have a `pg:backup` it would mean that there would be gap in time between when the backup was taken and the tokens were deleted (meaning that I might have only been able to recover most of the tokens instead of all of them). On the "standard" level I'm eligible to store 25 backups.
+I checked in with our database team and the consistent story seems to be don't use it unless you really need to. If I did have a `pg:backup` it would mean that there would be gap in time between when the backup was taken and the tokens were deleted (meaning that I might have only been able to recover most of the tokens instead of all of them). On the standard level I'm eligible to store 25 backups.
 
 If your DB is under heavy load, you can also add a follower DB and take the backup from the follower DB. There's a [whole article on all the ways to backup your database if you're interested](https://devcenter.heroku.com/articles/heroku-postgres-data-safety-and-continuous-protection).
-
 
 As the saying goes, you own your uptime, this includes service failures and data loss. It's important to think about how your service will be affected when sensitive data goes missing. The biggest mistake I made wasn't the code I wrote, it was not thinking about the edge case that someone else's API might go down.
 
