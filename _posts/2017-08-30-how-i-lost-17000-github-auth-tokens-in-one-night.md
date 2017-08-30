@@ -5,6 +5,7 @@ published: true
 date: 2017-08-30
 permalink: /2017/08/30/how-i-lost-17000-github-auth-tokens-in-one-night/
 image: og/auth-tokens.png
+twurl: https://twitter.com/schneems/status/902973227974234114
 categories:
     - ruby
 ---
@@ -28,7 +29,7 @@ rescue GitHubBub::RequestError
 end
 ```
 
-Then I hacked together a quick task to cycle through each user and check it's token:
+Then I hacked together a quick task to cycle through each user and check their token:
 
 ```ruby
 task check_user_auth: :environment do
