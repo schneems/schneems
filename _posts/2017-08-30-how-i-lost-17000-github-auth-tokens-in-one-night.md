@@ -118,4 +118,6 @@ As the saying goes, you own your uptime, this includes service failures and data
 
 Your service <strong>will</strong> fail. Instead of trying to prevent failure we can own <i>recovery</i> instead. Does everything go down or will failures be graceful? When you lose data, is it gone for good or can you recover?
 
-I could make more patches to harden my API token checks, for example only delete an explicit 404 instead of ANY non 200 result. For now, that's less important than making sure that when my service falls down, that there's a way for it to get back up.
+I'm in the process of patching `git_hub_bub` to make checking for explicit error code easier so I can harden my API token checks, for example only delete an explicit 404 instead of ANY non 200 result. Also some helpful souls on [lobste.rs](https://lobste.rs/s/repgmo/how_i_lost_17000_github_auth_tokens_one#c_zuxr7y) pointed out that I could do this check when I get a 401 from GitHub instead of in a batch. Regardless of fixes to logic and handling edgecases it's important that when my service falls down, that there's a way for it to get back up.
+
+> Update: Made the post clear that I intend on patching the original failure mode. Added a shout out to a good idea on Lobsters.
