@@ -93,7 +93,7 @@ Most of the tokens are valid, so when one comes back as "invalid" we can spend m
 
 3) Don't delete the tokens
 
-This was a no-brainer. Instead of deleting the tokens I'm now moving them to a new field `old_token`. So if such a mass token event happens again, then I could recover much easier. I contacted GitHub support after my mass token deletion. The fist thing they asked me for was an example token, which I didn't have because I deleted all of them. So keeping a log of your really important values can be a good idea.
+This was a no-brainer. Instead of deleting the tokens I'm now moving them to a new field `old_token`. So if such a mass token event happens again, then I could recover much easier. I contacted GitHub support after my mass token deletion. The first thing they asked me for was an example token, which I didn't have because I deleted all of them. So keeping a log of your really important values can be a good idea.
 
 On this theme you might be tempted to use a gem like `acts_as_paranoid`. I would say, don't. I've heard a lot of things about this gem, mostly around sheer amount of data bloat.
 
