@@ -5,6 +5,8 @@ published: true
 date: 2017-09-07
 permalink: /2017/09/07/adding-a-blog-feature-say-my-name/
 image: og/say-my-name.png
+twurl: https://twitter.com/schneems/status/905894581937598465
+hnurl: https://news.ycombinator.com/item?id=15195546
 categories:
     - ruby
 ---
