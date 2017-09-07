@@ -4,7 +4,7 @@ layout: about
 
 # How to say my name
 
-"Schneems" is my webhandle, it's pronounced like schnapps. My full name is Richard Schneeman. Listen below to hear both pronounced.
+"Schneems" is my webhandle. Start by saying the first half of "schnapps" and end with the last bit of "seems" (Schn-eems). My full name is Richard Schneeman (Shhhh - knee - man). Listen below to hear both pronounced.
 
 <audio controls>
   <source src="{%  asset_path 'say-schneems.mp3' %}" type="audio/mpeg">
@@ -45,7 +45,7 @@ I tend to write about things that I'm currently working on or learning. Topics v
 
 - [How I Reduced my DB server load by 80%](https://schneems.com/2017/07/18/how-i-reduced-my-db-server-load-by-80/)
 - [Debugging Ruby Cheat Sheet](https://www.schneems.com/2016/01/25/ruby-debugging-magic-cheat-sheet.html)
-- [How Ruby Uses Memory](www.schneems.com/2015/05/11/how-ruby-uses-memory.html)
+- [How Ruby Uses Memory](https://schneems.com/2015/05/11/how-ruby-uses-memory.html)
 - [All the work I did getting Rails 5 to be "container ready"](https://blog.heroku.com/container_ready_rails_5)
 - [Writing a Rails Feature](https://www.schneems.com/2016/11/21/writing-a-rails-feature-blow-by-blow/)
 
