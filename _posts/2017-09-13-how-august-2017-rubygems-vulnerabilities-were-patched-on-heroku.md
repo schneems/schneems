@@ -4,6 +4,7 @@ layout: post
 published: true
 date: 2017-09-13
 image: og/heroku-rubygems.png
+twurl: https://twitter.com/schneems/status/908046292466663424
 permalink: /2017/09/13/how-august-2017-rubygems-vulnerabilities-were-patched-on-heroku/
 categories:
     - ruby
