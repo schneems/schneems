@@ -47,4 +47,4 @@ You will likely go somewhere and be confused, or you will take the wrong train, 
 
 I know I wrote a lot about “do this” and “don’t do that” but I think the most important part is to show up, have a good attitude, and appreciate the Japanese Ruby community. Thank you for reading ありがとうございますいます!
 
-If you liked this post you may enjoy my recap of [RubyKaigi 2017 Day 1]().
+If you liked this post you may enjoy my recap of [RubyKaigi 2017 Day 1](https://schneems.com/2017/09/27/rubykaigi-2017-day-1/).
