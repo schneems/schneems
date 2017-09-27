@@ -24,7 +24,7 @@ If you're interested in going down the deep end in probability and Kalman Filter
 
 <script async class="speakerdeck-embed" data-id="26015c2545544d9d9d689f17a903bc43" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 
-> There's a lot of transitions and video which don't translate to export to PDF, also I have a technique of putting multiple slides of the same content in a row so that I can get different speaker notes without you knowing that i'm flipping slides. In sort the slides were meant to be presented, not viewed statically on the web, yet here we are.
+> There's a lot of transitions and video which don't translate to export to PDF, also I have a technique of putting multiple slides of the same content in a row so that I can get different speaker notes without you knowing that I'm flipping slides. In short the slides were meant to be presented, not viewed statically on the web, yet here we are.
 
 ## Transcript
 
