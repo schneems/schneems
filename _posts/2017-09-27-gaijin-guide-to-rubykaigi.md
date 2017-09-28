@@ -37,6 +37,8 @@ After your dinner with a small group it may make sense to find some more friends
 
 BTW yelp exists in Japan, but use https://tabelog.com instead. It’s much better. Also in a crunch, convenience stores also serve some surprisingly good food. I don’t know what it’s called but they sell these rice balls wrapped in seaweed with various meats in them and they are delicious. The blue ones have a tuna/mayo mixture that’s great.
 
+> Update: Those delicious rice balls are called [onigiri](https://en.wikipedia.org/wiki/Onigiri).
+
 For data I use t-mobile. They have an international plan that gives me free data and texts. It’s been rock solid so far. If you have a different provider some may offer a plan to make international data cheaper. Alternatively at the major airports they sell SIM cards as well.
 
 Transit is huge in Japan and very good. I use google maps to get transit directions. Also hotel staff should be able to help you. Plan for some extra time getting to and from stations if it’s your first trip on that path. While most of the stations are well lit and labeled they can still be overwhelming. English proficiency is very high in Japan, when I've been lost asking random security guards, or employees, or even those around me questions has been very successful. If someone does not speak english they may be able to point you to someone who does. If you can show them where you're going on your phone or via a card or paper it can help.
@@ -45,6 +47,6 @@ The last thing I want to address is respect. I would recommend at bare minimum l
 
 You will likely go somewhere and be confused, or you will take the wrong train, or you will do the wrong thing. It’s a trip and you’re in a foreign country, it’s part of the experience. While you should be respectful, don’t be too worried about looking foolish.
 
-I know I wrote a lot about “do this” and “don’t do that” but I think the most important part is to show up, have a good attitude, and appreciate the Japanese Ruby community. Thank you for reading ありがとうございますいます!
+I know I wrote a lot about “do this” and “don’t do that” but I think the most important part is to show up, have a good attitude, and appreciate the Japanese Ruby community. Thank you for reading ありがとうございます!
 
 If you liked this post you may enjoy my recap of [RubyKaigi 2017 Day 1](https://schneems.com/2017/09/27/rubykaigi-2017-day-1/).
