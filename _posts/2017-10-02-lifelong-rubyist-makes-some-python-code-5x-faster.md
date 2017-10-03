@@ -147,7 +147,7 @@ Hopefully you're still with me. In my case this code was being called inside of 
 
 Now that we understand how code works how do we optimize it?
 
-In the next few sections I'll go over the tenants of optimizing scripting languages that I've found apply to both Ruby and Python. If you can understand how to make Python code faster, you can make code in any scripting language faster. At the end I'll show you the final result and give some benchmarks.
+In the next few sections I'll go over the tenets of optimizing scripting languages that I've found apply to both Ruby and Python. If you can understand how to make Python code faster, you can make code in any scripting language faster. At the end I'll show you the final result and give some benchmarks.
 
 ## Don't Repeat Your (logic)
 
@@ -174,7 +174,7 @@ if None in my_list:
 That example will allocate a list even if we're going to do nothing with it. Instead it's much faster to check the value first before allocating the array:
 
 ```python
-if not value:
+if value is None:
   return
 my_list = [value]
 # ...
