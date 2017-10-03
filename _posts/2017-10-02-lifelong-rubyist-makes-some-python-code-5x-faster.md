@@ -11,7 +11,7 @@ categories:
 
 I've been writing Ruby code for the past 10+ years, and recently due to my masters courses, I've been writing a lot of Python. While there are many differences, one area of similarity is their performance characteristics and how code can be optimized. In this post I'm going to look at a bit of Python code I optimized recently, and then compare the process of making this code faster to the process of how I make Ruby code faster.
 
-> While examples are given in Python, the lessons learned are applied equally to both Python and Ruby.
+> Several people have mentioned they thought the post was about me making the Python interpreter faster. That would have been pretty dang cool, but is not the case. This article is about how to write faster code using an interpreted language. The lessons learned are applied equally to both Python and Ruby.
 
 Before we get to the code in question let's take a look at some of my qualifications. If you don't know, performance in Ruby is one of my favorite hobbies. I'm the maintainer of [derailed benchmarks](https://github.com/schneems/derailed_benchmarks) for benchmarking Rails applications, and I've made a ton of performance pull requests to various projects. I was somewhat accidentally responsible for fanning the "freeze all strings" fad after I had a [PR to Rails that made end to end requests nearly 12% faster](https://github.com/rails/rails/pull/21057). Though in truth most of the performance came from reducing hash (dict for the python folks) and array (list) allocations.
 
