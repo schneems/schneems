@@ -10,7 +10,7 @@ categories:
     - python
 ---
 
-Every time I talk to a recent grad I hear a vadriation of the phrase "I know how to code, I can code in anything". This is, on the surface, true for some bits like boolean logic and loops. Where it starts to fail for me is when I need to leverage a language's ecosystem. I'm a Ruby programmer at heart (for the last 10+ years), yet I'm being forced to write in other languages through my CS Masters classes at Georgia Tech. I know I'm a competent coder, but can I really "code in anything"? How much does skill in one language translate to another?
+Every time I talk to a recent grad I hear a variation of the phrase "I know how to code, I can code in anything". This is, on the surface, true for some bits like boolean logic and loops. Where it starts to fail for me is when I need to leverage a language's ecosystem. I'm a Ruby programmer at heart (for the last 10+ years), yet I'm being forced to write in other languages through my CS Masters classes at Georgia Tech. I know I'm a competent coder, but can I really "code in anything"? How much does skill in one language translate to another?
 
 First a story about not knowing a programming language. In 2012 I was working for [Gowalla](https://en.wikipedia.org/wiki/Gowalla) (THE major competitor to Foursquare). When the company went under I started looking for a new job right away. I had two great phone interviews with another social networking company, whose name will be withheld for dramatic suspense. The team was small, but I talked to both founders and we hit it off.
 
