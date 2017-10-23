@@ -26,7 +26,7 @@ What exactly is a thread? Many developers have been exposed to threads and proce
 
 If you prefer text explanations, here's the synopsis:
 
-What is a thread? Before we can talk about a thread we have to understand a process. A process is an instance of an executing program, at it's core, a process is essentially a blob of memory. It has code that needs to be executed, it has data such as variables, it has a register, and a stack to keep track of the order of execution. The code is going to be compiled into instructions that can run on our CPU.
+What is a thread? Before we can talk about a thread we have to understand a process. A process is an instance of an executing program, at its core, a process is essentially a blob of memory. It has code that needs to be executed, it has data such as variables, it has a register, and a stack to keep track of the order of execution. The code is going to be compiled into instructions that can run on our CPU.
 
 Here's an example of a program in C.
 
@@ -112,7 +112,7 @@ At this point we've got roughly everything we need to start and stop a program, 
 
 The PCB includes process state, process number, program counter, registers, memory limits, list of open files, signal mask, and CPU scheduling information. In addition to some other things. Fun fact: since a process is entirely described by a PCB, whenever we wanna fork a process, essentially all we have to do is copy a parent process control block to a child process control block. Neato!
 
-A process can execute, two types of tasks. The first type of task is a CPU bound task. When the program is running and spending the majority of it's time actually executing code. An example would be, processing data, or calculating prime numbers. The second type of a task a process can do is called an IO task (input/output task). An example of an IO task would be, reading a file from disk, or making a database call or making a network call, for example, to the Heroku API.
+A process can execute, two types of tasks. The first type of task is a CPU bound task. When the program is running and spending the majority of the time actually executing code. An example would be, processing data, or calculating prime numbers. The second type of a task a process can do is called an IO task (input/output task). An example of an IO task would be, reading a file from disk, or making a database call or making a network call, for example, to the Heroku API.
 
 Whenever we're doing an IO heavy task the process doesn't do much. It makes the request and then it just sits there and waits for data to come back. This matters because we pay for our CPU time. We don't want our program to not be doing anything. We want to maximize our CPU utilization. How exactly can we do that?
 
