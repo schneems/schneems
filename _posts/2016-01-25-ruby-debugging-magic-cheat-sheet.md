@@ -7,9 +7,13 @@ author_name: Richard Schneeman
 author_url: https://twitter.com/schneems
 ---
 
-This document is all about deciphering behavior of complicated Ruby code. I recommend you get familiar with a debugger like [pry-debugger](https://github.com/nixme/pry-debugger), this doc doesn't go into debuggers [because they're not always available](https://www.reddit.com/r/ruby/comments/42lxrq/ruby_debugging_magic_cheat_sheet/czbef0m), and only focuses on Ruby's ability to introspect its own code.
+This document is all about deciphering behavior of Ruby code using nothing but Ruby code. I recommend you get familiar with a debugger like [pry-debugger](https://github.com/nixme/pry-debugger), this doc doesn't go into debuggers [because they're not always available](https://www.reddit.com/r/ruby/comments/42lxrq/ruby_debugging_magic_cheat_sheet/czbef0m).
 
-Many of these techniques are pulled from my first popular Ruby Conf. talk [Dissecting Ruby with Ruby](https://www.youtube.com/watch?v=UYVUSoNrM-c). This doc is open source and a living doc, send suggestions in PR form to [my blog](https://github.com/schneems/schneems/blob/master/_posts/2016-01-25-ruby-debugging-magic-cheat-sheet.md). Unless otherwise stated, all techniques work for the last major release of Ruby. Some may work with older versions of Ruby, I don't want to maintain that list, you can if you want.
+Many of these techniques are pulled from my first popular talk [Dissecting Ruby with Ruby](https://www.youtube.com/watch?v=UYVUSoNrM-c).
+
+> This page is open source and a living document, send suggestions in PR form to [my blog on GitHub](https://github.com/schneems/schneems/blob/master/_posts/2016-01-25-ruby-debugging-magic-cheat-sheet.md).
+
+Unless otherwise stated, all techniques work for the last major release of Ruby.
 
 ## Figure out where a method was defined
 
@@ -19,7 +23,7 @@ puts object.method(:blank?).source_location
 => ["/gems/activesupport-5.0.0.beta1/lib/active_support/core_ext/object/blank.rb", 14]
 ```
 
-This method was defined on line 14 of the file `active_support/core_ext/object/blank.rb`.
+This method was defined on line `14` of the file `active_support/core_ext/object/blank.rb`.
 
 ## Opening a dependency from a project
 
@@ -35,34 +39,33 @@ This command will use the value in your `EDITOR` environment variable. The defau
 export EDITOR="subl -w"
 ```
 
-Google for the appropriate invocation for your editor
+Google for the appropriate invocation for your editor.
 
-## Un-debug a gem
+If you close the file accidentally you can use `gem pristine` which is discussed below.
 
-If you've opened a gem and added debug statements but forget to remove them before closing the file, you'll get those debug statements every time you run your program, to reset everything to original state you can use, `gem pristine`. To reset Active Support:
+## See where an object was created
 
-```sh
-$ gem pristine activesupport
-Restoring gems to pristine condition...
-Restored activesupport-3.2.21
-Restored activesupport-3.2.22
-Restored activesupport-4.0.0
-Restored activesupport-4.1.1
-Restored activesupport-4.2.0
-Restored activesupport-4.2.1
-Restored activesupport-4.2.3
-Restored activesupport-4.2.5.rc1
-Restored activesupport-4.2.5
-Restored activesupport-5.0.0.beta1
+You can use object space to see where a constant or an object was created.
+
+```ruby
+require 'objspace'
+ObjectSpace.trace_object_allocations_start
+
+Kernel.send(:define_method, :sup) do |obj|
+  puts "#{ ObjectSpace.allocation_sourcefile(obj) }:#{ ObjectSpace.allocation_sourceline(obj) }"
+end
+
+world = "hello"
+
+sup world
+# => /tmp/scratch.rb:10
 ```
 
-To reset ALL gems you can run
+Since the invocation to get the file and line number is so long, I added a helper method `sup`. Make sure tracing is started early as possible, I usually put this code in the top of my Gemfile. Remove this code when you're not debugging, tracing allocations has a performance impact.
 
-```sh
-$ gem pristine --all
-```
+If you find yourself on a remote machine without access to an editor you can [inject this into a Gemfile in a few lines of bash](https://gist.github.com/schneems/003de3b80e6b983c84ebc7273fd60947)
 
-Note this may take a LONG time, especially if you've got gems with c-extensions.
+Thanks to [I need to find where this object came from](https://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html#i-need-to-find-where-this-object-came-from).
 
 ## Figuring out how a method was called
 
@@ -164,38 +167,11 @@ This was called from the `projects_controller` line 18, in the `new` method in m
 /Users/richardschneeman/.gem/ruby/2.3.0/gems/puma-2.15.3/lib/puma/thread_pool.rb:106:in `block in spawn_thread'
 ```
 
-This is where puma instantiated the request. If you work from the bottom and go up, you can see exactly how Puma turns a request into code, and how rack and rails work together to get to your line of code. Run `$ bundle open` to your heart's content. It's kinda interesting to see that the backtrace matches our middleware (in reverse order), where the request starts from the bottom and goes down:
+This is where Puma instantiated the request.
 
-```sh
-$ rake middleware
-use Rack::Sendfile
-use ActionDispatch::Static
-use ActionDispatch::LoadInterlock
-use ActiveSupport::Cache::Strategy::LocalCache::Middleware
-use Rack::Runtime
-use Rack::MethodOverride
-use ActionDispatch::RequestId
-use Rails::Rack::Logger
-use ActionDispatch::ShowExceptions
-use WebConsole::Middleware
-use ActionDispatch::DebugExceptions
-use ActionDispatch::RemoteIp
-use ActionDispatch::Reloader
-use ActionDispatch::Callbacks
-use ActiveRecord::Migration::CheckPending
-use ActiveRecord::ConnectionAdapters::ConnectionManagement
-use ActiveRecord::QueryCache
-use ActionDispatch::Cookies
-use ActionDispatch::Session::CookieStore
-use ActionDispatch::Flash
-use Rack::Head
-use Rack::ConditionalGet
-use Rack::ETag
-use ActionView::Digestor::PerRequestDigestCacheExpiry
-run MyRailsApp::Application.routes
-```
+If you work from the bottom of the backtrace and go up, you can see exactly how Puma turns a request into code.
 
-## Find where Super is Calling
+## Find which method Super is Calling
 
 Let's say you have code that calls `super` you can find where that method is defined like this:
 
@@ -206,7 +182,7 @@ def foo
 end
 ```
 
-I love this one since I proposed its addition 😉. You can read more about `super_method` here: https://www.schneems.com/2015/01/14/debugging-super-methods-ruby-22.html
+I love this one since I proposed the method 😉. You can read more about `super_method` here: [Debugging Super methods in Ruby 2.2+](https://www.schneems.com/2015/01/14/debugging-super-methods-ruby-22.html).
 
 ## List all methods on an object
 
@@ -238,22 +214,26 @@ Now you can see all available keyword arguments.
 
 ## See where an argument is mutated
 
-Originally on my "missing pieces" list, TLo documented it here https://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html#an-object-is-being-mutated-but-i-dont-know-where.
-
-Often times, i'll instantiate a variable
+Often times, I'll instantiate a variable
 
 ```ruby
 config.thing = { "foo" => "bar" }
 ```
 
-But later in my code sometimes it is changed
+But later I'll find it was changed, but I don't know where:
 
 ```ruby
 puts config.thing
-# => {"foo" => "THIS VALUE IS DIFFERENT"}
+# => {"bar" => "THE FOO KEY IS GONE"}
 ```
 
-You can see where the value was modified by first `freeze`-ing the value
+You can see where the value of an object was modified by first `freeze`-ing the object:
+
+```
+config.thing.freeze
+```
+
+Then later if other code modifies the object, an error will be raised:
 
 ```
 config.thing.delete("foo")
@@ -263,37 +243,42 @@ config.thing.delete("foo")
 #  from active_support/concurrency/share_lock.rb:79:in `block in stop_exclusive'
 ```
 
-This won't work for cases where a variable is assigned instead of mutated, but it's a worth while technique. You can use the same technique to see where a constant is modified (assuming you can find where it is first instantiated)
+There are some caveats: In this example the hash is frozen, but the keys and values are not. If you try to modify a key or value, no exception will be raised. If you're trying to freeze a complex object such as a Hash, you'll need to deep freeze it. This technique also won't work for cases where a variable is assigned instead of mutated.
 
-## See where a constant is created
+Originally on my "missing pieces" list, TLo documented it [An object is being mutated but I don't know where](https://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html#an-object-is-being-mutated-but-i-dont-know-where.).
 
-Again, originally a "missing piece" I got this debugging technique thanks to https://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html#i-need-to-find-where-this-object-came-from
+## Un-debug a gem
 
-You can use object space to see where a constant or object was created.
+If you've opened a gem and added debug statements, but forget to remove them before closing the file: you'll get those debug statements every time you run your program. To reset every gem to its original state you can use `gem pristine`. For example to reset Active Support:
 
-
-```ruby
-require 'objspace'
-ObjectSpace.trace_object_allocations_start
-
-Kernel.send(:define_method, :sup) do |obj|
-  puts "#{ ObjectSpace.allocation_sourcefile(obj) }:#{ ObjectSpace.allocation_sourceline(obj) }"
-end
-
-world = "hello"
-
-sup world
-# => /tmp/scratch.rb:10
+```sh
+$ gem pristine activesupport
+Restoring gems to pristine condition...
+Restored activesupport-3.2.21
+Restored activesupport-3.2.22
+Restored activesupport-4.0.0
+Restored activesupport-4.1.1
+Restored activesupport-4.2.0
+Restored activesupport-4.2.1
+Restored activesupport-4.2.3
+Restored activesupport-4.2.5.rc1
+Restored activesupport-4.2.5
+Restored activesupport-5.0.0.beta1
 ```
 
-Since the invocation to get the file and line number is so long, I add an helper method globally called `sup`. Make sure tracing is started early as possible, I put this code in the top of my Gemfile. Remove it when you're not debugging, tracing allocations has a performance impact.
+To reset ALL gems you can run:
+
+```sh
+$ gem pristine --all
+```
+
+> Note: this may take a LONG time, especially if you've got gems with c-extensions.
 
 ## Missing Pieces Wish List
 
-> Warning
-> These things don't exist, but I wish they did. Don't try to use them, they won't work.
+> Warning: These things don't exist, but I wish they did. Don't try to use them, they won't work.
 
-Here's broad things I want to do from time to time but haven't found a way to yet. I want to see where a constant was defined. Some of these might not be possible due to limitations in the VM. When a "missing piece" is found it is removed from this section and given it's own heading above.
+Here's a list of things I want to do from time to time, but haven't found a way to yet. Some of these might not be possible due to limitations in the VM. When a "missing piece" is found it is removed from this section and given it's own heading above.
 
 - Find where a variable is over-written with a different value. While we can use the `freeze` trick to see where a value is modified, we won't see when it is replaced.
 
@@ -302,4 +287,42 @@ config.thing = { "foo" => "bar" }.freeze
 
 config.thing = nil
 # No error is raised as the hash isn't being mutated, the variable is being assigned a different value
+```
+
+
+## Not debugging
+
+These are a few tricks that aren't debugging related, but I've found helpful for understanding how the interpreter works.
+
+
+### Disassemble Ruby code:
+
+```ruby
+code = <<~CODE
+  a = 4
+  b = 10
+  puts a + b
+CODE
+puts RubyVM::InstructionSequence.compile(code).disasm
+```
+
+Generates something like this:
+
+```
+== disasm: #<ISeq:<compiled>@<compiled>>================================
+local table (size: 2, argc: 0 [opts: 0, rest: -1, post: 0, block: -1, kw: -1@-1, kwrest: -1])
+[ 2] a          [ 1] b
+0000 trace            1                                               (   1)
+0002 putobject        4
+0004 setlocal_OP__WC__0 4
+0006 trace            1                                               (   2)
+0008 putobject        10
+0010 setlocal_OP__WC__0 3
+0012 trace            1                                               (   3)
+0014 putself
+0015 getlocal_OP__WC__0 4
+0017 getlocal_OP__WC__0 3
+0019 opt_plus         <callinfo!mid:+, argc:1, ARGS_SIMPLE>, <callcache>
+0022 opt_send_without_block <callinfo!mid:puts, argc:1, FCALL|ARGS_SIMPLE>, <callcache>
+0025 leave
 ```
