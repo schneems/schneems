@@ -10,6 +10,8 @@ categories:
 
 Database load can be a silent performance killer. I've been optimizing the query performance of a [web app I run designed to get people involved in open source](https://www.codetriage.com), but was seeing random spikes of query times to 15 seconds or more. While I had been seeing this behavior for some time, I only recently began tuning my database queries. You can read about my efforts to  [First I sped up my home page with some indexes](https://schneems.com/2017/06/22/a-tale-of-slow-pagination/) (and Rack Mini Profiler). Then I [tracked down and killed some expensive queries](https://blog.heroku.com/expensive-query-speed-up-app). After these major improvements the average response time was around 50ms and my perc95 was under 1 second. Yet, I had this annoying issue where in a 24 hour period, my perc95 response times would shoot up to maybe 15 seconds or 30 seconds and start timing out for a short period of time. This post is about me finding and fixing that issue which resulted in a net 80% decrease in my database load.
 
+> This article also [translated into Japanese](https://frasco.io/how-i-reduced-my-db-server-load-by-80-7902699be42c).
+
 For some context, this is what my response time dashboard looked like when I would get one of those spikes:
 
 ![](https://www.dropbox.com/s/ny7olvdtm9mupej/Screenshot%202017-06-29%2012.54.30.png?dl=1)
