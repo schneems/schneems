@@ -15,3 +15,5 @@ gem 'image_optim_pack'
 gem 'rake'
 gem 'stackprof'
 gem 'uglifier'
+
+gem 'activesupport'
