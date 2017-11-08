@@ -114,7 +114,7 @@ Here you can see that our no-op code ran `(26870.1 - 24490.9)/24490.9 * 100 # =>
 
 When we graph the results
 
-![](https://www.dropbox.com/s/dcsrhrfh7gb44dc/Screenshot%202014-08-08%2014.05.21.png?dl=1)
+![](https://www.dropbox.com/s/dcsrhrfh7gb44dc/Screenshot%202014-08-08%2014.05.21.png?raw=1)
 
 You can see that my slight optimizations got us pretty close to the optimal state. The tick marks on each bar show the standard deviation (the ±) to make sure that the numbers are somewhat sane.
 

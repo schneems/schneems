@@ -19,7 +19,7 @@ I'll be the first to admit that I'm awful with names. Dale Carnegie once said:
 
 It's important to me to pronounce other's names correctly. So while I was looking at [Saron's blog](http://bloggytoons.com/) I fell in love with this idea of having a "how to pronounce my name" feature - front and center. Here's a screenshot:
 
-![](https://www.dropbox.com/s/04lszbq7sckx8rk/Screenshot%202017-08-17%2016.10.01.png?dl=1)
+![](https://www.dropbox.com/s/04lszbq7sckx8rk/Screenshot%202017-08-17%2016.10.01.png?raw=1)
 
 Great right? While my design chops aren't really there, I do have a mic and a computer so I decided I could add a soundbite of me saying my own name to my [about page](https://www.schneems.com/about).
 
@@ -31,7 +31,7 @@ If you have a mic, use it. Even if it's a mic attached to the headphones that ca
 
 If you're using garage band you can set the "Noise Gate":
 
-![](https://www.dropbox.com/s/pkzzw6p7s51bcxz/Screenshot%202017-08-17%2016.14.28.png?dl=1)
+![](https://www.dropbox.com/s/pkzzw6p7s51bcxz/Screenshot%202017-08-17%2016.14.28.png?raw=1)
 
 I listened to my recording on loop and adjusted it until most of the hiss was gone, but none of my voice was cropped.
 

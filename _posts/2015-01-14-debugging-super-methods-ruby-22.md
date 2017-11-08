@@ -126,4 +126,4 @@ Not only is this simpler, it's now correct. The return of `super_method` will be
 Follow [@schneems](https://twitter.com/schneems) for Ruby articles and pictures of his dogs. Note that Cinco was not harmed in the making of this blog post
 
 
-![](https://www.dropbox.com/s/xl1idg4ulbtid0p/Screenshot%202015-01-12%2011.15.27.png?dl=1)
+![](https://www.dropbox.com/s/xl1idg4ulbtid0p/Screenshot%202015-01-12%2011.15.27.png?raw=1)

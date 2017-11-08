@@ -22,7 +22,7 @@ Through my life my dad always had a workshop, I've been building pinewood derby 
 
 Located about 30 minutes North of where I live, they've got a ton of woodworking machines. A $2k+ saw stop tablesaw with an amazing outfeed table, drill press, bandsaw, chop saw, and what I really needed: a jointer and planer. In addition to woodworking tools they've got metal working, quilting, laser cutting, 3d printing, and pretty much anything else you can think of as being both DIY and expensive. So far we've built a kitchen table bench, and we're working on a matching table.
 
-![](https://www.dropbox.com/s/8xg43pj05x4s96y/2015-03-11%2020.02.10.jpg?dl=1)
+![](https://www.dropbox.com/s/8xg43pj05x4s96y/2015-03-11%2020.02.10.jpg?raw=1)
 
 The membership works like a gym. You pay a monthly fee and get access to everything. The only difference is that few things in a gym can maim you quite as quickly as the equipment found all around techshop. So to use a piece of equipment, you must first go through a training course. I took one for "basic woodshop" and one for "jointer/planer". You can see [classes listed here](https://www.techshop.ws/take_classes.html?storeId=11).
 
@@ -31,9 +31,9 @@ A good jointer would easily cost me $700, the tech shop ran a promotion for 3 mo
 
 View inside the woodshop:
 
-![](https://www.dropbox.com/s/v50qrkki4db7ii8/2015-02-25%2014.13.50.jpg?dl=1)
+![](https://www.dropbox.com/s/v50qrkki4db7ii8/2015-02-25%2014.13.50.jpg?raw=1)
 
-![](https://www.dropbox.com/s/gdlc3q8r3n46umi/2015-02-28%2016.33.37.jpg?dl=1)
+![](https://www.dropbox.com/s/gdlc3q8r3n46umi/2015-02-28%2016.33.37.jpg?raw=1)
 
 
 It's not all rainbows and unicorn's, there's some downsides to using a community workshop.

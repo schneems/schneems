@@ -35,11 +35,11 @@ These two commits tell RMP that when someone is logged in and that person has an
 
 Here's what my index page looks like when I'm logged in.
 
-![](https://www.dropbox.com/s/myl1360qa8lwk8e/Screenshot%202017-06-19%2010.47.05.png?dl=1)
+![](https://www.dropbox.com/s/myl1360qa8lwk8e/Screenshot%202017-06-19%2010.47.05.png?raw=1)
 
 When I click the tab in the top left, it expands and this is what I see:
 
-![](https://www.dropbox.com/s/1rhci7acwm5rm1k/Screenshot%202017-06-19%2010.47.35.png?dl=1)
+![](https://www.dropbox.com/s/1rhci7acwm5rm1k/Screenshot%202017-06-19%2010.47.35.png?raw=1)
 
 Of the 336ms page render time (on the server side), you can see that 281.6ms are being spent in:
 
@@ -49,7 +49,7 @@ Rendering: pages/_repos_with_pagination
 
 You can also see that there's a link for `2 SQL` queries. When you click those this is what you see:
 
-![](https://www.dropbox.com/s/i1nl2b6fuktq4vb/Screenshot%202017-06-19%2010.48.53.png?dl=1)
+![](https://www.dropbox.com/s/i1nl2b6fuktq4vb/Screenshot%202017-06-19%2010.48.53.png?raw=1)
 
 One SQL query takes 125ms and the other 118ms. Yikes!
 
@@ -171,7 +171,7 @@ WHERE (issues_count > 0);
 
 Not too shabby either. The overall page render time went from 336ms to 169ms:
 
-![](https://www.dropbox.com/s/jap4z2c4crhwyjl/Screenshot%202017-06-19%2011.05.47.png?dl=1)
+![](https://www.dropbox.com/s/jap4z2c4crhwyjl/Screenshot%202017-06-19%2011.05.47.png?raw=1)
 
 That partial where we are calling these queries still accounts for 55ms, but it's much better than the previously 281.6ms. They say that a 200ms wait time is perceptible to a human, so in theory this just saved me a few "ugh why is this so slow"-s per day. Better than that, it also means that my index page can handle slightly more throughput as it won't be hanging around waiting for slow queries to finish.
 

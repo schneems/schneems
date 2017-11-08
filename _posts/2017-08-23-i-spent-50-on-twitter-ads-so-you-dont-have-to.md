@@ -27,7 +27,7 @@ We'll start with my first promoted tweet:
 
 I got the idea to promote this tweet while I was clicking the "engagements" tab. There's a little "promote this tweet" button right there.  This next screenshot is not the tweet I promoted, but it will give you an idea of the interface:
 
-![](https://www.dropbox.com/s/t2qzn6dg4ivkxyc/Screenshot%202017-08-17%2010.21.13.png?dl=1)
+![](https://www.dropbox.com/s/t2qzn6dg4ivkxyc/Screenshot%202017-08-17%2010.21.13.png?raw=1)
 
 You see all the stats for your tweet: link clicks, retweets etc. When you click the "promote this tweet" it opens up to a slider to let you pick your spend, and estimates the "impressions" or how many people will see the tweet. And the "engagements" or how many people will click the link, retweet, like, etc. More money means more eyeballs, means more engagements.
 

@@ -108,7 +108,7 @@ Whenever we return, where does it go? The program looks on the stack and see whe
 
 At this point we've got roughly everything we need to start and stop a program, including the program counter and the stack pointer. We need a way to store all of this data, and so it goes into a struct in the operating system called the process control block or PCB.
 
-![](https://www.dropbox.com/s/63x1a8jv89tkb6k/Screenshot%202017-09-27%2014.22.37.png?dl=1)
+![](https://www.dropbox.com/s/63x1a8jv89tkb6k/Screenshot%202017-09-27%2014.22.37.png?raw=1)
 
 The PCB includes process state, process number, program counter, registers, memory limits, list of open files, signal mask, and CPU scheduling information. In addition to some other things. Fun fact: since a process is entirely described by a PCB, whenever we wanna fork a process, essentially all we have to do is copy a parent process control block to a child process control block. Neato!
 
@@ -118,15 +118,15 @@ Whenever we're doing an IO heavy task the process doesn't do much. It makes the 
 
 If we have one CPU heavy process and one CPU then we're set.
 
-![](https://www.dropbox.com/s/mo3bvrx3bhwcujc/Screenshot%202017-09-27%2014.23.53.png?dl=1)
+![](https://www.dropbox.com/s/mo3bvrx3bhwcujc/Screenshot%202017-09-27%2014.23.53.png?raw=1)
 
 The CPU is working at maximum speed. But what happens when we start to see IO?
 
-![](https://www.dropbox.com/s/b6eok9ttm16xm8q/Screenshot%202017-09-27%2014.24.07.png?dl=1)
+![](https://www.dropbox.com/s/b6eok9ttm16xm8q/Screenshot%202017-09-27%2014.24.07.png?raw=1)
 
 In this example, our program is just sitting there and sleeping, our CPU is sitting there and not doing anything for a third of the time. And we're no longer using our CPU efficiently. We  can fix this by adding an additional process.
 
-![](https://www.dropbox.com/s/sd5bqh8vmaypisj/Screenshot%202017-09-27%2014.24.24.png?dl=1)
+![](https://www.dropbox.com/s/sd5bqh8vmaypisj/Screenshot%202017-09-27%2014.24.24.png?raw=1)
 
 In this example, while one of our process is sleeping, the other process is running. Aside from the context switch we are pretty much using our CPU 100% of the time. What are the pros of maximizing CPU with multiple processes?
 
@@ -140,11 +140,11 @@ Previously we looked at a process and everything we need to run a program. With 
 
 This an example of what a single threaded process would look like.
 
-![](https://www.dropbox.com/s/1irfa4cc7h9t981/Screenshot%202017-09-27%2014.25.29.png?dl=1)
+![](https://www.dropbox.com/s/1irfa4cc7h9t981/Screenshot%202017-09-27%2014.25.29.png?raw=1)
 
 It's a process and inside of it we have a thread, and that thread has a register and a stack. And if we want to have multiple threads on our process, then we don't have to duplicate that code or the data, we just need new registers and new stacks for each of our threads.
 
-![](https://www.dropbox.com/s/tmqj0nxwxpk8sl7/Screenshot%202017-09-27%2014.25.47.png?dl=1)
+![](https://www.dropbox.com/s/tmqj0nxwxpk8sl7/Screenshot%202017-09-27%2014.25.47.png?raw=1)
 
 All right, what are the pros of using multiple threads? Well, like before, we get much better CPU utilization. Unlike before, we can reuse existing process memory. Which means that we don't have to duplicate code, and we don't have to duplicate data. This means that we're not gonna run out of memory, or at least not nearly as fast. It also means that we have a smaller context switch time between the different threads as opposed to having the context switch between different processes. We can also reuse cached values, such as memory look ups.
 

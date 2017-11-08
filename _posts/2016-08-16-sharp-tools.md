@@ -26,7 +26,7 @@ There is a fallacy common to "advanced" developers that tools designed to be "si
 
 While a [jointer plane](https://en.wikipedia.org/wiki/Jointer_plane) is a remarkably sharp device, I've never once cut myself while using it. This isn't a statement of skill, but rather a comment on the design of the device. It does everything I will it to, and more. Its clever design means that this razor sharp edge is barely protruding from a safe surface. When using it your hands are on the opposite end side of the body. Here's a view from the business end:
 
-![](https://www.dropbox.com/s/njjn7jn6b1gg05j/lie-nielsen-number-4-throat.jpg?dl=1){:class="b-lazy"}
+![](https://www.dropbox.com/s/njjn7jn6b1gg05j/lie-nielsen-number-4-throat.jpg?raw=1){:class="b-lazy"}
 
 You can see the blade sticking through the "throat" of the plane. This device provides me with safety and a simple interface, it certainly isn't "just for beginners". This design is an evolution of planes over centuries of use. This safety does not diminish their usefulness to users of all skill levels. In fact, while a beginner might use this tool unaware of the full feature set of the tool, only a truly advanced user can appreciate the subtleties.
 
@@ -36,7 +36,7 @@ Pain and difficulty of use do not indicate an "advanced" tool. Developers of all
 
 This isn't to say that all sharp tools are also bloodless. On the woodworking forums there's a number of posts reminding us that chisels can send you to the emergency room as fast as a power tool. Like a gun, don't point the dangerous end at anything you're attached to. Another tool I own is a "draw knife". You use it by pointing the sharp end towards your body and pulling. It is probably the scariest thing in my shop:
 
-![](https://www.dropbox.com/s/amwdnaeo2qild1d/draw-knife.jpg?dl=1){:class="b-lazy"}
+![](https://www.dropbox.com/s/amwdnaeo2qild1d/draw-knife.jpg?raw=1){:class="b-lazy"}
 
 This brings me to the second, somewhat contradictory fallacy of "advanced" developers - they think that if a tool is simple that it must inherently hiding painful secrets.
 
@@ -64,7 +64,7 @@ While working in the shop I wear canvas apron and use a bench that is bolted to 
 
 In some cases you can modify a tool to your needs. For example you can use the drawknife for cutting corners on square stock. For this one off task you can attach bronze drawknife guides:
 
-![](https://www.dropbox.com/s/2tivwmzh5y59yvx/draw-knife-guides.jpg?dl=1){:class="b-lazy"}
+![](https://www.dropbox.com/s/2tivwmzh5y59yvx/draw-knife-guides.jpg?raw=1){:class="b-lazy"}
 
 It won't prevent all nicks and cuts, but it will provide an extra layer of safety when things do go wrong. It also helps us do this one task faster than we could without any protection at all. A good tool helps to guide our work.
 

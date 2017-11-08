@@ -14,11 +14,11 @@ Database load can be a silent performance killer. I've been optimizing the query
 
 For some context, this is what my response time dashboard looked like when I would get one of those spikes:
 
-![](https://www.dropbox.com/s/ny7olvdtm9mupej/Screenshot%202017-06-29%2012.54.30.png?dl=1)
+![](https://www.dropbox.com/s/ny7olvdtm9mupej/Screenshot%202017-06-29%2012.54.30.png?raw=1)
 
 To understand why that request (or series of requests) was so slow I reached for a metrics tool. In this case, I'm using [the Scout add-on on Heroku](https://elements.heroku.com/addons/scout) to capture production metrics. I changed the scale to show the last 12 hours of requests (default is 3 hours). And then narrowed in on the huge spike. When I did that here's the page that I saw:
 
-![scout page of slow request](https://www.dropbox.com/s/fywluxpofp41bfh/Screenshot%202017-06-29%2009.34.26.png?dl=1)
+![scout page of slow request](https://www.dropbox.com/s/fywluxpofp41bfh/Screenshot%202017-06-29%2009.34.26.png?raw=1)
 
 Yikes!
 
@@ -132,7 +132,7 @@ You might have noticed that the`LOWER` part of the SQL query isn't represented i
 
 Since removing that validation and adding in a unique index my app no longer has any 30 second + request spikes. Its database is humming along at or under the 0.2 load-avg.
 
-![photo of current response time](https://www.dropbox.com/s/k1yxr2aylgitod9/Screenshot%202017-07-12%2014.56.01.png?dl=1)
+![photo of current response time](https://www.dropbox.com/s/k1yxr2aylgitod9/Screenshot%202017-07-12%2014.56.01.png?raw=1)
 
 When we think of slow databases we tend to think in terms of how quickly an individual query performs. Rarely do we consider how one query or a series of queries could interact to slow down the whole site.
 

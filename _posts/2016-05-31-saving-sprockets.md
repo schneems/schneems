@@ -68,13 +68,13 @@ Rule number three, is that words without actions are empty.
 I want you to be actionable with your critiques and think about this. For example, we have a Hacker News comment which says, "unless they add this feature to Node, I see this as ugly and barely usable"
 
 
-![](https://www.dropbox.com/s/r9xn2b839v098tr/Screenshot%202016-05-27%2015.48.17.png?dl=1)
+![](https://www.dropbox.com/s/r9xn2b839v098tr/Screenshot%202016-05-27%2015.48.17.png?raw=1)
 
 When I read that, that's not going to make me want to go out and help them. Instead, they could've easily said, "Hey, this is great, this is amazing, I love it. It looks like they don't have this thing I need, and, as a matter of fact,  I can't use it and here is my use case" and that's actionable feedback. You can critique without criticizing. So, I want you to ask yourself, "is this comment adding anything?"
 
 Hyperbole in comments and blog posts is good for laughs and fake internet points but it doesn't help. I want you to be honest with your critiques. I want you to be productive. Here is the babeljs creator tweeting a screenshot, again, coincidentally, from Hacker News, and it reads, "Babel sucks. I never thought I could hate something so strongly."
 
-![](https://www.dropbox.com/s/kvmo24k9yv0bfv1/Screenshot%202016-05-27%2015.50.36.png?dl=1)
+![](https://www.dropbox.com/s/kvmo24k9yv0bfv1/Screenshot%202016-05-27%2015.50.36.png?raw=1)
 
 Wow, that's really going to encourage that guy to go out and fix all of your problems. You might disagree and you might have very strong opinions, and those opinions might be very negative. Even if that's the case, this software is in your life for a reason, and if you can figure out why those things hurt, why you are having those negative feelings, and you can enumerate that in a productive way then it helps everyone. Complaining by itself accomplishes nothing. When I started the talk, I wanted to touch on "how do we keep a maintainer longer?" Or if you're maintaining software, how can you stick around longer? To do that we need to look at what maintainers want. We also need to do our homework and ask ourselves "is there any value in a maintainer sticking around?" All maintainers will one day leave and we can either have a maintainer that just mic drops and you never see them again, or we can have somebody who's passing the torch and doing a graceful hand-off.
 

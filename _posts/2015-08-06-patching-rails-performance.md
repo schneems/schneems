@@ -44,7 +44,7 @@ end
 
 The routing improvements combined with all the other savings gives us a speed boost of more than 10%. The best part is, we don't have to change the way we write our Rails app, you get these improvements for free by upgrading to the next version of Rails. If you're interested in where the savings came from, look at the [individual commits](https://github.com/rails/rails/pull/21057/commits) which have the methodology and object allocation savings for my test app recorded.
 
-![](https://www.dropbox.com/s/mdjtq0miucbby8f/Screenshot%202015-08-03%2011.38.33.png?dl=1)
+![](https://www.dropbox.com/s/mdjtq0miucbby8f/Screenshot%202015-08-03%2011.38.33.png?raw=1)
 
 Working with Rails has made me a better developer, more capable of debugging library internals, and helped our Ruby experience on the platform. Likewise having a huge number of diverse Rails apps running on the platform helps us be aware of actual pain points developers are hitting in production. It feels good when we can take these insights and contribute back to the community. Be on the lookout for the Rails 5 pre-release to give some of these changes a try. Thanks for reading, enjoy the speed.
 

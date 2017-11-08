@@ -28,7 +28,7 @@ This `Procfile` tells [jekyll](https://rubygems.org/gems/jekyll) (a static blog 
 
 Fast forward a few years and I still hadn't updated the way I was serving my site. It was still using WEBrick. One day I opened my Heroku metrics panel and to my surprise, I noticed that my performance was good, like REALLY good. Would you believe that my average response rate was under 100ms? What if I told you it was around 7ms? Because that's what it was:
 
-![](https://www.dropbox.com/s/og3vb3e2i9eocfs/Screenshot%202017-05-30%2014.20.05.png?dl=1)
+![](https://www.dropbox.com/s/og3vb3e2i9eocfs/Screenshot%202017-05-30%2014.20.05.png?raw=1)
 
 Even the Perc95 was great, it's under 35ms. As Nate mentioned on his blog, under a certain threshold (100 milliseconds) things appear more or less instantaneous to end-users. For my little blog, humming along using a pure Ruby stack, I was in that "instantaneous" category out of the box.
 
@@ -36,7 +36,7 @@ Even the Perc95 was great, it's under 35ms. As Nate mentioned on his blog, under
 
 In the case of my blog, my throughput averages around 25 requests per minute and when I published [my most popular post of 2017](https://schneems.com/2017/07/18/how-i-reduced-my-db-server-load-by-80/) it spiked up to 375 requests per minute.
 
-![](https://www.dropbox.com/s/bqh3trvy0q7nb29/Screenshot%202017-07-25%2009.32.45.png?dl=1)
+![](https://www.dropbox.com/s/bqh3trvy0q7nb29/Screenshot%202017-07-25%2009.32.45.png?raw=1)
 
 Since the blog is on Heroku, if it gets swamped, I can scale up by adding more dynos very easily. However, the core concern of "webscale" is our costs. It doesn't matter if you can handle 1 million requests per second if you break the bank. Is Ruby too expensive to be "webscale"? Let's calculate the number of instances we need to serve the largest spike of the year:
 
@@ -102,13 +102,13 @@ $ heroku buildpacks:add https://github.com/heroku/heroku-buildpack-static.git
 
 When I deployed what did I see? My response time went down, my average is now around 3ms and perc95 around 10ms. Though it can still peak up to "WEBrick" levels occasionally:
 
-![](https://www.dropbox.com/s/y4cp96i23pnrk27/Screenshot%202017-07-25%2010.04.33.png?dl=1)
+![](https://www.dropbox.com/s/y4cp96i23pnrk27/Screenshot%202017-07-25%2010.04.33.png?raw=1)
 
 - NGINX "webscale" speed: ✅ 🎉 🚀 💯
 
 One other thing it did was drop my memory use like a (WEB)brick. Here's screenshot of just after the deploy
 
-![](https://www.dropbox.com/s/gr1t0ili613mybv/Screenshot%202017-05-31%2011.38.40.png?dl=1)
+![](https://www.dropbox.com/s/gr1t0ili613mybv/Screenshot%202017-05-31%2011.38.40.png?raw=1)
 
 Back to our calculations though, how does NGINX stack up on our cost metric of "webscale"? To know this we first have to know how many concurrent requests it can handle. NGINX uses processes via a directive `worker_processes`. In the static buildpack it's set to [auto](https://github.com/heroku/heroku-buildpack-static/blob/995b07c1df7971c66d1c921f2c55132a2dca57ca/scripts/config/templates/nginx.conf.erb#L2). After some digging I found out that this value is configured based on the number of CPUs on the system. Which is configured by a [system call for POSIX based systems](https://github.com/nginx/nginx/blob/9edd64fcd842870ea004664288cadc344c33f0bd/src/os/unix/ngx_posix_init.c#L57).
 
