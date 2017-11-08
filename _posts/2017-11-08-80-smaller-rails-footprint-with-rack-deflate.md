@@ -1,5 +1,5 @@
 ---
-title: "80% Smaller Rails Page Size With Rack Defalate"
+title: "80% Smaller Rails Page Size With Rack Deflate"
 layout: post
 published: true
 date: 2017-11-08
