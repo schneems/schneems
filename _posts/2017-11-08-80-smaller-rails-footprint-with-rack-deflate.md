@@ -14,11 +14,11 @@ First up, what does Rack Deflate do and why do we want to use it? Rack Deflate u
 
 How much could this compression trick possibly help? Well, before I added this to CodeTriage, a page render of the homepage with me logged on took roughly 578ms
 
-![](https://www.dropbox.com/s/gop4vasoqvvm7f4/Screenshot%202017-09-07%2016.39.09.png?dl=1).
+![](https://www.dropbox.com/s/gop4vasoqvvm7f4/Screenshot%202017-09-07%2016.39.09.png?raw=1).
 
 After adding Rack Deflate it dropped to about 422ms
 
-![](https://www.dropbox.com/s/m5d3jnk46lyyu5d/Screenshot%202017-09-07%2016.47.39.png?dl=1).
+![](https://www.dropbox.com/s/m5d3jnk46lyyu5d/Screenshot%202017-09-07%2016.47.39.png?raw=1).
 
 While those numbers vary a bit, it seems to be consistently about 100ms faster. It makes even more of a difference if you're on a slower connection, such as a mobile phone in a spotty area, or if you're on 3G. Not bad for a few minutes of work.
 
