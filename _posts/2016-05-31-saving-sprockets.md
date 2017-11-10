@@ -9,7 +9,12 @@ author_url: https://twitter.com/schneems
 
 What do you do when a maintainer leaves a project with over 51 million downloads? That is what we had to consider this year when Sprockets lost the developer responsible for more than 70% of the commits. We'll explore this and more through my RailsConf 2016 talk and the transcript below.
 
+<!--
+
 I've spoken in 12 countries on 5 continents and this is my favorite talk to date. This talk was difficult. The ideas were in my head, but I couldn't get the words right for the longest time. This was an emotional talk for me . Writing this talk turned into a soul searching journey through open source. What does it mean to be a maintainer? What does it mean to leave a project? What does it mean to respect and help a maintainer? The road was long and perilous but I'm very happy with the talk. Hopefully you'll join me on this archeological expedition.
+
+-->
+
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qxaE8yblHPk" frameborder="0" allowfullscreen></iframe>
 
@@ -17,8 +22,7 @@ I've spoken in 12 countries on 5 continents and this is my favorite talk to date
 
 Here's what some people had to say about my talk.
 
-- "That was an epic talk on many levels" - [@_tankard](https://twitter.com/_tankard_/status/735500519297277953)
-
+- "That was an epic talk on many levels" - [@_tankard](https://twitter.com/_tankard_/status/735500519297277953).
 - "Every single Ruby developer should watch @schneems's [Saving Sprockets] talk" - [@samphippen](https://twitter.com/samphippen/status/736647582882103296)
 
 - "good talk man, every conf should have sth like that until people learn how this oss thing works :)" - [@_solnic_](https://twitter.com/_solnic_/status/735507903294103554)
@@ -34,8 +38,6 @@ Here's what some people had to say about my talk.
 ## Slides
 
 <script async class="speakerdeck-embed" data-id="f271db53c81e492ca550b29b8f166a18" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
-
-
 
 ## Transcript(ish)
 
