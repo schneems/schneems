@@ -15,7 +15,7 @@ categories:
     - sourcemap
 ---
 
-These days web assets such as JS and CSS aren't simple text files. Instead, they're typically minified or come from a complex build process involving compiling or transpiling. For example, CSS can be generated from a SASS file. JS can be compiled from ES6 using Babel. These toolchains make working with assets easier for developers, and make following best practices such as minification much easier. Yet, there's a problem. What do we do when there's a error? If there's an exception in your JS and it's minified, you have short variable names and be all on one line, it's impossible to see where the error comes from. Source maps seek to solve this problem.
+These days web assets such as JS and CSS aren't simple text files. Instead, they're typically minified or come from a complex build process involving compiling or transpiling. For example, CSS can be generated from a SASS file. JS can be compiled from ES6 using Babel. These toolchains make working with assets easier for developers, and make following best practices such as minification much easier. Yet, there's a problem. What do we do when there's a error? If there's an exception in your JS and it's minified, you will have short variable names which are all on one line and it's impossible to see where the error comes from. Source maps seek to solve this problem.
 
 What is a source map? At its core, a source map allows a browser to map the source of an asset to the final product. In our previous example of an error happening in a JS file, if the JS file had a source map, it would allow the browser to translate the location of the error to the original unmodified file on disk. Pretty cool.
 
