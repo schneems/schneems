@@ -15,17 +15,17 @@ categories:
     - sourcemap
 ---
 
-These days web assets such as JS and CSS aren't simple text files. Instead, they're typically minified or come from a complex build process involving compiling or transpiling. For example, CSS can be generated from a SASS file and JS compiled from ES6 using a tool such as Babel. These toolchains make working with assets easier and make best practices such as minification much easier. Yet, there's a problem. What do we do when there's a error? If there's an exception in your JS and it's minified to have short variable names and be all on one line, it's impossible to see where the error comes from. Source maps seek to solve this problem.
+These days web assets such as JS and CSS aren't simple text files. Instead, they're typically minified or come from a complex build process involving compiling or transpiling. For example, CSS can be generated from a SASS file. JS can be compiled from ES6 using Babel. These toolchains make working with assets easier for developers, and make following best practices such as minification much easier. Yet, there's a problem. What do we do when there's a error? If there's an exception in your JS and it's minified, you have short variable names and be all on one line, it's impossible to see where the error comes from. Source maps seek to solve this problem.
 
-What is a source map? We'll get into the specifics and behavior but at its core, a source map allows a browser to map the source of an asset to the final product. In our previous example of an error happening in a JS file, if the JS file had a source map it would allow the browser to translate the location of the error to the original unmodified file on disk. Pretty cool.
+What is a source map? At its core, a source map allows a browser to map the source of an asset to the final product. In our previous example of an error happening in a JS file, if the JS file had a source map, it would allow the browser to translate the location of the error to the original unmodified file on disk. Pretty cool.
 
-How exactly do source maps work? First, your asset build tools need to be able to generate a source map. Once a source map is available the build tool needs to let the browser know it exists somehow. This is accomplished by a special comment at the bottom of the asset file. For example, if you're serving an `application.js` then the bottom of the file may link to a source map like this:
+How exactly do source maps work? First, your asset build tools need to be able to generate a source map. Once a source map is available, the build tool needs to let the browser know it exists somehow. This is accomplished by a special comment at the bottom of the asset file. For example, if you're serving an `application.js` then the bottom of the file may link to a source map like this:
 
 ```js
 //# sourceMappingURL=application.js-27b6d64dc918dd82a8f02f9537b12d8e059524bc53d6f2dac0f04825a60023f5.map
 ```
 
-Note the `.map` file extension. Okay, so that's how a browser know a source map exists. What does the source map file look like? Here's an example:
+Okay, so that's how a browser know a source map exists. What does the source map file look like? Here's an example:
 
 ```json
 {
@@ -49,17 +49,17 @@ What do each of those keys mean?
 - `sources` An array of source files, these are the files used to generate `application.js`. In this case, we can see `jquery`, `jquery_ujs` and `local-time` javascript files were used to generate the `application.js` file.
 - `names` Names of functions if available
 
-If the source file is served to the browser with a source map comment and that comment leads to a correctly generated source map file then when you get exceptions in the console it should point to the original source file that generated the asset.
+If the source file is served to the browser with a source map comment and that comment leads to a correctly generated source map file, then when you get exceptions in the console it should point to the original source file that generated the asset.
 
 I know what you're probably thinking "Richard, you usually write about things you're working on or thinking about, why are you talking about source maps?" That's an excellent question.
 
-Source maps are not new you can read the proposal for [Source Maps version 3](https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit) which is strangely in a Google doc. It was originally introduced in 2011. If you're using JS tooling they're likely already generating and using source maps without you knowing it. However, not all assets are generated via JS tooling. I maintain [Sprockets](https://rubygems.org/gems/sprockets), a little library with 98 million downloads for generating assets for Ruby applications. It's the main component in the "Rails Asset Pipeline".
+Source maps are not new, you can read the proposal for [Source Maps version 3](https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit) which is strangely in a Google doc. It was originally introduced in 2011. If you're using JS tooling they're likely already generating and using source maps without you knowing it. However, not all assets are generated via JS tooling. I maintain [Sprockets](https://rubygems.org/gems/sprockets), a little library with 98 million downloads for generating assets for Ruby applications. It's the main component in the "Rails Asset Pipeline".
 
 You may have seen my post about [Saving Sprockets](https://www.schneems.com/2016/05/31/saving-sprockets.html).
 
 I'm writing about source maps because Sprockets is getting them, or rather, Sprockets 4 beta has had them since February 2016.
 
-What exactly is Sprockets using source maps for? In production, Sprockets combines files together and minifies them when possible. This makes serving HTTP 1.x traffic faster, but if there is an error in your assets, it becomes very difficult to debug. In the Rails Asset Pipeline, it was the convention to not concatenate these files in development, so instead of serving 1 file, you might see 10 or so. This cause subtle bugs and confusion where things work locally but not in production. By using source maps in development instead of having branching behavior, we bring development/production parity and make the experience of debugging assets generated by Sprockets similar to those generated by JS tooling. You can try the beta if you want now, but there are still bugs (which is why it's not released yet).
+What exactly is Sprockets using source maps for? In production, Sprockets combines files together and minifies them when possible. This makes serving HTTP 1.x traffic faster, but if there is an error in your assets, it becomes very difficult to debug. In the Rails Asset Pipeline, it was the convention to not concatenate these files in development, so instead of serving 1 file, you might see 10 or so. This cause subtle bugs and confusion where things work locally but not in production. By using source maps in development instead of having branching behavior, we bring development/production parity and make the experience of debugging assets generated by Sprockets similar to those generated by JS tooling. You can try the beta if you want now, but there are still (lots of) bugs, which is why it's not released yet.
 
 If you're curious about source maps, I had to learn about them from scratch. You can follow along with that journey over in the [Sprockets guides for source maps](https://github.com/rails/sprockets/blob/master/guides/source_maps.md). Specifically, you can learn to:
 
