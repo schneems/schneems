@@ -53,9 +53,9 @@ If the source file is served to the browser with a source map comment and that c
 
 I know what you're probably thinking "Richard, you usually write about things you're working on or thinking about, why are you talking about source maps?" That's an excellent question.
 
-Source maps are not new, you can read the proposal for [Source Maps version 3](https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit) which is strangely in a Google doc. It was originally introduced in 2011. If you're using JS tooling they're likely already generating and using source maps without you knowing it. However, not all assets are generated via JS tooling. I maintain [Sprockets](https://rubygems.org/gems/sprockets), a little library with 98 million downloads for generating assets for Ruby applications. It's the main component in the "Rails Asset Pipeline".
+Source maps are not new, you can read the proposal for [Source Maps version 3](https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit) which is strangely in a Google doc. Version 3 of source maps was originally introduced in 2011. If you're using JS tooling they're likely already generating and using source maps without you knowing it. However, not all assets are generated via JS tooling. I maintain [Sprockets](https://rubygems.org/gems/sprockets), a little library with 98 million downloads for generating assets for Ruby applications. It's the main component in the "Rails Asset Pipeline". You may have seen my post about [Saving Sprockets](https://www.schneems.com/2016/05/31/saving-sprockets.html).
 
-You may have seen my post about [Saving Sprockets](https://www.schneems.com/2016/05/31/saving-sprockets.html).
+> Update: The author of source maps [responded to my article and explained the history of source maps](https://news.ycombinator.com/item?id=15705190) including why a google doc is used. Apparently the very first source maps were introduced back in 2009 at Google.
 
 I'm writing about source maps because Sprockets is getting them, or rather, Sprockets 4 beta has had them since February 2016.
 
