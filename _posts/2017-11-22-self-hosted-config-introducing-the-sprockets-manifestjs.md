@@ -113,7 +113,7 @@ New config is scary. If you're going to upgrade to Sprockets 4 with Rails here's
 
 ```term
 $ mkdir -p app/assets/config
-$ touch app/assets/config.manifest.js
+$ touch app/assets/config/manifest.js
 ```
 
 Then copy and paste this in there:
