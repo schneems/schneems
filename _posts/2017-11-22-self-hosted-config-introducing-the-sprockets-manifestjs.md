@@ -109,7 +109,7 @@ Another thing I don't like is the name of the config file `manifest.js`. Interna
 
 As we know, naming is hard. So if these are the only two nits I have with the feature, that's not too bad.
 
-New config is scary. If you're going to upgrade to Rails 4 here's what you need to do:
+New config is scary. If you're going to upgrade to Sprockets 4 with Rails here's what you need to do:
 
 ```term
 $ mkdir -p app/assets/config
