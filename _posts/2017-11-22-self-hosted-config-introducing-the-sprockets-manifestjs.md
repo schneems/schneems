@@ -11,7 +11,7 @@ categories:
     - library design
 ---
 
-Have you ever felt like a framework was getting in the way isntead of helping you go faster? Maybe you're stuck on some simple task that would be easy to do manually, but your framework is making you jump through configuration hoops. I end up getting lost in a sea of documentation (or no documentation), and the search for that one magical config key takes just a tad bit too long. It's a productivity sink, and worse than the time delay it adds to my frustration throughout the day. When I hit `ETOOMUCHFRUSTRATION`, then I'm definitely fighting the framework. One way to alleviate this configuration fatigue is by making configuration consistent and composable. That's what Sprocket's new "manifest.js" seeks to do.
+Have you ever felt like a framework was getting in the way instead of helping you go faster? Maybe you're stuck on some simple task that would be easy to do manually, but your framework is making you jump through configuration hoops. I end up getting lost in a sea of documentation (or no documentation), and the search for that one magical config key takes just a tad bit too long. It's a productivity sink, and worse than the time delay it adds to my frustration throughout the day. When I hit `ETOOMUCHFRUSTRATION`, then I'm definitely fighting the framework. One way to alleviate this configuration fatigue is by making configuration consistent and composable. That's what Sprocket's new "manifest.js" seeks to do.
 
 Before we get into what the `manifest.js` does, let's look at what it is replacing. When Sprockets was introduced, one of the opinions that it held strongly, is that assets such as CSS and JS should be bundled together and served in one file.
 
