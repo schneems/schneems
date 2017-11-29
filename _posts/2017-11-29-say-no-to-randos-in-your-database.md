@@ -15,9 +15,9 @@ categories:
     - postgresql
 ---
 
-When I used my first ORM, I wondered "why didn't they include a `random()` method?" It seemed like such an easy thing to add, and I used it all the time. While there are many reasons you may want to pull a record out of your database at random, you shouldn't be using SQL's `RANDOM()` function unless you'll only be randomizing a limited number of records. In this post, we'll examine how such a simple looking SQL operator can cause a lot of pain, and a few different techniques we can use to fix it.
+When I used my first ORM, I wondered "why didn't they include a `random()` method?" It seemed like such an easy thing to add. While there are many reasons you may want to pull a record out of your database at random, you shouldn't be using SQL's `RANDOM()` function unless you'll only be randomizing a limited number of records. In this post, we'll examine how such a simple looking SQL operator can cause a lot of performance pain, and a few different techniques we can use to fix it.
 
-As you might know, I run [CodeTriage, the best way to get started helping open source](https://www.codetriage.com) and I've written about improving the database performance on that site:
+As you might know, I run [CodeTriage, the best way to get started helping open source,](https://www.codetriage.com) and I've written about improving the database performance on that site:
 
 - [Finding Slow queries with Rack Mini Profiler](https://schneems.com/2017/06/22/a-tale-of-slow-pagination/)
 - [Finding Slow Queries with Heroku's Expensive Query Dashboard](https://www.schneems.com/2017/07/11/using-herokus-expensive-query-dashboard-to-speed-up-your-app/)
@@ -33,7 +33,7 @@ $ heroku pg:outliers
 
 Let's take a look at the first query to understand why it's slow.
 
-```sql
+```
 SELECT
   "repos".*
 FROM "repos"
@@ -48,7 +48,7 @@ This query is used once a week to encourage users to sign up to "triage" issues 
 
 While we're telling Postgres to only give us 1 record, the `ORDER BY random() LIMIT 1` doesn't only do that. It orders ALL the records before returning one.
 
-While you might think it's doing something like `Array#sample` it's really doing `Array#shuffle.first`. When I wrote this code, it was pretty dang fast. But now there are 2,761 repos and growing. And EVERY time this query executes, the database must load rows for each of those repos and spend CPU power to shuffle them.
+While you might think it's doing something like `Array#sample` it's really doing `Array#shuffle.first`. When I wrote this code, it was pretty dang fast because I only had a few repos in the database. But now there are 2,761 repos and growing. And EVERY time this query executes, the database must load rows for each of those repos and spend CPU power to shuffle them.
 
 You can see another query that was doing the same thing with the user table:
 
@@ -68,11 +68,11 @@ You can see another query that was doing the same thing with the user table:
 (8 rows)
 ```
 
-It takes almost 13ms for each execution of a relatively small query.
+It takes almost 13ms for each execution of this relatively small query.
 
 So if `RANDOM()` is bad, what do we fix it with? This is a surprisingly difficult question. It largely depends on your application and how you're accessing the data.
 
-In my case, [I fixed the issue by generating a Random ID and then pulling that record](https://github.com/codetriage/codetriage/pull/647). In this instance, I know that the IDs are relatively contiguous, so I pull the highest ID, pick a random number between 1 and `@@max_id`, then perform a query where I'm grabbing a record `>=` that id.
+In my case, [I fixed the issue by generating a random ID and then pulling that record](https://github.com/codetriage/codetriage/pull/647). In this instance, I know that the IDs are relatively contiguous, so I pull the highest ID, pick a random number between 1 and `@@max_id`, then perform a query where I'm grabbing a record `>=` that id.
 
 Is it faster? Oh yeah. Here's the same query as before with the `RANDOM()` replaced:
 
@@ -105,7 +105,7 @@ As always, benchmark your SQL queries before and after an optimization. This imp
 
 For my cases, it's fine if I get some failures, and I know that I'm only applying the most basic of `WHERE` conditions. Your needs might not be so flexible.
 
-If you're thinking "is there no built-in way to do this?", there is `TABLESAMPLE`, which was introduced in [Postgres 9.5](https://www.postgresql.org/docs/9.5/static/tablesample-method.html). Thanks to [@HotFusionMan](https://twitter.com/HotFusionMan) for introducing it to me.
+If you're thinking "is there no built-in way to do this?", it turns out there is `TABLESAMPLE`, which was introduced in [Postgres 9.5](https://www.postgresql.org/docs/9.5/static/tablesample-method.html). Thanks to [@HotFusionMan](https://twitter.com/HotFusionMan) for introducing it to me.
 
 Here's the [best blog I've found on using TABLESAMPLE](https://blog.2ndquadrant.com/tablesample-in-postgresql-9-5-2/). The downside is that it's not "truly random" (if that matters to your application), and you cannot use it to only retrieve 1 result. I was able to hack it by doing a query that the only table sampled 1%. Then I used that 1% to get ids and then limited to the first record. Something like:
 
@@ -123,7 +123,11 @@ WHERE
 LIMIT 1
 ```
 
-While this works and is much faster for queries returning LOTS of data (thousands or tens of thousands of rows), it's very slow for queries that have very little data. I have another query that uses `RANDOM()` to find open source issues for a specific repo. While some repos have thousands of issues, 50% have 27 or fewer issues. When I used the `TABLESAMPLE` technique for this query, it made my small queries really slow, and my previously slow queries fast. Since my numbers skew towards the small side for that query, it wasn't a net gain, so I stuck to the original `RANDOM()` method.
+While this works and is much faster than `ORDER BY RANDOM()` for queries returning LOTS of data (thousands or tens of thousands of rows), it's very slow for queries that have very little data.
+
+When I was optimizing [https://www.codetriage.com](https://www.codetriage.com) I found another query that uses `RANDOM()`. It is being used to find open source issues for a specific repo. Due to the way issues are stored, the IDs are not very contiguous so my previous (sampling >= to a random id) trick wouldn't work as well. I need a more robust way to randomize the data, and I thought perhaps `TABALESAMPLE` might perform better.
+
+While some repos have thousands of issues, 50% have 27 or fewer issues. When I used the `TABLESAMPLE` technique for this query, it made my small queries really slow, and my previously slow queries fast. Since my numbers skew towards the small side for that query, it wasn't a net gain, so I stuck to the original `RANDOM()` method.
 
 Have you replaced `RANDOM()` with another more efficient technique? Let me know about it to Twitter [@schneems](https://twitter.com/schneems).
 
