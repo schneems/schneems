@@ -74,6 +74,7 @@ So if `RANDOM()` is bad, what do we fix it with? This is a surprisingly difficul
 
 In my case, [I fixed the issue by generating a random ID and then pulling that record](https://github.com/codetriage/codetriage/pull/647). In this instance, I know that the IDs are relatively contiguous, so I pull the highest ID, pick a random number between 1 and `@@max_id`, then perform a query where I'm grabbing a record `>=` that id.
 
+
 Is it faster? Oh yeah. Here's the same query as before with the `RANDOM()` replaced:
 
 ```sql
@@ -87,6 +88,8 @@ Is it faster? Oh yeah. Here's the same query as before with the `RANDOM()` repla
 ```
 
 We went from ~13ms to sub 1ms query execution time.
+
+> Note: If you're curious about the "contiguous" requirement [read these comments on reddit](https://www.reddit.com/r/ruby/comments/7gfwyi/say_no_to_randos_in_your_database/dqjgxab/).
 
 There are are some pretty severe caveats here to watch out for. My implementation caches the max id, which is fine for my use cases, but it might not be for yours. It's possible to do this entirely in SQL using something like:
 
@@ -129,6 +132,8 @@ When I was optimizing [https://www.codetriage.com](https://www.codetriage.com) I
 
 While some repos have thousands of issues, 50% have 27 or fewer issues. When I used the `TABLESAMPLE` technique for this query, it made my small queries really slow, and my previously slow queries fast. Since my numbers skew towards the small side for that query, it wasn't a net gain, so I stuck to the original `RANDOM()` method.
 
+> Update: To claify I know that `random()` is not slow, and the article does not say that it is. It says `ORDER BY random()` is slow. It's the ordering of a large number of articles that cause the pain.
+
+> Update 2: No, using a random offset is not faster than the `>=` method with IDs. In fact using an offset for a large amount of records can also be a huge perf problem.
+
 Have you replaced `RANDOM()` with another more efficient technique? Let me know about it to Twitter [@schneems](https://twitter.com/schneems).
-
-
