@@ -15,7 +15,7 @@ categories:
     - postgresql
 ---
 
-When I used my first ORM, I wondered "why didn't they include a `random()` method?" It seemed like such an easy thing to add. While there are many reasons you may want to pull a record out of your database at random, you shouldn't be using SQL's `RANDOM()` function unless you'll only be randomizing a limited number of records. In this post, we'll examine how such a simple looking SQL operator can cause a lot of performance pain, and a few different techniques we can use to fix it.
+When I used my first ORM, I wondered "why didn't they include a `random()` method?" It seemed like such an easy thing to add. While there are many reasons you may want to pull a record out of your database at random, you shouldn't be using SQL's `ORDER BY RANDOM()` unless you'll only be randomizing a limited number of records. In this post, we'll examine how such a simple looking SQL operator can cause a lot of performance pain, and a few different techniques we can use to fix it.
 
 As you might know, I run [CodeTriage, the best way to get started helping open source,](https://www.codetriage.com) and I've written about improving the database performance on that site:
 
@@ -125,6 +125,8 @@ WHERE
   )
 LIMIT 1
 ```
+
+> I was also told in a [Reddit thread on /r/postgres that there's another way to do this](https://www.reddit.com/r/PostgreSQL/comments/7gn8za/say_no_to_randos_in_your_database/dqloijb/).
 
 While this works and is much faster than `ORDER BY RANDOM()` for queries returning LOTS of data (thousands or tens of thousands of rows), it's very slow for queries that have very little data.
 
