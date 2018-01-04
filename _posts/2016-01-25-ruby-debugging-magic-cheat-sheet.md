@@ -65,7 +65,7 @@ Since the invocation to get the file and line number is so long, I added a helpe
 
 If you find yourself on a remote machine without access to an editor you can [inject this into a Gemfile in a few lines of bash](https://gist.github.com/schneems/003de3b80e6b983c84ebc7273fd60947)
 
-Thanks to [I need to find where this object came from](https://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html#i-need-to-find-where-this-object-came-from).
+Thanks to [Aaron's "I need to find where this object came from"](https://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html#i-need-to-find-where-this-object-came-from).
 
 ## Figuring out how a method was called
 
