@@ -117,4 +117,9 @@ Overall the change was pretty simple, and a 57% smaller page isn’t too shabby.
 
 While there are still reasons you might want to put your SVG elements directly in your HTML, consider the page weight implications and costs first.
 
+
+**Update 1:** Looks like you can use the `<use>` with an external source meaning that you get the benefits of HTTP caching and a re-usable element along with the ability to style it as if it were inline. Here's more info on [External SVG with the use tag](https://css-tricks.com/svg-use-external-source/). The only downside is it's not supported natively with IE, but there is a polyfill. Thank's to [this comment on lobste.rs](https://lobste.rs/s/gubq9w/get_your_svgs_out_your_html#c_f3uidx).
+
+**Update 2:** On Reddit it was mentioned not to use "background" for an icon. Here's a good explanation of why, and an example of what you could use instead [Comments on Reddit](https://www.reddit.com/r/ruby/comments/7o5t1d/get_your_svgs_out_of_your_html/ds89c7l/).
+
 > BTW you may have noticed that I haven't posted anything in awhile. I had a baby (my second) and I'm taking 2 months off for paternity leave. I may post a bit about fatherhood or other thoughts, but don't count on any kind of a regular schedule. My priority right now is my family (I wrote this post before the little one came along).
