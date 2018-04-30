@@ -213,7 +213,7 @@ What does the `as` do? This is our way of telling parslet's that we are dealing 
 
 When you run the tests you'll see that it passes. I want to go one step further though and actually verify the format of the parsed tree (instead of saying "not nil"). To do that I'll change the test:
 
-```
+```ruby
   def test_parses_a_string
     input = %Q{"hello world"}
     parser = MyParser.new.string
@@ -231,7 +231,7 @@ Before we start, lets brainstorm the syntax of this. A key is any character that
 
 This is a complicated feature, let's start with the smaller parts and work towards the larger piece. I mentioned that a value can be things other than a string, to allow for this later we can add a `value` rule:
 
-```
+```ruby
 rule(:value) { string }
 ```
 
@@ -273,7 +273,7 @@ end
 
 It fails, let's make it pass with a `key_value` rule:
 
-```
+```ruby
 rule(:key_value) {
   (
     key >> value.as(:val)
@@ -284,10 +284,10 @@ rule(:key_value) {
 We are really close to finishing our grammar, but before we do, I want to take a look at the output of the tree for this key/value. It looks like this:
 
 ```ruby
-{ :key_value => { :key => "hello"@1, :val => { :string => "world"@9 }}}
+{ :key_value => { :key => "hello", :val => { :string => "world" }}}
 ```
 
-This hash somewhat makes sense to me. We have a top level key `key_value` and that points to another hash. This hash has a `key` key that points to a `"hello"` string and a `val` key that points to yet another hash `{:string=>"world"@9}`. While it's not super complicated, we can make the result of this simpler by using a transformer.
+This hash somewhat makes sense to me. We have a top level key `key_value` and that points to another hash. This hash has a `key` key that points to a `"hello"` string and a `val` key that points to yet another hash `{:string=>"world"}`. While it's not super complicated, we can make the result of this simpler by using a transformer.
 
 ## Transformers - Abstract Syntax Trees in disguise
 
@@ -300,7 +300,7 @@ I mentioned transformers previously, but they're such an abstract concept it hel
     - string: "world"
 ```
 
-You'll notice that the `key` and `val` results are not at the same level. Wouldn't it be great if there was a way for us to tranform `{:string=>"world"@9}` into something more useable? With a transformer we can. We will convert that leaf hash into a simple string. Here's our test.
+You'll notice that the `key` and `val` results are not at the same level. Wouldn't it be great if there was a way for us to tranform `{:string=>"world"}` into something more useable? With a transformer we can. We will convert that leaf hash into a simple string. Here's our test.
 
 ```ruby
 def test_parses_a_key_value_pair
@@ -428,7 +428,7 @@ It's a hash, yes. The first layer only has one key, named `:named_args`. One key
 ```ruby
 { :named_args =>
   { :key_value =>
-     { :key  => "hello",  :val=>{:string=>"world"@9} }
+     { :key  => "hello",  :val=>{:string=>"world"} }
   }
 }
 ```
@@ -440,11 +440,11 @@ However we have two elements with the same key `key_value`. The only way to stor
   :named_args =>
     [
       { :key_value =>
-        { :key => "hello"@1, :val => {:string=>"world"@9}}
+        { :key => "hello", :val => {:string=>"world"}}
       },
       {
         :key_value =>
-        { :key=>"hi"@17, :val => {:string=>"there"@22}}
+        { :key=>"hi", :val => {:string=>"there"}}
       }
     ]
 }
@@ -491,15 +491,15 @@ For now this is only a failing test. Here's the tree we can manipulate with our 
 
 ```ruby
 { :named_args => [
-      {:key_value => { :key => "hello"@3, :val => {:string=>"world"@11}}},
-      {:key_value => { :key => "hi"@19, :val => {:string=>"there"@24}}}
+      {:key_value => { :key => "hello", :val => {:string=>"world"}}},
+      {:key_value => { :key => "hi", :val => {:string=>"there"}}}
     ]
 }
 ```
 
 In our transformer we need to match this entire hash, there is only one key in the top level hash `named_args`, however it's pointing at a pretty complex value, an array holding hashes that point to hashes.
 
-We already have a transformer that will convert the `{:string=>"there"@24}` into simply `"there"`.
+We already have a transformer that will convert the `{:string=>"there"}` into simply `"there"`.
 
 Parslet provides the ability to match ANY values with the keyword `subtree`. This is dangerous because you are now responsible for handling any inconsistencies in the input. For example, remember we looked at how this rule could return either a single hash or an array of hashes, when you choose to match via `subtree` you're now responsible for knowing that and doing the right thing.
 
@@ -521,8 +521,8 @@ The output should be an array like this:
 
 ```ruby
 [
-  {:key_value => { :key => "hello"@3, :val => "world" }},
-  {:key_value => { :key => "hi"@19, :val => "there" }}
+  {:key_value => { :key => "hello", :val => "world" }},
+  {:key_value => { :key => "hi", :val => "there" }}
 ]
 ```
 
