@@ -65,7 +65,7 @@ Now that you know my problem and my toolset, it's time for a tutorial! I'm writi
 
 In this parslet tutorial we will build a grammar that can read in a Ruby 1.9 style hash with symbol keys and string values. Something like this:
 
-```
+```ruby
 {hello: "world", iam: "Schneems"}
 ```
 
@@ -283,7 +283,7 @@ rule(:key_value) {
 
 We are really close to finishing our grammar, but before we do, I want to take a look at the output of the tree for this key/value. It looks like this:
 
-```
+```ruby
 { :key_value => { :key => "hello"@1, :val => { :string => "world"@9 }}}
 ```
 
@@ -331,13 +331,13 @@ Once the transformer matches `{ :string => "foo" }`, the `simple(:st)` is captur
 
 Previously a leaf node that looks like this:
 
-```
+```ruby
 {string: "world"}
 ```
 
 Would now look like this:
 
-```
+```ruby
 "world"
 ```
 
@@ -345,7 +345,7 @@ There is one tricky point in this example. Not only was the value of "world" mod
 
 Here's the example they give, but with more details. If you have a tree like this:
 
-```
+```ruby
 {
   dog: 'terrier',
   cat: 'suit'
@@ -360,7 +360,7 @@ rule(:dog => 'terrier') { 'foo' }
 
 Because you're not only modifying the value, you're modifying the entire match (the key and the value). If this was a legal match it would produce something like this:
 
-```
+```ruby
 {
   'foo',
   cat: 'suit'
@@ -411,7 +411,7 @@ end
 
 In this case we already have a `key_value` rule, and a `comma` rule, we either want to match a single key/value pair, or a key/value pair followed by a comma and another key/value. This latter pattern can repeat indefinitely. Here's how this looks as a parslet rule:
 
-```
+```ruby
 rule(:named_args) {
   spaces? >> (
     key_value >> (
@@ -425,8 +425,8 @@ This rule gets the tests to pass, though what kind of tree do you think our test
 
 It's a hash, yes. The first layer only has one key, named `:named_args`. One key points to one value. How do you think the two `key_value`'s are stored? If it was only one `key_value`, it could be represented as one hash:
 
-```
-{:named_args =>
+```ruby
+{ :named_args =>
   { :key_value =>
      { :key  => "hello",  :val=>{:string=>"world"@9} }
   }
