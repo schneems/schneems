@@ -154,7 +154,7 @@ How can we update the grammar to allow for spaces? In addition to `str` there is
  rule(:spaces) { match('\s').repeat(1) }
 ```
 
-Here the regex `\s` will match any whitespace character. The call to `repeat(1) says that it must be repeated at least once, but has no upper bound. This means it will match ` ` (one space) and `      ` (6 spaces) but not `` (no spaces).
+Here the regex `\s` will match any whitespace character. The call to `repeat(1)` says that it must be repeated at least once, but has no upper bound. This means it will match ` ` (one space) and `      ` (6 spaces) but not `` (no spaces).
 
 While this is a useful rule, we also want to match the case where we don't have spaces in addition to the case where we do. To accomplish that we can add a `spaces?` rule, that uses the `spaces` rule and adds to it:
 
