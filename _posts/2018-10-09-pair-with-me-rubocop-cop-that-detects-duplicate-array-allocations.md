@@ -114,7 +114,7 @@ If you want to watch me live code this feature you can follow along here:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/w4Uzy6XFzCY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
-I didn't edit this, so you're getting all my mistakes and "umms." I recommend watching on at least 1.5x speed. As you're watching pretend you're pairing and try to find my mistakes before I do.
+> Note: I didn't edit this, so you're getting all my mistakes and "umms." I recommend watching on at least 1.5x speed. As you're watching pretend you're pairing and try to find my mistakes before I do.
 
 ## Aftermath
 
