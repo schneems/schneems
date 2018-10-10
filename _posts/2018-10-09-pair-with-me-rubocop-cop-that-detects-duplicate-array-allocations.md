@@ -68,7 +68,7 @@ $ rubocop
 Some of the changes can be applied automatically, to do this run with `--auto-correct`
 
 ```
-$ rubocop --autocorrect
+$ rubocop --auto-correct
 ```
 
 You can also add a rake task and have it autorun before CI to ensure no perf issues creep in.
