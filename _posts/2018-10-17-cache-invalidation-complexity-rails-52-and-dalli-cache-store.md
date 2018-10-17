@@ -20,6 +20,8 @@ In this post, we discuss the background to a change in the way that cache keys w
 
 Even if you're not at Rails 5.2 yet, you'll likely get there one day. It's important to read and potentially mitigate this issue before you run into it in production.
 
+> This article was [originally published on the Heroku Engineering blog](https://blog.heroku.com/cache-invalidation-rails-5-2-dalli-store).
+
 ## Background: What are Recyclable Cache keys?
 
 One of the [hallmark features of Rails 5.2 was "recyclable" cache keys](https://weblog.rubyonrails.org/2018/1/31/Rails-5-2-RC1-Active-Storage-Redis-Cache-Store-HTTP2-Early-Hints-Credentials/`). What does that mean and why do you want them? If you're caching a view partial that has an Active Record object when the object changes then you want the cache to invalidate and be replaced with the new information.
