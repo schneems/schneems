@@ -34,7 +34,7 @@ user = User.first
 user.name = "richard"
 user.save
 user.cache_key
-# => "users/1-20180918200812887980"
+# => "users/1-<version-1>"
 ```
 
 This scheme is quite robust. When the object changes so does the key:
@@ -45,43 +45,82 @@ user = User.first
 user.name = "schneems"
 user.save
 user.cache_key
-# => "users/1-20180918203556153004"
+# => "users/1-<version-2>"
 ```
 
-The one issue with this cache invalidation scheme is that it uses up lots of room in our cache.
+However, this causes unnecessary cache invalidations. For example, let's say that you have three objects and three slots in your cache. Letters A, B, and C differentiate the objects, while a number indicates their versions, these are all version one:
 
-> An example of this behavior is available [on this Reddit thread](https://www.reddit.com/r/ruby/comments/9opg4j/cache_invalidation_complexity_rails_52_and_dalli/e7xsp36/).
+```
+[A(1), B(1), C(1)]
+```
 
-Every time an object changes a new cache item is stored. The only time an old cache is actually deleted is when it is evicted because the cache store needs more room. That might sound fine but imagine that our cache is full and needs to clear some old keys.
+When object A changes, it doesn't evict the cache for object A, instead, it evicts the last cache entry which is C. Now the cache looks like this:
 
-It will start by deleting the oldest keys first. In our case, we want that behavior as the cache for "richard" would be cleared before "schneems". But it doesn't stop there. The next time the cache needs memory it continues to delete the oldest item even though it's still a valid cache. When this happens then the next time a partial tries to load we have to use the CPU to put the exact same info into the cache that was already there that we lost due to an eviction. The process then repeats as this new, valid cache entry gets older.
+```
+[A(2), A(1), B(1)]
+```
 
-One way we can help to avoid this eviction problem is if we re-use the cache keys. In this case, we know that this Active Record user object will always need an element in the cache, we also know that the old cache entry is worthless after the object has been changed. With this new behavior, the cache key now looks like this:
+The next time that C is requested it won't be found, and it will be re-calculated and get added to the front of the cache. This addition pushes out the copy of B:
+
+```
+[C(1), A(2), A(1)]
+```
+
+Now the next time that B is requested it won't be found, and it will be re-calculated and get added to the front of the cache:
+
+
+```
+[B(1), C(1), A(2)]
+```
+
+
+While we only made one change to object A, it resulted in clearing and resetting the values for both B(1) and C(1) even though they never changed. This method of cache invalidation adds unnecessary time spent recalculating already valid cache entries. Cache versioning's goal is to fix this unneeded cache invalidation.
+
+### Cache invalidation with cache versioning (recyclable cache keys)
+
+With the new method of cache versioning, the keys stay consistent, but the `cache_version` is stored inside the cache entry and manually checked when pulling an entry from the cache.
 
 ```language-ruby
 # config.active_record.cache_versioning = true
 user = User.first
+user.name = "richard"
+user.save
+user.cache_key
+# => "users/1"
+
+user.cache_version
+# => "<version-1>"
+
 user.name = "schneems"
 user.save
 user.cache_key
 # => "users/1"
+
+user.cache_version
+# => "<version-2>"
 ```
 
-When we update the item the key stays the same since it's the same object still in the cache.
+Here's an example of how the cache works with cache versioning:
 
-How does the cache get invalidated then if the cache key doesn't change? Instead of keeping the version information (updated_at info) inside of the cache key, the data is actually stored inside of the cache itself.
+```
+[A(1), B(1), C(1)]
+```
 
-When you enable recyclable keys then every time you write to a cache they build a special `ActiveSupport::Cache::Entry` object. This object also records the `cache_version`. Then the entire `Entry` object is put into the cache using a [Marshal](https://ruby-doc.org/core-2.5.0/Marshal.html).
+When object A changes, to version two, it will pull the A(1) object from the cache, see that it has a different version, and replace the entry in the same slot using a consistent cache key:
 
-Later when it's read from the cache Rails sees that the item is an instance of `Entry` it then validates to make sure the `cache_version` hasn't changed. If it's the same then it uses the stored value. Otherwise it acts as if the cache is empty. When the new cache value needs to be written it over-writes the old one.
+```
+[A(2), B(1), C(1)]
+```
 
-This is essentially a scheme to better utilize your cache stores and by extension hopefully, have your app do less work. How well does it work? DHH at Basecamp had this to say:
+Now future calls to retrieve the A object will show that the version is correct, and the cached value can be used.
+
+With this new scheme, changing one object does not have a cascade effect on other cached values. In this way, we're able to keep valid items in our cache longer and do less work.
+
+How well does it work? DHH at Basecamp had this to say:
 
 > We went from only being able to keep 18 hours of caching to, I believe, 3 weeks. It was the single biggest performance boost that Basecamp 3 has ever seen.
 
-With recyclable cache keys versioning, `config.active_record.cache_versioning = true`, instead of having to effectively recalculate every cache entry every 18 hours, the churn spread out over 3 weeks, which is very impressive.
-
-The "recyclable cache keys" feature might also be refered to as "cache versioning" since the versioning and invalidation comes from inside of the cache object rather than from the key.
+By enabling recyclable cache key versioning (`config.active_record.cache_versioning = true`), instead of having to recalculate every cache entry every 18 hours effectively, the churn spread out over 3 weeks, which is very impressive.
 
 ## What's the issue?
 
