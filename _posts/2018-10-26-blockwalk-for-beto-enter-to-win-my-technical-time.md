@@ -43,6 +43,7 @@ The goal of block walking and calling is not to convince people to "switch sides
 It might sound scary, but
 
 1) It does work.
+
 2) It's a lot of fun once you get over your initial fear.
 
 Here's a [video of me talking about my experiences](https://www.youtube.com/watch?v=mZl4bkUlaU4) if you want a raw glimpse into the background.
