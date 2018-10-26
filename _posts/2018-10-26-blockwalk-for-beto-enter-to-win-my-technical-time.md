@@ -31,7 +31,7 @@ If you're in Texas go to:
 
 Find an event on the map near you, click on it, and sign up for it, they'll train you and send you on your way. You can also bypass signing up for the event and show up. Feel free to take a friend or a spouse with you, the main thing that matters is the number of voters we reach before election day.
 
-If you're not in Texas it's a bit trickier, your only option is phone banking (unless you want to fly to Texas, which would be awesome, but likely not worth it). All the phone banking training shifts I've found are in person, however the call guide](https://docs.google.com/document/d/14paJu1DKyZxUTdGqe6sLCmTqeKPmRWVCbDL14S0nY0I/edit) is online. You can also get help [at the slack channel](https://www.youtube.com/watch?v=5EmNVuI-i-I). I've not done this, but I would start with the call guide and work my way through that and get on slack if I had any questions.
+If you're not in Texas it's a bit trickier, your only option is phone banking (unless you want to fly to Texas, which would be awesome, but likely not worth it). All the phone banking training shifts I've found are in person, however [the call guide](https://docs.google.com/document/d/14paJu1DKyZxUTdGqe6sLCmTqeKPmRWVCbDL14S0nY0I/edit) is online. You can also get help [at the slack channel](https://www.youtube.com/watch?v=5EmNVuI-i-I). I've not done this, but I would start with the call guide and work my way through that and get on slack if I had any questions.
 
 ## Why Block walk and Call
 
