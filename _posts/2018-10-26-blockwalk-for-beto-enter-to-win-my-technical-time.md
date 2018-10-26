@@ -52,7 +52,7 @@ The best time to be getting people politically active and to the polls was a dec
 
 ## Start this weekend
 
-The best time to blockwalk is on the weekend when people are home (but that shouldn't stop you from going during the week). The easiest way to get started is to commit to go with a friend and make a goal like (knock on 50 doors) and then go out and do it. If you can't find an interested friend, then you can fly solo. It's honestly a faster way to learn, and you'll be more effective faster. Once you're done for the day, don't forget to put your numbers into the:
+The best time to blockwalk is on the weekend when people are home (but that shouldn't stop you from going during the week). The easiest way to get started is to commit to go with a friend and make a goal (like knock on 50 doors) and then go out and do it. If you can't find an interested friend, then you can fly solo. It's honestly a faster way to learn, and you'll be more effective faster. Once you're done for the day, don't forget to put your numbers into the:
 
 [Competition Entry form](https://goo.gl/forms/QBDMOprbjNrEAUut1)
 
