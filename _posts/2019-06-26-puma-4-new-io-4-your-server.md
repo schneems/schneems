@@ -9,21 +9,23 @@ categories:
     - puma
 ---
 
-Here’s the setup: You are a web server named Puma. You need to accept incoming connections and give them to your thread pool, but before we can get that far, you’ll have to make sure all of the request's packets have been received so that it’s ready to be passed to a Rack app. This sounds like the job for a Reactor! Puma 4 was just released and the internals of the Reactor were changed. While it's not a breaking change, it was such a departure from how Puma previously worked, that we decided it was worthy of a major version bump, to be extra safe. In this post we'll look what a reactor is, how the old reactor worked, and how the new reactor now works.
+Here’s the setup: You are a web server named Puma. You need to accept incoming connections and give them to your thread pool, but before we can get that far, you’ll have to make sure all of the request's packets have been received so that it’s ready to be passed to a Rack app. This sounds like the job for a Reactor!
+
+Puma 4 was just released and the internals of the Reactor were changed. While it's not a breaking change, it was such a departure from how Puma previously worked, that we decided it was worthy of a major version bump, to be extra safe. In this post we'll look what a reactor is, how the old reactor worked, and how the new reactor now works.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">By the coders who brought you Llamas in Pajamas. A new cinematic Ruby server experience. Directed by <a href="https://twitter.com/evanphx?ref_src=twsrc%5Etfw">@evanphx</a>, cinematography by <a href="https://twitter.com/nateberkopec?ref_src=twsrc%5Etfw">@nateberkopec</a>, produced by <a href="https://twitter.com/schneems?ref_src=twsrc%5Etfw">@schneems</a>.<br><br>Introducing - Puma: 4 Fast 4 Furious<a href="https://t.co/06PG0lzubk">https://t.co/06PG0lzubk</a> <a href="https://t.co/O1dLfwnctJ">pic.twitter.com/O1dLfwnctJ</a></p>&mdash; Richard Schneeman 🤠 (@schneems) <a href="https://twitter.com/schneems/status/1143577608791220224?ref_src=twsrc%5Etfw">June 25, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 To understand the role a Reactor plays in Puma, let's start with an analogy. Imagine you're working in a mailroom. You have a dedicated set of celebrities that read and respond to fan mail. When a celeb is done responding to a letter, they check their mailbox to see if they have another one. When they get a new letter the first thing they do is see if there's any missing pages. Maybe the letter says "to be continued" and there's no other pages. This celeb could sit around all day and wait to see if other letters by the same sender came in before responding, but they are very busy. They want to respond to other fan mail.
 
-The celeb gives you the letter and tells you to wait for ALL of the pages from that sender. You stick it in your filing system. When another page comes in for a letter it magically shows up in the same envelope (yes, I know it's not a perfect analogy) then you look through your files, see which letter had a new page. Then you check to see if all the pages for that specific letter are there. If all the pages are present then you give it to the celebrity to respond to, otherwise you put it back in the file.
+The celeb gives you the incomplete letter and tells you to wait for ALL of the pages from that sender. You stick it in your filing system. When another page comes in for a letter it magically shows up in the same envelope (yes, I know it's not a perfect analogy) then you look through your files, see which letter had a new page. Then you check to see if all the pages for that specific letter are present. If you have all the pages then you give the complete letter to the celebrity to respond to, otherwise you put it back in the file.
 
 In this case the celebrity is a Puma thread, and you are the Reactor. The letters are requests, and letters without all pages represent slow or large requests that require additional packets before they can be responded to. The main role of a reactor is to prevent against [slow clients](https://en.wikipedia.org/wiki/Slowloris_(computer_security)) by fully buffering the request before attempting to do work on it.
 
 Here’s how the Puma 3.x (previous current version) implements a Reactor. First it receives an incoming client connection:
 
-A request comes into a `Puma::Server` instance [code](https://github.com/puma/puma/blob/c24c0c883496f581d9092bbe7f7431129eeb7190/lib/puma/server.rb#L336-L337). It is then passed to a `Puma::Reactor` instance [code](https://github.com/puma/puma/blob/88e51fb08e0735a98a519db46649f01bcc88d03c/lib/puma/reactor.rb#L314-L326).
+A request comes into a `Puma::Server` instance [[code](https://github.com/puma/puma/blob/c24c0c883496f581d9092bbe7f7431129eeb7190/lib/puma/server.rb#L336-L337)]. It is then passed to a `Puma::Reactor` instance [[code](https://github.com/puma/puma/blob/88e51fb08e0735a98a519db46649f01bcc88d03c/lib/puma/reactor.rb#L314-L326)].
 
-The reactor stores the request in an array and calls `IO.select` on the array in a loop [code](https://github.com/puma/puma/blob/88e51fb08e0735a98a519db46649f01bcc88d03c/lib/puma/reactor.rb#L128-L148).
+The reactor stores the request in an array and calls `IO.select` on the array in a loop [[code](https://github.com/puma/puma/blob/88e51fb08e0735a98a519db46649f01bcc88d03c/lib/puma/reactor.rb#L128-L148)].
 
 When the request is written to by the client, then an `IO.select` will “wake up” and return the references to any objects that caused it to “wake”. The reactor then loops through each of these request objects and sees if they’re complete. If they have a full header and body, then the reactor passes the request to a thread pool.
 
@@ -73,7 +75,7 @@ In the PR, you can also see a good bit of changes in this case statement:
 
 ```ruby
 case @ready.read(1)
-when “*”
+when "*"
   #... lots of code here
 ```
 
@@ -81,10 +83,10 @@ What exactly is happening, and why would our server be receiving a `*`? The reac
 
 From the old docs:
 
-    If there was a trigger event, then one byte of `@ready` is read into memory. In the case of the first request,
-    the reactor sees that it’s a `“*” ` value and the reactor adds the contents of `@input` into the `sockets` array.
-    The while then loop continues to iterate again, but now the `sockets` array contains a `Puma::Client` instance in addition
-    to the `@ready` IO object. For example: `[#<IO:fd 10>, #<Puma::Client:0x3fdc1103bee8 @ready=false>]`.
+> If there was a trigger event, then one byte of `@ready` is read into memory. In the case of the first request,
+the reactor sees that it’s a `“*” ` value and the reactor adds the contents of `@input` into the `sockets` array.
+The while then loop continues to iterate again, but now the `sockets` array contains a `Puma::Client` instance in addition
+to the `@ready` IO object. For example: `[#<IO:fd 10>, #<Puma::Client:0x3fdc1103bee8 @ready=false>]`.
 
 This core behavior still exists, but the end methods are different since we’re now using nio4r rather than a raw array of clients (which wrap individual connections). Instead, we need to register the client:
 
@@ -92,5 +94,4 @@ This core behavior still exists, but the end methods are different since we’re
 selector.register(c, :r)
 ```
 
-In the end, you’re still the same good-ole Puma, but you’re faster and can handle UNLIMITED ~~POWER~~ web requests. Not bad. I just released this behavior in Puma 4, try it today!
-
+In the end, you’re still the same good-ole Puma, but you’re faster and can handle UNLIMITED ~~POWER~~ web requests.
