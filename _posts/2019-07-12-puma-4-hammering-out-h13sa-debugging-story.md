@@ -49,7 +49,7 @@ When you're dealing with a distributed system bug that's reliant on a race condi
 
 A simple reproduction rack app looks like this:
 
-```language-ruby
+```ruby
 app = Proc.new do |env|
   current_pid = Process.pid
   signal      = "SIGKILL"
@@ -64,7 +64,7 @@ When you run this `config.ru` with Puma and hit it with a request, you'll get a 
 
 The curl code when a connection is closed like this is `52` so now we can detect when it happens.
 
-```language-term
+```term
 $ curl localhost:9292
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -74,7 +74,7 @@ curl: (52) Empty reply from server
 
 A more complicated reproduction happens when SIGTERM is called but requests keep coming in. To facilitate that we ended up with a reproduction that looks like this:
 
-```language-ruby
+```ruby
 app = Proc.new do |env|
   puma_pid = File.read('puma.pid').to_i
   Process.kill("SIGTERM", puma_pid)
@@ -90,7 +90,7 @@ This `config.ru` rack app sends a `SIGTERM` to itself and it's parent process on
 
 Then we can write a script that boots this server and hits it with a bunch of requests in parallel:
 
-```language-ruby
+```ruby
 threads = []
 
 threads << Thread.new do
@@ -133,7 +133,7 @@ In our case, closing the socket is what we want. It correctly communicates to th
 
 So then, the solution to the problem was to close the socket before attempting to shut down explicitly. Here's the [PR](https://github.com/puma/puma/pull/1808). The main magic is just one line:
 
-```language-ruby
+```ruby
 @launcher.close_binder_listeners
 ```
 
