@@ -51,7 +51,7 @@ After that, I needed an audio tag
 
 ```html
 <audio controls>
-  <source src="{%  asset_path 'say-schneems.mp3' %}" type="audio/mpeg">
+  <source src="{%  asset 'say-schneems.mp3' @path %}" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
 ```
@@ -65,7 +65,7 @@ That's it! The audio tag automagically gives you a mini player where you can pla
 "Schneems" is my webhandle. Start by saying the first half of "schnapps" and end with the last bit of "seems" (Schn-eems). My full name is Richard Schneeman (Shhhh - knee - man). Listen below to hear both pronounced.
 
 <audio controls>
-  <source src="{%  asset_path 'say-schneems.mp3' %}" type="audio/mpeg">
+  <source src="{%  asset 'say-schneems.mp3' @path %}" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
 
