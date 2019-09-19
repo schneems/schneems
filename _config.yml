@@ -17,7 +17,6 @@ rss_description:  >
   Posts on programming and open source."
 
 url:              https://www.schneems.com
-baseurl:          /
 rss_path:         feed.xml
 
 author:
