@@ -15,13 +15,13 @@
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="{% asset_path 'application.css' %}">
+  <link rel="stylesheet" href="{% asset 'application.css' @path %}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700">
-  <script src="{% asset_path 'application.js' %}" async></script>
+  <script src="{% asset 'application.js' @path %}" async></script>
 
 
   <!-- Icons -->
-  <link rel="shortcut icon" href="{% asset_path 'favicon.ico' %}">
+  <link rel="shortcut icon" href="{% asset 'favicon.ico' @path %}">
 
   <!-- Feed -->
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom feed">
@@ -42,11 +42,11 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:site" content="Schneems"/>
   <meta name="twitter:title" content="{% if page.title == "Home" %}{{ site.title | escape }}{% else %}{{ page.title | escape }}{% endif %}" />
-  <meta name="twitter:image" content="{% if page and page.image %}{{ site.url }}{{ page.image | asset_path  }}{% else %}{{ site.url }}{%  asset_path 'opengraph.png' %}{% endif %}" />
+  <meta name="twitter:image" content="{% if page and page.image %}{{ site.url }}{{ page.image | asset  @path }}{% else %}{{ site.url }}{%  asset 'opengraph.png' @path %}{% endif %}" />
   <meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}" />
 
   <meta property="og:site_name" content="Schneems" />
-  <meta property="og:image" content="{% if page and page.image %}{{ site.url }}{{ page.image | asset_path }}{% else %}{{ site.url }}{%  asset_path 'opengraph.png' %}{% endif %}" />
+  <meta property="og:image" content="{% if page and page.image %}{{ site.url }}{{ page.image | asset @path }}{% else %}{{ site.url }}{%  asset 'opengraph.png' @path %}{% endif %}" />
   <meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}"/>
   <meta property="{% if page.title == "Home" %}{{ site.title | escape }}{% else %}{{ page.title | escape }}{% endif %}"/>
 

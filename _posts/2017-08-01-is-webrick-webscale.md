@@ -14,7 +14,7 @@ categories:
 
 [WEBrick](http://ruby-doc.org/stdlib-2.4.1/libdoc/webrick/rdoc/WEBrick.html) is the "slowest" webserver in Ruby, how could it possibly be webscale? To answer this question and explore [Is Ruby Too Slow For Web-Scale?](https://www.speedshop.co/2017/07/11/is-ruby-too-slow-for-web-scale.html), we will compare WEBrick to a real piece of "webscale" tech: [NGINX](https://www.nginx.com/resources/wiki/).
 
-{% img 'og/webrick.png' %}
+{% asset 'og/webrick.png' %}
 
 While there might be some faster webservers on the market, is there a case where WEBrick is fast enough? Before we can dig into that question, let's look at a real world deployment of WEBrick in production.
 
