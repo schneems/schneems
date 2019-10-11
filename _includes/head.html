@@ -41,13 +41,22 @@
 
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:site" content="Schneems"/>
-  <meta name="twitter:title" content="{% if page.title == "Home" %}{{ site.title | escape }}{% else %}{{ page.title | escape }}{% endif %}" />
-  <meta name="twitter:image" content="{% if page and page.image %}{{ site.url }}{{ page.image | asset  @path }}{% else %}{{ site.url }}{%  asset 'opengraph.png' @path %}{% endif %}" />
   <meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}" />
-
-  <meta property="og:site_name" content="Schneems" />
-  <meta property="og:image" content="{% if page and page.image %}{{ site.url }}{{ page.image | asset @path }}{% else %}{{ site.url }}{%  asset 'opengraph.png' @path %}{% endif %}" />
   <meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}"/>
-  <meta property="{% if page.title == "Home" %}{{ site.title | escape }}{% else %}{{ page.title | escape }}{% endif %}"/>
 
+  {% if page.title == "Home" %}
+    <meta property="twitter:title" content="{{ site.title | escape }}" />
+    <meta property="og:title" content="{{ site.title | escape }}" />
+  {% else %}
+    <meta property="twitter:title" content="{{ page.title | escape }}" />
+    <meta property="og:title" content="{{ page.title | escape }}" />
+  {% endif %}
+
+  {% if page and page.image %}
+    <meta name="twitter:image" content="{{ asset page.image @path }}" />
+    <meta property="og:image" content="{{ asset page.image @path }}" />
+  {% else %}
+    <meta name="twitter:image" content="{{ asset 'opengraph.png' @path }}" />
+    <meta property="og:image" content="{{ asset 'opengraph.png' @path }}" />
+  {% endif %}
 </head>
