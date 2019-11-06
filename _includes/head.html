@@ -55,6 +55,9 @@
   {% if page and page.image %}
     <meta name="twitter:image" content="{{ asset page.image @path }}" />
     <meta property="og:image" content="{{ asset page.image @path }}" />
+  {% elsif page and page.image_url %}
+    <meta name="twitter:image" content="{{ page.image_url }}" />
+    <meta property="og:image" content="{{ page.image_url }}" />
   {% else %}
     <meta name="twitter:image" content="{{ asset 'opengraph.png' @path }}" />
     <meta property="og:image" content="{{ asset 'opengraph.png' @path }}" />
