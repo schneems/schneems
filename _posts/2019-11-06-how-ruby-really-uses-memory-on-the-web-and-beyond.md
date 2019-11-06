@@ -10,7 +10,7 @@ categories:
     - performance
 ---
 
-I wrote [How Ruby uses Memory](https://www.sitepoint.com/ruby-uses-memory/) over four years ago, but there continues to be many misunderstandings and mystery about Ruby's memory behavior. In this post, I will use a [simulated multi-threaded webserver](https://github.com/schneems/simulate_ruby_web_memory_use) to show how different memory allocation patterns work together. Together we can work through the memory behavior that many developers struggle to understand.
+I wrote [How Ruby uses Memory](https://www.sitepoint.com/ruby-uses-memory/) over four years ago, but there continue to be many misunderstandings about Ruby's memory behavior. In this post, I will use a [simulated multi-threaded webserver](https://github.com/schneems/simulate_ruby_web_memory_use) to show how different memory allocation patterns work behave. Together we can work through the memory behavior that many developers struggle to understand.
 
 ## Understanding the output: Simulation with one thread
 
@@ -18,9 +18,9 @@ Here's an example of a web server with one thread serving a few requests:
 
 ![](https://www.dropbox.com/s/h6pz8hat1ra9ojp/Screenshot%202019-10-28%2013.00.21.png?raw=1)
 
-> The amount of memory and time duration is completely arbitrary since this is a simulation; the shape of the graph is the critical part.
+Time is the bottom axis. As time progresses, our thread will process requests and allocate objects. The pointy bits on the graph represent a web server processing a request. As the request is processed, varying amounts of objects are allocated to generate a response. While these objects are being used, they cannot be reclaimed by the garbage collector. Once the request is over, they can be recycled, so the amount of objects retained goes back down to zero. When object retention drops back down to zero, you can see the memory requirements for that thread also drop to zero in the graph.
 
-The pointy bits on the graph represent a web server processing a request. As the request is processed, varying amounts of objects are allocated to generate a response. While these objects are being used, they cannot be reclaimed by the garbage collector. Once the request is over, they can be recycled, so the amount of objects retained goes back down to zero. When object retention drops back down to zero, you can see the memory requirements for that thread also drop to zero in the graph.
+> The units of memory and time duration is completely arbitrary since this is a simulation; the shape of the graph is the critical part.
 
 The other line at the top of the graph traces the total maximum amount of memory needed to run the application. In this example, the first request needs a large amount of memory, but then the second third and fourth all use less than the first. You can see the total maximum amount of memory increase and then stay stable. This behavior is a very rough approximation of how Ruby (2.6 is the latest release at the time of writing) allocates memory. It will allocate enough space to handle whatever task needs to be done. Then it will assume (correctly in this case) that in the future, you'll need to use that memory again, so it holds onto it. While looking at these graphs, the top line roughly represents the memory requirements of your program that you would see in Heroku's memory metrics dashboard, or from activity monitor locally (if you're on a Mac).
 
@@ -66,7 +66,7 @@ This is another crucial point:
 
 ## Simulating ten threads instead of just two
 
-When I added a new thread, then our memory requirements were doubled. Granted, it didn't happen right away, and based on our request distribution. We might never see that full theoretical "max" memory. So what happens if we move from 2 threads to 10. Would you expect our memory usage to be 10x? Take a look at the graph:
+When I added a new thread, then our memory requirements were doubled. Granted, it didn't happen right away, and based on our request distribution. We might never see that full theoretical "max" memory. So what happens if we move from two threads to ten. Would you expect our memory usage to be 10x? Take a look at the graph:
 
 
 ![](https://www.dropbox.com/s/dlj7pdia962s61e/Screenshot%202019-10-28%2013.42.32.png?raw=1)
