@@ -75,7 +75,7 @@ When I added a new thread, then our memory requirements were doubled. Granted, i
 
 ![](https://www.dropbox.com/s/dlj7pdia962s61e/Screenshot%202019-10-28%2013.42.32.png?raw=1)
 
-If we were going to 10x our memory, you would expect to see 3,900 (10 * 390) memory units being used. This graph doesn't show anywhere near that number, though? Why not. While our theoretical system still has the same theoretical maximum, remember that for it to happen, we would have to have several seemingly random events align perfectly. Here's what affects our memory requirements:
+If we were going to 10x our memory, you would expect to see 3,900 (10 * 390) memory units being used. This graph doesn't show anywhere near that number, though. Why not? While our theoretical system still has the same theoretical maximum, remember that for it to happen, we would have to have several seemingly random events align perfectly. Here's what affects our memory requirements:
 
 - Size of the request: Some endpoints in applications require lots of memory and some very little memory. Since, in practice, Ruby does not return memory, the largest request is the dominant factor for how much memory a system will need.
 - Distribution of incoming requests: We saw memory use double when two threads are serving the same request, and also when they start being processed at about the same time. The more overlap between parallel requests means the more memory your application will need to use to run your application.
