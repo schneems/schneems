@@ -5,6 +5,9 @@ published: true
 date: 2019-11-06
 permalink: /2019/11/06/how-ruby-really-uses-memory-on-the-web-and-beyond/
 image_url: https://www.dropbox.com/s/ik7ixj8qqo8m4jq/Screenshot%202019-10-28%2012.27.11.png?raw=1
+hnurl: https://news.ycombinator.com/item?id=21466921
+twurl: https://twitter.com/schneems/status/1192178141088890880
+loburl: https://lobste.rs/s/nuaw9q/how_ruby_really_uses_memory_on_web_beyond
 categories:
     - ruby
     - memory
