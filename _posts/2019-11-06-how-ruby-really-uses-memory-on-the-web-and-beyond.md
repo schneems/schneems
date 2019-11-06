@@ -14,7 +14,7 @@ categories:
     - performance
 ---
 
-I wrote [How Ruby uses Memory](https://www.sitepoint.com/ruby-uses-memory/) over four years ago, but there continue to be many misunderstandings about Ruby's memory behavior. In this post, I will use a [simulated multi-threaded webserver](https://github.com/schneems/simulate_ruby_web_memory_use) to show how different memory allocation patterns work behave. Together we can work through the memory behavior that many developers struggle to understand.
+I wrote [How Ruby uses Memory](https://www.sitepoint.com/ruby-uses-memory/) over four years ago, but there continue to be many misunderstandings about Ruby's memory behavior. In this post, I will use a [simulated multi-threaded webserver](https://github.com/schneems/simulate_ruby_web_memory_use) to show how different memory allocation patterns behave. Together we can work through the memory behavior that many developers struggle to understand.
 
 ## Understanding the output: Simulation with one thread
 
