@@ -44,7 +44,7 @@ Your app is slow. It does not spark joy. In this talk, we will use memory profil
 Okay, so threads are pretty evil. But they are also useful, and given the right development patterns, not impossible to work with. In this talk we'll look at some real world Ruby libraries where threads were applied to accomplish otherwise impossible tasks. We'll look at re-writing a real world library to support parallel execution by threads for performance gains. If you're not comfortable with the "T" word (threads), this talk is the perfect introduction to practical thread programming in Ruby
 
 - [Video](https://www.youtube.com/watch?v=PcUfNcOe458)
-- [Post](https://www.schneems.com/2017/10/23/wtf-is-a-thread/) - Focuses only on the technical aspect of the talk and doesn't get into the "history" lesson.
+- [Post - WTF is a Thread](https://www.schneems.com/2017/10/23/wtf-is-a-thread/)
 
 **Locations**
 
@@ -79,10 +79,9 @@ No one wants to be stuck in the slow lane, especially Rubyists. In this talk we'
 
 What do you do when a maintainer leaves a project with over 44 million downloads? That is what we had to consider this year when Sprockets lost the developer responsible for more than 70% of the commits. In this talk we will look at recent efforts to revive Sprockets, and make it more maintainable. We will look into how your projects can be structured to avoid burnout and survive a change of maintainers. Let's save Sprockets.
 
-[Post with transcription](https://www.schneems.com/2016/05/31/saving-sprockets.html)
-
 - [Video](https://www.youtube.com/watch?v=qxaE8yblHPk)
 - [Slides](https://speakerdeck.com/schneems/saving-sprockets)
+- [Post with transcription](https://www.schneems.com/2016/05/31/saving-sprockets.html)
 
 **Locations**
 
