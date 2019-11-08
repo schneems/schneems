@@ -16,15 +16,13 @@ categories:
     - performance
 ---
 
-Why on earth does my memory consumption chart look like that? It's a question I hear every week. To help answer that question, I wrote a [Web server request simulator](https://github.com/schneems/simulate_ruby_web_memory_use) to model how Ruby uses memory over time. We will use the output of that project to dissect why a Ruby on Rails web app's memory would be expected to look like this:
+Why on earth does my memory consumption chart look like that? It's a question I hear every week. To help answer that question, I wrote a [Web server request simulator](https://github.com/schneems/simulate_ruby_web_memory_use) to model how Ruby uses memory over time, though it applies to other languages as well. We will use the output of that project to dissect why a web app's memory would be expected to look like this:
 
 ![](https://www.dropbox.com/s/58w258qszoo9h9c/Screenshot%202019-10-28%2012.48.28.png?raw=1)
 
 > [Logistic](https://en.wikipedia.org/wiki/Logistic_function) function generated via Wolfram Alpha `Plot[100 / (1 +  e^-(x/100) )], {x, 0, 1000}]`. Shape is asymptotic.
 
 In this post, we'll talk a little about what causes this shape of memory use over time. Then we will dig into what that memory behavior means in terms of optimizing your application.
-
-> Originally, this post was titled "How Ruby REALLY Uses Memory: On the Web and Beyond," which was less precise. I've re-generated the graphs to be more visible and, based on feedback, made the explanations more concise.
 
 ## Simulating one Request
 
@@ -125,22 +123,25 @@ If you want to start improving your application's memory consumption here are ad
 - [Jumping off the Ruby Memory Cliff](https://www.schneems.com/2017/04/12/jumping-off-the-memory-cliff/) - Sometimes you might see a 'cliff' in your memory metrics or a saw-tooth pattern. This article explores why that behavior exists and what it means.
 - [Ruby Memory Use (Heroku Devcenter article I maintain)](https://devcenter.heroku.com/articles/ruby-memory-use) - This article focuses on alleviating the symptoms of high memory use.
 - [Debugging a memory leak on Heroku](https://blog.codeship.com/debugging-a-memory-leak-on-heroku/) - TLDR; It's probably not a leak. Still worth reading to see how you can come to the same conclusions yourself. Content is valid for other environments that Heroku. Lots of examples of using the tool `derailed_benchmarks` (that I wrote).
+- [The Life-Changing Magic of Tidying Active Record Allocations (Video)](https://www.youtube.com/watch?v=CS11WIalmPM&feature=emb_title) - This talk shows how I used tools to track down and eliminate memory allocations in real life. All of the examples are from patches I submitted to Rails, but the process works the same for finding allocations caused by your application logic.
 
 When working on reducing your application's memory footprint, focus on the largest endpoint. If you can reduce your largest request by a factor of two in the simulation, from 390 memory units to 195, then your maximum theoretical usage at ten threads becomes 1,950 units. Neat!
 
 In my experience, there is usually one or two endpoints that allocate an obscene amount of memory, maybe two to five times the amount of other endpoints. If I were to tune your memory use, I would start with the largest requests.
 
+Also, since this has come up a few times: Your memory problem (if you have one) is not from your webserver, or your framework, or even your language. The bulk of allocations typically comes directly from business/application logic that you (or your team) wrote.
+
 ## Caveats and Fine Print
 
 The models I described above closely mimic the behavior and performance I've seen from real-world production applications over my last decade-plus working with Ruby. However, since these examples are based on simulation: it is useful to be explicit about what is simulated and what is excluded.
 
-**Ruby behavior** This behavior is a very rough approximation of how Ruby (2.6 is the latest release at the time of writing) allocates memory. In reality, the garbage collector (responsible for allocating memory) is more nuanced than this simulation. There is a range of topics you need for the full picture: object slots, slot versus heap allocation, generational GC, incremental GC, compacting memory, fragmentation due to malloc implementation, etc. But for now, this simplification is good enough.
-
-**Thread behavior** Ruby can only execute one thread at a time due to the GVL, but 'IO' calls such as database queries, or a network requests can release the GVL. Ruby's threads also use time-slicing, so if you have two requests trying to execute at the same time and neither are doing IO, then imagine that Ruby is bouncing back and forth between the two working on each a little at a time. In reality, there are more considerations, and we can model those interactions, but they're not necessary for now.
-
 **Threads versus processes** While I said "threads," concurrency via processes will see the same memory behavior for processing requests. I specifically chose "threads" for this example because people generally don't associate them with memory use, or understand why memory goes up over time.
 
 One difference in memory use between threads and processes is that a process will require a higher base-line amount of memory use than a thread. To understand more of the differences between the two concurrency constructs, you might want to check out my video and post [WTF is a Thread](https://www.schneems.com/2017/10/23/wtf-is-a-thread/).
+
+**Ruby behavior** This behavior is a very rough approximation of how Ruby (2.6 is the latest release at the time of writing) allocates memory. In reality, the garbage collector (responsible for allocating memory) is more nuanced than this simulation. There is a range of topics you need for the full picture: object slots, slot versus heap allocation, generational GC, incremental GC, compacting memory, fragmentation due to malloc implementation, etc. But for now, this simplification is good enough.
+
+**Thread behavior** Ruby can only execute one thread at a time due to the GVL, but 'IO' calls such as database queries, or a network requests can release the GVL. Ruby's threads also use time-slicing, so if you have two requests trying to execute at the same time and neither are doing IO, then imagine that Ruby is bouncing back and forth between the two working on each a little at a time. In reality, there are more considerations, and we can model those interactions, but they're not necessary for now.
 
 **Active memory versus "base" memory** When you boot up your application but have not served any requests, there is a memory footprint. Think of this as the "base" size of the application. As a request comes in, imagine that your application pulls a user from the database, which requires allocating objects, renders a template that needs objects, and does a whole lot of internal object creation to deliver the request back. These objects are what I refer to as "Active" memory.  Active memory is not retained for long but is needed for the duration of the request. For this simulation, I only included "active" memory generated from requests.
 
