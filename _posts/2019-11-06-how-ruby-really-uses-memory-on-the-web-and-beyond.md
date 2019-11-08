@@ -1,5 +1,5 @@
 ---
-title: "Why does My Memory Usage Grow Asymptotically Over Time?"
+title: "Why does App's Memory Use Grow Over Time?"
 layout: post
 published: true
 date: 2019-11-06
