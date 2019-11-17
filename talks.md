@@ -4,7 +4,7 @@ layout: about
 
 ## Conference Talks
 
-I love speaking! I've given talks at [~30 events in 17 countries](#countries) including OSCON and RailsConf. I love theatrics and storytelling. My two favorite talks are currently:
+I love speaking! I've given talks at [~30 conferences in 17 countries](#countries) including OSCON and RailsConf. I love theatrics and storytelling. My two favorite talks are currently:
 
 **The Life-Changing Magic of Tidying Active Record Allocations (2019)**
 
@@ -199,7 +199,7 @@ Heroku has deployed millions of web apps. When you've run that many applications
 - Taiwan (Taipei)
 - Thailand (Bangkok)
 - Singapore (Singapore)
-- United States (SF, Honolulu, Portland, Austin, Burlington, Dallas, St. Augustine, Chicago, San Diego, Cincinnati, Phoenix, Boston)
+- United States (SF, Honolulu, Portland, Austin, Burlington, Dallas, St. Augustine, Chicago, San Diego, Cincinnati, Phoenix, Boston, Nashville)
 - Uruguay (Montevideo)
 
 I've not spoken in Africa or Antartica. If you're organizing a conf on either continent and want me to come speak, let me know ;)
