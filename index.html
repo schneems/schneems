@@ -15,8 +15,18 @@ title: Home
     <span class="post-date">{{ post.date | date_to_string }}</span>
 
     {{ post.excerpt }}
-    <p><a href="{{ post.url }}">Keep Reading</a></p>
 
+    {% if post and post.image %}
+      <a href="{{ post.url }}">
+        {% asset '{{ post.image }}' %}
+      </a>
+    {% elsif post and post.image_url %}
+      <a href="{{ post.url }}">
+        <img src="{{ post.image_url }}" />
+      </a>
+    {% endif %}
+
+    <p><a href="{{ post.url }}">Keep Reading</a></p>
     <hr />
   </div>
   {% endfor %}
