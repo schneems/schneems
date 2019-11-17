@@ -4,7 +4,7 @@ layout: about
 
 ## Conference Talks
 
-I love speaking! I've given talks at [~29 events in 17 countries](#countries) including OSCON and RailsConf. I love theatrics and storytelling. My two favorite talks are currently:
+I love speaking! I've given talks at [~30 events in 17 countries](#countries) including OSCON and RailsConf. I love theatrics and storytelling. My two favorite talks are currently:
 
 **The Life-Changing Magic of Tidying Active Record Allocations (2019)**
 
@@ -38,6 +38,7 @@ Your app is slow. It does not spark joy. In this talk, we will use memory profil
 - *Keynote* RubyConf Thailand (Bangkok, Thailand)
 - RailsConf (Minneapolis, Minesota - USA)
 - EuRuKo (Rotterdam, Netherlands)
+- SouthEast Ruby (Nashville, Tennessee - USA)
 
 ### Threads Aren't Evil (2017)
 
