@@ -6,6 +6,11 @@
 *= require social.css
 */
 
+
+.hompage_teaser_image {
+  box-shadow: 5px 5px 10px #888;
+}
+
 .main {
   justify-content: center;
 }
