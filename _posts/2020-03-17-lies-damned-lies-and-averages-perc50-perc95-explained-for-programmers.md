@@ -4,6 +4,7 @@ layout: post
 published: true
 date: 2020-03-17
 permalink: /2020/03/17/lies-damned-lies-and-averages-perc50-perc95-explained-for-programmers/
+image_url: https://www.dropbox.com/s/mdghbzitg3pijw8/Screenshot%202019-12-24%2013.10.56.png?raw=1
 categories:
     - ruby
     - statistics
