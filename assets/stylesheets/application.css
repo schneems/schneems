@@ -6,6 +6,10 @@
 *= require social.css
 */
 
+.main {
+  justify-content: center;
+}
+
 .flexbox-container {
   display: -ms-flex;
   display: -webkit-flex;
@@ -345,7 +349,13 @@ pre {
   text-align: center;
   /*color: rgba(255,255,255,.5);*/
   color: #25020F;
-  background-color: #FF1168;
+  background-image: linear-gradient(135deg, #FF1168,
+  white);
+  background-size: 0.3rem;
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 100%;
+
 }
 
 
@@ -372,7 +382,7 @@ pre {
 
 .content {
   padding: 2rem;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
 }
 
 /* If device width is LESS than or equal to this value */
@@ -413,6 +423,7 @@ pre {
     min-width: 14rem;
     text-align: left;
     flex: 0 0;
+    margain:
   }
 
   .closed-when-mobile {
@@ -432,11 +443,6 @@ pre {
     /* postcontent + socialsidebar */
     max-width: 50rem;
   }
-}
-
-/* Sidebar links */
-.sidebar a {
-  color: #fff;
 }
 
 /* Sidebar nav */
