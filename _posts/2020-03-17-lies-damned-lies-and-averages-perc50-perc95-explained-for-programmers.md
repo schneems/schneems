@@ -42,7 +42,7 @@ The blue and red graph above showing the non-normal distribution is pretty stand
 
 ## Perc50 and Perc95
 
-Previously I mentioned "perc50" and "perc95", what exactly do those terms mean? The term "perc" stands for percentage, and the number indicates what percentage. The term "perc50" indicates you're looking at a number where 50% of requests are at or below that number. Here's how that looks in code:
+Previously I mentioned "perc50" and "perc95", what exactly do those terms mean? The term "perc" stands for [percentile](https://en.wikipedia.org/wiki/Percentile), and the number indicates what percentile. The term "perc50" indicates you're looking at a number where 50% of requests are at or below that number. Here's how that looks in code:
 
 ```ruby
 def perc(number, values)
