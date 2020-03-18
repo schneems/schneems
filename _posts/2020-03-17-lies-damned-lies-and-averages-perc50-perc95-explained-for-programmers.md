@@ -49,7 +49,7 @@ def perc(number, values)
   sorted_values = values.sort
   index = values.size * (number / 100.0)
 
-  raise "Not a valid perc number #{number}" if index > 100 || index < 0
+  raise "Not a valid perc number #{number}" if number > 100 || number < 0
 
   return (sorted_values[index.ceil] + sorted_values[index.floor]) / 2.0
 end
