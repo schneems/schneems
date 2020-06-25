@@ -4,8 +4,11 @@ layout: post
 published: true
 date: 2020-06-25
 permalink: /2020/06/25/rate-limiting-rate-throttling-and-how-they-work-together/
+image_url: https://www.dropbox.com/s/i7wpjvyxgjih14a/Screenshot%202020-06-25%2012.47.25.png?raw=1
 categories:
     - ruby
+    - rate throttling
+    - rate limiting
 ---
 
 In the beginning, there were API requests, and they were good. But then some jerk went and made too many requests too fast and brought the server crashing to its knees. Enter: Rate limiting.
@@ -53,3 +56,6 @@ As a server owner, if you're relying on a client to limit itself, it will not. N
 ## Rate limiting and throttling combined
 
 When rate limiting is implemented on the server, and a client is provided with rate throttling, then everyone mostly gets what they want. People making requests aren't getting a ton of errors, and the admins wearing pagers on the server-side can sleep better at night. If you maintain an API, consider documenting how to rate throttle requests effectively. Or even better, release a client that includes native support for rate throttling.
+
+----
+> Teaser image "superbikes 06" by gbsngrhm is licensed under CC BY-SA 2.0
