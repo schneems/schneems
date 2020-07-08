@@ -20,6 +20,8 @@ When API requests are made one-after-the-other they'll quickly hit rate limits a
 
 That tweet spawned a discussion that generated a quest to add rate throttling logic to the [`platform-api`](https://rubygems.org/gems/platform-api) gem that Heroku maintains for talking to its API in Ruby.
 
+> This blog post is originally published on the [Heroku Engineering Blog](https://blog.heroku.com/rate-throttle-api-client)
+
 > If the term "rate throttling" is new to you, read [Rate limiting, rate throttling, and how they work together](https://schneems.com/2020/06/25/rate-limiting-rate-throttling-and-how-they-work-together/)
 
 The Heroku API uses [Genetic Cell Rate Algorithm (GCRA) as described by Brandur in this post](https://brandur.org/rate-limiting) on the server-side. Heroku's [API docs](https://devcenter.heroku.com/articles/platform-api-reference#rate-limits) state:
