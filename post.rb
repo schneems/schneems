@@ -13,11 +13,6 @@ month = Time.now.strftime('%m')
 day = Time.now.strftime('%d')
 
 hyphen_date = "#{year.to_s}-#{month.to_s}-#{day.to_s}"
-time = Time.now.strftime('%H:%M')
-
-# puts 'Enter the category:'
-# category = gets.chomp
-
 sanitized_title = title.downcase.gsub(/[^a-z0-9\s]/i, '')
 
 dirty_slug = sanitized_title.split(' ')
@@ -46,11 +41,11 @@ the_post_file.puts('layout: post')
 the_post_file.puts('published: true')
 the_post_file.puts("date: #{hyphen_date}")
 the_post_file.puts("permalink: #{the_post_permalink}")
+the_post_file.puts("image_url: <replaceme>")
 the_post_file.puts('categories:')
 the_post_file.puts("    - ruby")
 the_post_file.puts('---')
 the_post_file.puts('')
 the_post_file.close
 
-
-`$EDITOR _posts/#{the_post_file_name}`
+exec("$EDITOR _posts/#{the_post_file_name}")
