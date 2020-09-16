@@ -12,7 +12,7 @@ categories:
     - memory
 ---
 
-Your app is slow. It does not spark joy. This post will use memory allocation profiling tools to discover performance hotspots, even when they're coming from inside a library. We will use this technique with a real-world application to identify a piece of optimizable code in Active Record that ultimately leads to a patch with a substantial impact on page speed.
+Your app is slow. It does not spark joy. This post will show you how to use memory allocation profiling tools to discover performance hotspots, even when they're coming from inside a library. We will use this technique with a real-world application to identify a piece of optimizable code in Active Record that ultimately leads to a patch with a substantial impact on page speed.
 
 > Read the [original post on the Heroku engineering blog](https://blog.heroku.com/tidying-ruby-object-allocations)
 
