@@ -49,7 +49,7 @@ To put object allocations in front of us we'll use:
 
 To get a sense of the cost of object allocation, we can benchmark two different ways to perform the same logic. One of these allocates an array while the other does not.
 
-```lang-ruby
+```ruby
 require 'benchmark/ips'
 
 def compare_max(a, b)
@@ -173,7 +173,7 @@ $ bundle open activerecord
 
 In that file, here's the line allocating the most memory:
 
-```lang-ruby
+```ruby
 def respond_to?(name, include_private = false)
   return false unless super
 
@@ -204,7 +204,7 @@ Typically when you call `respond_to` you pass in a symbol, for example, `user.re
 
 This is the code where name is used:
 
-```lang-ruby
+```ruby
   if defined?(@attributes) && self.class.column_names.include?(name)
 ```
 
@@ -212,7 +212,7 @@ Here `column_names` returns an array of column names, and the `include?` method 
 
 To determine if we can get rid of this allocation, we have to figure out if there's a way to replace it without allocating memory. We need to refactor this code while maintaining correctness. I decided to add a method that converted the array of column names into a hash with symbol keys and string values:
 
-```lang-ruby
+```ruby
 # lib/activerecord/model_schema.rb
 def symbol_column_to_string(name_symbol) # :nodoc:
   @symbol_column_to_string_name_hash ||= column_names.index_by(&:to_sym)
@@ -222,14 +222,14 @@ end
 
 This is how you would use it:
 
-```lang-ruby
+```ruby
 User.symbol_column_to_string(:email) #=> "email"
 User.symbol_column_to_string(:foo)   #=> nil
 ```
 
 Since the value that is being returned every time by this method is from the same hash, we can re-use the same string and not have to allocate. The refactored `respond_to` code ends up looking like this:
 
-```lang-ruby
+```ruby
 def respond_to?(name, include_private = false)
   return false unless super
 
@@ -368,7 +368,7 @@ We're going to do the same thing by starting to look at the top location:
 Here's the code:
 
 
-```lang-ruby
+```ruby
 def fast_string_to_time(string)
  if string =~ ISO_DATETIME # <=== line 72 Here
    microsec = ($7.to_r * 1_000_000).to_i
@@ -384,25 +384,25 @@ This method takes in a string, then uses a regex to split it into parts, and the
 There's not much going on that can be sped up there, but what's happening on this line:
 
 
-```lang-ruby
+```ruby
    microsec = ($7.to_r * 1_000_000).to_i
 ```
 
 Here's the regex:
 
-```lang-ruby
+```ruby
 ISO_DATETIME = /\A(\d{4})-(\d\d)-(\d\d) (\d\d):(\d\d):(\d\d)(\.\d+)?\z/
 ```
 
 When I ran the code and output $7 from the regex match, I found that it would contain a string that starts with a dot and then has numbers, for example:
 
-```lang-ruby
+```ruby
 puts $7 # => ".1234567"
 ```
 
 This code wants microseconds as an integer, so it turns it into a "rational" and then multiplies it by a million and turns it into an integer.
 
-```lang-ruby
+```ruby
 ($7.to_r * 1_000_000).to_i # => 1234567
 ```
 
@@ -411,7 +411,7 @@ You might notice that it looks like we're basically dropping the period and then
 Here's what it looks like:
 
 
-```lang-ruby
+```ruby
 def fast_string_to_time(string)
   if string =~ ISO_DATETIME
     microsec_part = $7
@@ -430,7 +430,7 @@ We've got to guard this case by checking for the conditions of our optimization.
 Here's a microbenchmark:
 
 
-```lang-ruby
+```ruby
 original_string = ".443959"
 
 require 'benchmark/ips'
@@ -508,7 +508,7 @@ I followed it backwards until I hit these two places:
 
 It looks like this expensive code is being called while generating a cache key.
 
-```lang-ruby
+```ruby
 def cache_key(*timestamp_names)
   if new_record?
     "#{model_name.cache_key}/new"
@@ -540,7 +540,7 @@ end
 
 On line 68 in the `cache_key` code it calls `cache_version`. Here's the code for `cache_version`:
 
-```lang-ruby
+```ruby
 def cache_version # <== line 99 here
   if cache_versioning && timestamp = try(:updated_at)
     timestamp.utc.to_s(:usec)
@@ -550,7 +550,7 @@ end
 
 Here is our culprit:
 
-```lang-ruby
+```ruby
 timestamp = try(:updated_at)
 ```
 
@@ -558,19 +558,19 @@ What is happening is that some database adapters, such as the one for Postgres, 
 
 Here's the value before it's converted:
 
-```lang-ruby
+```ruby
 User.first.updated_at_before_type_cast # => "2019-04-24 21:21:09.232249"
 ```
 
 And here's the value after it's converted:
 
-```lang-ruby
+```ruby
 User.first.updated_at.to_s(:usec)      # => "20190424212109232249"
 ```
 
 Basically, all the code is doing is trimming out the non-integer characters. Like before, we need a guard that our optimization can be applied:
 
-```lang-ruby
+```ruby
 # Detects if the value before type cast
 # can be used to generate a cache_version.
 #
@@ -590,7 +590,7 @@ end
 
 Then once we're in that state, we can modify the string directly:
 
-```lang-ruby
+```ruby
 # Converts a raw database string to `:usec`
 # format.
 #
@@ -615,7 +615,7 @@ end
 
 There's some extra logic due to the Postgres truncation behavior linked above. The resulting code to `cache_version` becomes:
 
-```lang-ruby
+```ruby
 def cache_version
   return unless cache_versioning
 
