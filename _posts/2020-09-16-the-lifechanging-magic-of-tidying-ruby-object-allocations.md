@@ -24,6 +24,8 @@ I make heavy use of theatrics here, including a Japanese voiceover artist, animo
 <iframe src="https://www.youtube.com/embed/CS11WIalmPM?start=287" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+## Jump to:
+
 1. [Intro to Tidying Object Allocations](#intro-to-tidying-object-allocations)
 2. [Tidying Example 1: Active Record respond_to? logic](#tidying-example-1-active-record-respond_to-logic)
 3. [Performance and Statistical Significance](#performance-and-statistical-significance)
