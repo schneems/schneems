@@ -10,11 +10,13 @@ I love speaking! I've given talks at [~30 conferences in 17 countries](#countrie
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CS11WIalmPM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+> I turned this into a [blog post with full technical examples](https://schneems.com/2020/09/16/the-lifechanging-magic-of-tidying-ruby-object-allocations/)
+
 **Saving Sprockets (2016)**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qxaE8yblHPk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Right now I'm really interested in exploring Open Source and the process of taking people from observers to collaborators. What do I know about Open Source? I built and maintain a platform with [50,000+ developers who want to grow their Open Source skills](http://codetriage.com/).
+Right now I'm really interested in exploring Open Source and the process of taking people from observers to collaborators. What do I know about Open Source? I built and maintain a platform with [55,000+ developers who want to grow their Open Source skills](http://codetriage.com/).
 
 For 2020-2021 I'm not planning on applying to any conferences due to a high work and course-load. But if you want to invite me to a conference I might say yes! Timezones are a factor so North America and South America confs are preferred.
 
@@ -32,6 +34,7 @@ Your app is slow. It does not spark joy. In this talk, we will use memory profil
 
 - [Video](https://www.youtube.com/watch?v=CS11WIalmPM)
 - [Slides](https://speakerdeck.com/calebthompson/the-life-changing-magic-of-tidying-up-activerecord-allocations)
+- [Post - The Life-Changing Magic of Tidying Ruby Object Allocations](https://schneems.com/2020/09/16/the-lifechanging-magic-of-tidying-ruby-object-allocations/)
 
 **Locations**
 
