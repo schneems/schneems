@@ -360,9 +360,7 @@ pre {
   background-repeat: no-repeat;
   background-position: right;
   height: 100%;
-
 }
-
 
 .closed-when-mobile {
   display: none;
@@ -403,6 +401,12 @@ pre {
 
   .post-date {
     margin: 0;
+  }
+}
+
+@media (max-width: 48em) {
+  .sidebar {
+    background-image: none;
   }
 }
 
