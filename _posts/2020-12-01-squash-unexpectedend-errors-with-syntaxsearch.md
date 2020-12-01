@@ -29,7 +29,7 @@ I was beyond confused about this `unexpected end` error. `end` is a keyword. Rig
 To get improved "unexpected end" syntax errors in your project, add this to your Gemfile:
 
 ```ruby
-gem "syntax_search", require "syntax_search/auto"
+gem "syntax_search", require: "syntax_search/auto"
 ```
 
 Then make sure it's required in your code:
