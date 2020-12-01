@@ -61,7 +61,7 @@ file: ~/spec/unit/env_proxy_spec.rb
 simplified:
 
         1  # frozen_string_literal: true
-        2basically
+        2
         3  require_relative "../spec_helper.rb"
         4
         5  module HerokuBuildpackRuby
