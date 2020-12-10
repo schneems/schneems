@@ -24,12 +24,14 @@ I was beyond confused about this `unexpected end` error. `end` is a keyword. Rig
 
 <blockquote class="imgur-embed-pub" lang="en" data-id="a/vlWfwS4"  ><a href="//imgur.com/a/vlWfwS4">Syntax Search: Extra end</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
+> Update: I changed the name of the lib from "syntax_search" to "dead_end". All the explanations about how the code work still hold up.
+
 ## TLDR;
 
 To get improved "unexpected end" syntax errors in your project, add this to your Gemfile:
 
 ```ruby
-gem "syntax_search", require: "syntax_search/auto"
+gem "dead_end"
 ```
 
 Then make sure it's required in your code:
@@ -37,13 +39,13 @@ Then make sure it's required in your code:
 ```ruby
 Bundle.require # If you're using Rails, this is the default.
 
-require 'syntax_search/auto' # Otherwise, manually require it
+require 'dead_end'
 ```
 
 If you're using rspec, add this line to your `.rspec` file:
 
 ```
---require syntax_search/auto
+--require dead_end
 ```
 
 > This is needed because `bundle exec rspec path/to/file.rb` will throw a syntax error before the gem gets loaded
