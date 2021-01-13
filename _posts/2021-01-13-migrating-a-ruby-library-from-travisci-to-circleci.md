@@ -389,6 +389,6 @@ Honestly, this took a lot longer than I thought it would. I've not seen other pe
 
 Here's some other examples of CircleCI test config for libraries:
 
-- https://github.com/hashicorp/vault-rails/blob/024ac42761a1e9491f4e502ad9c55c85f5c59d24/.circleci/config.yml
-- https://github.com/rails-on-services/apartment/blob/30f08c4b41b448172b319a5c40a9ad69302359ef/.circleci/config.yml
+- [valut-rails config.yml](https://github.com/hashicorp/vault-rails/blob/024ac42761a1e9491f4e502ad9c55c85f5c59d24/.circleci/config.yml)
+- [apartment config.yml](https://github.com/rails-on-services/apartment/blob/30f08c4b41b448172b319a5c40a9ad69302359ef/.circleci/config.yml)
 
