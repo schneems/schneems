@@ -23,7 +23,7 @@ After Brad set up the CI server, I didn't love it at first. The CI machine was a
 
 About the time Brad was setting up Jenkins, waves were being made about a hot new startup called TravisCI. It had a slick interface and unbelievably was all open source. I don't remember if we ever transitioned over to using a CI provider at Gowalla. Still, I've come to rely on having a managed CI provider as an integral part of my software development practices over the years.
 
-As Travis is shutting down their TravisCI.org, it feels like it's the marker of an end of an era. It felt a golden age filled with promise and hope for collaboration between open source and private companies. The "free" offering felt less like a marketing gimmick and more like a bold declaration, that a company could make money, open source it's own software, and support the community all at the same time. I mourn that
+As Travis is shutting down their TravisCI.org, it feels like it's the marker of an end of an era. It felt a golden age filled with promise and hope for collaboration between open source and private companies. The "free" offering felt less like a marketing gimmick and more like a bold declaration, that a company could make money, open source it's own software, and support the community all at the same time. I mourn that.
 
 ## Why CircleCI?
 
