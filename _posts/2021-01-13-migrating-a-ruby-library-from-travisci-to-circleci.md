@@ -387,3 +387,8 @@ Here is an example of using the ruby orb via `ruby/install-deps` reference they 
 
 Honestly, this took a lot longer than I thought it would. I've not seen other people talk about using CircleCI for testing libraries, so I wanted to see what the result would look like. Overall I'm happy with the config results. Now that I've got the skeleton in place, making changes seems very easy, but it was a process to get here. I'm curious if anyone else uses CircleCI to test a library with multiple Ruby versions and multiple Gem files. If so, shoot me a link on Twitter [@schneems](https://twitter.com/schneems).
 
+Here's some other examples of CircleCI test config for libraries:
+
+- https://github.com/hashicorp/vault-rails/blob/024ac42761a1e9491f4e502ad9c55c85f5c59d24/.circleci/config.yml
+- https://github.com/rails-on-services/apartment/blob/30f08c4b41b448172b319a5c40a9ad69302359ef/.circleci/config.yml
+
