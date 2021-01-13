@@ -63,7 +63,7 @@ jobs:
       gemfile: gemfiles/rails_git.gemfile
 ```
 
-I love the compactness of this config. TravisCI was initially built with Ruby library maintainers in mind, and the compactness of the config in this case shows. It runs the tests (implicitly it knows to run `rake test`. It will run these tests against a "matrix" of Ruby versions (listed under `rvm`) and different gemfile contents (listed under `gemfile`). You can also see where I've configured it to skip some combinations that I know don't work (Ruby 2.2 does not work with Rails 6.0).
+I love the compactness of this config. TravisCI was initially built with Ruby library maintainers in mind, and the compactness of the config in this case shows. It runs the tests (implicitly it knows to run `rake test`). It will run these tests against a "matrix" of Ruby versions (listed under `rvm`) and different gemfile contents (listed under `gemfile`). You can also see where I've configured it to skip some combinations that I know don't work (Ruby 2.2 does not work with Rails 6.0).
 
 Now here's what I ended up with for a roughly equivalent CircleCI config (with some Ruby versions changed):
 
@@ -153,7 +153,7 @@ workflows:
                 gemfile: rails_5_2.gemfile
 ```
 
-The `workflows` key is a special key, just like `jobs` and `version`. This last part says to defeine a workflow where it will run my job named `test` (defined above) with a test matrix that looks like this:
+The `workflows` key is a special key, just like `jobs` and `version`. This last part says to define a workflow where it will run my job named `test` (defined above) with a test matrix that looks like this:
 
 
 |          | rails_5_2.gemfile     | rails_6_1.gemfile     | rails_git.gemfile     |
