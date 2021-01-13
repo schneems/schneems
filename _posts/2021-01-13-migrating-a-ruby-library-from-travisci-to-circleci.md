@@ -340,7 +340,7 @@ When all that config is written, then I source the file:
         source $BASH_ENV
 ```
 
-Then I install dependencies via `bundle install`. Perhaps surprisingly, I then run a `bundle update`. Since derailed is a library, I don't check in any Gemfile.lock fo since I don't control the specific library versions that apps will use. Instead, this `bundle update` is telling bundler to check for more recent dependencies. I also need this because I'm caching dependencies and don't want to get stuck on some ancient versions accidentally.
+Then I install dependencies via `bundle install`. Perhaps surprisingly, I then run a `bundle update`. Since derailed is a library, I don't check in any Gemfile.lock since I don't control the specific library versions that apps will use. Instead, this `bundle update` is telling bundler to check for more recent dependencies. I also need this because I'm caching dependencies and don't want to get stuck on some ancient versions accidentally.
 
 Finally, I execute `bundle clean`. That will remove any gem that's not currently in the recently generated Gemfile.lock, which prevents the cache from getting bloated with many gems that we no longer need.
 
