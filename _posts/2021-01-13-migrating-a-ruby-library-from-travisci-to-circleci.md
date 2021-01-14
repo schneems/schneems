@@ -65,6 +65,8 @@ jobs:
 
 I love the compactness of this config. TravisCI was initially built with Ruby library maintainers in mind, and the compactness of the config in this case shows. It runs the tests (implicitly it knows to run `rake test`). It will run these tests against a "matrix" of Ruby versions (listed under `rvm`) and different gemfile contents (listed under `gemfile`). You can also see where I've configured it to skip some combinations that I know don't work (Ruby 2.2 does not work with Rails 6.0).
 
+> Since this post is talking about config, you might want to view the [latest derailed_benchmarks config](https://github.com/schneems/derailed_benchmarks/tree/main/.circleci). I won't be keeping this post up-to-date with changes there, but the following may help you understand what the config is doing and how it fits together.
+
 Now here's what I ended up with for a roughly equivalent CircleCI config (with some Ruby versions changed):
 
 ```yaml
