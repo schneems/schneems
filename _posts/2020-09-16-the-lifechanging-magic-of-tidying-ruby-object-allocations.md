@@ -21,7 +21,7 @@ In addition to the talk, I've gone back and written a full technical recap of ea
 I make heavy use of theatrics here, including a Japanese voiceover artist, animoji, and some edited clips of Marie Kondo's Netflix TV show. This recording was done at EuRuKo on a boat. If you've got the time, here's the talk:
 
 <div class="embedded-video-wrapper">
-<iframe src="https://www.youtube.com/embed/CS11WIalmPM?start=287" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/Aczy01drwkg?start=287" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ## Jump to:

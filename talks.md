@@ -8,7 +8,9 @@ I love speaking! I've given talks at [~30 conferences in 17 countries](#countrie
 
 **The Life-Changing Magic of Tidying Active Record Allocations (2019)**
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CS11WIalmPM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="embedded-video-wrapper">
+<iframe src="https://www.youtube.com/embed/Aczy01drwkg?start=287" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 > I turned this into a [blog post with full technical examples](https://schneems.com/2020/09/16/the-lifechanging-magic-of-tidying-ruby-object-allocations/)
 
