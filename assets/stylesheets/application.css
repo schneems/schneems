@@ -88,9 +88,9 @@ a:focus {
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   line-height: 1.25;
-  color: #313131;
   text-rendering: optimizeLegibility;
 }
+
 h1 {
   font-size: 2rem;
 }
@@ -288,7 +288,6 @@ tbody tr:nth-child(odd) th {
 .page-title,
 .post-title,
 .post-title a {
-  color: #303030;
 }
 .page-title,
 .post-title {
@@ -352,8 +351,6 @@ pre {
 .sidebar {
   font-size: 18px;
   text-align: center;
-  /*color: rgba(255,255,255,.5);*/
-  color: #25020F;
   background-image: linear-gradient(135deg, #FF1168,
   white);
   background-size: 0.3rem;
@@ -509,3 +506,32 @@ a.sidebar-nav-item:hover {
 .related {
   max-width: 40rem;
 }
+
+@media (prefers-color-scheme: dark) {
+  /* defaults to dark theme */
+  body {
+    color: rgb(201, 209, 217);
+    background-color: rgb(13, 17, 23);
+  }
+
+  pre code {
+    color: black;
+  }
+
+  h1, h2, h3, h4, h5, h6 .post-title {
+    color: white;
+  }
+
+  /* Override dark mode with light mode styles if the user decides to swap */
+  body.light-theme {
+    color: #222;
+    background-color: #fff;
+  }
+
+
+  body.light-theme .post-title {
+    color: #222;
+  }
+
+}
+
