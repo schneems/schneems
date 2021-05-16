@@ -22,7 +22,7 @@ In the Ruby on Rails ecosystem, I am known as a "contributor". In Rails speak, t
 
 ## The Basecamp incident
 
-The reason I'm bringing this all up is that the Rails world has been reeling. DHH is not only the creator of Rails but also the Co-Founder of Basecamp. Basecamp has been in the news a lot after having ~1/3 of their employees quit. Many have also asked about Rail's governance. To bring you up to speed on the loose timeline of the Basecamp news:
+The reason I'm bringing this all up is that the Rails world has been reeling. DHH is not only the creator of Rails but also the Co-Founder of Basecamp. Basecamp has been in the news a lot after having ~1/3 of their employees quit. Many have also asked about Rails' governance. To bring you up to speed on the loose timeline of the Basecamp news:
 
 - [Jason Fried made a highly criticized blog post](https://world.hey.com/jason/changes-at-basecamp-7f32afc5)
 - [DHH doubled down](https://world.hey.com/dhh/basecamp-s-new-etiquette-regarding-societal-politics-at-work-b44bef69)
