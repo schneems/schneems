@@ -1,30 +1,15 @@
 @import
-  "light-typography",
-  "dark-typography",
-  "module",
+  "light-typography", // chirpy
+  "dark-typography", //chirpy
+  "module", // chirpy
   "stylesheets/pagination.css",
   "stylesheets/email.css",
   "stylesheets/social.css",
-  "syntax";
+  "syntax"; //chirpy
 
-
-$tab-height: 3.2rem;
-$tab-cursor-height: 1.6rem;
-
-$sidebar-width-small: 210px;
-$sidebar-width-medium: 260px;
-$sidebar-width-large: 350px;
-
-$topbar-height: 3rem;
-
-$footer-height: 5rem;
-
-$main-content-max-width: 1150px;
-
-$panel-max-width: 300px;
-
-$post-extend-min-height: 35rem;
-
+// Darkmode support copied and edited from "chirpy" theme
+// https://chirpy.cotes.info/posts/text-and-typography/
+// https://github.com/cotes2020/jekyll-theme-chirpy/
 
 $tab-height: 3.2rem;
 $tab-cursor-height: 1.6rem;
@@ -43,6 +28,23 @@ $panel-max-width: 300px;
 
 $post-extend-min-height: 35rem;
 
+
+$tab-height: 3.2rem;
+$tab-cursor-height: 1.6rem;
+
+$sidebar-width-small: 210px;
+$sidebar-width-medium: 260px;
+$sidebar-width-large: 350px;
+
+$topbar-height: 3rem;
+
+$footer-height: 5rem;
+
+$main-content-max-width: 1150px;
+
+$panel-max-width: 300px;
+
+$post-extend-min-height: 35rem;
 
 .hompage_teaser_image {
   box-shadow: 5px 5px 10px #888;
