@@ -4,7 +4,7 @@ layout: about
 
 ## Conference Talks
 
-I love speaking! I've given talks at [~30 conferences in 17 countries](#countries) including OSCON and RailsConf. I love theatrics and storytelling. My two favorite talks are currently:
+I love speaking! I've given talks at [~31 conferences in 17 countries](#countries) including OSCON and RailsConf. I love theatrics and storytelling. My two favorite talks are currently:
 
 **The Life-Changing Magic of Tidying Active Record Allocations (2019)**
 
@@ -29,6 +29,19 @@ You can reach me: richard [at] heroku.com, with subect line "Come speak at our c
 Why would you ever want me to speak at your conference? Take a look at some of the talks I've delivered in the past.
 
 > BTW conf videos at 1.5x speed are way better.
+
+### Beware the Dreaded Dead End!! (2021)
+
+Nothing stops a program from executing quite as fast as a syntax error. After years of “unexpected end” in my dev life I decided to “do” something about it. I built an over-the-top AI driven solution that finds syntax errors in Ruby code.
+
+Discover why this 100% ridiculous solution was 100% worth-it. Bring your sense of adventure and you’ll walk away with an intro to AI, a short primer on Ruby syntax, and all the friends we made along the way.
+
+- [Video TBA](#)
+- [Slides TBA](#)
+
+**Locations**
+
+- BangBangCon (Online)
 
 ### The Life-Changing Magic of Tidying Active Record Allocations (2019)
 
