@@ -11,7 +11,7 @@ categories:
     - testing
 ---
 
-TravisCI.org is dead. Long live the new CI! TravisCI.org was THE way to run CI for an open source Ruby library. It was so easy that it was seemingly effortless. Even better, it was free. Since the slow-motion collapse of the product, developers have been pushed to other CI providers. I was recently tasked with transferring CI away from Travis for my library [derailed_benchmarks](github.com/schneems/derailed_benchmarks) and chose CircleCI. This post is a little about why I chose CircleCI, a little about how the transition worked, and a little about nostalgia.
+TravisCI.org is dead. Long live the new CI! TravisCI.org was THE way to run CI for an open source Ruby library. It was so easy that it was seemingly effortless. Even better, it was free. Since the slow-motion collapse of the product, developers have been pushed to other CI providers. I was recently tasked with transferring CI away from Travis for my library [derailed_benchmarks](https://github.com/schneems/derailed_benchmarks) and chose CircleCI. This post is a little about why I chose CircleCI, a little about how the transition worked, and a little about nostalgia.
 
 ## Nostalgia first
 
