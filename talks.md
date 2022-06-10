@@ -2,9 +2,18 @@
 layout: about
 ---
 
+<!--
+
+- 2017 Lanyard has 26 events until the end of this year
+- 2018 off.
+- 2019 I spoke at 4 confs. Total is 20
+- 2021 I spoke at 3 confs. Total is 33
+
+-->
+
 ## Conference Talks
 
-I love speaking! I've given talks at [~31 conferences in 17 countries](#countries) including OSCON and RailsConf. I love theatrics and storytelling. My two favorite talks are currently:
+I love speaking! I've given talks at [~33 conferences in 17 countries](#countries) including OSCON and RailsConf. I love theatrics and storytelling. My two favorite talks are currently:
 
 **The Life-Changing Magic of Tidying Active Record Allocations (2019)**
 
@@ -18,7 +27,7 @@ I love speaking! I've given talks at [~31 conferences in 17 countries](#countrie
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qxaE8yblHPk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Right now I'm really interested in exploring Open Source and the process of taking people from observers to collaborators. What do I know about Open Source? I built and maintain a platform with [55,000+ developers who want to grow their Open Source skills](http://codetriage.com/).
+Right now I'm really interested in exploring Open Source and the process of taking people from observers to collaborators. What do I know about Open Source? I built and maintain a platform with [65,000+ developers who want to grow their Open Source skills](http://codetriage.com/).
 
 For 2020-2021 I'm not planning on applying to any conferences due to a high work and course-load. But if you want to invite me to a conference I might say yes! Timezones are a factor so North America and South America confs are preferred.
 
@@ -28,20 +37,22 @@ You can reach me: richard [at] heroku.com, with subect line "Come speak at our c
 
 Why would you ever want me to speak at your conference? Take a look at some of the talks I've delivered in the past.
 
-> BTW conf videos at 1.5x speed are way better.
-
 ### Beware the Dreaded Dead End!! (2021)
 
 Nothing stops a program from executing quite as fast as a syntax error. After years of “unexpected end” in my dev life I decided to “do” something about it. I built an over-the-top AI driven solution that finds syntax errors in Ruby code.
 
 Discover why this 100% ridiculous solution was 100% worth-it. Bring your sense of adventure and you’ll walk away with an intro to AI, a short primer on Ruby syntax, and all the friends we made along the way.
 
-- [Video TBA](#)
-- [Slides TBA](#)
+- [Video](https://www.youtube.com/watch?v=LTKSkyueWwo)
+- [Slides](https://speakerdeck.com/schneems/rubyconf-beware-the-dreaded-dead-end)
+
+> Beyond the talks, this idea was popular enough to be considered for inclusion in Ruby 3.2! [Discussion](https://bugs.ruby-lang.org/issues/18159)
 
 **Locations**
 
 - BangBangCon (Online)
+- RubyKaigi (Online)
+- RubyConf (Online)
 
 ### The Life-Changing Magic of Tidying Active Record Allocations (2019)
 
@@ -124,7 +135,6 @@ Run your app faster, with less RAM and a quicker boot time today. How? With scie
 
 If you've ever misspelled a word while searching on Google, you've benefitted from decades of distance algorithm development.  In this talk we'll break down some popular distance measurements and see how they can be implemented in Ruby. We'll look at real world applications with some live demos. It won't matter if you get your kicks "Hamming" it up, if you drink your coffee in a "Levenshtein", or if you're new to Ruby: this talk is Rated R, for "all Rubyists". You'll be guaranteed to walk away with O(n^n) expectations met.
 
-
 - [Video](https://www.youtube.com/watch?v=PcINjHjIllk)
 - [Slides](https://speakerdeck.com/schneems/going-the-distance)
 - [Code](https://github.com/schneems/going_the_distance)
@@ -139,9 +149,8 @@ If you've ever misspelled a word while searching on Google, you've benefitted fr
 
 Level up your programming game, and change the world. In this talk we will look at specific and actionable goals for all skill levels to hone your programmings skills and master your craft. We will cover what it takes to go from no-grammer to a senior level programmer and everything in between. Don’t come to this talk if you don’t want to be motivated, you don’t want to succeed, and certainly if you don’t want a good swift kick in your Ruby programming pants.
 
-
 - [Slides](https://speakerdeck.com/schneems/the-good-rubyist-challenge)
-- No video, you had to be there (Magma Conf)
+- No video, you had to be there (MagmaConf)
 
 **Locations**
 
@@ -231,4 +240,5 @@ Lanyard has 26 events until the end of 2017. I took 2018 off. In 2019 I spoke at
 - Thailand
 
 Total is 29
+
 -->
