@@ -18,4 +18,4 @@ That is where you come in. Please take a few minutes to answer this super-short 
 
 What are your two top questions about contributing to open source that I absolutely NEED to answer?
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdsbqYUpHnqBNetnmCZpOWy3HrPaDR9PPqNBL_lvS7h2nHAow/viewform?embedded=true" width="640" height="563" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdsbqYUpHnqBNetnmCZpOWy3HrPaDR9PPqNBL_lvS7h2nHAow/viewform?embedded=true" width="950" height="950" frameborder="0" marginheight="0" marginwidth="0">Loading survey…</iframe>
