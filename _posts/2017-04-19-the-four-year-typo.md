@@ -10,7 +10,7 @@ categories:
 
 I'm a horrible speller. I often joke that I got into programming because it doesn't matter how you spell your variables, as long as you spell them consistently. Even so, I spend a good portion of my days writing: writing docs, writing emails, writing commit messages, writing issue comments, and of course writing blogs. Before I publish an article, I run my work by an editor, which makes this typo even more exceptional.
 
-I got a note about a typo on a [Devcenter article on Rails 5.x](https://devcenter.heroku.com/articles/getting-started-with-rails5) that I maintain. This article published over a year ago has had 4 different editors/contributors and 19 revisions. I can't give out numbers but this article has had A LOT of page views. It is the number one article I maintain by a huge margin, it was pretty surprising when I opened this note and it mentioned I had a typo.
+I got a note from a customer about a typo on a [Devcenter article on Rails 5.x](https://devcenter.heroku.com/articles/getting-started-with-rails5) that I maintain. This article published over a year ago has had 4 different editors/contributors and 19 revisions. I can't give out numbers but this article has had A LOT of page views. It is the number one article I maintain by a huge margin, it was pretty surprising when I opened this note and it mentioned I had a typo.
 
 > and if you app depends on a gem from one of these groups to run, you should move it out of the group
 

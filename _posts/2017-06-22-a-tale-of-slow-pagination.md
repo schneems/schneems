@@ -118,11 +118,11 @@ Total runtime: 150.160 ms
 
 Even though we're using a limit, we have to order all the entries in our database by that value in the `order` clause before we can apply the limit. This means we have to sort all the values, which is why you're seeing that `sort` call. Later you're seeing the same sequential scan since we're also applying the same where clause (to not show `issues_count`-s of 0).
 
-So what's the fix? In this case, it's pretty simple. We can give the database more information about the data that it needs to sort and filter by adding an index.
+So what's the fix? In this case, it's pretty simple. We can give the database more information about the data that it needs to sort and filter by adding an index. To be efficient the database needs an index that includes not just `repo_id` but also `index_count`.
 
-Indexes aren't magic remedies, there is a downside as they use memory in your database, which is not free. In this case, I only have about 2K repos in the DB so the index is well worth the cost. Alternatively, I could consider caching the view elements to not do those expensive lookups on the first page. I could even change the view to be a simple `next` button, and then I could have avoided having to count all the repos.
+> Note: Indexes aren't magic remedies, there is a downside as they use memory in your database, which is not free. In this case, I only have about 2K repos in the DB so the index is well worth the cost. Alternatively, I could consider caching the view elements to not do those expensive lookups on the first page. I could even change the view to be a simple `next` button, and then I could have avoided having to count all the repos.
 
-So there are multiple fixes possible, but in my case adding an index was the easiest. Again thanks to [Nate Berkopec](https://www.speedshop.co/) for pointing this out. I didn't figure this all out on my own, he did. He also has a book explaining how to debug and profile common performance issues like this that's worth picking up.
+There are multiple fixes possible, but in my case adding an index was the easiest. Again thanks to [Nate Berkopec](https://www.speedshop.co/) for pointing this out. I didn't figure this all out on my own, he did. He also has a book explaining how to debug and profile common performance issues like this that's worth picking up.
 
 Here's the index:
 

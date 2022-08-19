@@ -89,7 +89,17 @@ Jun 29 02:35:00 issuetriage heroku/router:  at=info method=POST path="/repos" ho
 
 It's a bit much to read through, but you can see the query right next to `Repo Exists`. I checked that endpoint (`ReposController#create`) and did have some suspect methods but they all checked out fine (i.e. not making any SQL calls with `LOWER`). So what gives? Where was the query coming from?
 
-It turns out it was coming from [this line](https://github.com/codetriage/codetriage/commit/d96cf446d6d35b74ace5a68b652d3eb0a1f8ce57#diff-0fa2d88e0cbaacf18f6096a7304430a1L5) in my model. This innocuous little line was responsible for 80% of my total database load. This `validates` call is Rails attempting to ensure that no two `Repo` records get created with the same username and name. Instead of enforcing the consistency in the database, it put a before commit hook onto the object and it's querying the database before we create a new repo to make sure there aren't any duplicates.
+It turns out it was coming from [this line](https://github.com/codetriage/codetriage/commit/d96cf446d6d35b74ace5a68b652d3eb0a1f8ce57#diff-0fa2d88e0cbaacf18f6096a7304430a1L5) in my model:
+
+```ruby
+class Repo < ActiveRecord::Base
+  #...
+  validates :name, uniqueness: {scope: :user_name, case_sensitive: false }
+  #...
+end
+```
+
+This innocuous little line was responsible for 80% of my total database load. This `validates` call is Rails attempting to ensure that no two `Repo` records get created with the same username and name. Instead of enforcing the consistency in the database, it put a before commit hook onto the object and it's querying the database before we create a new repo to make sure there aren't any duplicates.
 
 When I added that validation behavior I didn't think much of it. Even looking at the validation it was hard to believe it was responsible for so much load. After all, I only had around 2,000 total repos. So theoretically that call should only have happened about 2,000 times, right?
 
@@ -128,7 +138,7 @@ Now we are guaranteed that no two records can have the same username/name combin
 
 > Not to mention that the Rails validation has a race condition and can't actually guarantee consistency, it's better to enforce these types of things at the database level anyway.
 
-You might have noticed that the`LOWER` part of the SQL query isn't represented in my unique index. In my case, I was already normalizing the data stored, so that bit of logic was redundant.
+You might have noticed that the `LOWER` part of the SQL query isn't represented in my unique index. In my case, I was already normalizing the data stored, so that bit of logic was redundant.
 
 Since removing that validation and adding in a unique index my app no longer has any 30 second + request spikes. Its database is humming along at or under the 0.2 load-avg.
 

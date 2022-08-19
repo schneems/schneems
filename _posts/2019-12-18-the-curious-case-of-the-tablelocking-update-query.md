@@ -24,7 +24,10 @@ The first thing I did was run `heroku pg:diagnose`, which shows "red" (critical)
 
 
 ```
-68698   5 days 18:01:26.446979  UPDATE "table" SET <values> WHERE ("uuid" = '<uuid>')
+68698   5 days 18:01:26.446979 \
+  UPDATE "table" \
+  SET <values> \
+  WHERE ("uuid" = '<uuid>') \
 ```
 
 Which seemed odd. The query in question was a simple update, and it's not even on the most massive table in the DB. When I checked `heroku pg:outliers` from the [pg extras CLI plugin](https://github.com/heroku/heroku-pg-extras) I was surprised to see this update taking up 80%+ of the time even though it is smaller than the largest table in the database by a factor of 200. So what gives?

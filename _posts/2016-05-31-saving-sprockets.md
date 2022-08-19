@@ -20,7 +20,7 @@ I've spoken in 12 countries on 5 continents and this is my favorite talk to date
 
 > This version has intro music and closed captions. Transcript and slides are below.
 
-Here's what some people had to say about my talk.
+Here's what some people had to say about my talk:
 
 - "That was an epic talk on many levels" - [@_tankard](https://twitter.com/_tankard_/status/735500519297277953).
 - "Every single Ruby developer should watch @schneems's [Saving Sprockets] talk" - [@samphippen](https://twitter.com/samphippen/status/736647582882103296)
@@ -32,8 +32,6 @@ Here's what some people had to say about my talk.
 - "I loved it [...] but I am biased in favor of smart ideas full disclosure" - [@searls](https://twitter.com/searls/status/735238530578976768)
 
 - "Go home people, @schneems just had the best slide analogy of #RailsConf" - [@cecycorrea](https://twitter.com/cecycorrea/status/728315278874972164)
-
-- "Don't quote me boy" - [Eazy-E](https://en.wikipedia.org/wiki/Eazy-E)
 
 ## Slides
 

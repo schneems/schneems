@@ -62,6 +62,7 @@ Once you've got (what seems like) everything in one place, it's up to you to dec
 
 A ProCon doc might not solve all your problems, but hopefully it will be enough to loosen your problem solving engine when it's seized up. It's a lightweight process that has worked wonders for me over the years. When your email threads start to drag on, or your issues go stale for weeks, it's a convenient tool to have in your back pocket.
 
+- Pros: A ProCon doc helps unblock development discussions.
+- Cons: It's not a magic bullet, also requires typing.
 
-Pros: A ProCon doc helps unblock development discussions.
-Cons: It's not a magic bullet, also requires typing.
+> 2022 update: I still use this technique to this day, however instead of listing pros and cons I now try to list consequences. This subtle change forces me to consider what would change divorced from my judgment of the change. I can still use language to indicate my views but one persons pro might be another's con. Here's a [real world example of using this type of decision document in an open source issue](https://github.com/buildpacks/lifecycle/issues/884#issuecomment-1191800955). I find this change impacts even interactions at work with product managers. Iused to say "we can't do this" which is absolutist and hadds no value. I've found it's much more helpful to instead say "here are the consequences if we did that."
