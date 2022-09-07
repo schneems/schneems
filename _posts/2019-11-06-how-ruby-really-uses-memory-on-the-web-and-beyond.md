@@ -124,6 +124,7 @@ If you want to start improving your application's memory consumption here are ad
 - [Ruby Memory Use (Heroku Devcenter article I maintain)](https://devcenter.heroku.com/articles/ruby-memory-use) - This article focuses on alleviating the symptoms of high memory use.
 - [Debugging a memory leak on Heroku](https://blog.codeship.com/debugging-a-memory-leak-on-heroku/) - TLDR; It's probably not a leak. Still worth reading to see how you can come to the same conclusions yourself. Content is valid for other environments that Heroku. Lots of examples of using the tool `derailed_benchmarks` (that I wrote).
 - [The Life-Changing Magic of Tidying Active Record Allocations (Video)](https://www.youtube.com/watch?v=CS11WIalmPM&feature=emb_title) - This talk shows how I used tools to track down and eliminate memory allocations in real life. All of the examples are from patches I submitted to Rails, but the process works the same for finding allocations caused by your application logic.
+- [Scout APM](https://scoutapm.com/) - A production performance monitoring service that gives a great view of how much memory is being allocated in the largest requests. I've used this tool in other articles linked here. Also available [via Heroku addon](https://elements.heroku.com/addons/scout).
 
 When working on reducing your application's memory footprint, focus on the largest endpoint. If you can reduce your largest request by a factor of two in the simulation, from 390 memory units to 195, then your maximum theoretical usage at ten threads becomes 1,950 units. Neat!
 
