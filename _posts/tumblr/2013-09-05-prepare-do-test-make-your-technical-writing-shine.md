@@ -7,11 +7,11 @@ tags:
 permalink: /post/60359275700/prepare-do-test-make-your-technical-writing-shine
 ---
 
-Don't pump and dump information on your readers: build better community and better view numbers by following the <strong>Prepare</strong>, <strong>Do</strong>, <strong>Test</strong> pattern.
+Don't pump and dump information on your readers: build better community and better view numbers by following the **Prepare**, **Do**, **Test** pattern.
 
-Let's back up. If you're new to my site: I've been teaching <a href="https://www.schneems.com/ut-rails">Rails courses for a few years</a>, and I work with a <a href="https://github.com/schneems?tab=activity">ton of open source</a>, and I generally get a kick out of explaining things to people.
+Let's back up. If you're new to my site: I've been teaching [Rails courses for a few years](https://www.schneems.com/ut-rails), and I work with a [ton of open source](https://github.com/schneems?tab=activity), and I generally get a kick out of explaining things to people.
 
-I've written for <a href="https://www.sitepoint.com/author/rschneeman/">Rubysource</a>, my own blog, and a fair bit of Heroku's devcenter documentation. When writing for a technical audience, I cringe when I get a comment that says, "I'm stuck", or "did it work?" and especially "what do I do next?".
+I've written for [Rubysource](https://www.sitepoint.com/author/rschneeman/), my own blog, and a fair bit of Heroku's devcenter documentation. When writing for a technical audience, I cringe when I get a comment that says, "I'm stuck", or "did it work?" and especially "what do I do next?".
 
 To solve these problems and more, I follow this framework:
 
@@ -21,7 +21,7 @@ Introduce the reader to what they will be doing at a high level and what they ca
 
 It sounds simple, but many articles just jump into the "how" and completely forget the "why". If you don't know what to write: try giving your article to someone new to that subject and writing down all the questions they ask as they go through the exercise.
 
-See if you can answer those questions in the article before they even need to ask them. I usually do this for the whole document (see my <a href="https://github.com/centerforstudents/ruby_view_server#what">"what" section in the Ruby View Server Exercise</a>), and I also do this before individual exercise "todo's" (such as in <a href="https://github.com/centerforstudents/ruby_view_server#3-use-a-layout-to-add-content-to-all-pages">"Using a Layout to add content to all Pages"</a>).
+See if you can answer those questions in the article before they even need to ask them. I usually do this for the whole document (see my ["what"](https://github.com/centerforstudents/ruby_view_server#what) section in the Ruby View Server Exercise</a>), and I also do this before individual exercise "todo's" (such as in <a href="https://github.com/centerforstudents/ruby_view_server#3-use-a-layout-to-add-content-to-all-pages">"Using a Layout to add content to all Pages"</a>).
 
 Once they know where they're going, send them on their way.
 
@@ -87,6 +87,6 @@ If you don't write technical stuff: start practicing now for when you need it la
 
 The best way to prove any technical writing is to try it out on someone new to that topic. You can find these people in user groups and meetups, or if you're fortunate, you might find you're <a href="https://rubyandrichard.tumblr.com/">married to them</a>.
 
-Thanks for following along and next time you write technical material don't forget <strong>Prepare</strong>, <strong>Do</strong>, and <strong>Test</strong>.
+Thanks for following along and next time you write technical material don't forget **Prepare**, **Do**, and **Test**.
 
 <hr>Thanks for reading, if you liked these tips follow <a href="https://twitter.com/schneems">@schneems</a> on twitter or ~~tumblr~~.
