@@ -9,7 +9,43 @@ categories:
     - open source
 ---
 
+
 Today is the day. *How to Open Source* is now available for purchase at [howtoopensource.dev](https://howtoopensource.dev). As a reader of my blog, you can take $5 off with the discount code `opensource5`. Plus, purchase of the book will come with an invitation to join a **private Slack community**. You will get me as your open source coach (think writing coach and personal trainer!), watch me break down problems live, and have your questions answered so you can get your PRs merged.
+
+<p><strong>Launch week:</strong>
+<span class="countdown">[Calculating time...]</span> to claim access to <a href="https://howtoopensource.dev/#join_me_hacktoberfest">the Slack group</a>.</p>
+
+<script type="text/javascript">
+function countdownTimer() {
+  // YYYY-MM-DDTHH:mm:ss.sssZ
+  const deadlineUtc = new Date("2022-10-01T05:00:00.000-00:00");
+  const now = new Date();
+  const difference =  deadlineUtc - now;
+  let remaining = "Time's up!";
+
+  if (difference > 0) {
+    const parts = {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+    remaining = Object.keys(parts).map(part => {
+    return `${parts[part]} ${part}`;
+    }).join(" ");
+    remaining = `${remaining} left`
+  }
+
+  collection = document.getElementsByClassName("countdown");
+  for (it of collection) {
+    it.innerHTML = remaining;
+  }
+}
+
+countdownTimer();
+setInterval(countdownTimer, 1000);
+
+</script>
 
 <div align="center" >
   <a href="https://howtoopensource.dev">
