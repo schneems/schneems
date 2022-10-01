@@ -10,42 +10,7 @@ categories:
 ---
 
 
-Today is the day. *How to Open Source* is now available for purchase at [howtoopensource.dev](https://howtoopensource.dev). As a reader of my blog, you can take $5 off with the discount code `opensource5`. Plus, purchase of the book will come with an invitation to join a **private Slack community**. You will get me as your open source coach (think writing coach and personal trainer!), watch me break down problems live, and have your questions answered so you can get your PRs merged.
-
-<p><strong>Launch week:</strong>
-<span class="countdown">[Calculating time...]</span> to claim access to <a href="https://howtoopensource.dev/#join_me_hacktoberfest">the Slack group</a>.</p>
-
-<script type="text/javascript">
-function countdownTimer() {
-  // YYYY-MM-DDTHH:mm:ss.sssZ
-  const deadlineUtc = new Date("2022-10-01T05:00:00.000-00:00");
-  const now = new Date();
-  const difference =  deadlineUtc - now;
-  let remaining = "Time's up!";
-
-  if (difference > 0) {
-    const parts = {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60),
-    };
-    remaining = Object.keys(parts).map(part => {
-    return `${parts[part]} ${part}`;
-    }).join(" ");
-    remaining = `${remaining} left`
-  }
-
-  collection = document.getElementsByClassName("countdown");
-  for (it of collection) {
-    it.innerHTML = remaining;
-  }
-}
-
-countdownTimer();
-setInterval(countdownTimer, 1000);
-
-</script>
+Today is the day. *How to Open Source* is now available for purchase at [howtoopensource.dev](https://howtoopensource.dev).
 
 <div align="center" >
   <a href="https://howtoopensource.dev">
@@ -107,7 +72,6 @@ margin-top: 1.5rem;
 </p>
 </div>
 
-
 I shared a pre-release copy of the book with some community members, and here’s what they thought of the book:
 
 >  "Richard is a rare voice in the open source community: skilled and experienced, but also empathetic, caring and welcoming. If you're venturing into the open-source bazaar, let Richard be your guide." - **Nate Berkopec, Maintainer of Puma webserver**
@@ -116,4 +80,10 @@ I shared a pre-release copy of the book with some community members, and here’
 
 > "How To Open Source provides practical, real world examples of getting started in Open Source. This book is a must read for anyone that wants to get started in the open source world." - **Aaron Patterson, Ruby core contributor & cat owner**
 
-There’s no cap to the private Slack group, but both the `opensource5` discount code and the Slack invite are [limited-time offers for the book launch](https://howtoopensource.dev#join_me_hacktoberfest). They expire Friday, Sep 30, at [midnight (CST)](https://howtoopensource.dev#join_me_hacktoberfest).
+Read more about the book over at [howtoopensource.dev](https://howtoopensource.dev).
+
+### Launch week is now over
+
+Launch week was Sept 26 to Sept 30, 2022 and is now over. It was an amazing response. Thank you to everyone who bought! I'm sending out invites to the Slack channel and the discount codes have expired.
+
+To hear about future promotions sign up for my **mailing list below** and **follow [@HowToOpenSource](https://twitter.com/HowToOpenSource)**.
