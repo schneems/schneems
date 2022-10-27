@@ -13,6 +13,8 @@ categories:
 
 Contributing to open-source can be intimidating, especially when you're getting started. In this post and video series, join me as I triage 11 issues on a repo that I didn't create and don't have much experience with.
 
+> Update: For additional tips on creating and responding to issues, check out the [How to Open Source](https://howtoopensource.dev/) book.
+
 I didn't edit the videos, so any mistakes and accomplishments are raw and live to see. I re-watched the videos and took notes on the types of problems I encountered and the questions and solutions that I explored along the way. I cleaned up my notes and put them all here along with the videos so you can follow along. Afterward, if you want to come back to a piece of advice or technique, you can skim my notes instead of re-watching the whole video.
 
 While I don't recommend you sit down and try to respond to every open issue in the repository, hopefully, by watching me triage issues, you can help get a sense of how you might be able to dig in and start contributing. As you're watching, try asking yourself how you would respond and what questions you might ask.

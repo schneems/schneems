@@ -28,4 +28,5 @@ If you write, I can't guarantee fame or fortune. I can't promise you an audience
 
 Write.
 
-
+---
+If you're unsure about getting started, you might enjoy [Technical Writing for Engineers](https://draft.dev/learn/technical-writing-for-engineers). If you want to level up, check out [How to Write Better Technical Content](https://draft.dev/learn/technical-content).
