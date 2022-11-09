@@ -4,7 +4,7 @@ layout: post
 published: true
 date: 2022-11-09
 permalink: /2022/11/09/pairing-on-open-source/
-image_url: https://www.dropbox.com/s/6slfhlxl9a6f9yk/pairing.png?raw=1
+image_url: https://www.dropbox.com/s/dl943esjx0dsvb6/ben-pairing-interview.png?raw=1
 categories:
     - ruby
 ---
