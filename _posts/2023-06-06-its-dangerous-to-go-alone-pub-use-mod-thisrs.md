@@ -101,11 +101,29 @@ fn main() {
 }
 ```
 
-> Protip: Run your tests on save in the vscode terminal with cargo watch. You can open a terminal by pressing `CMD+SHIFT+P` (command shift "p" on Mac or control shift p on Windows). Then type in "toggle terminal" and hit enter. This will bring up the terminal. Then, run `cargo watch -c -x test` in the terminal. This tells `cargo` to `watch` the file system for changes on disk, then clear (`-c`) the window and execute tests (`-x test`). This will make iteration faster:
+## Watch for changes with cargo-watch
+
+> Skip if: You already know how to use cargo-watch in the VS Code terminal
+
+Run your tests on save in the vscode terminal with cargo watch. You can open a terminal by pressing `CMD+SHIFT+P` (command shift "p" on Mac or control shift p on Windows). Then type in "toggle terminal" and hit enter. This will bring up the terminal. Then, install [cargo watch](https://crates.io/crates/cargo-watch)
+
+```
+$ cargo install cargo-watch
+```
+
+Now run the watch command in your terminal:
+
+```
+$ cargo watch -c -x test
+```
+
+This command tells `cargo` to `watch` the file system for changes on disk, then clear (`-c`) the window and execute tests (`-x test`). This will make iteration faster:
 
 ![Screenshot](https://capture.dropbox.com/2FFU2XzxKe9AaAIC?raw=1)
 
-After you save the `src/main.rs` file, note that tests are failing since the program still cannot compile:
+## Back to the tutorial
+
+Make sure cargo watch is running and save the `src/main.rs` file. Note that tests are failing since the program still cannot compile:
 
 ```
    Compiling file-practice v0.1.0 (/private/tmp/file-practice)
