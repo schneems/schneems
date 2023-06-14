@@ -2,11 +2,12 @@
 title: "It's dangerous to go alone, `pub` `mod` `use` this.rs"
 layout: post
 published: true
-date: 2023-06-06
-permalink: /2023/06/06/its-dangerous-to-go-alone-pub-mod-use-thisrs/
+date: 2023-06-14
+permalink: /2023/06/14/its-dangerous-to-go-alone-pub-mod-use-thisrs/
 image_url: https://capture.dropbox.com/QjSoZWiDtYvz4WoH?raw=1
 categories:
-    - ruby
+    - rust
+    - tutorial
 ---
 What exactly does `use` and `mod` do in Rust? And how exactly do I "require" that other file I just made? This article is what I wish I could have given a younger me.
 
