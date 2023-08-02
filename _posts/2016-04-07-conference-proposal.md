@@ -46,7 +46,7 @@ The details section is where you can show how much you've thought about your top
 
 BTW, your talk should have a point. When someone walks away from your talk they might only take away 2-3 things with them. Those things should be in your proposal, the details section seems like a reasonable place to put them. As much as I like to see specific content in the details section, I don't want 60 bullet points of in depth takeaways. You only have <30-60> minutes depending on the conference and talk slot. 60 bullet points leaves you with 30 seconds per each, give your topic room to breathe. Don't give a comprehensive overview of EVERYTHING in a field, you won't have time. Go deep in one part.
 
-If you know what you want to talk about, but you're not sure how you want to structure it, check out [Jeff Casimir's great 'Prototypical Conference Talks'](https://jumpstartlab.com/news/archives/2014/02/15/prototypical-conference-talks) it has some do-s and some don'ts.
+If you know what you want to talk about, but you're not sure how you want to structure it, check out [Jeff Casimir's great 'Prototypical Conference Talks'](http://web.archive.org/web/20160319202921/https://jumpstartlab.com/news/archives/2014/02/15/prototypical-conference-talks) it has some do-s and some don'ts.
 
 ## Medium over Message
 
@@ -74,7 +74,7 @@ An abstract to me is a pure marketing pitch. You can google on how to "write goo
 
 I'm not going to claim they're all master works, but they're at least kinda interesting. Another key point in abstracts is brevity. Use short sentences. Short sentences are concise. Short sentences are rich. Short sentences are powerful. Short. Sentences.
 
-Remove unnecessary words, obviously. Remove soft or hedging statements "sometimes", "maybe", etc. It's okay to be a little hyperbolic in an abstract. Instead of "your tests might be slower than you may like" it's okay to shorten to "your tests are slow". Attendees will self select so that statement will likely be true. If my tests are fast, i don't need your talk. Being concise in an abstract shows me that you know the core essence of what you want to talk about and you know how to extract and distill it.
+Remove unnecessary words, obviously. Remove soft or hedging statements "sometimes", "maybe", etc. It's okay to be a little hyperbolic in an abstract. Instead of "your tests might be slower than you may like" it's okay to shorten to "your tests are slow". Attendees will self select so that statement will likely be true. If my tests are fast, I don't need your talk. Being concise in an abstract shows me that you know the core essence of what you want to talk about and you know how to extract and distill it.
 
 Once you've grabbed attention, you'll want to make sure to give your reader enough information to determine whether or not they should see the talk. Is it an advanced topic? Very technical? Any prerequisites? I like being specific on these points. Here's some of my "in this talk" statements from proposals that have gotten accepted over the years:
 
@@ -95,7 +95,7 @@ When working on an abstract get feedback, from anyone. How does it make them fee
 
 The best wisdom for writing titles is to save it for last. I hate this advice because I always forget about it until I've spent 4 hours up front trying to write a good title. Instead my advice is set a timer for 3 minutes, write as many titles as you can. Pick your favorite, then write the rest of your submission. When you're done go back and throw away the title and re-write it. Chances are your original title won't match your final talk concept. Try to spend a bit more time writing down title ideas, maybe 10-15 minutes. Try testing your favorite 2-4 on a few people and then go with your gut as to the best one.
 
-Try to use descriptive words or action statements in the title. Really avoid cliches here, I'm really not interested in "how [you] stopped worrying and learned to love the \<blank\>".
+Try to use descriptive words or action statements in the title. Really avoid cliches here, I'm really not interested in "how **you** stopped worrying and learned to love the \<blank\>".
 
 Don't alienate your audience through jargon. Your title should say something about your talk. If it's an "in" joke or an acronym don't use it. I get it that you know what HATEOS is, but some of your attendees or conf selection committee might not. (No one used this acronym in this year's CFP to my knowledge I'm not picking on anyone's proposal).
 
@@ -152,4 +152,4 @@ Now comes the disclaimer, all these opinions and advice are mine only. I'm very 
 I forgot to mention, make the last sentence in your abstract somewhat memorable, preferably short, even better if it's actionable. Now go forth and write better proposals!
 
 ---
-Richard is a junior woodworker who dabbles in programming for Heroku. He has opinions, and dad jokes. [Follow @schneems](https://twitter.com/schneems) on Twitter for more.
+Richard is a junior woodworker who dabbles in programming for Heroku. He has opinions, and dad jokes.
