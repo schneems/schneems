@@ -59,7 +59,8 @@ assets:
   #   making them ultra fast.
   # --
   precompile: [
-    "htos/slack-1pr-for3v2-compressed.png"
+    "htos/slack-1pr-for3v2-compressed.png",
+    "htos/6-prs-the-book-works-slack-compressed.png"
   ]
   raw_precompile: [
     #
