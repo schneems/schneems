@@ -58,7 +58,9 @@ assets:
   #   copies assets without running through the pipeline
   #   making them ultra fast.
   # --
-  precompile: []
+  precompile: [
+    "htos/slack-1pr-for3v2-compressed.png"
+  ]
   raw_precompile: [
     #
   ]
