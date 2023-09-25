@@ -152,7 +152,7 @@ DEPENDENCIES
   webrick
 
 RUBY VERSION
-   ruby 2.7.6p219
+   ruby 2.7.8p225
 
 BUNDLED WITH
-   2.3.15
+   2.4.19
