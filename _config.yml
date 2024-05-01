@@ -34,81 +34,81 @@ github:
 BASE_PATH_FOR_RSS: https://www.schneems.com
 
 plugins:
-  - jekyll-assets
+  # - jekyll-assets
   - jekyll-paginate
   - jekyll-redirect-from
 
-# Assets
-assets:
-  source_maps: true # false on JEKYLL_ENV=production
-  destination: "/assets"
-  compression: false # true on JEKYLL_ENV=production
-  gzip: false
-  defaults:
-    js: { integrity: false } # true on JEKYLL_ENV=production
-    css: { integrity: false } # true on JEKYLL_ENV=production
-    img: { integrity: false } # true on JEKYLL_ENV=production
-  caching:
-    path: ".jekyll-cache/assets"
-    type: file # Possible values: memory, file
-    enabled: true
-  # --
-  # Assets you wish to always have compiled.
-  #   This can also be combined with raw_precompile which
-  #   copies assets without running through the pipeline
-  #   making them ultra fast.
-  # --
-  precompile: [
-    "htos/slack-1pr-for3v2-compressed.png",
-    "htos/6-prs-the-book-works-slack-compressed.png"
-  ]
-  raw_precompile: [
-    #
-  ]
-  # --
-  # baseurl: whether or not to append site.baseurl
-  # destination: the folder you store them in on the CDN.
-  # url: the CDN url (fqdn, or w/ identifier).
-  # --
-  cdn:
-    baseurl: false
-    destination: false
-    url: null
-  # --
-  # These are all default. No need to add them
-  #   Only use this if you have more.
-  # --
-  sources:
-    - assets/stylesheets
-    - assets/fonts
-    - assets/images
-    - assets/videos
-    - assets/javascripts
-    - assets/video
-    - assets/image
-    - assets/img
-    - assets/js
-    - _assets/css
-    - _assets/fonts
-    - _assets/images
-    - _assets/videos
-    - _assets/javascript
-    - _assets/video
-    - _assets/image
-    - _assets/img
-    - _assets/js
-    - css
-    - fonts
-    - images
-    - videos
-    - javascript
-    - video
-    - image
-    - img
-    - js
-  plugins:
-    css: { autoprefixer: {}}
-    img: { optim: {}}
+# # Assets
+# assets:
+#   source_maps: true # false on JEKYLL_ENV=production
+#   destination: "/assets"
+#   compression: false # true on JEKYLL_ENV=production
+#   gzip: false
+#   defaults:
+#     js: { integrity: false } # true on JEKYLL_ENV=production
+#     css: { integrity: false } # true on JEKYLL_ENV=production
+#     img: { integrity: false } # true on JEKYLL_ENV=production
+#   caching:
+#     path: ".jekyll-cache/assets"
+#     type: file # Possible values: memory, file
+#     enabled: true
+#   # --
+#   # Assets you wish to always have compiled.
+#   #   This can also be combined with raw_precompile which
+#   #   copies assets without running through the pipeline
+#   #   making them ultra fast.
+#   # --
+#   precompile: [
+#     "htos/slack-1pr-for3v2-compressed.png",
+#     "htos/6-prs-the-book-works-slack-compressed.png"
+#   ]
+#   raw_precompile: [
+#     #
+#   ]
+#   # --
+#   # baseurl: whether or not to append site.baseurl
+#   # destination: the folder you store them in on the CDN.
+#   # url: the CDN url (fqdn, or w/ identifier).
+#   # --
+#   cdn:
+#     baseurl: false
+#     destination: false
+#     url: null
+#   # --
+#   # These are all default. No need to add them
+#   #   Only use this if you have more.
+#   # --
+#   sources:
+#     - assets/stylesheets
+#     - assets/fonts
+#     - assets/images
+#     - assets/videos
+#     - assets/javascripts
+#     - assets/video
+#     - assets/image
+#     - assets/img
+#     - assets/js
+#     - _assets/css
+#     - _assets/fonts
+#     - _assets/images
+#     - _assets/videos
+#     - _assets/javascript
+#     - _assets/video
+#     - _assets/image
+#     - _assets/img
+#     - _assets/js
+#     - css
+#     - fonts
+#     - images
+#     - videos
+#     - javascript
+#     - video
+#     - image
+#     - img
+#     - js
+#   plugins:
+#     css: { autoprefixer: {}}
+#     img: { optim: {}}
 
 # Random shit from the internet
 include: ['dist/.well-known/', '.well-known']

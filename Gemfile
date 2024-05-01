@@ -1,14 +1,14 @@
 source "https://rubygems.org"
 
-ruby "2.7.8"
+ruby "3.1.5"
 
-gem "jekyll", "4.2.0"
+gem "jekyll", "4.3.3"
 gem "kramdown"
 gem "rouge"
 
 gem "jekyll-paginate"
 gem "jekyll-redirect-from"
-gem "jekyll-assets", github: "envygeeks/jekyll-assets"
+# gem "jekyll-assets", github: "envygeeks/jekyll-assets"
 gem "sass"
 gem 'image_optim'
 gem 'image_optim_pack'
