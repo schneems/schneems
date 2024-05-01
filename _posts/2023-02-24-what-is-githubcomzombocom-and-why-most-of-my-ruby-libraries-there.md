@@ -4,7 +4,6 @@ layout: post
 published: true
 date: 2023-02-24
 permalink: /2023/02/24/what-is-githubcomzombocom-and-why-most-of-my-ruby-libraries-there/
-image_url: <replaceme>
 categories:
     - ruby
 ---
@@ -13,7 +12,7 @@ The other day I got another question about the `zombocom` org on GitHub that pro
 
 ## Why a custom org?
 
-If you're maintaining one or two libraries, keeping them in your GitHub user's namespace is easy enough. For me, this is [https://github.com/schneems](https://github.com). The zombocom org has 18 libraries, 16 of which I created. 
+If you're maintaining one or two libraries, keeping them in your GitHub user's namespace is easy enough. For me, this is [https://github.com/schneems](https://github.com). The zombocom org has 18 libraries, 16 of which I created.
 
 I want to encourage people to contribute to my libraries, so I've taken to giving commit access to developers who land a successful PR. I still control releasing, so this permissive default is intended to allow developers with ambition to express themselves while giving me an opportunity to QA and chime in on changes.
 
@@ -23,7 +22,7 @@ I wanted to take this a step further and give them access to ALL my libraries to
 
 Making a custom org name is familiar for top-rated gems/libraries. For example, [github.com/puma](https://github.com/puma) or [github.com/CodeTriage](https://github.com/codetriage). My most popular library on zombocom is `get_process_mem` with 52 million downloads. But an org with that same name would be overly restrictive.
 
-Custom orgs are usually named around a common theme. But my libraries don't have a shared theme aside from being a thing I wrote that hopefully makes your life easier. 
+Custom orgs are usually named around a common theme. But my libraries don't have a shared theme aside from being a thing I wrote that hopefully makes your life easier.
 
 I didn't want 16 namespaces for 16 libraries. I wanted a place where anything was possible. So I named it after [Zombo.com](https://zombo.com):
 
