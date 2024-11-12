@@ -20,10 +20,10 @@ If you're new to Cloud Native Buildpacks, it's a way to generate OCI images (lik
 If you've never heard of a buildpack, here are some getting-started guides you can try if you find a bug or run into questions. I can help.
 
 - What is a CNB?
-    - Follow buildpacks.io tutorial https://buildpacks.io/docs/
+    - Follow buildpacks.io tutorial [https://buildpacks.io/docs/](https://buildpacks.io/docs/)
 - Using a CNB -
-    - heroku/Ruby tutorial https://github.com/heroku/buildpacks/blob/main/docs/ruby/README.md
-    - Paketo tutorial https://paketo.io/docs/howto/ruby/
+    - RECOMMENDED: `heroku/Ruby` tutorial [https://github.com/heroku/buildpacks/blob/main/docs/ruby/README.md](https://github.com/heroku/buildpacks/blob/main/docs/ruby/README.md)
+    - Paketo tutorial [https://paketo.io/docs/howto/ruby/](https://paketo.io/docs/howto/ruby/)
 
 ## Hacking ideas
 
@@ -31,13 +31,13 @@ Once you've played with a buildpack, you're ready for prime-time. Below, you'll 
 
 ### heroku/ruby-buildpack issues
 
-- Anything on https://github.com/heroku/buildpacks-ruby/issues. Look for the "help wanted" tag.
+- Anything on [https://github.com/heroku/buildpacks-ruby/issues](https://github.com/heroku/buildpacks-ruby/issues). Look for the "help wanted" tag.
 
 ### Deny unknown fields
 
 A well-scoped-out task with a change example involves modifying code but requires minimal rust knowledge.
 
-- Link: https://github.com/heroku/buildpacks-ruby/issues/272
+- Link: [https://github.com/heroku/buildpacks-ruby/issues/272](https://github.com/heroku/buildpacks-ruby/issues/272)
 - Effort: Low
 - Impact: Medium
 - Requires: Code editor, installing rust
@@ -52,7 +52,7 @@ Test drive Hanami with a Ruby CNB, document the experience and suggest changes o
 
 ### Update error messages
 
-https://github.com/heroku/buildpacks-ruby/issues/333
+[https://github.com/heroku/buildpacks-ruby/issues/333](https://github.com/heroku/buildpacks-ruby/issues/333)
 
 - Effort low
 - Impact: low
@@ -60,7 +60,7 @@ https://github.com/heroku/buildpacks-ruby/issues/333
 
 ### Warn when no `bin/rails` file found
 
-https://github.com/heroku/buildpacks-ruby/issues/298
+[https://github.com/heroku/buildpacks-ruby/issues/298](https://github.com/heroku/buildpacks-ruby/issues/298)
 
 - Effort: Medium
 - Impact: Medium
@@ -68,14 +68,14 @@ https://github.com/heroku/buildpacks-ruby/issues/298
 
 ### Build a CNB with Rust, bash, or Ruby
 
-No link. Write a Cloud Native Buildpack.
+No link. Write a Cloud Native Buildpack. Bash tutorial at [https://buildpacks.io/docs/](https://buildpacks.io/docs/). For ideas of possible buildpack ideas, you can look at "classic" buildpacks [existing Heroku "classic" buildpacks](https://elements.heroku.com/buildpacks)
 
 - Effort: Medium
 - Impact: Unknown
 
 ### Add `.ruby-version` support
 
-- Link: https://github.com/heroku/buildpacks-ruby/issues/346
+- Link: [https://github.com/heroku/buildpacks-ruby/issues/346](https://github.com/heroku/buildpacks-ruby/issues/346)
 - Effort High
 - Impact: High
 - Requires: Rust proficiency
