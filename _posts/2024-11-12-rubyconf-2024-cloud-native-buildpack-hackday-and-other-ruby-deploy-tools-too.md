@@ -13,10 +13,14 @@ I've spent the last decade+ working on Ruby deploy tooling, including (but not l
 
 > Note: This post is for an in-person hackday event at RubyConf 2024 happening on Thursday, November 14th. If you found this but are away from the event, you can still follow along, but I won't be available for in-person collaboration.
 
+## What is a buildpack?
+
+If you're new to Cloud Native Buildpacks, it's a way to generate OCI images (like docker) without a Dockerfile. Buildpacks take your application code on disk as input and inspect it to determine that it's a Ruby app and needs to install gems with a bundler.
+
 ## Install before you go
 
-<details>
-  <summary>Know before you go! Not strictly required, but will make your life better with iffy-wifi</summary>
+> Know before you go! Not strictly required, but will make your life better with iffy-wifi
+
 - [Docker](https://docs.docker.com/engine/install/)
 - [pack cli](https://buildpacks.io/docs/for-platform-operators/how-to/integrate-ci/pack/) `brew install buildpacks/tap/pack`
 - Set the default builder:
@@ -47,11 +51,7 @@ $ cargo build
 $ cargo test
 ```
 
-</details>
-
-## What is a buildpack?
-
-If you're new to Cloud Native Buildpacks, it's a way to generate OCI images (like docker) without a Dockerfile. Buildpacks take your application code on disk as input and inspect it to determine that it's a Ruby app and needs to install gems with a bundler.
+## Getting started
 
 If you've never heard of a buildpack, here are some getting-started guides you can try if you find a bug or run into questions. I can help.
 
