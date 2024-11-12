@@ -31,7 +31,7 @@ the_post_permalink = "/#{year}/#{month}/#{day}/#{final_slug}/"
 
 # Create the _posts directory
 
-system('mkdir', '_posts') unless File.exists?('_posts')
+system('mkdir', '_posts') unless File.exist?('_posts')
 
 the_post_file_name = hyphen_date + '-' + final_slug.to_s + '.md'
 the_post_file = File.new("_posts/#{the_post_file_name}", 'w')
