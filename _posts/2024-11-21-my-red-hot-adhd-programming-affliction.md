@@ -1,8 +1,9 @@
 ---
-title: "My Red Hot ADHD Programming "Affliction""
+title: "My Red Hot ADHD Programming 'Affliction'"
 layout: post
 published: true
 date: 2024-11-21
+image_url: https://www.dropbox.com/s/42clbofxmhu97ct/Screenshot%202024-11-21%20at%208.26.53%E2%80%AFPM.png?raw=1
 permalink: /2024/11/21/my-red-hot-adhd-programming-affliction/
 categories:
     - ruby
