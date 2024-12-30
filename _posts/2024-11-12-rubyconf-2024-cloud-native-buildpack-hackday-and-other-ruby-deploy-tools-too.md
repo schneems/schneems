@@ -59,7 +59,8 @@ If you've never heard of a buildpack, here are some getting-started guides you c
     - Follow buildpacks.io tutorial [https://buildpacks.io/docs/](https://buildpacks.io/docs/)
 - Using a CNB -
     - RECOMMENDED: `heroku/Ruby` tutorial [https://github.com/heroku/buildpacks/blob/main/docs/ruby/README.md](https://github.com/heroku/buildpacks/blob/main/docs/ruby/README.md)
-    - Paketo tutorial [https://paketo.io/docs/howto/ruby/](https://paketo.io/docs/howto/ruby/)
+    - Tutorials for [using CNBs with other languages](https://github.com/heroku/buildpacks/tree/main/docs#use) (.NET, Go, Java (Gradle), Java (Maven), Node.JS, PHP, Python, Scala) [are available here](https://github.com/heroku/buildpacks/tree/main/docs#use).
+    - Paketo Ruby tutorial [https://paketo.io/docs/howto/ruby/](https://paketo.io/docs/howto/ruby/)
 
 ## Hacking ideas
 
