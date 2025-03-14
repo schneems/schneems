@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/schneems/jekyll-assets.git
-  revision: c12457e8c3c9252b3a337e2c9fdb6bae639ef0f6
+  revision: 42122d06a961d5697d0937fc4523cd5220c42797
   specs:
     jekyll-assets (4.0.0.alpha)
       activesupport (>= 5, < 7)
@@ -87,8 +87,8 @@ GEM
     jekyll-sanity (1.6.0)
       jekyll (>= 3.1, < 5.0)
       pathutil (~> 0.16)
-    jekyll-sass-converter (3.0.0)
-      sass-embedded (~> 1.54)
+    jekyll-sass-converter (3.1.0)
+      sass-embedded (~> 1.75)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
     json (2.10.2)
