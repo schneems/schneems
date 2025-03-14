@@ -37,7 +37,7 @@ GEM
     extras (0.3.0)
       forwardable-extended (~> 2.5)
     fastimage (2.2.3)
-    ffi (1.15.0)
+    ffi (1.17.1)
     forwardable-extended (2.6.0)
     fspath (3.0.1)
     http_parser.rb (0.6.0)
@@ -152,7 +152,7 @@ DEPENDENCIES
   webrick
 
 RUBY VERSION
-   ruby 2.7.8p225
+   ruby 3.4.2p28
 
 BUNDLED WITH
-   2.4.19
+   2.6.6
