@@ -26,6 +26,8 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    base64 (0.2.0)
+    bigdecimal (3.1.9)
     colorator (1.1.0)
     concurrent-ruby (1.1.8)
     csv (3.3.2)
@@ -84,7 +86,7 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
-    liquid (4.0.3)
+    liquid (4.0.4)
     liquid-tag-parser (2.0.2)
       extras (~> 0.3)
       liquid (>= 3.0, < 5.0)
@@ -138,6 +140,8 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
+  base64
+  bigdecimal
   csv
   image_optim
   image_optim_pack
