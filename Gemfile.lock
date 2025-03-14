@@ -28,6 +28,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     colorator (1.1.0)
     concurrent-ruby (1.1.8)
+    csv (3.3.2)
     em-websocket (0.5.2)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -90,6 +91,7 @@ GEM
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    logger (1.6.6)
     mercenary (0.4.0)
     mini_portile2 (2.5.1)
     minitest (5.14.4)
@@ -136,6 +138,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
+  csv
   image_optim
   image_optim_pack
   jekyll (= 4.2.0)
@@ -144,6 +147,7 @@ DEPENDENCIES
   jekyll-redirect-from
   kramdown
   liquid-tag-parser (= 2.0.2)
+  logger
   rake
   rouge
   sass

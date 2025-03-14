@@ -20,3 +20,5 @@ gem 'activesupport'
 gem 'webrick'
 
 gem 'liquid-tag-parser', '2.0.2'
+gem 'logger'
+gem 'csv'
