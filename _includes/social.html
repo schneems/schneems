@@ -7,9 +7,9 @@
       <div class="icon">
         <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="#ff4500">
           <ellipse cx="256" cy="305" rx="177" ry="123" fill="#FF1168" />
-          <path d="m199 347c35 29 79 29 114 0l12 11c-42 35-96 35-138 0z" fill="#fff" />
-          <circle cx="315" cy="285" r="28" fill="#fff" />
-          <circle cx="197" cy="285" r="28" fill="#fff" />
+          <path d="m199 347c35 29 79 29 114 0l12 11c-42 35-96 35-138 0z" fill="none" />
+          <circle cx="315" cy="285" r="28" fill="none" />
+          <circle cx="197" cy="285" r="28" fill="none" />
           <g fill="none" stroke="#FF1168">
             <circle cx="390" cy="125" r="28" stroke-width="25" />
             <path d="m87 282c-45-22-5-92 40-50m298 50c45-22 5-92-40-50m-127-45 24-83 80 16" stroke-width="22" />
@@ -20,9 +20,22 @@
     </div>
   </a>
 
+  <!-- Bsky -->
+  <a href="https://bsky.app/intent/compose?text={{ site.url | append: page.url | uri_escape }}" target="_blank">
+    <div class="button">
+      <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="Bluesky" role="img" viewBox="0 0 512 512">
+          <path d="m0 0H512V512H0" fill="none" />
+          <path
+            d="M159 126c-28-22-74-38-74 14 0 11 6 88 9 101 13 43 57 54 97 48-69 11-87 50-49 89 72 75 104-18 112-42l2-5 2 5c8 24 40 117 112 42 38-39 20-78-49-89 40 6 84-5 97-48 3-13 9-90 9-101 0-52-46-36-74-14-39 29-82 89-97 121-15-32-58-92-97-121Z"
+            fill="#FF1168" />
+        </svg>
+      </div>
+      <span class='social-name'>Blue sky</span>
+    </div>
+  </a>
 
   <!-- lobsters -->
-
   <a {% if page.loburl %} href="{{ page.loburl }}" {% else %}
     href="https://lobste.rs/stories/new?url={{ site.url | append: page.url | uri_escape }}&title={{ page.title | uri_escape }}"
     {% endif %} target="_blank">
