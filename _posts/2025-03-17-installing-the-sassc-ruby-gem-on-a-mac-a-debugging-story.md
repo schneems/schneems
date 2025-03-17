@@ -7,6 +7,7 @@ permalink: /2025/03/17/installing-the-sassc-ruby-gem-on-a-mac-a-debugging-story/
 image_url: https://www.dropbox.com/scl/fi/w9zc274inj5749kn5df2v/Screenshot-2025-03-14-at-3.12.03-PM.png?rlkey=de2mlqabswywckz0o9a0apos8&raw=1
 categories:
     - ruby
+    - debugging
 ---
 
 I'm not exactly sure about the timeline, but at some point, `gem install sassc` stopped working for me on my Mac (ARM). Initially, I thought this was because that gem was no longer maintained, and the last release was in 2020, but I was wrong. It's 100% installable today. In this post I'll explain some things about native extensions libraries in Ruby and in the process tell you how to fix this error below if you're getting it on your Mac:
