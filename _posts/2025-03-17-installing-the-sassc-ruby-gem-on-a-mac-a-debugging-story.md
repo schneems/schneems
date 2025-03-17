@@ -284,7 +284,7 @@ Here, we've extracted the command `echo` into a variable and are using that to p
 
 What that means is `CXX=false` tells make to replace `$(CXX)` with `false` which is not what we want. But where did `CXX=false` come from? I'm glad you asked. If you search the source code for that line, you won't find it. That's because this Makefile is generated.
 
-When we looked at native extensions before, notice that I talked about `rake-compiler` and not about hand-rolling a `Makefile`. Even when we looked at `ruby/ruby`-s Makefile,` it wasn't hardcoded; it came to be after calling `./autogen.sh` and `../configure`. This Makefile is generated at install time.
+When we looked at native extensions before, notice that I talked about `rake-compiler` and not about hand-rolling a `Makefile`. Even when we looked at `ruby/ruby`-s Makefile,it wasn't hardcoded; it came to be after calling `./autogen.sh` and `../configure`. This Makefile is generated at install time.
 
 ## Debugging: Where did the `false` come from?
 
