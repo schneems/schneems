@@ -61,7 +61,7 @@ You can install the `sassc` on your Mac by:
 - Re-compile Ruby version(s)
 - Now `gem install sassc` should work
 
-If it doesn't or you want to know more about my debugging process and some things about native compilation, read on!
+If you want to know more about native compilation or my debugging process, read on!
 
 > There might be a simpler way to solve the problem (such as directly editing the rbconfig file), but I'm comfortable sharing the above steps because that's what I've done. If you fixed this differently, post the solution on your own site or in the comments somewhere.
 
@@ -85,6 +85,7 @@ Most Ruby libraries are plain Ruby code. For an example look at [https://github.
 For developers who haven't used much C or C++, it's useful to know that system-installed packages are how they (mostly) share code. There's no rubygems.org for C packages. Things like `apt` for Ubuntu might be conflated as a "C package manager," but it's really like `brew` (for Mac), where it installs things globally. Then, when you compile a program in C, it can dynamically or statically link to other libraries to use them.
 
 Back to native extensions: When a gem with a native extension is installed the source code is downloaded but then a secondary compilation process is invoked. Here's [a tutorial on creating a native extension](https://dev.to/vinistock/creating-ruby-native-extensions-kg1). It utilizes a tool called [rake-compiler](https://github.com/rake-compiler/rake-compiler). But under the hood it effectively boils down to when you `gem install <native-extension>` it will run compilation code such as `$ make install` on the system. This process generates compiled binaries, these binaries are compiled against a specific CPU architecture that is native to the machine you're on, hence why they're called native extensions. You're using native (binary) code to extend Ruby's capabilities.
+
 ## Explaining: Vendoring in native extensions
 
 > Skip if: You understand why `libsass` CPP files would be found in the `sassc` gem
@@ -109,6 +110,7 @@ make: *** Waiting for unfinished jobs....
 ```
 
 For completeness: There's another type of vendoring that native-extension gems can do. They can statically compile and vendor in a binary. This bypasses the need to `make install` and is much faster, but moves the burden to the gem maintainer. Here's an example where [Nokogiri 1.18.4 is precompiled to run on my ARM Mac](https://rubygems.org/gems/nokogiri/versions/1.18.4-arm64-darwin). You don't need to know this for debugging the `sassc` install problem, since that process isn't being used here.
+
 ## Debugging: Remove ruby from the loop
 
 When debugging, I like to remove layers of abstraction when possible to boil the problem down to its core essence. You might think "I cannot run `gem install sass` " is the problem, but really that's the context; the **real** problem is that within that process, the `make` command fails. The output of the command isn't terribly well structured, but there are hints that this is the core problem:
@@ -153,6 +155,7 @@ false -I. -I/Users/rschneeman/.rubies/ruby-3.4.1/include/ruby-3.4.0/arm64-darwin
 ```
 
 If you're familiar with the output above you probably spotted the problem. If not, let's detour and explain what this make tool even is.
+
 ## Explaining: What is a make?
 
 > Skip this if you know what make is and how to write a `Makefile`
@@ -201,7 +204,7 @@ echo compiling ./libsass/src/ast.cpp
 false -I. -I/Users/rschneeman/.rubies/ruby-3.4.1/include/ruby-3.4.0/arm64-darwin24 -I/Users/rschneeman/.rubies/ruby-3.4.1/include/ruby-3.4.0/ruby/backward -I/Users/rschneeman/.rubies/ruby-3.4.1/include/ruby-3.4.0 -I. -I./libsass/include -I/opt/homebrew/opt/readline/include -I/opt/homebrew/opt/libyaml/include -I/opt/homebrew/opt/gdbm/include -I/opt/X11/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -fno-common -fdeclspec -std=c++11 -DLIBSASS_VERSION='"3.6.4"' -arch arm64 -o ast.o -c ./libsass/src/ast.cpp
 ```
 
-We could remove make from the equation by running them directly:
+We could remove `make` from the equation by running them directly:
 
 ```term
 $ echo compiling ./libsass/src/ast.cpp
@@ -284,7 +287,7 @@ Here, we've extracted the command `echo` into a variable and are using that to p
 
 What that means is `CXX=false` tells make to replace `$(CXX)` with `false` which is not what we want. But where did `CXX=false` come from? I'm glad you asked. If you search the source code for that line, you won't find it. That's because this Makefile is generated.
 
-When we looked at native extensions before, notice that I talked about `rake-compiler` and not about hand-rolling a `Makefile`. Even when we looked at `ruby/ruby`-s Makefile,it wasn't hardcoded; it came to be after calling `./autogen.sh` and `../configure`. This Makefile is generated at install time.
+When we looked at native extensions before, notice that I talked about `rake-compiler` and not about hand-rolling a `Makefile`. Even when we looked at `ruby/ruby`-s Makefile, it wasn't hardcoded; it came to be after calling `./autogen.sh` and `../configure`. This Makefile is generated at install time.
 
 ## Debugging: Where did the `false` come from?
 
@@ -362,4 +365,3 @@ If you enjoyed this post consider:
 	- [Bsky](https://ruby.social/@Schneems)
 - Taking some time this fine afternoon to write a blog post about whatever random debugging topic you're currently battling.
 - Finding a doggo and petting them
-
