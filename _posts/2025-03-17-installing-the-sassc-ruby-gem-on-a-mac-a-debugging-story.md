@@ -69,13 +69,15 @@ If it doesn't or you want to know more about my debugging process and some thing
 
 When I get an error, it makes sense to search for it and ask an LLM (if that's your thing). I did both. GitHub copilot suggested that I make sure command-line tools are installed and that `cmake` is installed via homebrew. This was unhelpful, but it's worth double-checking.
 
-Searching `libsass make: *** [ast2c.o] Error 1` brought me to https://github.com/sass/sassc-ruby/issues/248. This brought me to https://github.com/sass/sassc-ruby/issues/225#issuecomment-2391129846. Suggesting that the problem is related to RbConfig and native extensions. These have the fix in there, but don't go into detail on the **why** the fix works. This post attempts to dig deeper using a debugging mindset.> Meta narrative: This article skips between explaining things I know to be true and debugging via doing. Skip any explanations you feel are tedious.
+Searching `libsass make: *** [ast2c.o] Error 1` brought me to [https://github.com/sass/sassc-ruby/issues/248](https://github.com/sass/sassc-ruby/issues/248). This brought me to [https://github.com/sass/sassc-ruby/issues/225#issuecomment-2391129846](https://github.com/sass/sassc-ruby/issues/225#issuecomment-2391129846). Suggesting that the problem is related to RbConfig and native extensions. These have the fix in there, but don't go into detail on the **why** the fix works. This post attempts to dig deeper using a debugging mindset.
+
+> Meta narrative: This article skips between explaining things I know to be true and debugging via doing. Skip any explanations you feel are tedious.
 
 ## Explaining: Native extensions
 
 > Skip if: You know what a native extension is
 
-Most Ruby libraries are plain Ruby code. For an example look at https://github.com/zombocom/mini_histogram. When you `gem install mini_histogram`, it downloads the source code, and that's all that's needed to run it (well, that and a Ruby version installed on the machine). The term "native extensions" refers to libraries that use Ruby's C API or FFI in some way. There are a few reasons why someone would want to do this:
+Most Ruby libraries are plain Ruby code. For an example look at [https://github.com/zombocom/mini_histogram](https://github.com/zombocom/mini_histogram). When you `gem install mini_histogram`, it downloads the source code, and that's all that's needed to run it (well, that and a Ruby version installed on the machine). The term "native extensions" refers to libraries that use Ruby's C API or FFI in some way. There are a few reasons why someone would want to do this:
 
 - Performance: A really expensive algorithm might run faster if it's written in a different language and then invoked by Ruby.
 - Interface: A library doesn't want to reinvent the wheel, so it leans on already existing software installed at the system level. For example, if a program needs to handle SSL connections, it can use OpenSSL on the system instead of rewriting all of that logic in Ruby. For example, the `psych` gem uses `libyaml`, and the `nokogiri` gem uses `libxml`.
