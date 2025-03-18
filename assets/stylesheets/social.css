@@ -13,10 +13,11 @@
 .social a:hover {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
-      transform: scale(1.2);
+  transform: scale(1.2);
 }
 
-.social .icon, .social .button {
+.social .icon,
+.social .button {
   display: inline-block;
   vertical-align: top;
 }
@@ -56,6 +57,7 @@
     font-size: 14px;
   }
 }
+
 .socialsidebar {
   flex: 0 0 0;
   min-width: 10rem;
