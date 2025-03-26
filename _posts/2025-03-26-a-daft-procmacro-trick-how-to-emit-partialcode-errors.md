@@ -22,12 +22,13 @@ This post covers:
 - How does this relate to best practices in future or existing Rust macros?
 - What is error accumulation, and why should every proc macro use it?
 
-> Who am I? I write Rust code for Heroku, mainly on the [Ruby Cloud Native Buildpack](https://github.com/heroku/buildpacks-ruby) (CNB). CNBs are an alternative to Dockerfile for building OCI images. You can learn more by [following a language-specific tutorial you can run locally](https://github.com/heroku/buildpacks/tree/main/docs#use). I also [wrote a book on Open Source contribution](https://howtoopensource.dev/) (paid) and maintain [CodeTriage.com](https://www.codetriage.com/) (free).
+> Who am I? I write Rust code for Heroku, mainly on the [Ruby Cloud Native Buildpack](https://github.com/heroku/buildpacks-ruby) (CNB). CNBs are an alternative to Dockerfile for building OCI images. You can learn more by [following a language-specific tutorial you can run locally](https://github.com/heroku/buildpacks/tree/main/docs#use). I also [wrote a book on Open Source contribution](https://howtoopensource.dev/) (paid) and I maintain [an Open Source contribution app - CodeTriage.com](https://www.codetriage.com/) (free).
+
 ## Why does macro output matter to `rust-analyzer`?
 
 > Skip this if you already understand the problem statement
 
-This section is a recap of what's talked about in the episode. The compiler will stop when it hits a code that cannot compile. However, `rust-analyzer` (the Language Server Protocol implementation that powers IDEs like vscode) tries to resume after an error because it can't just stop rendering type hints.
+The Rust compiler will stop when it hits code that cannot compile. However, `rust-analyzer` (the Language Server Protocol implementation that powers IDEs like vscode) tries to resume after an error because it can't just stop rendering type hints.
 
 Intuitively, it makes sense that if you have an invalid function in your code, it shouldn't break syntax highlighting (or other features) in your valid code:
 
@@ -41,7 +42,7 @@ fn valid() -> String {
 }
 ```
 
-Like Daft (v0.1.2), macros emit trait implementations and sometimes generate new data structures. From the snapshot tests, an input of something like this:
+Daft (v0.1.2), emits trait implementations and sometimes generates new data structures. From the snapshot tests, an input of something like this:
 
 ```rust
 #[derive(Debug, Eq, PartialEq, Diffable)]
@@ -79,24 +80,28 @@ Now that you understand the goal, how do we emit code when there's an error?
 The short version is that macros don't output code or errors; they emit tokens. The daft crate collects errors and continues when possible. If it can generate code, it will emit that generated code as tokens before turning the errors into tokens and then emitting both. An earlier version of the code looked like this:
 
 ```rust
-            let errors = error_store
-                .into_inner()
-                .into_iter()
-                .map(|error| error.into_compile_error());
+let errors = error_store
+    .into_inner()
+    .into_iter()
+    .map(|error| error.into_compile_error());
 
-            quote! {
-                #out
-                #(#errors)*
-            }
+quote! {
+    #out
+    #(#errors)*
+}
 ```
 
-The extended (and current) version (with links) is: The entry point for the `Daft` derive macro is [`internal::derive_diffable`](https://github.com/oxidecomputer/daft/blob/5343fbb0d907ece8990d9d9b60e42669d35b7ece/daft-derive/src/lib.rs#L20). This function returns a [`DeriveDiffableOutput`]( https://github.com/oxidecomputer/daft/blob/5343fbb0d907ece8990d9d9b60e42669d35b7ece/daft-derive/src/internals/imp.rs#L11-L14). The `DeriveDiffableOutput` holds `Option<TokenStream>` for valid code that was generated and `Vec<syn::Error>` for errors
+Where `quote!` produces tokens from both the code (`#out`) and the errors `#(#errors)*`.
+
+But don't take my word for it, read the source: The entry point for the `Daft` derive macro is [`internal::derive_diffable`](https://github.com/oxidecomputer/daft/blob/5343fbb0d907ece8990d9d9b60e42669d35b7ece/daft-derive/src/lib.rs#L20). This function returns a [`DeriveDiffableOutput`]( https://github.com/oxidecomputer/daft/blob/5343fbb0d907ece8990d9d9b60e42669d35b7ece/daft-derive/src/internals/imp.rs#L11-L14). The `DeriveDiffableOutput` holds `Option<TokenStream>` for valid code that was generated and `Vec<syn::Error>` for errors
 
 The `DeriveDiffableOutput` implements `quote::ToTokens` that emits the valid code followed by the errors (if they exist). [code](https://github.com/oxidecomputer/daft/blob/5343fbb0d907ece8990d9d9b60e42669d35b7ece/daft-derive/src/internals/imp.rs#L16-L21).
 
 Put it all together, and you have a crate that emits partially generated code, even with errors. Neat.
 
 ## When to emit code + errors?
+
+Now that I knew how Daft implemented this feature, I wanted to understand when they chose to apply this pattern. I [reviewed the snapshot tests](https://gist.github.com/schneems/6e27cc2e7fe8dea212f95ed9e154bbc7) and developed my own classifications.
 
 There are three classes of failures in the snapshot tests:
 
@@ -106,15 +111,15 @@ There are three classes of failures in the snapshot tests:
 
 First, proc-macros cannot emit warnings. If the coder entered slightly off information that wouldn't affect compilation, the macro author must choose between letting it slide or raising an error. There's no in-between.
 
-When there's a problem but daft can determine programmer intent, it will emit code and errors. I call this a "warning error." The primary example in snapshot testing is when the `#[daft(leaf)]`  attribute is used on an enum that is already a leaf by default (this is an internal concept to the crate). 
+When there's a problem but daft can determine programmer intent, it will emit code and errors. I call this a "warning error." The primary example in snapshot testing is when the `#[daft(leaf)]`  attribute is used on an enum that is already a leaf by default (this is an internal concept to the crate).
 
 > Note that the daft crate does not use "warning error" as terminology. I am making that distinction based on my [analysis of the snapshot test. Notes are here.](https://gist.github.com/schneems/6e27cc2e7fe8dea212f95ed9e154bbc7).
 
-The program can fail to compile even when code is emitted without error, for example, if a trait bound is not satisfied. The macro author cannot detect the problem in this failure mode because the reflection tools don't expose the necessary information. They must rely on the compiler. 
+Second, the program can fail to compile even when code is emitted without error, for example, if a trait bound is not satisfied. The macro author cannot detect the problem because the reflection tools don't expose the necessary information. They must rely on the compiler errors to guide their user.
 
-Finally, there are situations where we cannot safely emit code because an input is ambiguous or wrong. With these "plain" errors, if the macro author tried to guess and got it incorrect, they're feeding rust-analyzer incorrect information, which might confuse the end user more. For example, if an attribute that doesn't exist, such as `#[daft(unknown)]`, is found, the macro author has no idea what was intended there and shouldn't guess.
+Finally, there are situations where the author cannot safely emit code because an input is ambiguous or wrong. With these "plain" errors, if the macro author tried to guess and got it incorrect, they're feeding rust-analyzer incorrect information, which might confuse the end user more. For example, if an attribute that doesn't exist, such as `#[daft(unknown)]`, is found, the macro author has no idea what was intended there and shouldn't guess.
 
-If you're curious about how I came to this conclusion, you can see my [initial research with links to code and my thoughts on why code is emitted or not](https://gist.github.com/schneems/6e27cc2e7fe8dea212f95ed9e154bbc7). I even found a snapshot case where code isn't emitted, but I advocate that it would be safe to do so! 
+While working on this classification exercise I found two snapshot tests where code isn't emitted but could be.
 
 ## Should all proc macros emit code + errors?
 
@@ -169,28 +174,26 @@ struct MyStruct {
     #[daft(leaf, leaf, leaf)] // line 5
     a: i32,
     #[daft(ignore)]
-    #[daft(ignore)] // line 8 
+    #[daft(ignore)] // line 8
     #[daft(ignore)] // line 9
     b: String,
 }
 ```
 
-Fields and their attributes are parsed iteratively, so it's common for a macro to stop iterating on the first problem (line 5) before returning. Instead, Daft stores the errors and continues parsing until it can no longer.
+Fields and their attributes are parsed iteratively, so it's common for a macro to stop iterating on the first problem (line 5) before returning. Instead, Daft stores the errors and continues parsing until it longer can.
 
 I don't think it's the end of the world if a proc macro only emits a single error at a time, but it's a requirement if you're aiming for a "Michelin star proc-macro" experience.
 
-> Now, if you feel that the bare minimum is enough, then okay. But some people choose to wear more and we encourage that, okay? You do want to express yourself, don't you? [reference](https://www.imdb.com/title/tt0151804/characters/nm0431918?item=qt1934650)
-
 ## How does Daft implement error accumulation?
 
-Instead of using a `Result<T, syn::Error>` return, daft passes an accumulator that holds a `Vec<syn::Error>` to every fallible function.  If there's an error, it's added to the accumulator. 
-This pattern also means that instead of having to choose between emitting `T` or `syn::Error` (via a `Result<T, syn::Error>`), the programmer can do both by returning a `T` while mutating the accumulator. That would indicate the problem is more of a "warning error" if the data structure can still be safely returned. Functions that return `Option<T>` indicate they're likely holding one or more plain errors that would prevent code generation.
+Instead of using a `Result<T, syn::Error>` return, daft passes an accumulator that holds a `Vec<syn::Error>` to every fallible function.  If there's an error, it's added to the accumulator.
+This pattern also means that instead of having to choose between emitting `T` or `syn::Error` (via a `Result<T, syn::Error>`), the programmer can do both by returning a `T` while mutating the accumulator. That would indicate the problem is more of a "warning error" if the data structure can still be safely returned. Functions that return `Option<T>` indicate they're likely holding one or more plain errors that would prevent code generation when a `None` is returned.
 
 Beyond affording the ability to return code + errors, not using a Result means that the try operator (`?`) cannot be used accidentally for an early/eager return. This property encourages the macro author to capture as many errors as possible and emit them all instead of only emitting the first error. It's a neat pattern, but it's not the only way to accumulate errors.
 
 ## Alternative pattern for `syn::Error` accumulation
- 
-The `syn::Error` struct has the capability of combining multiple errors without an accumulator by using [`syn::Error::combine`](https://docs.rs/syn/2.0.100/syn/struct.Error.html#method.combine). For example: 
+
+The `syn::Error` struct has the capability of combining multiple errors without an accumulator by using [`syn::Error::combine`](https://docs.rs/syn/2.0.100/syn/struct.Error.html#method.combine). For example:
 
 ```rust
 let mut errors = VecDeque::<syn::Error>::new();
@@ -199,25 +202,19 @@ if let Some(mut first) = errors.pop_front() {
     for e in errors.into_iter() {
         first.combine(e);
     }
-	Err(first)
+    Err(first)
 } else {
-	Ok(
-	  // ...
-	)
+    Ok(
+    // ...
+    )
 }
 ```
 
-It is useful to allow multiple errors to be returned when the function signature isn't changeable. For example, the [`syn::parse::Parse`](https://docs.rs/syn/2.0.100/syn/parse/trait.Parse.html) trait is commonly used by proc macros as a building block, and it has a fixed signature:
+This pattern is useful when the function signature isn't changeable. For example, the [`syn::parse::Parse`](https://docs.rs/syn/2.0.100/syn/parse/trait.Parse.html) trait is commonly used by proc macros as a building block, and it has a fixed signature:
 
 ```rust
 fn parse(input: syn::parse::ParseStream<'_>) -> Result<T, syn::Error>
 ```
-
-The downside of this combining technique is that nothing prevents an early return on error with try (`?`). It also forces an either-or scenario. The coder can emit an error OR valid data for constructing code, but not both.
-
-I  was curious how this pattern would look implemented in place of the daft one, so I experimented with a [draft PR](https://github.com/schneems/daft/pull/1).
-
-> Note: The PR is to my own `main` branch, not theirs. I don't think any maintainer loves waking up to a giant PR with the words "refactoring" in it. 
 
 With this pattern, the error behavior of the function is encoded in its return type:
 
@@ -227,12 +224,22 @@ With this pattern, the error behavior of the function is encoded in its return t
   - `Ok((T, None))` indicates no errors
   - `Ok((T, Some()))` indicates an error that did not block code generation.
   - `Err()` indicates that code could not be generated due to error
-  
+
 That last one is verbose, but it prevents representing an invalid state when `None` code and `None` errors are returned simultaneously.
+
+The downside of this technique is that nothing prevents an early return on error with try (`?`). It also forces an either-or scenario. The coder can emit an error OR valid data for constructing code, but not both.
+
+I  was curious how this pattern would look implemented in place of the daft one, so I experimented with a [draft (not daft) PR](https://github.com/schneems/daft/pull/1).
+
+> Note: The PR is to my own `main` branch, not theirs. I don't think any maintainer loves waking up to a giant PR with the words "refactoring" in it.
 
 ## Wrap up
 
-Coming from Ruby, proc macros are wonderful things that allow Rust developers to write powerful and expressive DSLs, and I love them. With the power to meta-program, there's also the possibility to meta-confuse your end user or toolchain (like rust-analyzer). I love that the Daft maintainers put as much work and care into the failure modes as the rest of their logic. 
+We learned why `rust-analyzer` is sensitive to macro output. We explored the mechanics that Daft uses to emit code + errors, and  accumulate errors. I introduced an alternative error accumulation method and I made some strong statements. Namely that emitting code + errors is a nice-to-have while accumulating and emitting all errors is an achievable best practice.
 
-I'm working on a proc-macro tutorial and would love to hear from readers on [Mastodon](https://ruby.social/@Schneems) or Reddit about what real-world patterns you've seen around improving the end-user experience, especially around errors.
+Coming from Ruby, proc macros are wonderful things that allow Rust developers to write powerful and expressive DSLs, and I love them. With the power to meta-program, there's also the possibility to meta-confuse your end user or toolchain (like rust-analyzer). I love that the Daft maintainers put as much work and care into the failure modes as the rest of their logic in addition to accumulating and presenting as many errors as possible.
+
+I hoped you enjoyed learning about these patterns as much as I did.
+
+> FYI I'm working on a proc-macro tutorial and would love to hear from readers on [Mastodon](https://ruby.social/@Schneems) or Reddit about what real-world patterns you've seen around improving the end-user experience, especially around errors.
 
