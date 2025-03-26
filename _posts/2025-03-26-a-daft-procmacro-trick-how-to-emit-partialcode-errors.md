@@ -241,5 +241,5 @@ Coming from Ruby, proc macros are wonderful things that allow Rust developers to
 
 I hoped you enjoyed learning about these patterns as much as I did.
 
-> FYI I'm working on a proc-macro tutorial and would love to hear from readers on [Mastodon](https://ruby.social/@Schneems) or Reddit about what real-world patterns you've seen around improving the end-user experience, especially around errors.
+> FYI I'm working on a proc-macro tutorial and would love to hear from readers on [Mastodon](https://ruby.social/@Schneems) or [Reddit](https://www.reddit.com/r/rust/comments/1jkisf1/a_daft_procmacro_trick_how_to_emit_partialcode/) about what real-world patterns you've seen around improving the end-user experience, especially around errors.
 
