@@ -227,11 +227,11 @@ With this pattern, the error behavior of the function is encoded in its return t
 
 That last one is verbose, but it prevents representing an invalid state when `None` code and `None` errors are returned simultaneously.
 
-The downside of this technique is that nothing prevents an early return on error with try (`?`). It also forces an either-or scenario. The coder can emit an error OR valid data for constructing code, but not both.
+The downside of this technique is that nothing prevents an early return on error with try (`?`).
 
 I  was curious how this pattern would look implemented in place of the daft one, so I experimented with a [draft (not daft) PR](https://github.com/schneems/daft/pull/1).
 
-> Note: The PR is to my own `main` branch, not theirs. I don't think any maintainer loves waking up to a giant PR with the words "refactoring" in it.
+> Note: The PR is to my own `main` branch, not theirs. I don't think any maintainer loves waking up to a giant PR with the "refactoring" in it.
 
 ## Wrap up
 
