@@ -10,6 +10,8 @@ categories:
     - proc-macro
 ---
 
+> Update (2025/04/02): The change I suggested below was [merged in PR #64](https://github.com/oxidecomputer/daft/pull/64). It's pretty neat I went from knowing nothing about this project to contributing to it in the span of a single blog post.
+
 A recent Oxide and Friends podcast episode, "A crate is born," detailed the creation of a proc macro for deriving "diffable" data structures with a trick I want to tell you about. To help rust-analyzer as much as possible, [@rain](https://hachyderm.io/@rain) explained that the macro should always emit as much valid source code as possible, even when an error is emitted. They didn't go into detail, so I looked into the internals that made this code + error emitting behavior possible and wanted to share.
 
 > [Podcast link: A Crate is Born](https://oxide-and-friends.transistor.fm/episodes/a-crate-is-born)
