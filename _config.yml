@@ -14,7 +14,7 @@ rss_description:  >
   Ruby Hero.
   Runs CodeTriage.com.
   Works for Heroku.
-  Posts on programming and open source."
+  Posts on programming and open source.
 
 url:              https://www.schneems.com
 rss_path:         feed.xml
