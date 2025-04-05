@@ -69,6 +69,7 @@ I love the compactness of this config. TravisCI was initially built with Ruby li
 
 Now here's what I ended up with for a roughly equivalent CircleCI config (with some Ruby versions changed):
 
+{% raw %}
 ```yaml
 version: 2.1
 orbs:
@@ -136,6 +137,7 @@ workflows:
               - ruby_version: "3.0"
                 gemfile: rails_5_2.gemfile
 ```
+{% endraw %}
 
 ## Break it down, start at the end
 
@@ -238,6 +240,7 @@ Some steps are provided by CircleCI (like `checkout`), which checks out your sou
 
 Each reference is defined with a name and a command. The `restore` and `save` references use some other pre-defined keys like `restore_cache` and `save_cache`.
 
+{% raw %}
 ```yaml
 references:
   run_tests: &run_tests
@@ -271,6 +274,7 @@ references:
         bundle update
         bundle clean
 ```
+{% endraw %}
 
 
 Let's look at this in step order:
@@ -287,6 +291,7 @@ Let's look at this in step order:
 
 First is `set_git_config`:
 
+{% raw %}
 ```yaml
   # Needed because tests execute raw git commands
   set_git_config: &set_git_config
@@ -294,17 +299,20 @@ First is `set_git_config`:
       name: Set Git config
       command: git config --global user.email "you@example.com"; git config --global user.name "Your Name"
 ```
+{% endraw %}
 
 As the comment states, I only need this because some derailed tests are using raw git commands. When it executes, it will run `git config --global user.email "you@example.com"; git config --global user.name "Your Name"` on the shell.
 
 Next is restore:
 
+{% raw %}
 ```yaml
   restore: &restore
     restore_cache:
       keys:
         - v1_bundler_deps-{{ .Environment.CIRCLE_JOB }}
 ```
+{% endraw %}
 
 Here we're setting a cache key based on the name of the CircleCI job. I want to store Gem dependencies in the cache so that test runs are faster. Setting this cache key is how it knows which cache to restore.
 
@@ -350,6 +358,7 @@ CircleCI does provide a Ruby "orb," which is effectively some pre-packaged refer
 
 After dependencies are installed then they're cached:
 
+{% raw %}
 ```yaml
   save: &save
     save_cache:
@@ -357,6 +366,7 @@ After dependencies are installed then they're cached:
         - ./vendor/bundle
       key: v1_bundler_deps-{{ .Environment.CIRCLE_JOB }} # CIRCLE_JOB e.g. "ruby-2.5"
 ```
+{% endraw %}
 
 The last reference to mention is pretty self-explanatory:
 
@@ -393,4 +403,3 @@ Here's some other examples of CircleCI test config for libraries:
 
 - [valut-rails config.yml](https://github.com/hashicorp/vault-rails/blob/024ac42761a1e9491f4e502ad9c55c85f5c59d24/.circleci/config.yml)
 - [apartment config.yml](https://github.com/rails-on-services/apartment/blob/30f08c4b41b448172b319a5c40a9ad69302359ef/.circleci/config.yml)
-
