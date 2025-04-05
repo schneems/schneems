@@ -18,8 +18,8 @@
           <![CDATA[{{ post_summary | strip_html | normalize_whitespace }}]]>
         </summary>
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ site.BASE_PATH_FOR_RSS }}{{ post.url }}</link>
-        <guid isPermaLink="true">{{ site.BASE_PATH_FOR_RSS }}{{ post.url }}</guid>
+        <link href="{{ post.url | absolute_url }}" rel="alternate" type="text/html" title="{{ post.title }}" />
+        <guid isPermaLink="true">{{ post.url | absolute_url }}</guid>
       </item>
     {% endfor %}
   </channel>
