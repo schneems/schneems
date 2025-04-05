@@ -8,90 +8,142 @@ tags:
 - active record
 permalink: /post/28125445535/active-record-deep-dive
 ---
-<p>If you&#8217;re new to Rails and Active Record, or you&#8217;ve been using them for some time, there are likely methods you&#8217;ve been overlooking. This week I take a look at the most common <a href="https://guides.rubyonrails.org/active_record_querying.html">SQL Query interfaces for Active Record</a>. Finally we wrap up by talking about how Active Record allows us to chain together methods, how we can prevent SQL injection attacks on our websites, and how to read Ruby Documentation.</p>
+<p>If you&#8217;re new to Rails and Active Record, or you&#8217;ve been using them for some time, there are likely
+  methods you&#8217;ve been overlooking. This week I take a look at the most common <a
+    href="https://guides.rubyonrails.org/active_record_querying.html">SQL Query interfaces for Active Record</a>.
+  Finally we wrap up by talking about how Active Record allows us to chain together methods, how we can prevent SQL
+  injection attacks on our websites, and how to read Ruby Documentation.</p>
 
 <blockquote>
-  <p>Watch the video <a href="https://youtu.be/NAyJBFkUZN8">Recap of last week</a> and take the <a href="https://gist.github.com/3118875">quiz</a> before looking at the <a href="https://gist.github.com/3183527">solutions</a>.</p>
+  <p>Watch the video <a href="https://youtu.be/NAyJBFkUZN8">Recap of last week</a> and take the <a
+      href="https://gist.github.com/3118875">quiz</a> before looking at the <a
+      href="https://gist.github.com/3183527">solutions</a>.</p>
 </blockquote>
 
-<p>Feel free to skip around, most of the videos are self explanatory. This is week 7 of my <a href="https://www.schneems.com/ut-rails">Databases &amp; Rails</a> course taught at the University of Texas. If you&#8217;re new to databases you might want to start out with <a href="https://www.schneems.com/2012/06/14/databases-rails-week-1-introduction.html">Why and how to use a database</a>, and if you&#8217;re not familiar with Active Record Relationships you will get more out of this if you watch <a href="https://www.schneems.com/2012/06/20/databases-rails-week-2-modeling-relationships-and.html">modeling relationships</a> first.</p>
+<p>Feel free to skip around, most of the videos are self explanatory. This is week 7 of my <a
+    href="https://www.schneems.com/ut-rails">Databases &amp; Rails</a> course taught at the University of Texas. If
+  you&#8217;re new to databases you might want to start out with <a
+    href="https://www.schneems.com/2012/06/14/databases-rails-week-1-introduction.html">Why and how to use a
+    database</a>, and if you&#8217;re not familiar with Active Record Relationships you will get more out of this if you
+  watch <a href="https://www.schneems.com/2012/06/20/databases-rails-week-2-modeling-relationships-and.html">modeling
+    relationships</a> first.</p>
 
 <p><a href="https://youtu.be/JUTXqWlqGHY">Active Record: Where</a></p>
 
-<p>With a Active Record  we can use <code>where</code> to pull data from our database using a set of criteria. We can use a hash syntax, insert plain SQL, or use a query string escaped syntax. The <code>where</code> method can be used to return back objects or a collection of objects from the database.</p>
+<p>With a Active Record we can use <code>where</code> to pull data from our database using a set of criteria. We can use
+  a hash syntax, insert plain SQL, or use a query string escaped syntax. The <code>where</code> method can be used to
+  return back objects or a collection of objects from the database.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JUTXqWlqGHY?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JUTXqWlqGHY?rel=0" frameborder="0"
+  allowfullscreen></iframe>
 
 <p><a href="https://youtu.be/Qplus6HoFb8">Active Record: Includes</a></p>
 
 <p>Active Record: includes helps us to eager load data where appropriate and avoid N+1 query problems.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Qplus6HoFb8?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Qplus6HoFb8?rel=0" frameborder="0"
+  allowfullscreen></iframe>
 
 <p><a href="https://youtu.be/RIxolY196b0">Active Record: Find</a></p>
 
-<p>Using Find in Active Record is much like <code>where</code> but only looks up via primary key. If the record is not found an error will be raised.</p>
+<p>Using Find in Active Record is much like <code>where</code> but only looks up via primary key. If the record is not
+  found an error will be raised.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RIxolY196b0?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RIxolY196b0?rel=0" frameborder="0"
+  allowfullscreen></iframe>
 
 <p><a href="https://youtu.be/Rio_ES75xuA">Active Record: Order</a></p>
 
 <p>The order of your data can be controlled in Active Record using the <code>order</code> method.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Rio_ES75xuA?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Rio_ES75xuA?rel=0" frameborder="0"
+  allowfullscreen></iframe>
 
 <p><a href="https://youtu.be/Mwqsg3BEaig">Active Record: Limit</a></p>
 
-<p>Sometimes we don&#8217;t want to return too much data, when we have a large dataset we can use <code>limit</code> to decrease our results.</p>
+<p>Sometimes we don&#8217;t want to return too much data, when we have a large dataset we can use <code>limit</code> to
+  decrease our results.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Mwqsg3BEaig?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Mwqsg3BEaig?rel=0" frameborder="0"
+  allowfullscreen></iframe>
 
 <p><a href="https://youtu.be/X8TyHMPiE_8">Active Record: Offset</a></p>
 
-<p>Imagine you&#8217;re an online retailer like <a href="https://amazon.com">Amazon</a> if someone is looking for frying pans, you&#8217;re not going to show them <em>every</em> frying pan you have on one page, it would be hard to look at, and wreak havoc on your server. You can use <code>offset</code> and <code>limit</code> together to &#8220;paginate&#8221; data. That is only showing 20, 50, 100, etc. items per page.</p>
+<p>Imagine you&#8217;re an online retailer like <a href="https://amazon.com">Amazon</a> if someone is looking for frying
+  pans, you&#8217;re not going to show them <em>every</em> frying pan you have on one page, it would be hard to look at,
+  and wreak havoc on your server. You can use <code>offset</code> and <code>limit</code> together to
+  &#8220;paginate&#8221; data. That is only showing 20, 50, 100, etc. items per page.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/X8TyHMPiE_8?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/X8TyHMPiE_8?rel=0" frameborder="0"
+  allowfullscreen></iframe>
 
 <p><a href="https://youtu.be/wjEeLjGkBeA">Active Record: Joins</a></p>
 
-<p>Understanding joining data is the foundation of building and traversing databases. Learn the concepts behind joining two tables and the differences between an inner and outer join. If you&#8217;re new to the concept of has many or belongs to you should watch the videos from week 2&#160;<a href="https://www.schneems.com/2012/06/20/databases-rails-week-2-modeling-relationships-and.html">modeling relationships with Active Record</a>.</p>
+<p>Understanding joining data is the foundation of building and traversing databases. Learn the concepts behind joining
+  two tables and the differences between an inner and outer join. If you&#8217;re new to the concept of has many or
+  belongs to you should watch the videos from week 2&#160;<a
+    href="https://www.schneems.com/2012/06/20/databases-rails-week-2-modeling-relationships-and.html">modeling
+    relationships with Active Record</a>.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/wjEeLjGkBeA?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wjEeLjGkBeA?rel=0" frameborder="0"
+  allowfullscreen></iframe>
 
-<p>I came to Rails with no database background, learning to effectively understand and leverege joins has made a tremendous impact on the performance and quality of code i&#8217;m able to write in Rails.</p>
+<p>I came to Rails with no database background, learning to effectively understand and leverege joins has made a
+  tremendous impact on the performance and quality of code i&#8217;m able to write in Rails.</p>
 
 <p><a href="https://youtu.be/s0KTEtVQ_AY">Active Record Group</a></p>
 
-<p>We can group together similar terms inside of our database, we can use this for performing aggregate calculations, or for limiting search results to one result per grouped attribute.</p>
+<p>We can group together similar terms inside of our database, we can use this for performing aggregate calculations, or
+  for limiting search results to one result per grouped attribute.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/s0KTEtVQ_AY?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s0KTEtVQ_AY?rel=0" frameborder="0"
+  allowfullscreen></iframe>
 
 <p><a href="https://youtu.be/DaTbG91yZ30">Active Record: Having</a></p>
 
-<p>Possibly one of the most confusing methods of the set, having is used to query against aggregated results. Typically <code>having</code> and <code>group</code> are used together. Having can be very useful when getting metrics about your data. For example if you have a user model, a course model, and a role model so that users can sign up to take courses through roles then we might want to see the average number of courses users have taken. We can do this with <code>having</code>.</p>
+<p>Possibly one of the most confusing methods of the set, having is used to query against aggregated results. Typically
+  <code>having</code> and <code>group</code> are used together. Having can be very useful when getting metrics about
+  your data. For example if you have a user model, a course model, and a role model so that users can sign up to take
+  courses through roles then we might want to see the average number of courses users have taken. We can do this with
+  <code>having</code>.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DaTbG91yZ30?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DaTbG91yZ30?rel=0" frameborder="0"
+  allowfullscreen></iframe>
 
 <p><a href="https://youtu.be/8JhKYbxdgck">Just in Time SQL Queries with Active Record</a></p>
 
-<p>The interface for Active Record has improved dramatically since the early days of rails. See the mechanism behind how we are able to chain together methods to produce SQL queries, and how this same mechanism protects against un-used sql queries from taking up too much time on a page.</p>
+<p>The interface for Active Record has improved dramatically since the early days of rails. See the mechanism behind how
+  we are able to chain together methods to produce SQL queries, and how this same mechanism protects against un-used sql
+  queries from taking up too much time on a page.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8JhKYbxdgck?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8JhKYbxdgck?rel=0" frameborder="0"
+  allowfullscreen></iframe>
 
 <p><a href="https://youtu.be/s4QxOxGL1tI">Preventing SQL Injection Attacks</a></p>
 
-<p>As even <a href="https://xkcd.com/327/">XKCD</a> knows, SQL injection is an all to real danger to database backed software. Learn how to craft a SQL injection attack inorder to protect your own code by using safe Active Record practices.</p>
+<p>As even <a href="https://xkcd.com/327/">XKCD</a> knows, SQL injection is an all to real danger to database backed
+  software. Learn how to craft a SQL injection attack inorder to protect your own code by using safe Active Record
+  practices.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/s4QxOxGL1tI?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s4QxOxGL1tI?rel=0" frameborder="0"
+  allowfullscreen></iframe>
 
 <p><a href="https://youtu.be/pNWqAcWMMQE">Reading Ruby Documentation</a></p>
 
-<p>Quite possibly the most important skill of any Ruby programmer, reading documentation effectively is critical. We&#8217;ll take a look at the Ruby docs for Array which will help quite a bit with the exercise. Sometimes we might want to manipulate the results of our data set after we&#8217;ve gotten it back from the database, since returning a collection of objects will return as an Array in Rails, we can</p>
+<p>Quite possibly the most important skill of any Ruby programmer, reading documentation effectively is critical.
+  We&#8217;ll take a look at the Ruby docs for Array which will help quite a bit with the exercise. Sometimes we might
+  want to manipulate the results of our data set after we&#8217;ve gotten it back from the database, since returning a
+  collection of objects will return as an Array in Rails, we can</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/pNWqAcWMMQE?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pNWqAcWMMQE?rel=0" frameborder="0"
+  allowfullscreen></iframe>
 
-<p>If you liked the videos please take a moment to <a href="https://youtube.com/user/schneems">subscribe to my youtube channel</a>, follow me, <a href="https://twitter.com/schneems">@schneems</a>, on twitter, or subscribe to my tumblr blog. If you know someone learning rails for the first time or just looking to get better, a referral to this material would make a huge difference. Thanks for sticking around and have a great week!</p>
+<p>If you liked the videos please take a moment to <a href="https://youtube.com/user/schneems">subscribe to my youtube
+    channel</a>, follow me, <a href="https://ruby.social/@Schneems">@schneems</a>, on twitter, or subscribe to my tumblr
+  blog. If you know someone learning rails for the first time or just looking to get better, a referral to this material
+  would make a huge difference. Thanks for sticking around and have a great week!</p>
 
 <h2>Exercise</h2>
 
-<p>Use the docs to get the tests to pass for <a href="https://github.com/schneems/arrays_and_active_record">Arrays, Active Record and Hashes</a></p>
+<p>Use the docs to get the tests to pass for <a href="https://github.com/schneems/arrays_and_active_record">Arrays,
+    Active Record and Hashes</a></p>

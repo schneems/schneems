@@ -5,30 +5,74 @@ date: '2012-07-03T09:54:01-05:00'
 tags:
 permalink: /post/26418738373/databases-rails-week-4-routing
 ---
-<p><a href="https://www.schneems.com/2012/06/26/databases-rails-week-3-pure-ruby-views.html">Last week</a> we did a whole lot of Ruby View coding, using HTML and ERB to build websites. This week we&#8217;re going to focus on routing in the lecture, and then use routing to build a rails site that uses views and models together. You can start off by watching the <a href="https://www.youtube.com/watch?v=y3erADuKFwM">Recap of Week 3</a> and then taking the <a href="https://gist.github.com/3036609">week 3 quiz</a> before viewing the <a href="https://gist.github.com/2990855">week 3 solutions</a>.</p>
+<p><a href="https://www.schneems.com/2012/06/26/databases-rails-week-3-pure-ruby-views.html">Last week</a> we did a
+    whole lot of Ruby View coding, using HTML and ERB to build websites. This week we&#8217;re going to focus on routing
+    in the lecture, and then use routing to build a rails site that uses views and models together. You can start off by
+    watching the <a href="https://www.youtube.com/watch?v=y3erADuKFwM">Recap of Week 3</a> and then taking the <a
+        href="https://gist.github.com/3036609">week 3 quiz</a> before viewing the <a
+        href="https://gist.github.com/2990855">week 3 solutions</a>.</p>
 
 <h2>Week 4 Videos</h2>
 
-<p>First we&#8217;re going to loosely define routes to be a combination of URL and HTTP verb, then we&#8217;re going to dig into the different parts of a URL in this vide:</p>
+<p>First we&#8217;re going to loosely define routes to be a combination of URL and HTTP verb, then we&#8217;re going to
+    dig into the different parts of a URL in this vide:</p>
 
-<p><object width="560" height="315"><param name="movie" value="https://www.youtube.com/v/-ubepKj-hxA?version=3&amp;hl=en_US&amp;rel=0"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="https://www.youtube.com/v/-ubepKj-hxA?version=3&amp;hl=en_US&amp;rel=0" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
+<p><object width="560" height="315">
+        <param name="movie" value="https://www.youtube.com/v/-ubepKj-hxA?version=3&amp;hl=en_US&amp;rel=0">
+        <param name="allowFullScreen" value="true">
+        <param name="allowscriptaccess" value="always"><embed
+            src="https://www.youtube.com/v/-ubepKj-hxA?version=3&amp;hl=en_US&amp;rel=0"
+            type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always"
+            allowfullscreen="true"></embed>
+    </object></p>
 
 <p>Next we explore HTTP and HTTP verbs. We will go over the differences between GET and POST requests.</p>
 
-<p><object width="560" height="315"><param name="movie" value="https://www.youtube.com/v/kGOpY2J31pI?version=3&amp;hl=en_US&amp;rel=0"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="https://www.youtube.com/v/kGOpY2J31pI?version=3&amp;hl=en_US&amp;rel=0" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
+<p><object width="560" height="315">
+        <param name="movie" value="https://www.youtube.com/v/kGOpY2J31pI?version=3&amp;hl=en_US&amp;rel=0">
+        <param name="allowFullScreen" value="true">
+        <param name="allowscriptaccess" value="always"><embed
+            src="https://www.youtube.com/v/kGOpY2J31pI?version=3&amp;hl=en_US&amp;rel=0"
+            type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always"
+            allowfullscreen="true"></embed>
+    </object></p>
 
-<p>We continue on with the concept of REST (REpresentational State Transfer) and RESTful routes, don&#8217;t worry it sounds scarier than it is.</p>
+<p>We continue on with the concept of REST (REpresentational State Transfer) and RESTful routes, don&#8217;t worry it
+    sounds scarier than it is.</p>
 
-<p><object width="560" height="315"><param name="movie" value="https://www.youtube.com/v/gw3HM-2dOoo?version=3&amp;hl=en_US&amp;rel=0"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="https://www.youtube.com/v/gw3HM-2dOoo?version=3&amp;hl=en_US&amp;rel=0" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
+<p><object width="560" height="315">
+        <param name="movie" value="https://www.youtube.com/v/gw3HM-2dOoo?version=3&amp;hl=en_US&amp;rel=0">
+        <param name="allowFullScreen" value="true">
+        <param name="allowscriptaccess" value="always"><embed
+            src="https://www.youtube.com/v/gw3HM-2dOoo?version=3&amp;hl=en_US&amp;rel=0"
+            type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always"
+            allowfullscreen="true"></embed>
+    </object></p>
 
-<p>Finally we bring all of these concepts together to show you how you can make a combination of a URL &amp; HTTP verb (a route) render a view action in your application:</p>
+<p>Finally we bring all of these concepts together to show you how you can make a combination of a URL &amp; HTTP verb
+    (a route) render a view action in your application:</p>
 
-<p><object width="560" height="315"><param name="movie" value="https://www.youtube.com/v/9xHDV7omrb4?version=3&amp;hl=en_US&amp;rel=0"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="https://www.youtube.com/v/9xHDV7omrb4?version=3&amp;hl=en_US&amp;rel=0" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
+<p><object width="560" height="315">
+        <param name="movie" value="https://www.youtube.com/v/9xHDV7omrb4?version=3&amp;hl=en_US&amp;rel=0">
+        <param name="allowFullScreen" value="true">
+        <param name="allowscriptaccess" value="always"><embed
+            src="https://www.youtube.com/v/9xHDV7omrb4?version=3&amp;hl=en_US&amp;rel=0"
+            type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always"
+            allowfullscreen="true"></embed>
+    </object></p>
 
 <h2>Exercise</h2>
 
-<p>When you&#8217;re done watching the material for the week, head on over to the <a href="https://github.com/schneems/routes_controller_exercise">Routes, View &amp; Model Exercise</a>. We&#8217;ll take a look at how the view and model can interact to fetch data from our database as well as to insert data. We&#8217;ll be making our own routes and learning a bit about how to use the log. Hope you have as much fun doing this exercise as I had writing it.</p>
+<p>When you&#8217;re done watching the material for the week, head on over to the <a
+        href="https://github.com/schneems/routes_controller_exercise">Routes, View &amp; Model Exercise</a>. We&#8217;ll
+    take a look at how the view and model can interact to fetch data from our database as well as to insert data.
+    We&#8217;ll be making our own routes and learning a bit about how to use the log. Hope you have as much fun doing
+    this exercise as I had writing it.</p>
 
 <h2>Thanks</h2>
 
-<p>You&#8217;re almost half way done with the course by now, I&#8217;m glad you decided to pick up Rails &amp; Ruby, the world needs more people like you! To help follow along you can <a href="https://youtube.com/user/schneems">subscribe to my youtube channel</a>, where I always post videos before I write my blog entries. You can also follow <a href="https://www.schneems.com">my tumblr</a> or <a href="https://twitter.com/schneems">@schneems on twitter</a> if you like this course, or you just want more material on Ruby, Rails and programming.</p>
+<p>You&#8217;re almost half way done with the course by now, I&#8217;m glad you decided to pick up Rails &amp; Ruby, the
+    world needs more people like you! To help follow along you can <a href="https://youtube.com/user/schneems">subscribe
+        to my youtube channel</a>, where I always post videos before I write my blog entries. You can also follow <a
+        href="https://www.schneems.com">my tumblr</a> or <a href="https://ruby.social/@Schneems">@schneems on
+        twitter</a> if you like this course, or you just want more material on Ruby, Rails and programming.</p>

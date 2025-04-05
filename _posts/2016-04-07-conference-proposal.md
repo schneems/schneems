@@ -129,7 +129,7 @@ Look at the talks that were accepted, what did they have in common with your pro
 
 Again, it may have been blind luck that their talk was chosen, or maybe they did something implicitly different than you, or maybe it was bad luck that your talk wasn't chosen. The only thing you can do is try to get more data points, just don't try to read too much into each of those. Here's the [three proposals I submitted this year](https://gist.github.com/schneems/addf56997bb27f898682) (reviews are blind and I'm programmatically prohibited from voting on your my talks, reviewers are encouraged to submit talks). The "Saving Sprockets" was chosen, why? Who knows. Don't take these as good or bad examples, they just are. What did you like about them? What did you dislike? What have I recommended to do here that I didn't do well in my proposals?
 
-I really want to give the "Everyday Heroes" sometime, it's more of a non-code talk that I think has really broad appeal with some useful ways to think about the world. However I seem to be better at writing proposals for more technical content. BTW. don't comment on the gist, GitHub doesn't send any notifications you can send comments [via @schneems on twitter](https://twitter.com/schneems).
+I really want to give the "Everyday Heroes" sometime, it's more of a non-code talk that I think has really broad appeal with some useful ways to think about the world. However I seem to be better at writing proposals for more technical content. BTW. don't comment on the gist, GitHub doesn't send any notifications you can send comments [via @schneems on twitter](https://ruby.social/@Schneems).
 
 ## Your First Conf Proposal
 

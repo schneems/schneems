@@ -4,7 +4,7 @@ title: "The 'Goal' of Performance Tuning"
 date: 2016-07-20
 published: true
 author_name: Richard Schneeman
-author_url: https://twitter.com/schneems
+author_url: https://ruby.social/@Schneems
 ---
 
 How do we make our programs faster? How do we make anything faster?

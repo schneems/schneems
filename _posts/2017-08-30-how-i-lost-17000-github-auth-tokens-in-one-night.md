@@ -5,7 +5,7 @@ published: true
 date: 2017-08-30
 permalink: /2017/08/30/how-i-lost-17000-github-auth-tokens-in-one-night/
 image: og/auth-tokens.png
-twurl: https://twitter.com/schneems/status/902973227974234114
+twurl: https://ruby.social/@Schneems/status/902973227974234114
 hnurl: https://news.ycombinator.com/item?id=15135049
 categories:
     - ruby

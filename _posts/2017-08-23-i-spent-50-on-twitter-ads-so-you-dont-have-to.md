@@ -4,7 +4,7 @@ layout: post
 published: true
 date: 2017-08-23
 permalink: /2017/08/23/i-spent-50-on-twitter-ads-so-you-dont-have-to/
-twurl: https://twitter.com/schneems/status/900371060675227648
+twurl: https://ruby.social/@Schneems/status/900371060675227648
 hnurl: https://news.ycombinator.com/item?id=15081934
 image: og/twitterads.png
 categories:
@@ -22,7 +22,7 @@ These two articles represent tens of thousands of page views without any kind of
 
 We'll start with my first promoted tweet:
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">One query can wreck your database performance. Find out how I found this silent killer and sped up my app<a href="https://t.co/KZ6WHUXWJO">https://t.co/KZ6WHUXWJO</a></p>&mdash; Richard Schneeman (@schneems) <a href="https://twitter.com/schneems/status/887347146571345920">July 18, 2017</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">One query can wreck your database performance. Find out how I found this silent killer and sped up my app<a href="https://t.co/KZ6WHUXWJO">https://t.co/KZ6WHUXWJO</a></p>&mdash; Richard Schneeman (@schneems) <a href="https://ruby.social/@Schneems/status/887347146571345920">July 18, 2017</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 I got the idea to promote this tweet while I was clicking the "engagements" tab. There's a little "promote this tweet" button right there.  This next screenshot is not the tweet I promoted, but it will give you an idea of the interface:
@@ -76,7 +76,7 @@ I had some theories though. Maybe twitter didn't do a good job of picking out wh
 
 That's what I did. Luckily it didn't take long for another article to get traction (I have no idea when I write them which will do REALLY well or won't). Here's the tweet:
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">What happened when I compared the &quot;slowest&quot; server in Ruby to NGINX? The results surprised even me <a href="https://t.co/kGjLc8ZbBV">https://t.co/kGjLc8ZbBV</a></p>&mdash; Richard Schneeman (@schneems) <a href="https://twitter.com/schneems/status/892470634281930752">August 1, 2017</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">What happened when I compared the &quot;slowest&quot; server in Ruby to NGINX? The results surprised even me <a href="https://t.co/kGjLc8ZbBV">https://t.co/kGjLc8ZbBV</a></p>&mdash; Richard Schneeman (@schneems) <a href="https://ruby.social/@Schneems/status/892470634281930752">August 1, 2017</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Now I did have the benefit of retweets on this one from Matz and DHH, so my organic numbers are way higher. I got 61,329 "impressions" and 1,831 organic link clicks from this tweet. According to twitter analytics, it puts me again around the 4% engagement rate.

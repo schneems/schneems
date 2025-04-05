@@ -89,4 +89,4 @@ The best way to prove any technical writing is to try it out on someone new to t
 
 Thanks for following along and next time you write technical material don't forget **Prepare**, **Do**, and **Test**.
 
-<hr>Thanks for reading, if you liked these tips follow <a href="https://twitter.com/schneems">@schneems</a> on twitter or ~~tumblr~~.
+<hr>Thanks for reading, if you liked these tips follow <a href="https://ruby.social/@Schneems">@schneems</a> on twitter or ~~tumblr~~.

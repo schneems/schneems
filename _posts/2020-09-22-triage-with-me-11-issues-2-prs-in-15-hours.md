@@ -24,7 +24,7 @@ The videos are split up into 4 sections with a bonus video at the end of my work
 > Recommended: Increasing your resolution on YouTube to the maximum so you can read the text better.
 > Recommended: Increasing the playback speed to 1.5x or higher since I didn't cut out the "umms" and pauses either.
 
-If you like this "with me" series, find me on [twitter @schneems](https://twitter.com/schneems) and pitch me what you would like for me to work on live and record for another session.
+If you like this "with me" series, find me on [twitter @schneems](https://ruby.social/@Schneems) and pitch me what you would like for me to work on live and record for another session.
 
 ## Triage session 1/4
 
@@ -244,5 +244,5 @@ irb(main):004:0> URI.escape("url here")
 
 ## Wrap Up
 
-If you're inspired to go work on some open-source issues and don't know where to get started, I recommend [signing up for CodeTriage](https://www.codetriage.com). If you like this "with me" series, find me on [twitter @schneems](https://twitter.com/schneems) and pitch me what you would like for me to work on live and record for another session. You can also [subscribe to my email newsletter](https://schneems.com/mailinglist) to get more content.
+If you're inspired to go work on some open-source issues and don't know where to get started, I recommend [signing up for CodeTriage](https://www.codetriage.com). If you like this "with me" series, find me on [twitter @schneems](https://ruby.social/@Schneems) and pitch me what you would like for me to work on live and record for another session. You can also [subscribe to my email newsletter](https://schneems.com/mailinglist) to get more content.
 

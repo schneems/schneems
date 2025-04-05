@@ -5,7 +5,7 @@ published: true
 date: 2017-08-01
 permalink: /2017/08/01/is-webrick-webscale/
 hnurl: https://news.ycombinator.com/item?id=14904375
-twurl: https://twitter.com/schneems/status/892470634281930752
+twurl: https://ruby.social/@Schneems/status/892470634281930752
 loburl: https://lobste.rs/s/76pnia/is_webrick_webscale
 image: og/webrick.png
 categories:
@@ -163,7 +163,7 @@ At the end of the day, NGINX beat our little WEBrick server, but that's expected
 ruby -rwebrick -e "WEBrick::HTTPServer.new(:Port => ENV['PORT'], :DocumentRoot => ENV['HOME']).start"
 ```
 
-> Or even simpler [with this one weird trick](https://twitter.com/schneems/status/892414459846832128)
+> Or even simpler [with this one weird trick](https://ruby.social/@Schneems/status/892414459846832128)
 
 Would I ever encourage you to deploy a top [500 Alexa](http://www.alexa.com/topsites) site with WEBrick? Absolutely not, but that doesn't mean it's worthless. It has served me and my site well.
 

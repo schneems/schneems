@@ -86,5 +86,5 @@ Many Ruby programmers follow the Red/Green/Refactor methodology. They write a fa
 Now here's your homework: upgrade to Mail 2.6.3 or above and start benchmarking your application. For extra credit, you can work with the libraries you use every day to make them faster for everyone! Don't forget to include your benchmark methodology and results.
 
 ---
-If you like high-speed applications, benchmarking Rails or photos of dachshunds follow [@schneems](https://twitter.com/schneems).
+If you like high-speed applications, benchmarking Rails or photos of dachshunds follow [@schneems](https://ruby.social/@Schneems).
 

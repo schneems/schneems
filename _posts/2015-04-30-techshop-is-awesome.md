@@ -59,5 +59,5 @@ It's not all rainbows and unicorn's, there's some downsides to using a community
 When it comes to tools for a project the "I just need one more" is always present. Next time you find yourself in need, consider tech shop.
 
 ---
-If you like building stuff or reading about building stuff follow [@schneems](https://twitter.com/schneems) and [@rubyku](https://twitter.com/rubyku).
+If you like building stuff or reading about building stuff follow [@schneems](https://ruby.social/@Schneems) and [@rubyku](https://twitter.com/rubyku).
 

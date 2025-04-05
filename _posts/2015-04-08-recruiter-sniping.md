@@ -47,4 +47,4 @@ An unexpected benefit of responding to recruiters, is they quit bugging you. Onc
 > Update: [Conversations on Reddit](https://www.reddit.com/r/programming/comments/31vsf4/recruiter_sniping/). If you're hung up on the salary portion of this post, then you missed the main point and it wasn't written for you...sorry #notallrecruiters.
 
 ---
-Follow [@schneems](https://twitter.com/schneems) for more on open source, remote life, and messing with recruiters' heads.
+Follow [@schneems](https://ruby.social/@Schneems) for more on open source, remote life, and messing with recruiters' heads.

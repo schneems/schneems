@@ -727,4 +727,4 @@ If you've never submitted a feature PR to a major open source project, don't let
 If you wanted to make a change this large, if it all possible if you can make it as a gem first it's best so even if the core team doesn't immediately want your patch, others (including you) can still use it. On the flip side, if you're in the middle of a really gnarly patch and the back and forth with the maintainers seems to take forever, don't give up. It can be normal, even for someone who does this kind of work on a daily or weekly basis.
 
 ---
-If you liked this consider [following @schneems on twitter](https://twitter.com/schneems) or signing up to get [new articles in your inbox](https://eepurl.com/bbuvuz) (about 1 email a week when I'm on a roll).
+If you liked this consider [following @schneems on twitter](https://ruby.social/@Schneems) or signing up to get [new articles in your inbox](https://eepurl.com/bbuvuz) (about 1 email a week when I'm on a roll).

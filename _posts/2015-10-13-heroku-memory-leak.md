@@ -4,7 +4,7 @@ title: "Debugging a Memory Leak on Heroku"
 date: 2015-10-13
 published: true
 author_name: Richard Schneeman
-author_url: https://twitter.com/schneems
+author_url: https://ruby.social/@Schneems
 ---
 
 

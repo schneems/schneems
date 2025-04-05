@@ -35,7 +35,7 @@ If you're not in Texas it's a bit trickier, your only option is phone banking (u
 
 ## Why Block walk and Call
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Went block walking this morning for Beto with the family. We found 4 “I don’t vote” people and probably changed the mind of 3 of them. Texts and cash don’t have this kind of impact.<br><br>👏 Go 👏 knock 👏 on 👏 doors 👏</p>&mdash; Richard Schneeman 🤠 Vote Today for Beto (@schneems) <a href="https://twitter.com/schneems/status/1054062962632200192?ref_src=twsrc%5Etfw">October 21, 2018</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Went block walking this morning for Beto with the family. We found 4 “I don’t vote” people and probably changed the mind of 3 of them. Texts and cash don’t have this kind of impact.<br><br>👏 Go 👏 knock 👏 on 👏 doors 👏</p>&mdash; Richard Schneeman 🤠 Vote Today for Beto (@schneems) <a href="https://ruby.social/@Schneems/status/1054062962632200192?ref_src=twsrc%5Etfw">October 21, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 The goal of block walking and calling is not to convince people to "switch sides" it's to find people who support Beto's causes, but might have never had anyone personally ask them to vote. The name of the game is turnout. This year Texas registered over a million new voters, now we have to make sure they get out to the polls, and the only way to do that is by talking to each and every one of them.

@@ -8,16 +8,23 @@ tags:
 - versions
 permalink: /post/22718246618/multiple-ruby-version-support-on-heroku
 ---
-<p>Starting today <a href="https://heroku.com">Heroku</a> will allow you to <a href="https://devcenter.heroku.com/articles/ruby-support#ruby_versions">specify a version of Ruby</a> in your production app. As one of the most requested features we have been asked for time and time again, we&#8217;re happy to announce that it&#8217;s now live. To get started you&#8217;ll want to update your version of Bundler locally to version 1.2.0, or above.</p>
+<p>Starting today <a href="https://heroku.com">Heroku</a> will allow you to <a
+    href="https://devcenter.heroku.com/articles/ruby-support#ruby_versions">specify a version of Ruby</a> in your
+  production app. As one of the most requested features we have been asked for time and time again, we&#8217;re happy to
+  announce that it&#8217;s now live. To get started you&#8217;ll want to update your version of Bundler locally to
+  version 1.2.0, or above.</p>
 
 <blockquote>
-  <p>This is a re-post of an Article I wrote for the <a href="https://blog.heroku.com/archives/2012/5/9/multiple_ruby_version_support_on_heroku/">Heroku Blog</a></p>
+  <p>This is a re-post of an Article I wrote for the <a
+      href="https://blog.heroku.com/archives/2012/5/9/multiple_ruby_version_support_on_heroku/">Heroku Blog</a></p>
 </blockquote>
 
 <pre><code>$ gem install bundler --pre
 </code></pre>
 
-<p>Then you&#8217;ll want to specify the version of Ruby you want to use in your application inside of your Gemfile. For example if we wanted to use Ruby 1.9.3 in our production application you would want to include <code>ruby '1.9.3'</code> inside of your Gemfile. In a rails Gemfile it might look something like this:</p>
+<p>Then you&#8217;ll want to specify the version of Ruby you want to use in your application inside of your Gemfile. For
+  example if we wanted to use Ruby 1.9.3 in our production application you would want to include
+  <code>ruby '1.9.3'</code> inside of your Gemfile. In a rails Gemfile it might look something like this:</p>
 
 <pre><code>source 'https://rubygems.org'
 
@@ -45,21 +52,34 @@ ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]
 
 <p>It&#8217;s that simple!</p>
 
-<p>With this new feature you can also use this process to call a specific version of Ruby other than 1.9.3, however, if it is not installed on the Heroku system you&#8217;ll receive an error.</p>
+<p>With this new feature you can also use this process to call a specific version of Ruby other than 1.9.3, however, if
+  it is not installed on the Heroku system you&#8217;ll receive an error.</p>
 
 <h2>Production and Development Parity</h2>
 
-<p>At Heroku, we strongly believe that there should always be a strong <a href="https://www.12factor.net/dev-prod-parity">parity between development and production environments</a> in order to minimize any surprises. When the tooling of your development environment most closely matches your production environment, there is far less room for error. Another good example of keeping parity between dev and production environments would be running <a href="https://postgresapp.com/">PostgreSQL locally</a> in the development environment instead of SQLite since you&#8217;re production system is running <a href="https://postgres.heroku.com/">Postgres on Heroku</a>.</p>
+<p>At Heroku, we strongly believe that there should always be a strong <a
+    href="https://www.12factor.net/dev-prod-parity">parity between development and production environments</a> in order
+  to minimize any surprises. When the tooling of your development environment most closely matches your production
+  environment, there is far less room for error. Another good example of keeping parity between dev and production
+  environments would be running <a href="https://postgresapp.com/">PostgreSQL locally</a> in the development environment
+  instead of SQLite since you&#8217;re production system is running <a href="https://postgres.heroku.com/">Postgres on
+    Heroku</a>.</p>
 
-<p>While there are other reasons you may want to use different versions of Ruby in certain scenarios including performance issues or to access version-specific Ruby features, developers should overall strive to use the same tools and versions of software for development as are used for production.</p>
+<p>While there are other reasons you may want to use different versions of Ruby in certain scenarios including
+  performance issues or to access version-specific Ruby features, developers should overall strive to use the same tools
+  and versions of software for development as are used for production.</p>
 
 <h2>Patch Versions</h2>
 
-<p>While you can now specify the version of Ruby you would like your web application to use, at this time we do not support that ability to request a specific patch version to be called, such as Ruby 1.9.2-p290. Ruby patches often include important bug and security fixes and are extremely compatible. While you can specify the version of Ruby you wish to use, Heroku will provide the most secure patch level of that version.</p>
+<p>While you can now specify the version of Ruby you would like your web application to use, at this time we do not
+  support that ability to request a specific patch version to be called, such as Ruby 1.9.2-p290. Ruby patches often
+  include important bug and security fixes and are extremely compatible. While you can specify the version of Ruby you
+  wish to use, Heroku will provide the most secure patch level of that version.</p>
 
 <h2>Debugging</h2>
 
-<p>If you&#8217;ve followed all the steps above and you&#8217;re still seeing a different version of Ruby than you need, please recheck your path.</p>
+<p>If you&#8217;ve followed all the steps above and you&#8217;re still seeing a different version of Ruby than you need,
+  please recheck your path.</p>
 
 <pre><code>$ heroku config
 PATH     =&gt; vendor/bundle/ruby/1.9.1/bin:/usr/local/bin:/usr/bin:/bin:bin
@@ -72,10 +92,16 @@ RACK_ENV =&gt; production
 <pre><code>$ heroku config:add PATH=bin:vendor/bundle/ruby/1.9.1/bin:/usr/local/bin:/usr/bin:/bin
 </code></pre>
 
-<p>As a tip, It is a good idea to use the free <a href="https://devcenter.heroku.com/articles/releases">releases</a> feature whenever you are modifying your &#8216;config&#8217; in case you need to roll back to a previous version of Ruby.</p>
+<p>As a tip, It is a good idea to use the free <a href="https://devcenter.heroku.com/articles/releases">releases</a>
+  feature whenever you are modifying your &#8216;config&#8217; in case you need to roll back to a previous version of
+  Ruby.</p>
 
 <h2>Thanks</h2>
 
-<p>Thanks to <a href="https://twitter.com/hone02">Terence Lee</a> Heroku Ruby team member and bundler maintainer for the additional support of ruby versions to the <a href="https://github.com/heroku/heroku-buildpack-ruby">Heroku Ruby Buildpack</a> and orchestrated the release of Bundler 1.2.0. Also thanks to <a href="https://twitter.com/#!/wycats">Yehuda Katz</a> and the entire Bundler team for helping get this release out the door.</p>
+<p>Thanks to <a href="https://twitter.com/hone02">Terence Lee</a> Heroku Ruby team member and bundler maintainer for the
+  additional support of ruby versions to the <a href="https://github.com/heroku/heroku-buildpack-ruby">Heroku Ruby
+    Buildpack</a> and orchestrated the release of Bundler 1.2.0. Also thanks to <a
+    href="https://twitter.com/#!/wycats">Yehuda Katz</a> and the entire Bundler team for helping get this release out
+  the door.</p>
 
-<p>Give this feature a try and let me know what you think <a href="https://twitter.com/schneems">@schneems</a>!</p>
+<p>Give this feature a try and let me know what you think <a href="https://ruby.social/@Schneems">@schneems</a>!</p>

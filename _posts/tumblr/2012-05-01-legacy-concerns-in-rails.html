@@ -10,19 +10,36 @@ tags:
 - clean code
 permalink: /post/22192005006/legacy-concerns-in-rails
 ---
-<p>The cats out of the bag, Ruby isn&#8217;t immune to legacy code problems. Just because your app is written in a hip, fun, and dynamic language doesn&#8217;t mean that your codebase can&#8217;t stagnate, bloat, and quickly turn into an unmaintainable ball of mud. Before <a href="https://gowalla.com">Gowalla</a> was purchased by Facebook, the Rails code base stood at close to seven thousand files, with the largest model clocking in at around 3,500 lines of code. While we were somewhat unique, being originally written in Merb and then ported to Rails, applications of this size aren&#8217;t all that uncommon. If you&#8217;ve got a large app there are a number of things you can do make your situation better, one of the simplest with the greatest impact is splitting up models into concerns.</p>
+<p>The cats out of the bag, Ruby isn&#8217;t immune to legacy code problems. Just because your app is written in a hip,
+  fun, and dynamic language doesn&#8217;t mean that your codebase can&#8217;t stagnate, bloat, and quickly turn into an
+  unmaintainable ball of mud. Before <a href="https://gowalla.com">Gowalla</a> was purchased by Facebook, the Rails code
+  base stood at close to seven thousand files, with the largest model clocking in at around 3,500 lines of code. While
+  we were somewhat unique, being originally written in Merb and then ported to Rails, applications of this size
+  aren&#8217;t all that uncommon. If you&#8217;ve got a large app there are a number of things you can do make your
+  situation better, one of the simplest with the greatest impact is splitting up models into concerns.</p>
 
 <blockquote>
-  <p>If you&#8217;re not familiar with concerns, you can read up about them at <a href="https://www.schneems.com/2012/04/19/concerned-about-code-reuse.html">Concerned about Code Reuse?</a>. Go ahead, we&#8217;ll wait.</p>
+  <p>If you&#8217;re not familiar with concerns, you can read up about them at <a
+      href="https://www.schneems.com/2012/04/19/concerned-about-code-reuse.html">Concerned about Code Reuse?</a>. Go
+    ahead, we&#8217;ll wait.</p>
 </blockquote>
 
-<p>Rails has long advocated a thin controller, fat model approach to development, which works great early but can lead to a model obesity epidemic. If we split out our models into different concerns we can group related code, and even make re-using code between projects easier. Best of all, if you start early on it&#8217;s a pretty painless process.</p>
+<p>Rails has long advocated a thin controller, fat model approach to development, which works great early but can lead
+  to a model obesity epidemic. If we split out our models into different concerns we can group related code, and even
+  make re-using code between projects easier. Best of all, if you start early on it&#8217;s a pretty painless process.
+</p>
 
 <h2>The User Model</h2>
 
-<p>There&#8217;s only two businesses that refer to their customers as &#8216;users&#8217; and software is one of them. It&#8217;s also bound to be one of the largest models in your app since so much will likely need to be connected to a user. It&#8217;s a good place to start splitting up a model into a concern. Lets say that we want to add some methods on our user object so they can access Facebook information we can start by creating a new file <code>app/models/user/facebook_methods.rb</code> (you&#8217;ll need to create the <code>user</code> folder).</p>
+<p>There&#8217;s only two businesses that refer to their customers as &#8216;users&#8217; and software is one of them.
+  It&#8217;s also bound to be one of the largest models in your app since so much will likely need to be connected to a
+  user. It&#8217;s a good place to start splitting up a model into a concern. Lets say that we want to add some methods
+  on our user object so they can access Facebook information we can start by creating a new file
+  <code>app/models/user/facebook_methods.rb</code> (you&#8217;ll need to create the <code>user</code> folder).</p>
 
-<p>This file is where we&#8217;ll group all of our methods related to Facebook. For this example i&#8217;ll be using the <a href="https://github.com/arsduo/koala">Koala</a> Facebook gem, and we assume our user model has a <code>facebook_token</code> attribute persisted to the database.</p>
+<p>This file is where we&#8217;ll group all of our methods related to Facebook. For this example i&#8217;ll be using the
+  <a href="https://github.com/arsduo/koala">Koala</a> Facebook gem, and we assume our user model has a
+  <code>facebook_token</code> attribute persisted to the database.</p>
 
 <pre><code>module User::FacebookMethods
   extend ActiveSupport::Concern
@@ -33,7 +50,8 @@ permalink: /post/22192005006/legacy-concerns-in-rails
 end
 </code></pre>
 
-<p>Not a bad start, now we want to add this ability to our user model, open up <code>app/models/user.rb</code> and add our concern.</p>
+<p>Not a bad start, now we want to add this ability to our user model, open up <code>app/models/user.rb</code> and add
+  our concern.</p>
 
 <pre><code>class User &lt; ActiveRecord::Base
   include User::FacebookMethods
@@ -52,29 +70,63 @@ user.facebook_graph.get_connections("me", "friends")
 
 <h2>That Was Easy, but&#8230;</h2>
 
-<p>What did that buy us? First we&#8217;ve got an obvious place to store our code. Want to write a method that pulls out all of a user&#8217;s Facebook friends? Put it in the <code>facebook_methods.rb</code> file. If you forget the name of that method, check out your Facebook methods. If you need the <code>facebook_graph</code> method, bet you money it&#8217;s in that concern. If all related code is in one place its a lot easier to scan visually and to search for keywords.</p>
+<p>What did that buy us? First we&#8217;ve got an obvious place to store our code. Want to write a method that pulls out
+  all of a user&#8217;s Facebook friends? Put it in the <code>facebook_methods.rb</code> file. If you forget the name of
+  that method, check out your Facebook methods. If you need the <code>facebook_graph</code> method, bet you money
+  it&#8217;s in that concern. If all related code is in one place its a lot easier to scan visually and to search for
+  keywords.</p>
 
 <h2>Won&#8217;t This add More Code to the Codebase?</h2>
 
-<p>In the example above, we added 4 extra lines of code to save us 3 measly lines in our <code>user.rb</code> file. While this isn&#8217;t ideal for such a small concern, as it grows in size its much easier to keep track of the components, which in turn helps keep your code small and manageable. It also nudges developers to create unit tests for those specific concerns. This sounds minor, but when you get to a file with 3500 lines of code, you start duplicating functionality that you didn&#8217;t know existed. Either it was added by another developer, or you forgot you added it months ago. Keeping everything in its place helps keep your code sane.</p>
+<p>In the example above, we added 4 extra lines of code to save us 3 measly lines in our <code>user.rb</code> file.
+  While this isn&#8217;t ideal for such a small concern, as it grows in size its much easier to keep track of the
+  components, which in turn helps keep your code small and manageable. It also nudges developers to create unit tests
+  for those specific concerns. This sounds minor, but when you get to a file with 3500 lines of code, you start
+  duplicating functionality that you didn&#8217;t know existed. Either it was added by another developer, or you forgot
+  you added it months ago. Keeping everything in its place helps keep your code sane.</p>
 
 <h2>How Should I Break up My Code</h2>
 
-<p>Often times I like breaking out my concerns based on knowledge of third party services. For example I broke out a concern for all the Facebook methods above. I use <a href="https://addons.heroku.com/websolr">websolr</a> and I like having a separate concern for all the search related methods. Recently I played around with the <a href="https://github.com/seejohnrun/ice_cube">Ice Cube</a> gem which is a library for creating an iCal formatted recurring date syntax. I split that code out into a concern, not because it was touching another service, but because I might want to re-use that code in another model some day, and it&#8217;s easier to break out the code now. There are no hard and fast rules, just don&#8217;t go overboard and have 100 concerns for every model with 3 lines of code in each of them, and on the flip side don&#8217;t have one concern with <strong>everything</strong>.</p>
+<p>Often times I like breaking out my concerns based on knowledge of third party services. For example I broke out a
+  concern for all the Facebook methods above. I use <a href="https://addons.heroku.com/websolr">websolr</a> and I like
+  having a separate concern for all the search related methods. Recently I played around with the <a
+    href="https://github.com/seejohnrun/ice_cube">Ice Cube</a> gem which is a library for creating an iCal formatted
+  recurring date syntax. I split that code out into a concern, not because it was touching another service, but because
+  I might want to re-use that code in another model some day, and it&#8217;s easier to break out the code now. There are
+  no hard and fast rules, just don&#8217;t go overboard and have 100 concerns for every model with 3 lines of code in
+  each of them, and on the flip side don&#8217;t have one concern with <strong>everything</strong>.</p>
 
 <p>Just think of the different areas of &#8216;concern&#8217;, that your code covers. Get it?</p>
 
 <h2>Legacy Code</h2>
 
-<p>While building out the final version of the Gowalla service we managed to promote Redis and Cassandra to first class data storage citizens, completely re-write all web controllers, and split out a brand new api into a separate set of controllers (more on this in a later date). It was a ton of work, we were completely changing the way our service worked and creating new paradigms such as a &#8220;Stories&#8221; where multiple users could check each other in and at the same time, we still had to support a ton of 3rd party client applications using the old API.</p>
+<p>While building out the final version of the Gowalla service we managed to promote Redis and Cassandra to first class
+  data storage citizens, completely re-write all web controllers, and split out a brand new api into a separate set of
+  controllers (more on this in a later date). It was a ton of work, we were completely changing the way our service
+  worked and creating new paradigms such as a &#8220;Stories&#8221; where multiple users could check each other in and
+  at the same time, we still had to support a ton of 3rd party client applications using the old API.</p>
 
-<p>So, how did concerns help? We used concerns to isolate new code and new services. It also helped us to add more &amp; better unit testing by focusing different spec files on different areas so <code>models/users/following_methods.rb</code> would be tested by <code>spec/models/users/following_methods_spec.rb</code>. Most of the developers used some form of automatic test runner such as <a href="https://github.com/guard/guard-rspec">Guard Rspec</a>, and it is nice being able to run only the unit tests associated with the concern you&#8217;re writing without having to run <strong>all</strong> the unit tests for that model.</p>
+<p>So, how did concerns help? We used concerns to isolate new code and new services. It also helped us to add more &amp;
+  better unit testing by focusing different spec files on different areas so
+  <code>models/users/following_methods.rb</code> would be tested by
+  <code>spec/models/users/following_methods_spec.rb</code>. Most of the developers used some form of automatic test
+  runner such as <a href="https://github.com/guard/guard-rspec">Guard Rspec</a>, and it is nice being able to run only
+  the unit tests associated with the concern you&#8217;re writing without having to run <strong>all</strong> the unit
+  tests for that model.</p>
 
-<p>Bonus! Ever find a method that you were <strong>pretty sure</strong> wasn&#8217;t being called by anything. Maybe it&#8217;s in a model that wasn&#8217;t exactly 100% tested. You could try making a concern for methods of questionable value. In a month if it&#8217;s still there, delete the sucker, deploy to staging, validate and commit to master.</p>
+<p>Bonus! Ever find a method that you were <strong>pretty sure</strong> wasn&#8217;t being called by anything. Maybe
+  it&#8217;s in a model that wasn&#8217;t exactly 100% tested. You could try making a concern for methods of
+  questionable value. In a month if it&#8217;s still there, delete the sucker, deploy to staging, validate and commit to
+  master.</p>
 
 <h2>Shared Concerns</h2>
 
-<p>If you have code that needs to be shared by multiple models in your project, you can keep this in your <code>lib</code> folder. I actually like to have a <code>concerns</code> folder like <code>lib/concerns/models/duplicate_code.rb</code>. When we added Cassandra to the Gowalla project we needed a way to get our Postgres models to play nice. Thats when <a href="https://twitter.com/#!/therealadam">Adam Keys</a> and <a href="https://twitter.com/#!/bdoughty">Bill Doughty</a> pulled out common logic and put it into a concern using another library called Chronologic. <code>lib/concerns/models/chronologify.rb</code></p>
+<p>If you have code that needs to be shared by multiple models in your project, you can keep this in your
+  <code>lib</code> folder. I actually like to have a <code>concerns</code> folder like
+  <code>lib/concerns/models/duplicate_code.rb</code>. When we added Cassandra to the Gowalla project we needed a way to
+  get our Postgres models to play nice. Thats when <a href="https://twitter.com/#!/therealadam">Adam Keys</a> and <a
+    href="https://twitter.com/#!/bdoughty">Bill Doughty</a> pulled out common logic and put it into a concern using
+  another library called Chronologic. <code>lib/concerns/models/chronologify.rb</code></p>
 
 <p>Then any time you wanted this shared code into your model, you just had to include it.</p>
 
@@ -88,4 +140,8 @@ end
 
 <h2>Wrap it Up</h2>
 
-<p>There have been tomes written about dealing with legacy code in software, I&#8217;ve been recently recommended <a href="https://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052">Working Effectively with Legacy Code </a>. Using concerns won&#8217;t be a magic bullet, but it will help keep your code nicely organized. Even if you&#8217;re dealing with a pristine new app, concerns are one way to help it stay that way. Give concerns a try and let me know if you have a good or bad experience <a href="https://twitter.com/schneems">@schneems</a>.</p>
+<p>There have been tomes written about dealing with legacy code in software, I&#8217;ve been recently recommended <a
+    href="https://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052">Working Effectively with
+    Legacy Code </a>. Using concerns won&#8217;t be a magic bullet, but it will help keep your code nicely organized.
+  Even if you&#8217;re dealing with a pristine new app, concerns are one way to help it stay that way. Give concerns a
+  try and let me know if you have a good or bad experience <a href="https://ruby.social/@Schneems">@schneems</a>.</p>

@@ -4,7 +4,7 @@ title: "Tips for Fixing Open Source bugs"
 date: 2016-08-03
 published: true
 author_name: Richard Schneeman
-author_url: https://twitter.com/schneems
+author_url: https://ruby.social/@Schneems
 ---
 
 Support isn't sexy, but it's necessary. How open source software is supported is just as important as how well it works. Given the choice between building awesome new features or carefully reading and responding to 10 bug reports, which would you choose? Which is more important? When you think of Open Source maintainers what do you see? I see issues. I see dozens of open bug reports that haven't been responded to in days. I see a pile of feature requests waiting to be worked on. Now when I open those issues, I see maintainers spending most of their time trying to get the information they need. "What version are you using?", "was it working before", "can you give me an example app"? Would you rather maintainers spend time asking for minute in-bug reports or fixing issues?

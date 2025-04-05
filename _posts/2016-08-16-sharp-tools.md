@@ -4,7 +4,7 @@ title: "Sharp Tools"
 date: 2016-08-16
 published: true
 author_name: Richard Schneeman
-author_url: https://twitter.com/schneems
+author_url: https://ruby.social/@Schneems
 ---
 
 Developers love borrowing concepts from other trades to describe their work. We especially enjoy to comparing ourselves to woodworkers. The phrase "sharp tools" brings to mind a chisel chopping out an oak mortise, a hatchet splitting a well seasoned timber, and a sawmill slicing a tree into boards. Programmers use the phrase "sharp tools" to refer to tradeoff of productivity and the bloodlust and gore that awaits the careless worker. I'm a sometimes woodworker and a full time programmer and I have used truly sharp tools for both.

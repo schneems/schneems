@@ -4,7 +4,7 @@ title: "SQL statements in Rails logs"
 date: 2015-10-27
 published: true
 author_name: Richard Schneeman
-author_url: https://twitter.com/schneems
+author_url: https://ruby.social/@Schneems
 ---
 
 Sometimes in programming, the smallest things are the most helpful. I remember wowing a co-worker when I hit CTRL+A and my cursor jumped to the beginning of a long terminal command. Since then, I've vowed that no tip is too small to share. Today, my tip is for getting Rails SQL statements and Cache behavior in production logs locally. It's pretty simple. If you're using `rails_12factor` gem to output your logs to standard out, then all you need to do is boot up your server with `LOG_LEVEL=debug`, like this:

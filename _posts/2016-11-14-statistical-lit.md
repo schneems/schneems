@@ -7,7 +7,7 @@ redirect_from:
 
 published: true
 author_name: Richard Schneeman
-author_url: https://twitter.com/schneems
+author_url: https://ruby.social/@Schneems
 ---
 
 America. World. Let's talk about statistics. Statistical literacy is a giant gaping hole in humanity's collective toolkit, and it matters a lot more when your job relies heavily on numbers. Take programmers for example - as programmers, we love determinism and don't do well with uncertainty. Yet, we work with inherently uncertain systems. How we build programs to deal with anomalies, how we generate and present data can both be greatly improved with a few basic statistical methods. If you were confused about the Cubs winning the world series, or how the polls in the US Presidential election could be "so wrong", keep reading.

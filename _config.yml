@@ -21,7 +21,7 @@ rss_path:         feed.xml
 
 author:
   name:           'Richard Schneeman'
-  url:            https://twitter.com/schneems
+  url:            https://ruby.social/@Schneems
 
 paginate:         10
 

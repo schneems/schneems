@@ -387,7 +387,7 @@ Here is an example of using the ruby orb via `ruby/install-deps` reference they 
 
 ## Retro
 
-Honestly, this took a lot longer than I thought it would. I've not seen other people talk about using CircleCI for testing libraries, so I wanted to see what the result would look like. Overall I'm happy with the config results. Now that I've got the skeleton in place, making changes seems very easy, but it was a process to get here. I'm curious if anyone else uses CircleCI to test a library with multiple Ruby versions and multiple Gem files. If so, shoot me a link on Twitter [@schneems](https://twitter.com/schneems).
+Honestly, this took a lot longer than I thought it would. I've not seen other people talk about using CircleCI for testing libraries, so I wanted to see what the result would look like. Overall I'm happy with the config results. Now that I've got the skeleton in place, making changes seems very easy, but it was a process to get here. I'm curious if anyone else uses CircleCI to test a library with multiple Ruby versions and multiple Gem files. If so, shoot me a link on Twitter [@schneems](https://ruby.social/@Schneems).
 
 Here's some other examples of CircleCI test config for libraries:
 

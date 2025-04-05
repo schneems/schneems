@@ -4,7 +4,7 @@ title: "SemVer for Library Maintainers"
 date: 2015-11-29
 published: true
 author_name: Richard Schneeman
-author_url: https://twitter.com/schneems
+author_url: https://ruby.social/@Schneems
 ---
 
 SemVer is simple. Well...until you start publishing libraries, and accidentally break a metric ton of apps on accident. I've never caused any mass scale melt downs, however I've made my fair share of screw-ups. I [maintain gems](https://rubygems.org/profiles/schneems) with over 200 million downloads. I wish I had this guide available to me when I first got in the library authorship game. Let's take a look at what SemVer is and how to use it as a maintainer.
@@ -110,4 +110,4 @@ This all may look simple or even border-line on "common sense", but based on the
 If you see a library breaking SemVer, be nice, provide them with resources (like a link to this post), and volunteer to help with versioning in the future. In the end versioning is supposed to make your life easier instead of harder. Don't let versioning scare you. Try your best and you'll get it over time. Happy versioning friends.
 
 ---
-If you like writing code, or versioning arbitrary things [follow @schneems on twitter](https://twitter.com/schneems).
+If you like writing code, or versioning arbitrary things [follow @schneems on twitter](https://ruby.social/@Schneems).

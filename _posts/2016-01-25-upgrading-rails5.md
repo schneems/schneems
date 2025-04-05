@@ -4,7 +4,7 @@ title: "Upgrading to Rails 5 Beta - The Hard Way"
 date: 2016-01-25
 published: true
 author_name: Richard Schneeman
-author_url: https://twitter.com/schneems
+author_url: https://ruby.social/@Schneems
 ---
 
 Rails 5 has been brewing for more than a year. To take advantage of new features, and stay on the supported path, you'll need to upgrade. In this post, we'll look at the upgrade process for a production Rails app, [codetriage.com](https://www.codetriage.com). The codebase is open source so you [can follow along](https://github.com/codetriage/codetriage/pull/435). Special thanks to [Prathamesh](https://twitter.com/_cha1tanya) for his help with this blog post.

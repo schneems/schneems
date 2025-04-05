@@ -34,4 +34,4 @@ You can also review the slides:
 I learned a ton presenting this unique and useful algorithm, I highly encourage you to not only use these resources but to also explore the algorithm world.
 
 ---
-If you like algorithms, distance measurements, or Ruby things follow [@schneems](https://twitter.com/schneems)
+If you like algorithms, distance measurements, or Ruby things follow [@schneems](https://ruby.social/@Schneems)

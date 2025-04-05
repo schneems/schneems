@@ -3,7 +3,7 @@ title: "The Longest Email I Ever Sent (Programmatically)"
 layout: post
 published: true
 date: 2017-08-15
-twurl: https://twitter.com/schneems/status/897473153710137345
+twurl: https://ruby.social/@Schneems/status/897473153710137345
 permalink: /2017/08/15/sending-massive-emails-considered-harmful/
 categories:
     - ruby

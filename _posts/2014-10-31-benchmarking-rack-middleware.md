@@ -126,4 +126,4 @@ Make sure not to get tunnel vision when you're benchmarking, in this case my opt
 
 Right now you might also be thinking "Holy cow 54% speed improvement in Rails, zOMG!" but you have to remember that this is a middleware tested in isolation. The performance improvement isn't as much when we compare it to the whole Rails application stack, which I had to benchmark as well (and is a whole different blog post). The end result came to a ~2.6% overall speedup with the new middleware. Not bad. Here's the PR to Rails: https://github.com/rails/rails/pull/16464.
 
-Go forth and benchmark your Rack middleware! If you have any feedback or know of a different/better way to do this, find me on the internet [@schneems](https://twitter.com/schneems).
+Go forth and benchmark your Rack middleware! If you have any feedback or know of a different/better way to do this, find me on the internet [@schneems](https://ruby.social/@Schneems).

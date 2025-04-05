@@ -54,4 +54,4 @@ Don't take my words as gospel, or anyone else's, for that matter. God objects ar
 
 I must frequently make bold claims to get people's attention. They [get eyeballs](https://www.reddit.com/r/programming/comments/20enqe/why_we_should_absolutely_never_build_software/) but, often at the expense of my message. For me, that's okay. One of the biggest points lost from the whole keynote is that, there is no "one way" to write software.
 
-Let's not be ashamed to tell one another how we work. Let's keep striving to get better, and let's be accepting of other's differences. Engage in discourse, but don't fight to win, fight to be better. I'm [@schneems](twitter.com/schneems), and this is how I roll.
+Let's not be ashamed to tell one another how we work. Let's keep striving to get better, and let's be accepting of other's differences. Engage in discourse, but don't fight to win, fight to be better. I'm [@schneems](https://ruby.social/@Schneems), and this is how I roll.

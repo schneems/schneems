@@ -7,7 +7,7 @@ tags: conferences, talks, speaking, speakers, conf,
 
 New isn't always better, especially when it comes to conference talks. A number of conferences have a CFP that explicitly looks for "fresh" talks that have never previously been given. My take: practice makes perfect, and repeat talks produces a better experience for attendees
 
-<blockquote class="twitter-tweet" data-conversation="none" lang="en"><p><a href="https://twitter.com/schneems">@schneems</a> Do you write 10 standalone talks? I think I recall you describing internal support for process. Still, surely a lot to write...?</p>&mdash; Carina C. Zona (@cczona) <a href="https://twitter.com/cczona/statuses/347419659626242048">June 19, 2013</a></blockquote>
+<blockquote class="twitter-tweet" data-conversation="none" lang="en"><p><a href="https://ruby.social/@Schneems">@schneems</a> Do you write 10 standalone talks? I think I recall you describing internal support for process. Still, surely a lot to write...?</p>&mdash; Carina C. Zona (@cczona) <a href="https://twitter.com/cczona/statuses/347419659626242048">June 19, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
@@ -23,7 +23,7 @@ I don't think this is the right approach for all speakers, or all talks. For exa
 
 That's my talk philosophy. Turns out I'm not alone:
 
-<blockquote class="twitter-tweet" data-conversation="none" lang="en"><p><a href="https://twitter.com/cczona">@cczona</a> I was surprised to discover that conferences are happy to get non-unique talks (given six this year, with two uniques) // <a href="https://twitter.com/schneems">@schneems</a></p>&mdash; André Arko (@indirect) <a href="https://twitter.com/indirect/statuses/347423399192166400">June 19, 2013</a></blockquote>
+<blockquote class="twitter-tweet" data-conversation="none" lang="en"><p><a href="https://twitter.com/cczona">@cczona</a> I was surprised to discover that conferences are happy to get non-unique talks (given six this year, with two uniques) // <a href="https://ruby.social/@Schneems">@schneems</a></p>&mdash; André Arko (@indirect) <a href="https://twitter.com/indirect/statuses/347423399192166400">June 19, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
@@ -32,5 +32,5 @@ Some of the best talks I've seen like Ben Orenstein's [Refactoring from Good to 
 
 -----
 
-[@schneems](https://twitter.com/schneems) works for Heroku on the [Ruby Buildpack](https://github.com/heroku/heroku-buildpack-ruby) and enjoys giving talks.
+[@schneems](https://ruby.social/@Schneems) works for Heroku on the [Ruby Buildpack](https://github.com/heroku/heroku-buildpack-ruby) and enjoys giving talks.
 

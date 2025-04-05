@@ -4,7 +4,7 @@ title: "Who Does your Gem Work For?"
 date: 2015-09-30
 published: true
 author_name: Richard Schneeman
-author_url: https://twitter.com/schneems
+author_url: https://ruby.social/@Schneems
 permalink: blogs/2015-09-30-reverse-rubygems
 ---
 Have you ever wondered who out there is using a gem? Now there's an easy way.
@@ -105,4 +105,4 @@ It's not perfect, but it's good enough for my needs.
 
 ---
 
-Richard blogs here and tweets [@schneems](https://twitter.com/schneems), you should follow him because it's his birthday.
+Richard blogs here and tweets [@schneems](https://ruby.social/@Schneems), you should follow him because it's his birthday.

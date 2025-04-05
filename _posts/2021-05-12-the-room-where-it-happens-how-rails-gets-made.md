@@ -14,7 +14,7 @@ categories:
 
 Today I'm going to share my perspective on how Ruby on Rails is developed and governed and how I feel the Basecamp "incident" impacts the future of Rails. I'm going to start out telling you what I know for sure, dip into some unknowns, and dive into some hypotheticals for fun.
 
-First off, who am I? Find me [@schneems](https://www.twitter.com/schneems) on Twitter and GitHub. I first contributed to Ruby on Rails ten years ago in 2011, and I'm in the top 50 contributors (by commits). I help maintain a few open source projects, including Puma and the Ruby Buildpack for Heroku (my day job). I've got  1,611,289,709 and counting gem [downloads to my name](https://rubygems.org/profiles/schneems).
+First off, who am I? Find me [@schneems](https://ruby.social/@Schneems) on Twitter and GitHub. I first contributed to Ruby on Rails ten years ago in 2011, and I'm in the top 50 contributors (by commits). I help maintain a few open source projects, including Puma and the Ruby Buildpack for Heroku (my day job). I've got  1,611,289,709 and counting gem [downloads to my name](https://rubygems.org/profiles/schneems).
 
 In the Ruby on Rails ecosystem, I am known as a "contributor". In Rails speak, that means that I also have commit access to the project.
 

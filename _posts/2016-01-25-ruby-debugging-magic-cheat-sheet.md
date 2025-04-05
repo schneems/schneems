@@ -4,7 +4,7 @@ title: "Ruby Debugging Magic Cheat Sheet"
 date: 2016-01-25
 published: true
 author_name: Richard Schneeman
-author_url: https://twitter.com/schneems
+author_url: https://ruby.social/@Schneems
 ---
 
 This document is all about deciphering behavior of Ruby code using nothing but Ruby code. I recommend you get familiar with a debugger like [pry-debugger](https://github.com/nixme/pry-debugger), this doc doesn't go into debuggers [because they're not always available](https://www.reddit.com/r/ruby/comments/42lxrq/ruby_debugging_magic_cheat_sheet/czbef0m).

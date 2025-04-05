@@ -16,7 +16,7 @@ categories:
 
 When API requests are made one-after-the-other they'll quickly hit rate limits and when that happens:
 
-<blockquote class="twitter-tweet tw-align-center"><p lang="en" dir="ltr">If you provide an API client that doesn&#39;t include rate limiting, you don&#39;t really have an API client. You&#39;ve got an exception generator with a remote timer.</p>&mdash; Richard Schneeman 🤠 Stay Inside (@schneems) <a href="https://twitter.com/schneems/status/1138899094137651200?ref_src=twsrc%5Etfw">June 12, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet tw-align-center"><p lang="en" dir="ltr">If you provide an API client that doesn&#39;t include rate limiting, you don&#39;t really have an API client. You&#39;ve got an exception generator with a remote timer.</p>&mdash; Richard Schneeman 🤠 Stay Inside (@schneems) <a href="https://ruby.social/@Schneems/status/1138899094137651200?ref_src=twsrc%5Etfw">June 12, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 That tweet spawned a discussion that generated a quest to add rate throttling logic to the [`platform-api`](https://rubygems.org/gems/platform-api) gem that Heroku maintains for talking to its API in Ruby.
 

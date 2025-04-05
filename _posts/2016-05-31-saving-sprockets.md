@@ -4,7 +4,7 @@ title: "Saving Sprockets"
 date: 2016-05-31
 published: true
 author_name: Richard Schneeman
-author_url: https://twitter.com/schneems
+author_url: https://ruby.social/@Schneems
 ---
 
 What do you do when a maintainer leaves a project with over 51 million downloads? That is what we had to consider this year when Sprockets lost the developer responsible for more than 70% of the commits. We'll explore this and more through my RailsConf 2016 talk and the transcript below.

@@ -138,4 +138,4 @@ While some repos have thousands of issues, 50% have 27 or fewer issues. When I u
 
 > Update 2: No, using a random offset is not faster than the `>=` method with IDs. In fact using an offset for a large amount of records can also be a huge perf problem.
 
-Have you replaced `RANDOM()` with another more efficient technique? Let me know about it to Twitter [@schneems](https://twitter.com/schneems).
+Have you replaced `RANDOM()` with another more efficient technique? Let me know about it to Twitter [@schneems](https://ruby.social/@Schneems).

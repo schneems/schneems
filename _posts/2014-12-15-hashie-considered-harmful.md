@@ -284,4 +284,4 @@ If you really __need__ to take arbitrary values, consider a plain ole' Ruby Hash
 While I've ripped on Hashie a good amount: it's a good, fun library to play with, and you can learn quite a bit about metaprogramming through the code. I recommend you check it out, but whatever you do...don't ever put it in production.
 
 ---
-If you like performance, or not using Hashie follow [@schneems on twitter](https://www.twitter.com/schneems)
+If you like performance, or not using Hashie follow [@schneems on twitter](https://ruby.social/@Schneems)

@@ -15,7 +15,7 @@ I'm extremely proud of what my company, and my open source communities, have bee
 - **5,423,598** Rubygems.org [gem installs](https://rubygems.org/profiles/schneems).
 - **255,617** Youtube [video views](https://www.youtube.com/user/schneems). (My most popular is [WTF is HTTP](https://www.youtube.com/watch?v=kGOpY2J31pI)).
 - **226,718** Miles with my butt in an airplane seat.
-- **5,000** [Twitter followers](https://twitter.com/schneems) (Started at 500).
+- **5,000** [Twitter followers](https://ruby.social/@Schneems) (Started at 500).
 - **4,307** More developers making open source a better place with the help of [codetriage](https://www.codetriage.com). (p.s. also try [docsdoctor.org](https://docsdoctor.org)).
 - **1,024** Heroku support [ticket responses](https://help.heroku.com/).
 - **235** Edits to [Heroku Dev Center articles](https://devcenter.heroku.com/).
@@ -44,5 +44,5 @@ I want to keep investing in code and the open source community.  Even after 7 ye
 I want to build things for my home that delight and inspire. I want to change a bunch of poopy diapers and learn what it means to nurture another human being. I want to never sacrifice my health or my family for my job. I want to stave off burnout and find new ways to stay engaged and relevant. I want to show [Ruby](https://twitter.com/rubyku) that I love her every day <3.
 
 ---
-Follow [@schneems](https://twitter.com/schneems) if you like code, open source, or pictures of Weiner dogs.
+Follow [@schneems](https://ruby.social/@Schneems) if you like code, open source, or pictures of Weiner dogs.
 

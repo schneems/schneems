@@ -5,16 +5,20 @@ date: '2012-04-17T09:34:00-05:00'
 tags:
 permalink: /post/21267434507/partial-validation-of-active-record-objects-in-wicked
 ---
-<p>This question comes up a lot, people want to have an object, lets call it a <code>Product</code> that they want to create in several different steps. Let&#8217;s say our product has a few fields <code>name</code>, <code>price</code>, and <code>category</code> and to have a valid product all these fields must be present.</p>
+<p>This question comes up a lot, people want to have an object, lets call it a <code>Product</code> that they want to
+  create in several different steps. Let&#8217;s say our product has a few fields <code>name</code>, <code>price</code>,
+  and <code>category</code> and to have a valid product all these fields must be present.</p>
 
 <blockquote>
-  <p>This is a re-post of a wiki I wrote for <a href="https://github.com/schneems/wicked/wiki/Partial-Validation-of-Active-Record-Objects">Wicked</a>.
-  While it was written to be used with a wizard, the pattern can be used without it. Enjoy!</p>
+  <p>This is a re-post of a wiki I wrote for <a
+      href="https://github.com/schneems/wicked/wiki/Partial-Validation-of-Active-Record-Objects">Wicked</a>.
+    While it was written to be used with a wizard, the pattern can be used without it. Enjoy!</p>
 </blockquote>
 
 <h2>The Problem</h2>
 
-<p>We want to build an object in several different steps but we can&#8217;t because that object needs validations. Lets take a look at our <code>Product</code> model.</p>
+<p>We want to build an object in several different steps but we can&#8217;t because that object needs validations. Lets
+  take a look at our <code>Product</code> model.</p>
 
 <pre><code>class Product &lt; ActiveRecord::Base
   validates :name, :price, :category, :presence =&gt; true
@@ -22,7 +26,8 @@ permalink: /post/21267434507/partial-validation-of-active-record-objects-in-wick
 end
 </code></pre>
 
-<p>So we have a product that relies on name, price, and category to all be there. Lets take a look at a simple Wizard controller for ProductController.</p>
+<p>So we have a product that relies on name, price, and category to all be there. Lets take a look at a simple Wizard
+  controller for ProductController.</p>
 
 <pre><code>class ProductController &lt; ApplicationController
   include Wicked::Wizard
@@ -53,7 +58,9 @@ end
 
 <h2>The Solution</h2>
 
-<p>The best way to build an object incrementally with validations is to save the state of our product in the database and use conditional validation. To do this we&#8217;re going to add a <code>status</code> field to our <code>Product</code> class.</p>
+<p>The best way to build an object incrementally with validations is to save the state of our product in the database
+  and use conditional validation. To do this we&#8217;re going to add a <code>status</code> field to our
+  <code>Product</code> class.</p>
 
 <pre><code>class ProductStatus &lt; ActiveRecord::Migration
   def up
@@ -84,7 +91,9 @@ end
 end
 </code></pre>
 
-<p>Now we can create our <code>Product</code> and we won&#8217;t have any validation errors, when the time comes that we want to release the product into the wild you&#8217;ll want to remember to change the status of our Product on the last step.</p>
+<p>Now we can create our <code>Product</code> and we won&#8217;t have any validation errors, when the time comes that we
+  want to release the product into the wild you&#8217;ll want to remember to change the status of our Product on the
+  last step.</p>
 
 <pre><code>class ProductController &lt; ApplicationController
   include Wicked::Wizard
@@ -101,7 +110,8 @@ end
 
 <h2>Great, but&#8230;</h2>
 
-<p>So that works well, but what if we want to disallow a user to go to the next step unless they&#8217;ve properly set the value before it. We&#8217;ll need to split up or validations to support multiple conditional validations.</p>
+<p>So that works well, but what if we want to disallow a user to go to the next step unless they&#8217;ve properly set
+  the value before it. We&#8217;ll need to split up or validations to support multiple conditional validations.</p>
 
 <pre><code>class Product &lt; ActiveRecord::Base
   validates :name,      :presence =&gt; true, :if =&gt; :active_or_name?
@@ -138,15 +148,23 @@ end
   end
 </code></pre>
 
-<p>So on the <code>:add_name</code> step <code>status.include?('name')</code> will be <code>true</code> and our product will not save if it isn&#8217;t present. So in the update action of our controller if <code>@product.save</code> returns false then the <code>render_wizard @product</code> will direct the user back to the same step <code>:add_name</code>. We still set our status to active on the last step since we want all of our validations to run.</p>
+<p>So on the <code>:add_name</code> step <code>status.include?('name')</code> will be <code>true</code> and our product
+  will not save if it isn&#8217;t present. So in the update action of our controller if <code>@product.save</code>
+  returns false then the <code>render_wizard @product</code> will direct the user back to the same step
+  <code>:add_name</code>. We still set our status to active on the last step since we want all of our validations to
+  run.</p>
 
 <h2>Wow that&#8217;s cool, but seems like a bunch of work</h2>
 
-<p>What you&#8217;re trying to do is fairly complicated, we&#8217;re essentially turning our Product model into a state machine, and we&#8217;re building it inside of our wizard which is a state machine. Yo dawg, i heard you like state machines&#8230; This is a very manual process which gives you, the programmer, as much control as you like.</p>
+<p>What you&#8217;re trying to do is fairly complicated, we&#8217;re essentially turning our Product model into a state
+  machine, and we&#8217;re building it inside of our wizard which is a state machine. Yo dawg, i heard you like state
+  machines&#8230; This is a very manual process which gives you, the programmer, as much control as you like.</p>
 
 <h2>Cleaning up</h2>
 
-<p>If you have conditional validation it can be easy to have incomplete Product&#8217;s laying around in your database, you should set up a sweeper task using something like Cron, or Heroku&#8217;s scheduler to clean up Product&#8217;s that are not complete.</p>
+<p>If you have conditional validation it can be easy to have incomplete Product&#8217;s laying around in your database,
+  you should set up a sweeper task using something like Cron, or Heroku&#8217;s scheduler to clean up Product&#8217;s
+  that are not complete.</p>
 
 <p><code>lib/tasks/cleanup.rake</code></p>
 
@@ -162,8 +180,13 @@ end
 end
 </code></pre>
 
-<p>When cleaning up stale data, be very very sure that your query is correct before running the code. You should also be backing up your whole database periodically using a tool such as Heroku&#8217;s <a href="https://addons.heroku.com/pgbackups">PGBackups</a> incase you accidentally delete incorrect data.</p>
+<p>When cleaning up stale data, be very very sure that your query is correct before running the code. You should also be
+  backing up your whole database periodically using a tool such as Heroku&#8217;s <a
+    href="https://addons.heroku.com/pgbackups">PGBackups</a> incase you accidentally delete incorrect data.</p>
 
 <h2>Wrap it up</h2>
 
-<p>Hope this helps, I&#8217;ll try to do a screencast on this pattern. It will really help if you&#8217;ve had problems implementing this, to let me know what they were. Also if you have another method of doing partial model validation with a wizard, I&#8217;m interested in that too. As always you can find me on the internet <a href="https://twitter.com/schneems">@schneems</a>. Thanks for using Wicked!</p>
+<p>Hope this helps, I&#8217;ll try to do a screencast on this pattern. It will really help if you&#8217;ve had problems
+  implementing this, to let me know what they were. Also if you have another method of doing partial model validation
+  with a wizard, I&#8217;m interested in that too. As always you can find me on the internet <a
+    href="https://ruby.social/@Schneems">@schneems</a>. Thanks for using Wicked!</p>

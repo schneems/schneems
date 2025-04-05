@@ -4,7 +4,7 @@ title: "Patching Rails Performance"
 date: 2015-08-06
 published: true
 author_name: Richard Schneeman
-author_url: https://twitter.com/schneems
+author_url: https://ruby.social/@Schneems
 permalink: blogs/2015-08-06-patching-rails-performance
 ---
 
@@ -49,6 +49,6 @@ The routing improvements combined with all the other savings gives us a speed bo
 Working with Rails has made me a better developer, more capable of debugging library internals, and helped our Ruby experience on the platform. Likewise having a huge number of diverse Rails apps running on the platform helps us be aware of actual pain points developers are hitting in production. It feels good when we can take these insights and contribute back to the community. Be on the lookout for the Rails 5 pre-release to give some of these changes a try. Thanks for reading, enjoy the speed.
 
 ---
-If you like hording RAM, maximizing iterations per second, or just going plain fast follow [@schneems](https://twitter.com/schneems).
+If you like hording RAM, maximizing iterations per second, or just going plain fast follow [@schneems](https://ruby.social/@Schneems).
 
 
