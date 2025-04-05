@@ -10,9 +10,13 @@
     {% for post in site.posts limit:10 %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
-        <content type="html" xml:base="{{ post.url | absolute_url | xml_escape }}"><![CDATA[{{ post.content | strip }}]]></content>
+        <content type="html" xml:base="{{ post.url | absolute_url | xml_escape }}">
+          <![CDATA[{{ post.content | strip }}]]>
+        </content>
         {% assign post_summary = post.description | default: post.excerpt %}
-        <summary type="html"><![CDATA[{{ post_summary | strip_html | normalize_whitespace }}]]></summary>
+        <summary type="html">
+          <![CDATA[{{ post_summary | strip_html | normalize_whitespace }}]]>
+        </summary>
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
         <link>{{ site.BASE_PATH_FOR_RSS }}{{ post.url }}</link>
         <guid isPermaLink="true">{{ site.BASE_PATH_FOR_RSS }}{{ post.url }}</guid>
