@@ -11,6 +11,7 @@ categories:
 ---
 
 Why aren't people [writing more types](https://lobste.rs/s/qmmfje/don_t_be_afraid_types)? Perhaps it's because the intermediate and expert developers deleted the patterns that didn't work and left no trace for beginners to learn from. This post details some code I recently deleted that has a pattern I call the "duplicate duck." You can learn the process I used to develop the type, and why I deleted it. Further, I advocate for Rust developers to document and share their mistakes in the hope that we can all learn from them.
+
 ## TLDR: What's a duplicate duck?
 
 A "duplicate duck" is a type that implements a subset of traits of a popular type with the same results. In my case I wrote a type, `MultiError`, that I later realized was identically [duck typed](https://en.wikipedia.org/wiki/Duck_typing)  to [`syn::Error`]() and that my struct added nothing. I deleted my type with no loss in functionality and the world was better for it.
@@ -18,9 +19,10 @@ A "duplicate duck" is a type that implements a subset of traits of a popular typ
 I saved my code before throwing it away. The following is the story of my design process and eventual epiphany.
 
 > Quick `whoami`: I write Rust for Heroku where I [maintain the Ruby Cloud Native Buildpack](https://github.com/heroku/buildpacks/blob/main/docs/ruby/README.md). I also maintain a free service [CodeTriage](https://www.codetriage.com) and wrote a book, [How to Open Source](https://howtoopensource.dev), for turning coders into contributors.
+
 ## Story version - Context
 
-I've been hacking on proc macros recently, you can read about a recent investigation ["A Daft proc-macro trick: How to Emit Partial-Code + Errors"](https://www.schneems.com/2025/03/26/a-daft-procmacro-trick-how-to-emit-partialcode-errors/). I want proc macro authors to emit as many accumulated errors as possible (versus stopping on the first one), I'm also a fan of unit testing. I wanted to add a return type from my functions that said, "I return many accumulated errors," and I wanted that return type to be unit-testable. 
+I've been hacking on proc macros recently, you can read about a recent investigation ["A Daft proc-macro trick: How to Emit Partial-Code + Errors"](https://www.schneems.com/2025/03/26/a-daft-procmacro-trick-how-to-emit-partialcode-errors/). I want proc macro authors to emit as many accumulated errors as possible (versus stopping on the first one), I'm also a fan of unit testing. I wanted to add a return type from my functions that said, "I return many accumulated errors," and I wanted that return type to be unit-testable.
 
 In my code, I've been accumulating errors with `VecDeque<syn::Error>`. This makes it easy to combine them into a single `syn::Error` :
 
@@ -38,17 +40,17 @@ if let Some(mut error) = errors.pop_front() {
 However, I don't want to return a result of `Result<T, VecDeque<syn::Error>>` from my functions as the error state isn't guaranteed to be non-empty. A good type should make invalid state impossible to represent.
 ## Start with the data
 
-To guarantee my type always had at least one error, I separated out the first error from the rest of the collection. Even if this container is empty, the type definition guarantees we can always turn this into a `syn::Error` 
+To guarantee my type always had at least one error, I separated out the first error from the rest of the collection. Even if this container is empty, the type definition guarantees we can always turn this into a `syn::Error`
 
 ```rust
 
 /// Guaranteed to hold at least one [`syn::Error`]
 ///
-/// The [`syn::Error`] can hold multiple errors 
+/// The [`syn::Error`] can hold multiple errors
 /// through [`syn::Error::combine()`], however it
-/// does not allow the receiver to distinguish 
+/// does not allow the receiver to distinguish
 /// between the two cases, which makes testing
-/// less precise. Using this type is a stronger 
+/// less precise. Using this type is a stronger
 /// hint that the function accumulates errors.
 ///
 #[derive(Debug, Clone)]
@@ -68,6 +70,7 @@ impl MultiError {
     }
 }
 ```
+
 > Warning: Just because the docs state something, doesn't mean it's true.
 
 > Note the visibility, by default I use `pub(crate)` for the struct and associated functions but not for the fields (`first` and `rest`). When I'm unsure of my design, it's easier to change them later if all access goes through functions.
@@ -80,7 +83,7 @@ pub(crate) fn parse_attrs<T>(
     ) -> Result<Vec<T>, MultiError>
 where
     T: syn::parse::Parse,
-{ 
+{
     let mut errors = VecDeque::new();
     // ...
     if let Some(error) = MultiError::from(errors) { // <== HERE
@@ -93,9 +96,10 @@ where
 }
 ```
 
-This code says "I take in any slice of `syn::Attribute` and then parse that attribute into a vector of `T` or return one or more syn errors". So far, so good. 
+This code says "I take in any slice of `syn::Attribute` and then parse that attribute into a vector of `T` or return one or more syn errors". So far, so good.
 
 But my macro needs a `syn::Error` to generate error tokens and my function returns a `MultiError`. So I needed a way to convert my type into a `syn::Error`.
+
 ## Add into behavior
 
 Based on the properties of the type, we know we can always convert into a `syn::Error` infallibly, so I can expose that via implementing `Into<syn::Error>`:
@@ -124,6 +128,7 @@ fn check_logic(...) -> Result<(), syn::Error> {
 ```
 
 With that added, I needed a way to test my logic to ensure I was capturing multiple errors.
+
 ## Add Display
 
 To render the error on failure it needs to implement `std::fmt::Display`:
@@ -174,8 +179,8 @@ This code says that we can now convert our struct into something that produces a
         let error = result.err().unwrap();
         assert_eq!(2, error.into_iter().count()); // <== into_iter() HERE
     }
-    
-    enum ParseAttribute { 
+
+    enum ParseAttribute {
         //...
     }
     impl syn::parse::Parse for ParseAttribute {
@@ -223,7 +228,7 @@ let mut errors: VecDeque<syn::Error> = VecDeque::new();
 match call_fun() { // Returns a MultiError
     Ok(_) => todo!(),
     // Combines it into a single `syn::Error`
-    Error(error) => errors.push_back(error.into()) 
+    Error(error) => errors.push_back(error.into())
 }
 // ...
 
@@ -236,7 +241,7 @@ if let Some(error) = MultiError::from(errors) {
 }
 ```
 
-Essentially, my `MultiError` type allowed for what I **thought** was uninspectable-state. Each `syn::Error` could hold N errors. 
+Essentially, my `MultiError` type allowed for what I **thought** was uninspectable-state. Each `syn::Error` could hold N errors.
 
 ## A Fowl Epiphany
 
@@ -248,16 +253,19 @@ The only value my `MultiError` type brought was that it hinted that the function
 ## Bad duck
 
 If a type doesn't introduce new capabilities or constraints and can be replaced by an existing, stable type, it should probably be deleted in favor of the more common type.
+
 ## Good duck
 
 Just because a type starts to smell a little foul (or rather "fowl") does that mean you need to get rid of it? Producing a new type guarantees that there are no mix-up between your type and the common type. New typing could also allow you to restrict operations to a subset of the common type. Both of these things are about adding constraints.
 
 A third reason to keep a duck around would be the stability of the interface. If you're going to expose your type via a library and you're worried it might change, then it could be helpful to wrap the type so your downstream user don't have to change their code even if the underlying logic or implementation changes.
+
 ## Duck documentation
 
-When in doubt, consider documenting your duck and explaining what constraints the new type adds over the original. After writing them down, search for an already existing type that has the same behaviors. Perhaps go so far as to document why those types don't meet your needs. If you cannot enumerate those differences well, then perhaps it's a sign you should ditch your duck. 
+When in doubt, consider documenting your duck and explaining what constraints the new type adds over the original. After writing them down, search for an already existing type that has the same behaviors. Perhaps go so far as to document why those types don't meet your needs. If you cannot enumerate those differences well, then perhaps it's a sign you should ditch your duck.
 
-In my case I had explicitly called out `syn::Error` and even went as far as implementing `Into<syn::Error>`. Those are two strong signs that I should have investigated my claims and looked for features provided by trait implementations.  
+In my case I had explicitly called out `syn::Error` and even went as far as implementing `Into<syn::Error>`. Those are two strong signs that I should have investigated my claims and looked for features provided by trait implementations.
+
 ## Practice your duck calls
 
 One of the reasons I missed that `syn::Error` already met my needs that I didn't stop to consider why certain traits were implemented on the struct or think about how they might be used to expose the data that I needed. Over time I've been better at internalizing and mentally mapping trait names to the behaviors they provide. Still, I've got some more work to do. Hopefully after this experience, with strong hints that I'm re-implementing an existing type as a duck, I won't forget to check trait implementations for what I need.
