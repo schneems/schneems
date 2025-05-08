@@ -14,7 +14,7 @@ Why aren't people [writing more types](https://lobste.rs/s/qmmfje/don_t_be_afrai
 
 ## TLDR: What's a duplicate duck?
 
-A "duplicate duck" is a type that implements a subset of traits of a popular type with the same results. In my case I wrote a type, `MultiError`, that I later realized was identically [duck typed](https://en.wikipedia.org/wiki/Duck_typing)  to [`syn::Error`]() and that my struct added nothing. I deleted my type with no loss in functionality and the world was better for it.
+A "duplicate duck" is a type that implements a subset of traits of a popular type with the same results. In my case I wrote a type, `MultiError`, that I later realized was identically [duck typed](https://en.wikipedia.org/wiki/Duck_typing)  to [`syn::Error`](https://docs.rs/syn/latest/syn/struct.Error.html) and that my struct added nothing. I deleted my type with no loss in functionality and the world was better for it.
 
 I saved my code before throwing it away. The following is the story of my design process and eventual epiphany.
 
