@@ -10,7 +10,12 @@ categories:
     - debugging
 ---
 
-I'm not exactly sure about the timeline, but at some point, `gem install sassc` stopped working for me on my Mac (ARM). Initially, I thought this was because that gem was no longer maintained, and the last release was in 2020, but I was wrong. It's 100% installable today. In this post I'll explain some things about native extensions libraries in Ruby and in the process tell you how to fix this error below if you're getting it on your Mac:
+I'm not exactly sure about the timeline, but at some point, `gem install sassc` stopped working for me on my Mac (ARM). Initially, I thought this was because that gem was no longer maintained, and the last release was in 2020, but I was wrong. It's 100% installable today. Read the rest to find out the real culprit and how to fix it.
+
+> FWIW some folks on [lobste.rs](https://lobste.rs/s/d69ogy/installing_sassc_ruby_gem_on_mac) suggested switching to [sass-embedded](https://rubygems.org/gems/sass-embedded) for sass needs. This post still, works but into the future it might not.
+
+In this post I'll explain some things about native extensions libraries in Ruby and in the process tell you how to fix this error below if you're getting it on your Mac:
+
 
 ```
 Gem::Ext::BuildError: ERROR: Failed to build gem native extension.
