@@ -114,9 +114,6 @@ You might call my end solution hacky (this hedge statement brought to you by too
 
 ```term
 $ cargo clippy --all-targets --all-features -- --deny warnings
-warning: unused manifest key: profile.dev.package.unexpected_cfgs.check-cfg
-warning: unused manifest key: profile.dev.package.unexpected_cfgs.level
-warning: profile package spec `unexpected_cfgs` in profile `dev` did not match any packages
     Checking path_facts v0.2.1 (/Users/rschneeman/Documents/projects/path_facts)
 error: use of a disallowed method `std::env::set_current_dir`
    --> src/path_facts.rs:395:9
