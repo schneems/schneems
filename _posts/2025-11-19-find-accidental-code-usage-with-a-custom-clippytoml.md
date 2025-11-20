@@ -11,7 +11,7 @@ categories:
 
 I recently discovered that adding a `clippy.toml` file to the root of a Rust project gives the ability to disallow a method or a type when running `cargo clippy`. This has been really useful. I want to share two quick ways that I've used it: Enhancing `std::fs` calls via `fs_err` and protecting CWD threadsafety in tests.
 
-> Update: you can also use this technique to [disallow unwrap()](https://blog.cloudflare.com/18-november-2025-outage/)!
+> Update: you can also use this technique to [disallow unwrap()](https://blog.cloudflare.com/18-november-2025-outage/)! There's also [`unwrap_used`](https://rust-lang.github.io/rust-clippy/master/index.html#unwrap_used) which you use by adding `#![deny(clippy::unwrap_used)]` to your `main.rs`.
 
 ## std lib enhancer
 
