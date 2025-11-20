@@ -4,7 +4,7 @@ layout: post
 published: true
 date: 2025-11-19
 permalink: /2025/11/19/find-accidental-code-usage-with-a-custom-clippytoml/
-image_url: https://www.dropbox.com/scl/fi/of3ftnwjv72p30n0g6nwb/Screenshot-2025-11-19-at-3.51.10-PM.png?rlkey=4hgvry025hjbh5pfz2gwy5web&raw=1
+image_url: https://www.dropbox.com/scl/fi/k53sorhtfax1gvax87vku/Screenshot-2025-11-19-at-9.45.35-PM.png?rlkey=2krwac53j859a6lancnjo93s9&raw=1
 categories:
     - rust
 ---
