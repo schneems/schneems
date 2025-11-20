@@ -43,7 +43,7 @@ warning: use of a disallowed method `std::fs::canonicalize`
     = note: `#[warn(clippy::disallowed_methods)]` on by default
 ```
 
-Running cargo clippy --fix will automatically update the code. Neat!
+Running `cargo clippy --fix` will now automatically update the code. Neat!
 ## CWD protector
 
 Why was I skimming issues in the first place? I [suggested adding a feature to allow enhancing errors with debugging information](https://github.com/andrewhickman/fs-err/issues/55), so instead of:
