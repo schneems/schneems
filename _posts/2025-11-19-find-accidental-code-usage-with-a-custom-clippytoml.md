@@ -44,6 +44,7 @@ warning: use of a disallowed method `std::fs::canonicalize`
 ```
 
 Running `cargo clippy --fix` will now automatically update the code. Neat!
+
 ## CWD protector
 
 Why was I skimming issues in the first place? I [suggested adding a feature to allow enhancing errors with debugging information](https://github.com/andrewhickman/fs-err/issues/55), so instead of:
@@ -85,7 +86,7 @@ insta::assert_snapshot!(
     ")
 ```
 
-In the above code, the test changes the current working directory to a temp dir where it is then free to make modifications on disk. But, since Rust uses a multi-threaded test runner and `std::env::set_current_dir` affects the whole process, this is not approach is not safe ☠️.
+In the above code, the test changes the current working directory to a temp dir where it is then free to make modifications on disk. But, since Rust uses a multi-threaded test runner and `std::env::set_current_dir` affects the whole process, this approach is not safe ☠️.
 
 There are a lot of different ways to approach the fix, like using [cargo-nextest](https://nexte.st/), which executes all tests in their own process (where changing the CWD is safe). Though this doesn't prevent someone from running `cargo test` accidentally. There are other crates that use macros to force non-concurrent test execution, but they require you to [remember to tag the appropriate tests](https://crates.io/crates/serial_test). I wanted something lightweight that was hard to mess up, so I turned to `clippy.toml` to fail if anyone used `std::env::set_current_dir` for any reason:
 
