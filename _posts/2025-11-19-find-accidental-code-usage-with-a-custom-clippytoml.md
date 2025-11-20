@@ -19,7 +19,7 @@ I use the [fs_err](https://github.com/andrewhickman/fs-err) crate in my projects
 
 ```toml
 disallowed-methods = [
-    # Use fs_errr functions, so the filename is available in the error message
+    # Use fs_err functions, so the filename is available in the error message
     { path = "std::fs::canonicalize", replacement = "fs_err::canonicalize" },
     { path = "std::fs::copy", replacement = "fs_err::copy" },
     { path = "std::fs::create_dir", replacement = "fs_err::create_dir" },
