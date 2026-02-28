@@ -24,7 +24,7 @@ No GE intern wanted to work in PCTO. It wasn't "sexy" or "cool." But it's the bu
 
 When I hear Heroku say it is moving to a "sustaining" engineering model, it doesn't mean features stop. Heck, the first commercial fridge was introduced in 1913, and we're still finding ways to add bells and whistles, like the water pitcher in the door and quad-door design of my most recent fridge. But those innovations aren't disruptive; they're iterative and relatively predictable. Those innovations are only possible because worse is better. i.e., GE figured out what mattered (shipping fast is more important than price perfect), but it did it in a way that it didn't stop there, once it's shipped, it's shipped again over and over until the kinks are worked out and the margins are competitive.
 
-Sustaining is Focus and Predictable Growth
+## Sustaining is Focus and Predictable Growth
 
 In "The Innovator's Dilemma," a "sustaining" innovation would be increasing the density of iron on a disk platter to achieve incrementally more storage density or going from one spindle to two. A "disruptive" technology would be the digital camera. It originally produced worse images than film and was very expensive. Kodak didn't invest in it because it didn't give their current customers what they needed. By the time digital cameras disrupted the film camera industry, Kodak was too late to make a difference.
 
