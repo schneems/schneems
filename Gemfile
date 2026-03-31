@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.4.8"
+ruby "3.4.9"
 
 gem "jekyll", "4.4.1"
 gem "kramdown"
