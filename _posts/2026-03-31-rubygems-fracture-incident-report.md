@@ -28,7 +28,7 @@ This document attempts to paint an accurate representation of what Ruby Central 
 
 ## Summary
 
-Two engineers, André Arko and Samuel Giddens, were working on RV together. Each announced that they were leaving Ruby Central. Ruby Central, in turn, wanted to cleanly offboard them and sever ties with RubyGems.org production access, which was tightly coupled to GitHub access. However, Ruby Central lacked the structural ability to make this change directly (did not have admin controls on the GitHub Business/Enterprise). The resulting process was drawn out and poorly communicated internally and to the general public.
+Two engineers, André Arko and Samuel Giddins, were working on RV together. Each announced that they were leaving Ruby Central. Ruby Central, in turn, wanted to cleanly offboard them and sever ties with RubyGems.org production access, which was tightly coupled to GitHub access. However, Ruby Central lacked the structural ability to make this change directly (did not have admin controls on the GitHub Business/Enterprise). The resulting process was drawn out and poorly communicated internally and to the general public.
 
 This led to the GitHub access changes between September 10th-18th, 2025, that resulted in the walkout of paid contributors: André Arko (`indirect`), David Rodríguez (`deivid-rodriguez`), Ellen Dash (`duckinator`), Josef Šimánek (`simi`), Martin Emde (`martinemde`), and Samuel Giddins (`segiddins`). A group that refers to itself as **the maintainers**.
 
@@ -156,8 +156,8 @@ There was no documentation on how to run the RubyGems.org service (a.k.a "runboo
 
 **July 11, 2025**
 
-- Ruby Central "RubyGems maintainer offsite" was held in the same city as RailsConf, at a different venue. Travel for Marty Haught, Samuel Giddens (the full-time Security Engineer on staff for Ruby Central), André Arko, and one more were covered by Ruby Central.
-- The [first commit on RV](https://github.com/spinel-coop/rv/commit/2fce7dd6a6659d16146672a3eab9871899203b91), a Rust tool for managing Ruby dependencies, was created by André Arko and Samuel Giddens.
+- Ruby Central "RubyGems maintainer offsite" was held in the same city as RailsConf, at a different venue. Travel for Marty Haught, Samuel Giddins (the full-time Security Engineer on staff for Ruby Central), André Arko, and one more were covered by Ruby Central.
+- The [first commit on RV](https://github.com/spinel-coop/rv/commit/2fce7dd6a6659d16146672a3eab9871899203b91), a Rust tool for managing Ruby dependencies, was created by André Arko and Samuel Giddins.
 
 **July 20, 2025**
 
@@ -218,7 +218,7 @@ Marty responds:
 
 **August 18, 2025**
 
-- Samuel Giddens gives Ruby Central his two-week notice that he will be terminating his full-time security position.
+- Samuel Giddins gives Ruby Central his two-week notice that he will be terminating his full-time security position.
 - André Arko creates an access token named `rubygems-github-backup` with access to all repos in the [`github.com/rubygems`](http://github.com/rubygems) organization, including private repos. This is the only access token of its kind.
 
 **August 25, 2025**
@@ -250,7 +250,7 @@ Another member responds:
 
 > *“I'd cut Sam and André's ties with the organization as soon as possible, announce the departures, and wish them the best of luck on their next endeavor.”*
 
-The conversation quickly turns to operations of the RubyGems.org service, where on-call staffing is a concern. Previously, Samuel Giddens was part of the rotation; with his departure, they would need time to find a replacement.
+The conversation quickly turns to operations of the RubyGems.org service, where on-call staffing is a concern. Previously, Samuel Giddins was part of the rotation; with his departure, they would need time to find a replacement.
 
 **August 27, 2025**
 
@@ -264,7 +264,7 @@ The conversation quickly turns to operations of the RubyGems.org service, where 
 
 At this point, the path to offboarding everyone cleanly was uncertain. The new consultant made progress on some runbook documentation, but still did not have server access.
 
-At this time, Marty, as the Ruby Central OSS Director, did not have admin permissions on GitHub. Those permissions are held by Colby Swandale, Hiroshi Shibata, André Arko, Samuel Giddens, and Martin Emde. That means in order to offboard anyone, he needs to ask someone else to make a change.
+At this time, Marty, as the Ruby Central OSS Director, did not have admin permissions on GitHub. Those permissions are held by Colby Swandale, Hiroshi Shibata, André Arko, Samuel Giddins, and Martin Emde. That means in order to offboard anyone, he needs to ask someone else to make a change.
 
 **September 4, 2025**
 
@@ -280,7 +280,7 @@ Overall, RV and André's involvement was a very popular "hallway track" topic, a
 
 **September 5, 2025**
 
-- Samuel Giddens' employment notice took effect, and he was no longer employed at Ruby Central.
+- Samuel Giddins' employment notice took effect, and he was no longer employed at Ruby Central.
 - Last day of RailsWorld conference.
 
 **September 8, 2025**
@@ -439,7 +439,7 @@ A meeting was scheduled.
 - The meeting was recorded by Ruby Central, a practice consistent with other "maintainer sync" meetings, for the purpose of privately sharing with maintainers who could not be present.
 - André and Martin produced a list of thirteen developers who were invited. Five attend, and four speak: André (`indirect)`, Josef (`simi)`, Ellen (`duckinator)`, Martin (`martinemde)`.
 - Two of these five had access changed (`indirect` and `martinemde`).
-- Sam Giddens and Deivid Rodriguez did not attend.
+- Sam Giddins and Deivid Rodriguez did not attend.
 - These four developers make it clear that they reject a Ruby Central employee retaining any access to the [`github.com/rubygems`](http://github.com/rubygems) GitHub organization or enterprise.
 - They state their expectation that someone must gain administrative control via performing code contribution, and then, based on an internal selection criterion, only those who already have it will decide whose individual merit deserves administrative access to the `github.com/rubygems` organization or not.
 - They express that they’re unhappy that Ruby Central hired a new contractor instead of offering work to one of them.
@@ -641,3 +641,6 @@ Some execution failures and mistakes are individual, but the purpose of having a
 
 The hope is that by sharing this, we can provide some closure to the community and increase transparency. It's also been a time to reflect internally and understand deeper issues that led up to this situation. You've likely been witness to some effects of this process, even if they seem mundane or unrelated. We have been going through a period of structural change, and that process will continue. It will not happen overnight. We want to face this and learn from it. You're welcome to judge us by our actions, and we hope you keep [calling us in](https://www.schneems.com/2025/12/19/non-violent-comments-calling-out-or-calling-in/) and calling us out when we don't live up to expectations.
 
+## Updates
+
+- March 31, 2026 16:33 UTC - Typo fix: Samuel's name was spelled incorrectly. It is now corrected to "Samuel Giddins."
