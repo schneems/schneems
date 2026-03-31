@@ -2,7 +2,7 @@
 title: "How to \"Sustain Heroku\""
 layout: post
 published: true
-date: 2026-03-01
+date: 2026-02-01
 permalink: /2026/03/01/how-to-sustain-heroku/
 image_url: https://www.dropbox.com/scl/fi/4xz9bl3g1bvrr4kxif2yc/Screenshot-2026-02-28-at-9.17.09-AM.png?rlkey=4uc09udxmopa72xrbngvcijy6&raw=1
 categories:
