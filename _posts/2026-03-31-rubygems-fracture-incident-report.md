@@ -90,6 +90,13 @@ Platforms that couple metrics with permissions management should consider ways t
 
 Ultimately, neither project received funding (no grants or sponsors were found to directly hire for the project through Ruby Central), but the item was still in the foundation's technical roadmap of projects it was interested in.
 
+**February 28, 2025 6:15:12 UTC** Taken by `indirect`
+
+- business.remove\_admin: 5 members including `evanphx`
+- org.update\_member: 5 members including `evanphx` before: admin, after: read
+
+Evan Phoenix `evanphx` helped run Ruby Central as a volunteer, along with Marty Haught, for many years. He held GitHub business/enterprise admin access since it was created, and has been an admin on the organization for many years prior. He held this access as a Ruby Central stakeholder. André did not contact any of those removed with a reason or information on what they should do if they needed or wanted access again. When asked in ~March 2026, over a year later, the stated reason given for the removal was "inactivity." This removal, with no replacement, left Ruby Central without any representation of GitHub business/enterprise access.
+
 **March 5, 2025**
 
 - Marty Haught [introduced policy pages to RubyGems.org](https://github.com/rubygems/rubygems.org/pull/5497), including Acceptable Use Policy (AUP), Copyright Policy, Privacy Notice, and Terms of Service (TOS). This included policies such as how RubyGems.org [shared personal information with 3rd parties](https://rubygems.org/policies/privacy) and what personal information (PII) it collects.
@@ -643,4 +650,5 @@ The hope is that by sharing this, we can provide some closure to the community a
 
 ## Updates
 
+- September 1, 2026 - List the removal of Evan Phoenix `evanphx` in the same format as the other GitHub changes and place it in the correct timeline sequence. Add a paragraph of context to the removal.
 - March 31, 2026 16:33 UTC - Typo fix: Samuel's name was spelled incorrectly. It is now corrected to "Samuel Giddins."
