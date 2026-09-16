@@ -26,7 +26,7 @@ I love speaking! I've given talks at [~38 conferences in 17 countries](#countrie
 <iframe src="https://www.youtube.com/embed/Aczy01drwkg?start=287" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Note/warning: I wouldn't do a talk with a voice actor again. I did another talk later with a similar concept of [having a dialog with a pretend character](https://www.youtube.com/watch?v=-8UQMH6p-Mw&list=PL9oQ7yETvN12aRSuBWqjrCjwtKugdAPrT&index=3), but I provided/read their parts which is much less jarring. "How to (contribute to) Open Source" is **acutally** my new favorite, but I don't have a great video of it.
+Note/warning: I wouldn't do a talk with a voice actor again. I did another talk later with a similar concept of [having a dialog with a pretend character](https://www.youtube.com/watch?v=-8UQMH6p-Mw&list=PL9oQ7yETvN12aRSuBWqjrCjwtKugdAPrT&index=3), but I provided/read their parts which is much less jarring. "How to (contribute to) Open Source" is **actually** my new favorite, but I don't have a great video of it.
 
 > I turned this into a [blog post with full technical examples](https://schneems.com/2020/09/16/the-lifechanging-magic-of-tidying-ruby-object-allocations/)
 
@@ -66,7 +66,7 @@ Panel with Anna Tumadottir, CEO of Creative Commons; Lane Becker, President of T
 
 ### How To (Contribute to) Open Source (2023)
 
-> Developers want to contribute. Maintainers want help. That’s the contribution gap. This is a talk on how we can meaningful help contributors by looking at the what’s worked for 68,000+ developers over the past decade on CodeTriage, an open source service for helping contributors.
+> Developers want to contribute. Maintainers want help. That’s the contribution gap. This is a talk on how we can meaningfully help contributors by looking at what’s worked for 68,000+ developers over the past decade on CodeTriage, an open source service for helping contributors.
 >
 > You’ll learn about the three archetypes of unsuccessful contributors, and the barriers that are holding them back. You’ll discover actionable tips to help them get off the sidelines and start getting commits (and other helpful contributions!). If you or someone in your life wants to contribute more, this is one talk you’ll want to merge into your main branch.
 
@@ -109,7 +109,7 @@ Your app is slow. It does not spark joy. In this talk, we will use memory profil
 **Locations**
 
 - *Keynote* RubyConf Thailand (Bangkok, Thailand)
-- RailsConf (Minneapolis, Minesota - USA)
+- RailsConf (Minneapolis, Minnesota - USA)
 - EuRuKo (Rotterdam, Netherlands)
 - SouthEast Ruby (Nashville, Tennessee - USA)
 
@@ -191,7 +191,7 @@ If you've ever misspelled a word while searching on Google, you've benefitted fr
 
 ### The Good Rubyist Challenge (2014)
 
-Level up your programming game, and change the world. In this talk we will look at specific and actionable goals for all skill levels to hone your programmings skills and master your craft. We will cover what it takes to go from no-grammer to a senior level programmer and everything in between. Don’t come to this talk if you don’t want to be motivated, you don’t want to succeed, and certainly if you don’t want a good swift kick in your Ruby programming pants.
+Level up your programming game, and change the world. In this talk we will look at specific and actionable goals for all skill levels to hone your programming skills and master your craft. We will cover what it takes to go from no-grammer to a senior level programmer and everything in between. Don’t come to this talk if you don’t want to be motivated, you don’t want to succeed, and certainly if you don’t want a good swift kick in your Ruby programming pants.
 
 - [Slides](https://speakerdeck.com/schneems/the-good-rubyist-challenge)
 - No video, you had to be there (MagmaConf)
@@ -240,7 +240,7 @@ Underneath the beautiful veneer of our Ruby libraries lies a twisted tangle of w
 
 ### Millions of Apps - What we learned (2013)
 
-Heroku has deployed millions of web apps. When you've run that many applications, it's hard not to notice when frameworks and developers do things wrong, and when they do them right. We've taken a look at the most common patterns and boiled down the best of our advice in to 12 simple factors that can help you build your next app to be stable, successful, and scaleable. After this talk you'll walk away with in depth knowledge of web framework design patterns and practical examples of how to improve your application code.
+Heroku has deployed millions of web apps. When you've run that many applications, it's hard not to notice when frameworks and developers do things wrong, and when they do them right. We've taken a look at the most common patterns and boiled down the best of our advice into 12 simple factors that can help you build your next app to be stable, successful, and scaleable. After this talk you'll walk away with in depth knowledge of web framework design patterns and practical examples of how to improve your application code.
 
 - [Video](https://www.youtube.com/watch?v=gIdB9Yw2gXc)
 - [Slides](https://speakerdeck.com/schneems/millions-of-apps-deployed)
@@ -273,7 +273,7 @@ Heroku has deployed millions of web apps. When you've run that many applications
 - United States (SF, Honolulu, Portland, Austin, Burlington, Dallas, St. Augustine, Chicago, San Diego, Cincinnati, Phoenix, Boston, Nashville)
 - Uruguay (Montevideo)
 
-I've not spoken in Africa or Antartica. If you're organizing a conf on either continent and want me to come speak, let me know ;)
+I've not spoken in Africa or Antarctica. If you're organizing a conf on either continent and want me to come speak, let me know ;)
 
 <!--
 
