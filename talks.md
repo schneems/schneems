@@ -6,14 +6,19 @@ layout: about
 
 - 2017 Lanyard has 26 events until the end of this year
 - 2018 off.
-- 2019 I spoke at 4 confs. Total is 20
+- 2019 I spoke at 4 confs. Total is 30
 - 2021 I spoke at 3 confs. Total is 33
+- 2022 I spoke at 0 confs (none documented). Total is 33
+- 2023 I spoke at 2 confs (Emerging Tech for the Enterprise, Fossy). Total is 35
+- 2024 I spoke at 1 conf (All Things Open). Total is 36
+- 2025 1 conf total is 37
+- 2026 1 conf total is 38
 
 -->
 
 ## Conference Talks
 
-I love speaking! I've given talks at [~33 conferences in 17 countries](#countries) including OSCON and RailsConf. I love theatrics and storytelling. My two favorite talks are currently:
+I love speaking! I've given talks at [~38 conferences in 17 countries](#countries) including SXSW, OSCON, and More! I love theatrics and storytelling. My two favorite talks are currently:
 
 **The Life-Changing Magic of Tidying Active Record Allocations (2019)**
 
@@ -21,21 +26,60 @@ I love speaking! I've given talks at [~33 conferences in 17 countries](#countrie
 <iframe src="https://www.youtube.com/embed/Aczy01drwkg?start=287" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+Note/warning: I wouldn't do a talk with a voice actor again. I did another talk later with a similar concept of [having a dialog with a pretend character](https://www.youtube.com/watch?v=-8UQMH6p-Mw&list=PL9oQ7yETvN12aRSuBWqjrCjwtKugdAPrT&index=3), but I provided/read their parts which is much less jarring. "How to (contribute to) Open Source" is **acutally** my new favorite, but I don't have a great video of it.
+
 > I turned this into a [blog post with full technical examples](https://schneems.com/2020/09/16/the-lifechanging-magic-of-tidying-ruby-object-allocations/)
 
 **Saving Sprockets (2016)**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qxaE8yblHPk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Right now I'm really interested in exploring Open Source and the process of taking people from observers to collaborators. What do I know about Open Source? I built and maintain a platform with [65,000+ developers who want to grow their Open Source skills](http://codetriage.com/).
+Right now I'm really interested in exploring Open Source and the process of taking people from observers to collaborators. What do I know about Open Source? I built and maintain a platform with [100,560+ developers who want to grow their Open Source skills](http://codetriage.com/).
 
 For 2020-2021 I'm not planning on applying to any conferences due to a high work and course-load. But if you want to invite me to a conference I might say yes! Timezones are a factor so North America and South America confs are preferred.
 
-You can reach me: richard [at] heroku.com, with subect line "Come speak at our conference!".
+You can reach me: On Mastodon, link on the sidebar.
 
 <!-- If you invite me to speak at a domestic conference (in the US), then I'll probably say yes. You can reach me: richard [at] heroku.com. -->
 
 Why would you ever want me to speak at your conference? Take a look at some of the talks I've delivered in the past.
+
+### "Once a Maintainer" panel (2026)
+
+A panel hosted by Allison Pike (*Once a Maintainer* podcast) alongside Colby Swandale (Ruby Central / RubyGems.org), Jeremy Evans (Sequel, Roda, Rack, and a Ruby committer), and me. We talked about how we got into programming and open source and how AI is reshaping the maintainer's job. We compared how we each lean on AI in our own work, and mused on how to keep Ruby's culture of developer happiness alive in an agentic world.
+
+- [video](https://www.youtube.com/watch?v=S9-zUiTkPDY)
+
+**Locations**
+
+- RubyConf -  Las Vegas, NV
+
+### "Openness under Pressure" panel (2025)
+
+> In a world where artificial intelligence and other socio-technical forces are rapidly advancing, the principles of openness and free access to information and resources are increasingly under threat. This panel brings together leading voices from the open Internet, open data, open-source, and other open-access communities to discuss the future of openness across various fields.
+
+Panel with Anna Tumadottir, CEO of Creative Commons; Lane Becker, President of The Wikimedia Foundation; and Christian Dawson, Executive Director of the Internet Infrastructure Coalition. I represented Open Source contributors through my experience with CodeTriage.
+
+**Locations**
+
+- SXSW - Austin, TX
+
+### How To (Contribute to) Open Source (2023)
+
+> Developers want to contribute. Maintainers want help. That’s the contribution gap. This is a talk on how we can meaningful help contributors by looking at the what’s worked for 68,000+ developers over the past decade on CodeTriage, an open source service for helping contributors.
+>
+> You’ll learn about the three archetypes of unsuccessful contributors, and the barriers that are holding them back. You’ll discover actionable tips to help them get off the sidelines and start getting commits (and other helpful contributions!). If you or someone in your life wants to contribute more, this is one talk you’ll want to merge into your main branch.
+
+I gave this several times, the first time was 55min long, the last was 30min long and I feel like just as good. Unfortunately the only one that had a video is the first delivery
+
+- [video](https://www.youtube.com/watch?v=-8UQMH6p-Mw&list=PL9oQ7yETvN12aRSuBWqjrCjwtKugdAPrT&index=3) with an alternate title "How to Steal from Maintainers." (about "stealing" tech debt).
+- Slides are mostly characters with dialog bubbles that make no sense without my dialog.
+
+**Locations**
+
+- Emerging Technologies for the Enterprise - Philadelphia, PA (2023)
+- [Fossy](https://2023.fossy.us/speaker/profile/131/index.html) -  Portland, OR (2023)
+- [All things Open](https://2024.allthingsopen.org/sessions/how-to-contribute-to-open-source) -  Raleigh, NC (2024)
 
 ### Beware the Dreaded Dead End!! (2021)
 
