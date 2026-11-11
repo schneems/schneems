@@ -8,7 +8,7 @@ author_url: https://ruby.social/@Schneems
 permalink: blogs/2015-08-06-patching-rails-performance
 ---
 
-In a recent [patch](https://github.com/rails/rails/pull/21057) we improved Rails response time by **>10%**, our largest improvement to date. I'm going to show you how I did it, and introduce you to the tools I used, because.. who doesn’t want fast apps?
+In a recent [patch](https://github.com/rails/rails/pull/21057) we made Rails responses **1.14x** faster, our largest improvement to date. I'm going to show you how I did it, and introduce you to the tools I used, because.. who doesn’t want fast apps?
 
 > Originally posted on the [Heroku Engineering Blog](https://engineering.heroku.com/blogs/2015-08-06-patching-rails-performance/)
 
@@ -42,7 +42,7 @@ Benchmark.ips do |x|
 end
 ```
 
-The routing improvements combined with all the other savings gives us a speed boost of more than 10%. The best part is, we don't have to change the way we write our Rails app, you get these improvements for free by upgrading to the next version of Rails. If you're interested in where the savings came from, look at the [individual commits](https://github.com/rails/rails/pull/21057/commits) which have the methodology and object allocation savings for my test app recorded.
+The routing improvements combined with all the other savings gives us a 1.14x speed boost. The best part is, we don't have to change the way we write our Rails app, you get these improvements for free by upgrading to the next version of Rails. If you're interested in where the savings came from, look at the [individual commits](https://github.com/rails/rails/pull/21057/commits) which have the methodology and object allocation savings for my test app recorded.
 
 ![](https://www.dropbox.com/s/mdjtq0miucbby8f/Screenshot%202015-08-03%2011.38.33.png?raw=1)
 

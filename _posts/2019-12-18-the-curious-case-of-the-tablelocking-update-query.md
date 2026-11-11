@@ -88,7 +88,7 @@ Based on the responses to the forum it sounded like if there is more than a few 
 
 I combed over my codebase and couldn't find anything. Then as I was laying down to go to bed that evening, I had a moment of inspiration where I remembered that we were updating the database in parallel for the same UUID using threads:
 
-```language-ruby
+```ruby
 @things.map do |thing|
   Concurrent::Promise.execute(executor: :fast) do
     store_results!(thing)
@@ -100,7 +100,7 @@ In every loop, we were creating a promise that would concurrently update values 
 
 With this new theory, I removed the concurrency, which meant that each `UPDATE` call would be sequential instead of in parallel:
 
-```language-ruby
+```ruby
 @things.map do |thing|
   store_results!(thing)
 end

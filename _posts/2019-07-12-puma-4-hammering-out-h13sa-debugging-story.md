@@ -117,7 +117,7 @@ When we run this reproduction, we see that it gives us the exact behavior we're 
 2019-05-10T18:41:06.859330+00:00 heroku[router]: at=error code=H13 desc="Connection closed without response" method=GET path="/?request_thread=6" host=ruby-h13.herokuapp.com request_id=05696319-a6ff-4fad-b219-6dd043536314 fwd="<ip>" dyno=web.1 connect=0ms service=5ms status=503 bytes=0 protocol=https
 ```
 
-You can get all this code and some more details on the [reproduciton script repo](https://github.com/schneems/puma_connection_closed_reproduction). And here's the [Puma Issue I was using to track the behavior](https://github.com/puma/puma/issues/1802)
+You can get all this code and some more details on the [reproduction script repo](https://github.com/schneems/puma_connection_closed_reproduction). And here's the [Puma Issue I was using to track the behavior](https://github.com/puma/puma/issues/1802)
 
 ## Closing the Connection Closed Bug
 
