@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "36% smaller Rails memory footprint through Benchmarking"
+title: "0.63x (36% smaller) Rails memory footprint through Benchmarking"
 date: '2014-11-07 08:00:00'
 published: true
 tags: performance, benchmarking, ruby
@@ -8,7 +8,7 @@ tags: performance, benchmarking, ruby
 
 America is in the middle of an obesity epidemic, and your Ruby app might be suffering from bloat. While people suffer from overeating, and lack of exercise apps get bigger for other reasons. One of the largest memory sinks in a Ruby app can come not from your code, but from libraries you require. Most developers have no idea what kind of a penalty they incur by adding in a library, and for good reason. Until now, it's been hard to measure.
 
-Recently I introduced [Derailed Benchmarks to performance test your Rails apps](https://github.com/schneems/derailed_benchmarks) and was able to find that default Rails apps were using 36 percent more RAM than it needed. I patched [Kernel's require method](https://github.com/schneems/derailed_benchmarks/blob/master/lib/derailed_benchmarks/tasks.rb#L134-L165) so that we take a memory measurement of the current Ruby process before and after we require a file. Next, I sort those nested requires and output the data. After setting up the benchmarks on a brand-new Rails app I was able to run:
+Recently I introduced [Derailed Benchmarks to performance test your Rails apps](https://github.com/schneems/derailed_benchmarks) and was able to find that default Rails apps were using 1.59x the RAM they needed. I patched [Kernel's require method](https://github.com/schneems/derailed_benchmarks/blob/master/lib/derailed_benchmarks/tasks.rb#L134-L165) so that we take a memory measurement of the current Ruby process before and after we require a file. Next, I sort those nested requires and output the data. After setting up the benchmarks on a brand-new Rails app I was able to run:
 
 ```
 $ bundle exec rake -f perf.rake perf:require_bench
@@ -49,7 +49,7 @@ application: 38.3477 mb
     mail/message: 0.3398 mb
 ```
 
-The parsers aren't loaded and memory use is down in the total app by 36 percent with the patch. [Mikel pushed mail version 2.6.3](https://github.com/mikel/mail/pull/817#issuecomment-61474145) and now you can enjoy these memory savings right from the comfort of your own Rails app.
+The parsers aren't loaded and total app memory use drops to 0.63x (36% smaller) with the patch. [Mikel pushed mail version 2.6.3](https://github.com/mikel/mail/pull/817#issuecomment-61474145) and now you can enjoy these memory savings right from the comfort of your own Rails app.
 
 ## Update Mail to 2.6.3 or Higher
 
@@ -61,7 +61,7 @@ Successfully installed mail-2.6.3
 $ bundle update mail
 ```
 
-Boom, now your app is 36 percent lighter on boot up. You may be wondering about this line:
+Boom, now your app boots with 0.63x the memory. You may be wondering about this line:
 
 ```
 mime/types: 17.6016 mb
@@ -87,4 +87,3 @@ Now here's your homework: upgrade to Mail 2.6.3 or above and start benchmarking 
 
 ---
 If you like high-speed applications, benchmarking Rails or photos of dachshunds follow [@schneems](https://ruby.social/@Schneems).
-
